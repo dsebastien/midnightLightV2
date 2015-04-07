@@ -1,7 +1,7 @@
 'use strict';
 
 // Include Gulp & tools we'll use
-var gulp = require('gulp');
+var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
 var gulpNpmFiles = require('gulp-npm-files');
 var del = require('del');
@@ -22,8 +22,9 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-// Lint JavaScript
-gulp.task('jshint', function () {
+gulp.task('clean', 'Clean output directories', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
+
+gulp.task('jshint', 'Lint JavaScript code', function () {
   return gulp.src('app/scripts/**/*.js')
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint())
@@ -31,8 +32,7 @@ gulp.task('jshint', function () {
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
-// Optimize images
-gulp.task('images', function () {
+gulp.task('images', 'Optimize images', function () {
   return gulp.src('app/images/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
@@ -42,8 +42,7 @@ gulp.task('images', function () {
     .pipe($.size({title: 'images'}));
 });
 
-// Copy all files at the root level (app)
-gulp.task('copy', function () {
+gulp.task('copy', 'Copy all files except HTML which is processed separately', function () {
   return gulp.src([
     'app/*',
     '!app/*.html',
@@ -54,8 +53,7 @@ gulp.task('copy', function () {
     .pipe($.size({title: 'copy'}));
 });
 
-// Copy npm dependencies to the temp folder (useful for scripts during development)
-gulp.task('copyNpmDependencies', function() {
+gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder (useful for scripts during development)', function() {
   return gulp.src(
 	gulpNpmFiles(), {base:'./'}
   )
@@ -65,17 +63,13 @@ gulp.task('copyNpmDependencies', function() {
   .pipe($.size({title: 'copyNpmDependencies'}));
 });
 
-
-
-// Copy web fonts to dist
-gulp.task('fonts', function () {
+gulp.task('fonts', 'Copy fonts', function () {
   return gulp.src(['app/fonts/**'])
     .pipe(gulp.dest('dist/fonts'))
     .pipe($.size({title: 'fonts'}));
 });
 
-// Compile and automatically prefix stylesheets
-gulp.task('styles', function () {
+gulp.task('styles', 'Compile and add vendor prefixes to the stylesheets', function () {
   return gulp.src([
     'app/styles/main.less' // the main stylesheet should declare/import everything
   ])
@@ -96,8 +90,7 @@ gulp.task('styles', function () {
     .pipe($.size({title: 'styles'}));
 });
 
-// Scan HTML for assets (css, js, ..) and optimize them
-gulp.task('html', function () {
+gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
   return gulp.src('app/**/*.html')
@@ -127,11 +120,7 @@ gulp.task('html', function () {
     .pipe($.size({title: 'html'}));
 });
 
-// Clean output directory
-gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
-
-// Watch files for changes & rebuild/reload automagically
-gulp.task('serve', ['styles', 'copyNpmDependencies'], function () {
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['styles', 'copyNpmDependencies'], function () {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -149,8 +138,7 @@ gulp.task('serve', ['styles', 'copyNpmDependencies'], function () {
   gulp.watch(['app/images/**/*'], reload);
 });
 
-// Build and serve the output from the dist build
-gulp.task('serve:dist', ['default'], function () {
+gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' folder contents', ['default'], function () {
   browserSync({
     notify: false,
     logPrefix: 'MDL',
@@ -162,13 +150,11 @@ gulp.task('serve:dist', ['default'], function () {
   });
 });
 
-// Build production files, the default task
-gulp.task('default', ['clean'], function (cb) {
+gulp.task('default', 'Build production files', ['clean'], function (cb) {
   runSequence('styles', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
 });
 
-// Run PageSpeed Insights
-gulp.task('pagespeed', function (cb) {
+gulp.task('pagespeed', 'Run PageSpeed insights', function (cb) {
   // Update the below URL to the public URL of your site
   pagespeed.output('dsebastien.net', {
     strategy: 'mobile',
@@ -177,6 +163,3 @@ gulp.task('pagespeed', function (cb) {
     // key: 'YOUR_API_KEY'
   }, cb);
 });
-
-// Load custom tasks from the `tasks` directory
-// try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
