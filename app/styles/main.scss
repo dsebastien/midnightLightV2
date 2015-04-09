@@ -5,23 +5,22 @@
  */
 
 /*
- * First we load the CSS framework: http://getbootstrap.com/css/
- * Note that Bootstrap uses normalize.css: http://necolas.github.io/normalize.css/
+ * First we load the CSS framework
  *
  */
-@import url('../../node_modules/bootstrap/less/bootstrap.less');
+//@import url('../../node_modules/bootstrap/less/bootstrap.less');
  
  /*
   * Load the variables
   *
   */
-@import url('variables.less');
+@import url('variables.scss');
 
 /*
  * Typography
  *
  */
-@import url('typography.less');
+@import url('typography.scss');
 
 /*
  * MidnightLight styles

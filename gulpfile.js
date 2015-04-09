@@ -71,14 +71,14 @@ gulp.task('fonts', 'Copy fonts', function () {
 
 gulp.task('styles', 'Compile and add vendor prefixes to the stylesheets', function () {
   return gulp.src([
-    'app/styles/main.less' // the main stylesheet should declare/import everything
+    'app/styles/main.scss' // the main stylesheet should declare/import everything
   ])
 	// Prepare source maps
     .pipe($.sourcemaps.init())
 	// Only take changed stylesheets into account
     .pipe($.changed('.tmp/styles', {extension: '.css'}))
-	// Process less files
-    .pipe($.less())
+	// Process sass files
+    .pipe($.sass())
 	// Include vendor prefixes
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
 	// Write source maps
@@ -133,7 +133,7 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
   });
 
   gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{less,css}'], ['styles', reload]);
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
 });

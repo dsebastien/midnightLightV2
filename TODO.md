@@ -1,10 +1,4 @@
-* choose between Bootstrap & pure
-  * http://yui.github.io/skinbuilder/?mode=pure
-  * http://purecss.io/
-  * if pure -> remove bootstrap css & js from code and dependencies
-* add less
-* learn http://lesscss.org/
-* add jquery
+* load pure's CSS
 * REST API URL: http://dsebastien.net/wp-json
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
 * tags + role=""

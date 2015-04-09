@@ -44,7 +44,7 @@ If you want to build from source, you need to:
 * gulp-load-plugins: automatically load any gulp plugins defined in package.json: https://www.npmjs.com/package/gulp-load-plugins
 * gulp-minify-html: minify html with minimize: https://www.npmjs.com/package/gulp-minify-html
 * gulp-replace: string replace plugin for gulp: https://www.npmjs.com/package/gulp-replace
-* gulp-gulp-less-sourcemap: less for gulp with source map generation support: https://www.npmjs.com/package/gulp-less-sourcemap
+* gulp-sass: sass plugin for gulp
 * gulp-size: display the size of the project: https://www.npmjs.com/package/gulp-size
 * gulp-sourcemaps: js source map support for gulp: https://www.npmjs.com/package/gulp-sourcemaps
 * gulp-uglify: minify files using Uglify JS: https://www.npmjs.com/package/gulp-uglify
@@ -57,7 +57,6 @@ If you want to build from source, you need to:
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
 * run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
-* bootstrap: bootstrap css framework: https://www.npmjs.com/package/bootstrap
 * purecss: purecss: https://www.npmjs.com/package/purecss
 
 ## Authors
