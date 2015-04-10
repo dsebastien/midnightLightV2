@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Sebastien Dubois -- Geek -- https://twitter.com/dSebastien
+
+# THANKS
+
+  Thanks for all the fish
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3

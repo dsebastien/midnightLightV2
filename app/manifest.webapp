@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "Midnight Light",
+  "launch_path": "/index.html",
+  "description": "A modern Web front-end for Wordpress.",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "Sebastien Dubois",
+    "url": "http://www.dsebastien.net"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "Midnight Light",
+      "description": "A modern Web front-end for Wordpress."
+    }
+  }
+}
