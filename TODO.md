@@ -3,14 +3,18 @@
   * http://purecss.io/
   * http://getbootstrap.com/
 * add modernizr
+  * add html class="no-js" and check if js is enabled. 
 * add jquery
 * add less
 * learn http://lesscss.org/
 * REST API URL: http://dsebastien.net/wp-json
-* tags
+* add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
+* tags + role=""
   * <header>
   * <footer>
   * <section>
+  * <aside>
+  * <article>
   * <pre>
   * <blockquote>
   * <u>
@@ -35,12 +39,24 @@
 * replace msapplication-TileColor and theme-color with final color once defined
 * review gulp recipes
   https://github.com/gulpjs/gulp/tree/master/docs/recipes#recipes
-* create/test print stylesheet (media query)
-* complete readme
+* create/test print stylesheet (media query + display: none on everything not needed, add page breaks where appropriate)
 * integrate authentication to be able to post comments, edit posts, etc
 * SEOoooooo
 * add link to WP admin section
+* add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
 * add tests (karma, mocha, ...)
 * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 * add lodash
 * add gulp-karma to build: https://www.npmjs.com/package/gulp-karma
+* use z-index correctly
+* add rss feed link <link rel="alternate" type="application/rss+xml" title="..." href="...">
+* ensure that images are responsive: max-width: 100%;
+* ensure that videos are responsive: fitvidsjs.com
+* ensure that text is responsive: fittextjs.com
+* leverage the HTML5 history API to modify the url/history when going from post to post/section to section
+  * https://blog.twitter.com/2012/implementing-pushstate-for-twittercom
+  * https://css-tricks.com/using-the-html5-history-api/
+* for large screens: @media only screen and (min-width: 1140px) {
+	width:1026px; /* 1140px - 10% for margins */
+    margin:0 auto;
+  }

@@ -6,6 +6,12 @@ Midnight Light is a modern Web front-end for Wordpress.
 ## Status
 yet-to-be-implemented prototype :)
 
+## Features
+None so far
+
+## Roadmap
+Check out [TODO.md]
+
 ## Installation
 In order to use Midnight Light, you need to install the WP REST API plugin in Wordpress:
 * official website: http://wp-api.org/
@@ -18,10 +24,12 @@ If you want to build from source, you need to:
 * install NodeJS:
 * clone this git repository
 * go to the folder where you've cloned the project
-* run `$ npm install --global gulp && npm install` to get started
+* run `$ npm install --global gulp && npm install` to get the dependencies
+* run `$ gulp` to build the app
+* take a look at COMMANDS.md in the project for more commands you can use
 
 ## Dependencies
-* apache-server-configs: base Apache HTTP Server config: https://www.npmjs.com/package/apache-server-configs
+* apache-server-configs: base Apache HTTP Server config (allows/configures CORS, adds the X-UA-Compatible header, defines all media types correctly such as SVG, ...): https://www.npmjs.com/package/apache-server-configs
 * browser-sync: live CSS reload & browser syncing: https://www.npmjs.com/package/browser-sync
 * del: delete files/folders: https://www.npmjs.com/package/del
 * gulp: build system (https://www.npmjs.com/package/gulp)
