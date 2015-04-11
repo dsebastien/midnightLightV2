@@ -1,5 +1,8 @@
 'use strict';
 
+// Define global build variables
+var finalCssBundleFilename = 'bundle.min.css';
+
 // Include Gulp & tools we'll use
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
@@ -59,7 +62,7 @@ gulp.task('images', 'Optimize images', function () {
       interlaced: true
     })))
 	
-	// Copy
+	// Output files
     .pipe(gulp.dest('dist/images'))
 	
 	// Task result
@@ -69,7 +72,7 @@ gulp.task('images', 'Optimize images', function () {
 gulp.task('fonts', 'Copy fonts for production', function () {
   return gulp.src(['app/fonts/**'])
   
-	// Copy
+	// Copy files
     .pipe(gulp.dest('dist/fonts'))
 	
 	// Task result
@@ -84,49 +87,81 @@ gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder
   // Only take changed files into account
   .pipe($.changed('./.tmp', {}))
   
-  // Copy
+  // Copy files
   .pipe(gulp.dest('./.tmp'))
   
   // Task result
   .pipe($.size({title: 'copyNpmDependencies'}));
 });
 
-
-
-// TO REVIEW:
-
-
-
-gulp.task('styles', 'Compile and add vendor prefixes to the stylesheets', function () {
-  return gulp.src([
-    'app/styles/*.scss',
-	'app/styles/*.css'
-  ])
-	// Prepare source maps
-    .pipe($.sourcemaps.init())
-	// Only take changed stylesheets into account
-    //FIXME.pipe($.changed('.tmp/styles', {extension: '.css'}))
+gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', function () {
+	return gulp.src([
+		'app/styles/**/*.scss',
+		'app/styles/**/*.css'
+	])
+	
+	// Initialize sourcemap generation
+	.pipe($.sourcemaps.init())
+	
+	// Replace CSS imports by actual contents
+	.pipe($.cssimport())
 	
 	// Process Sass files
     .pipe($.sass({
 		precision: 10,
 		onError: console.error.bind(console, 'Sass error:')
     }))
+	
 	// Include vendor prefixes
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
-	// Write source maps
-    .pipe($.sourcemaps.write())
+	
+	// Write inline sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
+	.pipe($.sourcemaps.write())
+	
+	// Display the files that will be copied
+	//.pipe($.using())
+	
+	// Output files
     .pipe(gulp.dest('.tmp/styles'))
 	
-	// Force BrowserSync reload
-    .pipe(reload({stream: true, once: true}))
-	
-    // Concatenate and minify stylesheets
-    .pipe($.if('*.css', $.csso()))
-    .pipe(gulp.dest('dist/styles'))
+	// Reload Browser if needed
+	.pipe($.if(browserSync.active, reload({stream: true, once: true})))
 	
 	// Task result
     .pipe($.size({title: 'styles'}));
+});
+
+gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', ['styles'], function(){
+
+	return gulp.src([
+		'.tmp/styles/main.css'
+	])
+	
+	// Remove any unused CSS
+    .pipe($.if('*.css', $.uncss({
+      html: [
+        'app/**/*.html'
+      ],
+      // CSS Selectors for UnCSS to ignore
+      ignore: [
+      ]
+    })))
+	
+	// Optimize and minimize
+	.pipe($.csso()) // https://www.npmjs.com/package/gulp-csso
+	.pipe($.minifyCss({ // https://www.npmjs.com/package/gulp-minify-css
+		keepBreaks: false, // no problem here
+		keepSpecialComments: true, // necessary for licensing
+		compatibility: false, // no problem here
+		aggressiveMerging: false  // necessary because it breaks PureCSS
+	}))
+	
+	// Rename and copy the minified version
+	.pipe($.rename(finalCssBundleFilename))
+	.pipe(gulp.dest('dist/styles'))
+	
+	// Task result
+    .pipe($.size({title: 'styles-dist'}));
 });
 
 
@@ -142,10 +177,10 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
     server: ['.tmp', 'app']
   });
 
-  gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles']); // styles will force a reload
+  gulp.watch(['app/**/*.html'], reload); // html changes will force a reload
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles']); // stylesheet changes will force a reload
   gulp.watch(['app/scripts/**/*.js'], ['jshint']); // jshint will force a reload
-  gulp.watch(['app/images/**/*'], reload);
+  gulp.watch(['app/images/**/*'], reload); // image changes will force a reload
 });
 
 gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', function () {
@@ -155,25 +190,17 @@ gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', functi
     .pipe(assets)
     // Concatenate and minify JavaScript
     .pipe($.if('*.js', $.uglify({preserveComments: 'some'}))) // keeps comments that have a '!': https://github.com/gruntjs/grunt-contrib-uglify#preservecomments
-    // Remove any unused CSS
-    .pipe($.if('*.css', $.uncss({
-      html: [
-        'app/index.html'
-      ],
-      // CSS Selectors for UnCSS to ignore
-      ignore: [
-      ]
-    })))
-    // Concatenate and minify styles
-    // In case you are still using useref build blocks
-    .pipe($.if('*.css', $.csso()))
+	
     .pipe(assets.restore())
     .pipe($.useref())
-    // Replace production paths (minified versions)
-    .pipe($.replace('styles/main.css', 'styles/main.min.css'))
-    // Minify HTML
+    
+	// Replace production paths (minified versions)
+    .pipe($.replace('styles/main.css', 'styles/'+finalCssBundleFilename))
+    
+	// Minify HTML
     .pipe($.if('*.html', $.minifyHtml()))
-    // Output files
+    
+	// Output files
     .pipe(gulp.dest('dist'))
 	
 	// Task result
@@ -192,17 +219,24 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
   });
 });
 
-gulp.task('copy', 'Copy all files except HTML which is processed separately', function () {
+gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separately', function () {
   return gulp.src([
     'app/*',
     '!app/*.html',
+	'!app/styles/*',
+	'!app/scripts/*',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
-  }).pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'copy'}));
+  })
+  
+  // Copy
+  .pipe(gulp.dest('dist'))
+  
+  // Task result
+  .pipe($.size({title: 'copy'}));
 });
 
 gulp.task('default', 'Build production files', ['clean'], function (cb) {
-  runSequence('styles', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles:dist', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
 });

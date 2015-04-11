@@ -1,11 +1,8 @@
-* build: fix dist build: should copy the dependencies then pack everything in one css file
-* build: fix serve (style changes not taken into account)
-* build: fix serve:dist
 * build: in styles, check if changed can doesn't impact serve
 * build: test css sourcemaps
 * build: ensure that dist paths are correct (concat all files + remove imports + adapt reference in html)
 * build: optimize/cache: changed(...)
-
+* build: check where to place uncss
 * create responsive grid
 * choose a nice font
 * 
