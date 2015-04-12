@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "name": "Midnight Light",
   "launch_path": "/index.html",
-  "description": "A modern Web front-end for Wordpress.",
+  "description": "Midnight Light is a modern personal Web front-end.",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
   },
@@ -19,7 +19,7 @@
   "locales": {
     "en": {
       "name": "Midnight Light",
-      "description": "A modern Web front-end for Wordpress."
+      "description": "Midnight Light is a modern personal Web front-end."
     }
   }
 }

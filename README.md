@@ -1,7 +1,7 @@
 # Midnight Light
 
 ## About
-Midnight Light is a modern Web front-end for Wordpress.
+Midnight Light is a modern personal Web front-end.
 
 ## Status
 yet-to-be-implemented prototype :)
@@ -50,6 +50,7 @@ If you want to build from source, you need to:
 * gulp-uglify: minify files using Uglify JS: https://www.npmjs.com/package/gulp-uglify
 * gulp-uncss: remove unused CSS selectors: https://www.npmjs.com/package/gulp-uncss
 * gulp-useref: parse 'build' blocks in HTML files to replace references to non-optimized scripts/stylesheets: https://www.npmjs.com/package/gulp-useref
+* gulp-npm-files: lists package.json dependencies so that we can process them (e.g., copy them to the dist folder)
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
 * opn: opens stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi

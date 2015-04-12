@@ -2,7 +2,8 @@
 
 // Include Gulp & tools we'll use
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
+var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+var gulpNpmFiles = require('gulp-npm-files');
 var del = require('del');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
@@ -53,6 +54,19 @@ gulp.task('copy', function () {
     .pipe($.size({title: 'copy'}));
 });
 
+// Copy npm dependencies to the temp folder (useful for scripts during development)
+gulp.task('copyNpmDependencies', function() {
+  return gulp.src(
+	gulpNpmFiles(), {base:'./'}
+  )
+  // Only take changed files into account
+  .pipe($.changed('./.tmp', {}))
+  .pipe(gulp.dest('./.tmp'))
+  .pipe($.size({title: 'copyNpmDependencies'}));
+});
+
+
+
 // Copy web fonts to dist
 gulp.task('fonts', function () {
   return gulp.src(['app/fonts/**'])
@@ -63,12 +77,11 @@ gulp.task('fonts', function () {
 // Compile and automatically prefix stylesheets
 gulp.task('styles', function () {
   return gulp.src([
-    'app/styles/**/*.less',
-    'app/styles/**/*.css'
+    'app/styles/main.less' // the main stylesheet should declare/import everything
   ])
 	// Prepare source maps
     .pipe($.sourcemaps.init())
-	// Only take changed CSS files into account
+	// Only take changed stylesheets into account
     .pipe($.changed('.tmp/styles', {extension: '.css'}))
 	// Process less files
     .pipe($.less())
@@ -77,20 +90,20 @@ gulp.task('styles', function () {
 	// Write source maps
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
-    // Concatenate and minify styles
+    // Concatenate and minify stylesheets
     .pipe($.if('*.css', $.csso()))
     .pipe(gulp.dest('dist/styles'))
     .pipe($.size({title: 'styles'}));
 });
 
-// Scan your HTML for assets & optimize them
+// Scan HTML for assets (css, js, ..) and optimize them
 gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
   return gulp.src('app/**/*.html')
     .pipe(assets)
     // Concatenate and minify JavaScript
-    .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    .pipe($.if('*.js', $.uglify({preserveComments: 'some'}))) // keeps comments that have a '!': https://github.com/gruntjs/grunt-contrib-uglify#preservecomments
     // Remove any unused CSS
     .pipe($.if('*.css', $.uncss({
       html: [
@@ -118,7 +131,7 @@ gulp.task('html', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', ['styles', 'copyNpmDependencies'], function () {
   browserSync({
     notify: false,
     // Customize the BrowserSync console logging prefix
@@ -151,7 +164,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 // Build production files, the default task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
 });
 
 // Run PageSpeed Insights

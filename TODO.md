@@ -1,12 +1,10 @@
 * choose between Bootstrap & pure
   * http://yui.github.io/skinbuilder/?mode=pure
   * http://purecss.io/
-  * http://getbootstrap.com/
-* add modernizr
-  * add html class="no-js" and check if js is enabled. 
-* add jquery
+  * if pure -> remove bootstrap css & js from code and dependencies
 * add less
 * learn http://lesscss.org/
+* add jquery
 * REST API URL: http://dsebastien.net/wp-json
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
 * tags + role=""
@@ -44,7 +42,7 @@
 * SEOoooooo
 * add link to WP admin section
 * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
-* add tests (karma, mocha, ...)
+* add tests (karma, mocha, protractor ...)
 * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 * add lodash
 * add gulp-karma to build: https://www.npmjs.com/package/gulp-karma
@@ -60,3 +58,8 @@
 	width:1026px; /* 1140px - 10% for margins */
     margin:0 auto;
   }
+* add travis.yml
+* add modernizr
+* add html class="no-js" and check if js is enabled. 
+* handle 404 gracefully
+* uncomment google analytics once ready

@@ -1,10 +1,11 @@
 (function () {
   'use strict';
 
-  var querySelector = document.querySelector.bind(document);
+  //var querySelector = document.querySelector.bind(document);
 
-  var body = document.body;
-  var main = querySelector('main');
+  //var body = document.body;
+  //var main = querySelector('main');
+  
   
   
 })();

@@ -1,6 +1,6 @@
 Some useful commands
 
-## Watch For Changes & Automatically Refresh Across Devices
+## Watch for changes and automatically refresh across devices
 
 ```sh
 $ gulp serve
