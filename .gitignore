@@ -2,3 +2,5 @@ node_modules
 dist
 .tmp
 *.log
+.DS_Store
+Desktop.ini

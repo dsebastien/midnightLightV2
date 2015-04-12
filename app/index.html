@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A blog about software development, photography, electronics, guitar and all those other things that I love.">
@@ -32,15 +32,75 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles/main.css">
-  </head>
-  <body>
-  
-	<a href="http://jquery.com/">jQuery</a>
+</head>
+<body>
 
+	<div class="container-fluid">
+		<div class="row">
+			<header id="header" class="col-sm-10">
+				<h1>Midnight Light</h1>
+				<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p> 
+			</header>
+			<aside id="social" class="col-sm-2">
+				<h2>Social</h2>
+				<p>Links here</p>
+			</aside>
+		</div>
+		<nav class="row">
+			<div id="menu" class="col-sm-12">
+				<h2>Menu</h2>
+				<p>Links here...</p>
+			</div>
+		</nav>
+		<div class="row">
+			<section>
+				<div id="blog" class="col-sm-10">
+					<h2>Blog articles</h2>
+					<article class="post">
+						<h3>Hello world</h3>
+						<div class="post-meta">
+							<ul>
+								<li class="author">Sebastien</li>
+								<li class="categories">Category</li>
+							</ul>
+						</div>
+					</article>
+				</div>
+			</section>
+			<aside>
+				<div id="tools" class="col-sm-2">
+					<h2>Tools</h2>        
+					<p>Links here</p>
+				</div>
+			</aside>
+		</div>
+		<section class="row">
+			<div id="about" class="col-sm-12">
+				<h2>About</h2>
+				<p>Hey there it's me!</p>
+			</div>
+		</section>
+		<section class="row">
+			<div id="links" class="col-sm-12">
+				<h2>Links</h2>
+				<p>Show me the links</p>
+			</div>
+		</section>
+		<footer class="row">
+			<div id="footer" class="col-sm-12">
+				<h2>Footer</h2>
+				<h2>© dSebastien</h2>
+			</div>
+		</footer>
+	</div>
+
+	<!-- 
+		note that we can refer node_modules directly here because the 'copy' gulp task copies npm dependencies towards app for local testing
+		the path below is used when running off the dev version using gulp serve (i.e., thus not gulp serve:dist)
+	-->
 	<!-- build:js scripts/main.min.js -->
-	<!-- note that we can refer node_modules directly here because the 'copy' gulp task copies npm dependencies towards app for local testing -->
 	<script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 

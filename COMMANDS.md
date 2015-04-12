@@ -8,6 +8,12 @@ $ gulp serve
 
 This outputs an IP address you can use to locally test and another that can be used on devices connected to your network.
 
+You can also serve from the 'dist' folder (i.e., using the 'production' files):
+
+```sh
+$ gulp serve:dist
+```
+
 ## Build & Optimize
 
 ```sh

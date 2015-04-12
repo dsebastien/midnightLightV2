@@ -130,7 +130,7 @@ gulp.task('html', function () {
 // Clean output directory
 gulp.task('clean', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
-// Watch files for changes & reload
+// Watch files for changes & rebuild/reload automagically
 gulp.task('serve', ['styles', 'copyNpmDependencies'], function () {
   browserSync({
     notify: false,

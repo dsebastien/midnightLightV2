@@ -43,8 +43,9 @@
 * add link to WP admin section
 * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
 * add tests (karma, mocha, protractor ...)
+  * https://www.npmjs.com/package/karma
 * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
-* add lodash
+* add lodash: https://www.npmjs.com/package/lodash
 * add gulp-karma to build: https://www.npmjs.com/package/gulp-karma
 * use z-index correctly
 * add rss feed link <link rel="alternate" type="application/rss+xml" title="..." href="...">
@@ -63,3 +64,6 @@
 * add html class="no-js" and check if js is enabled. 
 * handle 404 gracefully
 * uncomment google analytics once ready
+* configure fonts and review typography.less and variables.less
+* drop shadow below header
+* add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
