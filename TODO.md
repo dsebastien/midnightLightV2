@@ -1,4 +1,4 @@
-* load pure's CSS
+* create grid
 * REST API URL: http://dsebastien.net/wp-json
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
 * tags + role=""

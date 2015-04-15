@@ -8,52 +8,23 @@
  * First we load the CSS framework
  *
  */
-//@import url('../../node_modules/bootstrap/less/bootstrap.less');
+@import url('../../node_modules/purecss/build/pure.css');
+@import url('../../node_modules/purecss/build/grids-responsive.css');
  
- /*
-  * Load the variables
-  *
-  */
-@import url('variables.scss');
+/*
+ * Load the variables
+ *
+ */
+@import 'variables';
 
 /*
  * Typography
  *
  */
-@import url('typography.scss');
+@import 'typography';
 
 /*
  * MidnightLight styles
  *
  */
-#header{
-	background-color: grey; 
-}
-
-#social{
-	background-color: red;
-}
-
-#menu{
-	background-color: cyan;
-}
-
-#tools{
-	background-color: orange;
-}
-
-#blog{
-	background-color: magenta;
-}
-
-#about{
-	background-color: lime;
-}
-
-#links{
-	background-color: brown;
-}
-
-#footer{
-	background-color: yellow;
-}
+@import 'theme';
