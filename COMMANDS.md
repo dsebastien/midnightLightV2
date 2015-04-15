@@ -1,5 +1,13 @@
 Some useful commands
 
+## Get help
+
+```sh
+$ gulp help
+```
+
+This will list all build tasks and provide you with a small description.
+
 ## Watch for changes and automatically refresh across devices
 
 ```sh
