@@ -67,3 +67,16 @@
 * configure fonts and review typography.less and variables.less
 * drop shadow below header
 * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
+* use
+  * user-select: none (prevent selection of some elements)
+  * css3 3d transforms
+  * css3 transforms
+  * css3 animation
+  * css3 bow-decoration-break
+  * flexible box layout module
+  * online/offline status
+* check out viewport units: vw, vh, vmin, vmax
+* check out data URIs (include in build?)
+* add console wrapper lib (?): http://benalman.com/projects/javascript-debug-console-log/
+  * add debug statements during dev & remove when building prod version
+* include a progress bar while loading initial elements and while loading additional ones: https://css-tricks.com/html5-progress-element/
