@@ -77,7 +77,8 @@ gulp.task('styles', 'Compile and add vendor prefixes to the stylesheets', functi
 	// Prepare source maps
     .pipe($.sourcemaps.init())
 	// Only take changed stylesheets into account
-    .pipe($.changed('.tmp/styles', {extension: '.css'}))
+    //FIXME.pipe($.changed('.tmp/styles', {extension: '.css'}))
+	
 	// Process Sass files
     .pipe($.sass({
 		precision: 10,

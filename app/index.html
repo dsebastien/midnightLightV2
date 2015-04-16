@@ -31,68 +31,67 @@
     <link rel="canonical" href="http://www.dsebastien.net">
 
     <!-- Stylesheet -->
+	<!-- build:css styles/main.min.css -->
     <link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
 </head>
 <body>
-
-	<div id="wrapper" class="container-fluid">
-		<div class="pure-g">
-			<header id="header" class="pure-u-4-5">
-				<h1>Midnight Light</h1>
-				<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p> 
-			</header>
-			<aside id="social" class="pure-u-1-5">
-				<h2>Social</h2>
-				<p>Links here</p>
-			</aside>
-		</div>
-		<nav class="pure-g">
-			<div id="menu" class="pure-u-1">
-				<h2>Menu</h2>
-				<p>Links here...</p>
-			</div>
-		</nav>
-		<div class="pure-g">
-			<section id="blog" class="pure-u-4-5">
-				<h2>Blog articles</h2>
-				<article class="post">
-					<h3>Hello world</h3>
-					<div class="post-meta">
-						<ul>
-							<li class="author">Sebastien</li>
-							<li class="categories">Category</li>
-						</ul>
-					</div>
-				</article>
-			</section>
-			<aside id="tools" class="pure-u-1-5">
-				<h2>Tools</h2>        
-				<p>Links here</p>
-			</aside>
-		</div>
-		<section id="about" class="pure-g">
-			<div class="pure-u-1">
-				<h2>About</h2>
-				<p>Hey there it's me!</p>
-			</div>
-		</section>
-		<section id="links" class="pure-g">
-			<div class="pure-u-1">
-				<h2>Links</h2>
-				<p>Show me the links</p>
-			</div>
-		</section>
-		<footer id="footer" class="pure-g">
-			<div class="pure-u-1">
-				<h2>Footer</h2>
-				<h2>© dSebastien</h2>
-			</div>
-		</footer>
+	<div class="pure-g">
+		<header id="header" class="pure-u-4-5">
+			<h1>Midnight Light</h1>
+			<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p> 
+		</header>
+		<aside id="social" class="pure-u-1-5">
+			<h2>Social</h2>
+			<p>Links here</p>
+		</aside>
 	</div>
+	<nav class="pure-g">
+		<div id="menu" class="pure-u-1">
+			<h2>Menu</h2>
+			<p>Links here...</p>
+		</div>
+	</nav>
+	<div class="pure-g">
+		<section id="blog" class="pure-u-4-5">
+			<h2>Blog articles</h2>
+			<article class="post">
+				<h3>Hello world</h3>
+				<section class="post-meta">
+					<ul>
+						<li class="author">Sebastien</li>
+						<li class="categories">Category</li>
+					</ul>
+				</section>
+			</article>
+		</section>
+		<aside id="tools" class="pure-u-1-5">
+			<h2>Tools</h2>        
+			<p>Links here</p>
+		</aside>
+	</div>
+	<section id="about" class="pure-g">
+		<div class="pure-u-1">
+			<h2>About</h2>
+			<p>Hey there it's me!</p>
+		</div>
+	</section>
+	<section id="links" class="pure-g">
+		<div class="pure-u-1">
+			<h2>Links</h2>
+			<p>Show me the links</p>
+		</div>
+	</section>
+	<footer id="footer" class="pure-g">
+		<div class="pure-u-1">
+			<h2>Footer</h2>
+			<h2>© dSebastien</h2>
+		</div>
+	</footer>
 
 	<!-- 
-		note that we can refer node_modules directly here because the 'copy' gulp task copies npm dependencies towards app for local testing
-		the path below is used when running off the dev version using gulp serve (i.e., thus not gulp serve:dist)
+		We can refer node_modules directly here because the 'copy' gulp task copies/caches npm dependencies in the '.tmp' folder for local testing
+		The path below is used when running off the dev version using gulp serve (i.e., thus not gulp serve:dist)
 	-->
 	<!-- build:js scripts/main.min.js -->
 	<script src="node_modules/jquery/dist/jquery.js"></script>

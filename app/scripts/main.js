@@ -8,4 +8,5 @@
   
   
   
+  console.log('Hello world');
 })();
