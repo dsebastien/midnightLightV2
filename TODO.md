@@ -1,3 +1,4 @@
+* build: fix dist build: should copy the dependencies then pack everything in one css file
 * build: fix serve (style changes not taken into account)
 * build: fix serve:dist
 * build: in styles, check if changed can doesn't impact serve

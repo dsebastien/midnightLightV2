@@ -24,50 +24,78 @@ var AUTOPREFIXER_BROWSERS = [
 
 gulp.task('clean', 'Clean output directories', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
-gulp.task('jshint', 'Lint JavaScript code', function () {
+gulp.task('jshint', 'Check JavaScript code quality using JSHint', function () {
   return gulp.src('app/scripts/**/*.js')
+	
+	// Force BrowserSync reload
     .pipe(reload({stream: true, once: true}))
+	
+	// Run JSHint
     .pipe($.jshint())
+	
+	// Generate a stylish report
     .pipe($.jshint.reporter('jshint-stylish'))
+	
+	// Fail the build only if BrowserSync is not active
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+});
+
+gulp.task('pagespeed', 'Run PageSpeed Insights', function (cb) {
+  // Update the below URL to the public URL of your site
+  pagespeed.output('http://www.dsebastien.net', {
+    strategy: 'mobile',
+    // Use the PageSpeed Insights free (no API key) tier.
+    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
+    // key: 'API_KEY'
+  }, cb);
 });
 
 gulp.task('images', 'Optimize images', function () {
   return gulp.src('app/images/**/*')
+	
+	// Minify and cache
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true
     })))
+	
+	// Copy
     .pipe(gulp.dest('dist/images'))
+	
+	// Task result
     .pipe($.size({title: 'images'}));
 });
 
-gulp.task('copy', 'Copy all files except HTML which is processed separately', function () {
-  return gulp.src([
-    'app/*',
-    '!app/*.html',
-    'node_modules/apache-server-configs/dist/.htaccess'
-  ], {
-    dot: true
-  }).pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'copy'}));
+gulp.task('fonts', 'Copy fonts for production', function () {
+  return gulp.src(['app/fonts/**'])
+  
+	// Copy
+    .pipe(gulp.dest('dist/fonts'))
+	
+	// Task result
+    .pipe($.size({title: 'fonts'}));
 });
 
-gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder (useful for scripts during development)', function() {
+gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder (useful for scripts and stylesheets during development)', function() {
   return gulp.src(
 	gulpNpmFiles(), {base:'./'}
   )
+  
   // Only take changed files into account
   .pipe($.changed('./.tmp', {}))
+  
+  // Copy
   .pipe(gulp.dest('./.tmp'))
+  
+  // Task result
   .pipe($.size({title: 'copyNpmDependencies'}));
 });
 
-gulp.task('fonts', 'Copy fonts', function () {
-  return gulp.src(['app/fonts/**'])
-    .pipe(gulp.dest('dist/fonts'))
-    .pipe($.size({title: 'fonts'}));
-});
+
+
+// TO REVIEW:
+
+
 
 gulp.task('styles', 'Compile and add vendor prefixes to the stylesheets', function () {
   return gulp.src([
@@ -89,10 +117,35 @@ gulp.task('styles', 'Compile and add vendor prefixes to the stylesheets', functi
 	// Write source maps
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
+	
+	// Force BrowserSync reload
+    .pipe(reload({stream: true, once: true}))
+	
     // Concatenate and minify stylesheets
     .pipe($.if('*.css', $.csso()))
     .pipe(gulp.dest('dist/styles'))
+	
+	// Task result
     .pipe($.size({title: 'styles'}));
+});
+
+
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['styles', 'copyNpmDependencies'], function () {
+  browserSync({
+    notify: false,
+    // Customize the BrowserSync console logging prefix
+    logPrefix: 'MDL',
+    // Run as an https by uncommenting 'https: true'
+    // Note: this uses an unsigned certificate which on first access
+    //       will present a certificate warning in the browser.
+    // https: true,
+    server: ['.tmp', 'app']
+  });
+
+  gulp.watch(['app/**/*.html'], reload);
+  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles']); // styles will force a reload
+  gulp.watch(['app/scripts/**/*.js'], ['jshint']); // jshint will force a reload
+  gulp.watch(['app/images/**/*'], reload);
 });
 
 gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', function () {
@@ -122,25 +175,9 @@ gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', functi
     .pipe($.if('*.html', $.minifyHtml()))
     // Output files
     .pipe(gulp.dest('dist'))
+	
+	// Task result
     .pipe($.size({title: 'html'}));
-});
-
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['styles', 'copyNpmDependencies'], function () {
-  browserSync({
-    notify: false,
-    // Customize the BrowserSync console logging prefix
-    logPrefix: 'MDL',
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
-    // https: true,
-    server: ['.tmp', 'app']
-  });
-
-  gulp.watch(['app/**/*.html'], reload);
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-  gulp.watch(['app/images/**/*'], reload);
 });
 
 gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' folder contents', ['default'], function () {
@@ -155,16 +192,17 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
   });
 });
 
-gulp.task('default', 'Build production files', ['clean'], function (cb) {
-  runSequence('styles', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+gulp.task('copy', 'Copy all files except HTML which is processed separately', function () {
+  return gulp.src([
+    'app/*',
+    '!app/*.html',
+    'node_modules/apache-server-configs/dist/.htaccess'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist'))
+    .pipe($.size({title: 'copy'}));
 });
 
-gulp.task('pagespeed', 'Run PageSpeed insights', function (cb) {
-  // Update the below URL to the public URL of your site
-  pagespeed.output('dsebastien.net', {
-    strategy: 'mobile',
-    // By default we use the PageSpeed Insights free (no API key) tier.
-    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
-    // key: 'YOUR_API_KEY'
-  }, cb);
+gulp.task('default', 'Build production files', ['clean'], function (cb) {
+  runSequence('styles', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
 });
