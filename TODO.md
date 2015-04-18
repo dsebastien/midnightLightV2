@@ -1,10 +1,8 @@
+* build: move js handling in js and js:dist task
+* build: ensure that sourcemaps are generated/functional for js code in dev
 * build: find a way to inject js code through require or whatever
-* build: ensure that dist paths are correct (concat all files + remove imports + adapt reference in html)
 * build: optimize/cache: changed(...)
-* build: check where to place uncss
 * create responsive grid
-* choose a nice font
-* 
 * REST API URL: http://dsebastien.net/wp-json
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
 * tags + role=""
@@ -81,6 +79,7 @@
   * read/not read status can be switched by clicking on a button
   * a filter could be activated to hide all read articles (using the :empty pseudo-selector)
 * integrate markdown support: if posts are written using markdown on the server, they should display correctly on the client
+* choose a nice font
 * printing
   * create/test print stylesheet (media query + display: none on everything not needed, add page breaks where appropriate)
   * button to print an article

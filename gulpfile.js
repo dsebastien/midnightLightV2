@@ -1,8 +1,5 @@
 'use strict';
 
-// Define global build variables
-var finalCssBundleFilename = 'bundle.min.css';
-
 // Include Gulp & tools we'll use
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
@@ -12,6 +9,18 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
+
+// Define global build variables
+var finalCssBundleFilename = 'bundle.min.css';
+
+// Misc
+
+var minifyCssOptions = { // https://www.npmjs.com/package/gulp-minify-css
+	keepBreaks: false, // no problem here
+	keepSpecialComments: true, // necessary for licensing
+	compatibility: false, // no problem here
+	aggressiveMerging: false  // necessary because it breaks PureCSS
+};
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -109,14 +118,20 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 		errLogToConsole: true
 	}))
 	
+	// workaround for a sourcemap generation issue: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
+	.pipe($.minifyCss(
+		minifyCssOptions
+	))
+	
 	// Include vendor prefixes
     .pipe($.autoprefixer({
 		browsers: AUTOPREFIXER_BROWSERS
 	}))
+	
 	// alternative: $.autoprefixer('last 2 version')
 	
-	// Write inline sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
-	.pipe($.sourcemaps.write('./')) // use './' to write the sourcemap to a separate file
+	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
+	.pipe($.sourcemaps.write()) // use '.' to write the sourcemap to a separate file in the same dir
 	
 	// Display the files that will be copied
 	//.pipe($.using())
@@ -131,11 +146,19 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
     .pipe($.size({title: 'styles'}));
 });
 
-gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', ['styles'], function(){
+gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', function(){
 
 	return gulp.src([
-		'.tmp/styles/main.css'
+		'app/styles/**/*.{scss,css}'
 	])
+	
+	// Process Sass files
+    .pipe($.sass({
+		errLogToConsole: true
+	}))
+	
+	// Replace CSS imports by actual contents
+	.pipe($.cssimport())
 	
 	// Remove any unused CSS
     .pipe($.uncss({
@@ -147,20 +170,16 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', ['s
       ]
     }))
 	
-	// Replace CSS imports by actual contents
-	.pipe($.cssimport())
+	// Regroup all files together
+	.pipe($.concat(finalCssBundleFilename))
 	
 	// Optimize and minimize
 	.pipe($.csso()) // https://www.npmjs.com/package/gulp-csso
-	.pipe($.minifyCss({ // https://www.npmjs.com/package/gulp-minify-css
-		keepBreaks: false, // no problem here
-		keepSpecialComments: true, // necessary for licensing
-		compatibility: false, // no problem here
-		aggressiveMerging: false  // necessary because it breaks PureCSS
-	}))
+	.pipe($.minifyCss(
+		minifyCssOptions
+	))
 	
-	// Rename and copy the minified version
-	.pipe($.rename(finalCssBundleFilename))
+	// Output file
 	.pipe(gulp.dest('dist/styles'))
 	
 	// Task result
@@ -173,13 +192,14 @@ gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', functi
   return gulp.src('app/**/*.html')
     .pipe(assets)
     // Concatenate and minify JavaScript
-    .pipe($.if('*.js', $.uglify({preserveComments: 'some'}))) // keeps comments that have a '!': https://github.com/gruntjs/grunt-contrib-uglify#preservecomments
-	
+	.pipe($.if('*.js', $.stripDebug())) // remove console/debug statements
+	.pipe($.if('*.js', $.uglify({
+		preserveComments: 'some'
+	}))) // keep comments that have a '!': https://github.com/gruntjs/grunt-contrib-uglify#preservecomments
     .pipe(assets.restore())
     .pipe($.useref())
-    
-	// Replace production paths (minified versions)
-    .pipe($.replace('styles/main.css', 'styles/'+finalCssBundleFilename))
+	
+	//.pipe($.replace('styles/main.css', 'styles/main.min.css'))
     
 	// Minify HTML
     .pipe($.if('*.html', $.minifyHtml()))

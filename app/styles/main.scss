@@ -1,30 +1,9 @@
 /*
  * Main application stylesheet.
- * It includes/imports all stylesheets used throughout the application.
- * This is mandatory because this is the only file taken into account by the build script.
+ * It includes/imports all third-party stylesheets used throughout the application.
+ * 
  */
 
-/*
- * First we load the CSS framework
- *
- */
+// PureCSS.io
 @import '../../node_modules/purecss/build/pure.css';
 @import '../../node_modules/purecss/build/grids-responsive.css';
- 
-/*
- * Load the variables
- *
- */
-@import 'variables.scss';
-
-/*
- * Typography
- *
- */
-@import 'typography.scss';
-
-/*
- * MidnightLight styles
- *
- */
-@import 'theme.scss';

@@ -47,6 +47,7 @@ If you want to build from source, you need to:
 * gulp-replace: string replace plugin for gulp: https://www.npmjs.com/package/gulp-replace
 * gulp-less: less plugin for gulp: https://www.npmjs.com/package/gulp
 * gulp-sass: sass plugin for gulp (since I haven't decided yet which one I prefer): https://www.npmjs.com/package/sass
+* node-sass: used by gulp-sass and normally not needed but added to fix an issue with sourcemaps: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
 * gulp-size: display the size of the project: https://www.npmjs.com/package/gulp-size
 * gulp-sourcemaps: js source map support for gulp: https://www.npmjs.com/package/gulp-sourcemaps
 * gulp-uglify: minify files using Uglify JS: https://www.npmjs.com/package/gulp-uglify
