@@ -44,13 +44,13 @@ gulp.task('jshint', 'Check JavaScript code quality using JSHint', function () {
 });
 
 gulp.task('pagespeed', 'Run PageSpeed Insights', function (cb) {
-  // Update the below URL to the public URL of your site
-  pagespeed.output('http://www.dsebastien.net', {
-    strategy: 'mobile',
-    // Use the PageSpeed Insights free (no API key) tier.
-    // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
-    // key: 'API_KEY'
-  }, cb);
+	// Update the below URL to the public URL of your site
+	pagespeed.output('http://www.dsebastien.net', {
+		strategy: 'mobile',
+		// Use the PageSpeed Insights free (no API key) tier.
+		// Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
+		// key: 'API_KEY'
+	}, cb);
 });
 
 gulp.task('images', 'Optimize images', function () {
@@ -80,43 +80,43 @@ gulp.task('fonts', 'Copy fonts for production', function () {
 });
 
 gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder (useful for scripts and stylesheets during development)', function() {
-  return gulp.src(
-	gulpNpmFiles(), {base:'./'}
-  )
+	return gulp.src(
+		gulpNpmFiles(), {base:'./'}
+	)
   
-  // Only take changed files into account
-  .pipe($.changed('./.tmp', {}))
+	// Only take changed files into account
+	.pipe($.changed('./.tmp', {}))
   
-  // Copy files
-  .pipe(gulp.dest('./.tmp'))
+	// Copy files
+	.pipe(gulp.dest('./.tmp'))
   
-  // Task result
-  .pipe($.size({title: 'copyNpmDependencies'}));
+	// Task result
+	.pipe($.size({title: 'copyNpmDependencies'}));
 });
 
 gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', function () {
 	return gulp.src([
-		'app/styles/**/*.scss',
-		'app/styles/**/*.css'
+		'app/styles/**/*.{scss,css}'
 	])
 	
 	// Initialize sourcemap generation
-	.pipe($.sourcemaps.init())
-	
-	// Replace CSS imports by actual contents
-	.pipe($.cssimport())
+	.pipe($.sourcemaps.init({
+		//debug: true
+	}))
 	
 	// Process Sass files
     .pipe($.sass({
-		precision: 10,
-		onError: console.error.bind(console, 'Sass error:')
-    }))
+		errLogToConsole: true
+	}))
 	
 	// Include vendor prefixes
-    .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+    .pipe($.autoprefixer({
+		browsers: AUTOPREFIXER_BROWSERS
+	}))
+	// alternative: $.autoprefixer('last 2 version')
 	
 	// Write inline sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
-	.pipe($.sourcemaps.write())
+	.pipe($.sourcemaps.write('./')) // use './' to write the sourcemap to a separate file
 	
 	// Display the files that will be copied
 	//.pipe($.using())
@@ -138,14 +138,17 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', ['s
 	])
 	
 	// Remove any unused CSS
-    .pipe($.if('*.css', $.uncss({
+    .pipe($.uncss({
       html: [
         'app/**/*.html'
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: [
       ]
-    })))
+    }))
+	
+	// Replace CSS imports by actual contents
+	.pipe($.cssimport())
 	
 	// Optimize and minimize
 	.pipe($.csso()) // https://www.npmjs.com/package/gulp-csso
@@ -162,25 +165,6 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', ['s
 	
 	// Task result
     .pipe($.size({title: 'styles-dist'}));
-});
-
-
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['styles', 'copyNpmDependencies'], function () {
-  browserSync({
-    notify: false,
-    // Customize the BrowserSync console logging prefix
-    logPrefix: 'MDL',
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
-    // https: true,
-    server: ['.tmp', 'app']
-  });
-
-  gulp.watch(['app/**/*.html'], reload); // html changes will force a reload
-  gulp.watch(['app/styles/**/*.{scss,css}'], ['styles']); // stylesheet changes will force a reload
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']); // jshint will force a reload
-  gulp.watch(['app/images/**/*'], reload); // image changes will force a reload
 });
 
 gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', function () {
@@ -207,18 +191,6 @@ gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', functi
     .pipe($.size({title: 'html'}));
 });
 
-gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' folder contents', ['default'], function () {
-  browserSync({
-    notify: false,
-    logPrefix: 'MDL',
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
-    // https: true,
-    server: 'dist'
-  });
-});
-
 gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separately', function () {
   return gulp.src([
     'app/*',
@@ -237,6 +209,41 @@ gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separat
   .pipe($.size({title: 'copy'}));
 });
 
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['styles', 'copyNpmDependencies'], function () {
+	browserSync({ // http://www.browsersync.io/docs/options/
+		notify: false,
+		// Customize the BrowserSync console logging prefix
+		logPrefix: 'MDL',
+		// Run as an https by uncommenting 'https: true'
+		// Note: this uses an unsigned certificate which on first access
+		//       will present a certificate warning in the browser.
+		// https: true,
+		server: ['.tmp', 'app'],
+		ghostMode: {
+			clicks: false,
+			forms: false,
+			scroll: false
+		}
+	});
+
+	gulp.watch(['app/**/*.html'], reload); // html changes will force a reload
+	gulp.watch(['app/styles/**/*.{scss,css}'], ['styles']); // stylesheet changes will force a reload
+	gulp.watch(['app/scripts/**/*.js'], ['jshint']); // jshint will force a reload
+	gulp.watch(['app/images/**/*'], reload); // image changes will force a reload
+});
+
+gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' folder contents', ['default'], function () {
+  browserSync({
+    notify: false,
+    logPrefix: 'MDL',
+    // Run as an https by uncommenting 'https: true'
+    // Note: this uses an unsigned certificate which on first access
+    //       will present a certificate warning in the browser.
+    // https: true,
+    server: 'dist'
+  });
+});
+
 gulp.task('default', 'Build production files', ['clean'], function (cb) {
-  runSequence('styles:dist', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+	runSequence('styles:dist', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
 });

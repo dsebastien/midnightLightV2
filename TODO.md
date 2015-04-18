@@ -1,5 +1,4 @@
-* build: in styles, check if changed can doesn't impact serve
-* build: test css sourcemaps
+* build: find a way to inject js code through require or whatever
 * build: ensure that dist paths are correct (concat all files + remove imports + adapt reference in html)
 * build: optimize/cache: changed(...)
 * build: check where to place uncss
