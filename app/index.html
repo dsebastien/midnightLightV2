@@ -96,8 +96,8 @@
 		We can refer node_modules directly here because the 'copy' gulp task copies/caches npm dependencies in the '.tmp' folder for local testing
 		The path below is used when running off the dev version using gulp serve (i.e., thus not gulp serve:dist)
 	-->
-	<!-- build:js scripts/main.min.js -->
-	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<!-- build:js scripts/bundle.min.js -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 

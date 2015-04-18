@@ -12,9 +12,9 @@ var reload = browserSync.reload;
 
 // Define global build variables
 var finalCssBundleFilename = 'bundle.min.css';
+var finalJsBundleFilename = 'bundle.min.js';
 
 // Misc
-
 var minifyCssOptions = { // https://www.npmjs.com/package/gulp-minify-css
 	keepBreaks: false, // no problem here
 	keepSpecialComments: true, // necessary for licensing
@@ -37,7 +37,9 @@ var AUTOPREFIXER_BROWSERS = [
 gulp.task('clean', 'Clean output directories', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 gulp.task('jshint', 'Check JavaScript code quality using JSHint', function () {
-  return gulp.src('app/scripts/**/*.js')
+	return gulp.src([
+		'app/scripts/**/*.js'
+	])
 	
 	// Force BrowserSync reload
     .pipe(reload({stream: true, once: true}))
@@ -63,7 +65,9 @@ gulp.task('pagespeed', 'Run PageSpeed Insights', function (cb) {
 });
 
 gulp.task('images', 'Optimize images', function () {
-  return gulp.src('app/images/**/*')
+	return gulp.src([
+		'app/images/**/*'
+	])
 	
 	// Minify and cache
     .pipe($.cache($.imagemin({
@@ -79,7 +83,9 @@ gulp.task('images', 'Optimize images', function () {
 });
 
 gulp.task('fonts', 'Copy fonts for production', function () {
-  return gulp.src(['app/fonts/**'])
+	return gulp.src([
+		'app/fonts/**'
+	])
   
 	// Copy files
     .pipe(gulp.dest('dist/fonts'))
@@ -186,20 +192,25 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
     .pipe($.size({title: 'styles-dist'}));
 });
 
-gulp.task('html', 'Scan HTML for assets (css, js, ..) and optimize them', function () {
-  var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+gulp.task('html', 'Optimize HTML and assets', function () {
+	var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
-  return gulp.src('app/**/*.html')
+	return gulp.src([
+		'app/**/*.html'
+	])
+	
     .pipe(assets)
-    // Concatenate and minify JavaScript
+    
 	.pipe($.if('*.js', $.stripDebug())) // remove console/debug statements
 	.pipe($.if('*.js', $.uglify({
 		preserveComments: 'some'
 	}))) // keep comments that have a '!': https://github.com/gruntjs/grunt-contrib-uglify#preservecomments
-    .pipe(assets.restore())
+	
+	.pipe(assets.restore())
     .pipe($.useref())
 	
-	//.pipe($.replace('styles/main.css', 'styles/main.min.css'))
+	//.pipe($.replace('styles/main.css', 'styles/'+finalCssBundleFilename))
+	//.pipe($.replace('scripts/main.js', 'scripts/'+finalJsBundleFilename))
     
 	// Minify HTML
     .pipe($.if('*.html', $.minifyHtml()))
@@ -239,7 +250,7 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 		//       will present a certificate warning in the browser.
 		// https: true,
 		server: ['.tmp', 'app'],
-		ghostMode: {
+		ghostMode: { // replicate actions in all clients
 			clicks: false,
 			forms: false,
 			scroll: false
@@ -265,5 +276,5 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
 });
 
 gulp.task('default', 'Build production files', ['clean'], function (cb) {
-	runSequence('styles:dist', 'copyNpmDependencies', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+	runSequence('copyNpmDependencies', ['jshint', 'styles:dist', 'html', 'images', 'fonts', 'copy'], cb);
 });
