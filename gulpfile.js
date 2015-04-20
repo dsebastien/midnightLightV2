@@ -9,6 +9,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
+var packageJsonValidator = require('gulp-nice-package');
 
 // Define global build variables
 var finalCssBundleFilename = 'bundle.min.css';
@@ -35,6 +36,11 @@ var AUTOPREFIXER_BROWSERS = [
 ];
 
 gulp.task('clean', 'Clean output directories', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
+
+gulp.task('validate-package-json', 'Validate the package.json file', function () {
+  return gulp.src('package.json')
+    .pipe(packageJsonValidator());
+});
 
 gulp.task('jshint', 'Check JavaScript code quality using JSHint', function () {
 	return gulp.src([
@@ -276,5 +282,5 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
 });
 
 gulp.task('default', 'Build production files', ['clean'], function (cb) {
-	runSequence('copyNpmDependencies', ['jshint', 'styles:dist', 'html', 'images', 'fonts', 'copy'], cb);
+	runSequence('copyNpmDependencies', ['jshint', 'styles:dist', 'html', 'images', 'fonts', 'copy', 'validate-package-json'], cb);
 });

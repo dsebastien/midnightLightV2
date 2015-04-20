@@ -60,6 +60,7 @@ If you want to build from source, you need to:
 * gulp-rename: rename files: https://www.npmjs.com/package/gulp-rename
 * gulp-using: useful to verify what the build patterns catch: https://www.npmjs.com/package/gulp-using
 * gulp-cssimport: replace CSS imports by stylesheet contents: https://www.npmjs.com/package/gulp-cssimport
+* gulp-nice-package: validate npm's package.json file: https://www.npmjs.com/package/gulp-nice-package/
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
 * opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
