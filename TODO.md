@@ -88,5 +88,6 @@
   * mobile first
   * offline first
     * cache articles, comments, read/unread status, ...
+	* quid vs one person with n devices?
   * animations / transitions
   * infinite scrolling
