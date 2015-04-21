@@ -28,6 +28,12 @@ If you want to build from source, you need to:
 * run `$ gulp` to build the app
 * take a look at COMMANDS.md in the project for more commands you can use
 
+## Developping/Running on Docker
+If you're familiar with Docker then you can easily run the development or production version of this application in a Docker container.
+* install Docker (or Boot2Docker if you're on Windows)
+* for the production version, run ./runOnDocker.sh
+* for the development version, run ./ronDevOnDocker.sh
+
 ## Dependencies
 * apache-server-configs: base Apache HTTP Server config (allows/configures CORS, adds the X-UA-Compatible header, defines all media types correctly such as SVG, ...): https://www.npmjs.com/package/apache-server-configs
 * browser-sync: live CSS reload & browser syncing: https://www.npmjs.com/package/browser-sync

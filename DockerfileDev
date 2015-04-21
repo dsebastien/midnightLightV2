@@ -1,0 +1,25 @@
+# Pull base image.
+FROM dockerfile/nodejs
+
+# Meta
+MAINTAINER Sebastien Dubois <seb@dsebastien.net>
+
+# Install Gulp
+RUN npm install -g gulp http-server
+
+# Build the app
+WORKDIR /midnight_light/
+
+ADD package.json ./
+RUN npm install
+ADD gulpfile.js ./
+ADD ./app ./app
+
+# Run the dev version
+WORKDIR /midnight_light
+
+# Default command
+CMD ["gulp", "serve"]
+
+# Expose ports
+EXPOSE 3000 3001

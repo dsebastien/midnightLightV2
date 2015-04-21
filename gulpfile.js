@@ -173,14 +173,14 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 	.pipe($.cssimport())
 	
 	// Remove any unused CSS
-    .pipe($.uncss({
-      html: [
-        'app/**/*.html'
-      ],
-      // CSS Selectors for UnCSS to ignore
-      ignore: [
-      ]
-    }))
+    //.pipe($.uncss({
+    //  html: [
+    //    'app/**/*.html'
+    //  ],
+    //  // CSS Selectors for UnCSS to ignore
+    //  ignore: [
+    //  ]
+    //}))
 	
 	// Regroup all files together
 	.pipe($.concat(finalCssBundleFilename))
