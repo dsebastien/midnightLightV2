@@ -21,9 +21,7 @@ WORKDIR /midnight_light
 
 # Default command
 #CMD ["/bin/ls", "-al"]
-#CMD ["gulp", "serve"]
 CMD ["http-server", "dist"]
 
 # Expose ports
-#EXPOSE 3000 3001
 EXPOSE 8080
