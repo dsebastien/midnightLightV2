@@ -3,6 +3,7 @@
 * build: ensure that sourcemaps are generated/functional for js code in dev
 * build: find a way to inject js code through require or whatever
 * build: optimize/cache: changed(...)
+* build: externalize build config: https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.md
 * create responsive grid
 * REST API URL: http://dsebastien.net/wp-json
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
@@ -28,15 +29,13 @@
   * sourceMapRootpath?? https://www.npmjs.com/package/gulp-less-sourcemap
 * tags
 * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
-* replace msapplication-TileColor and theme-color with final color once defined
-* review gulp recipes
-  https://github.com/gulpjs/gulp/tree/master/docs/recipes#recipes
 * integrate authentication to be able to post comments, edit posts, etc
 * SEOoooooo
 * add link to WP admin section
 * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
 * add tests (karma, mocha, protractor ...)
   * https://www.npmjs.com/package/karma
+  * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
 * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 * add lodash: https://www.npmjs.com/package/lodash
 * add gulp-karma to build: https://www.npmjs.com/package/gulp-karma
@@ -81,7 +80,11 @@
   * read/not read status can be switched by clicking on a button
   * a filter could be activated to hide all read articles (using the :empty pseudo-selector)
 * integrate markdown support: if posts are written using markdown on the server, they should display correctly on the client
-* choose a nice font
+* create the theme & choose color scheme
+  * dark/gray but this time avoiding styling errors of the past: http://www.webdesignerdepot.com/2009/08/the-dos-and-donts-of-dark-web-design/
+  * choose a nice font
+  * replace msapplication-TileColor and theme-color with final color once defined
+* syntax highlighting + collapse on small devices: https://eduardoboucas.com/blog/2014/11/30/collapsing-code-snippets-on-mobile-devices.html
 * printing
   * create/test print stylesheet (media query + display: none on everything not needed, add page breaks where appropriate)
   * button to print an article

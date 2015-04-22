@@ -77,7 +77,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
 * run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
-* purecss: purecss: https://www.npmjs.com/package/purecss
+* purecss: CSS framework: https://www.npmjs.com/package/purecss
 
 ## Authors
 ### Sebastien Dubois
