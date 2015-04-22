@@ -2,6 +2,11 @@
 
 ## About
 Midnight Light is a modern personal Web front-end.
+The goal of this project is to create a modern, responsive, mobile-first, offline-first and (hopefully) good looking web front-end. Why? Because we can, today! :)
+
+For more background head over to my blog:
+* http://www.dsebastien.net/2015/04/22/web-3-0-is-closer-than-you-might-think/
+* http://www.dsebastien.net/2015/04/14/time-for-some-web-dev/
 
 ## Status
 yet-to-be-implemented prototype :)

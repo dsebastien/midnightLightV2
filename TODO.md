@@ -1,3 +1,4 @@
+* build: integrate ES 6TO5
 * build: move js handling in js and js:dist task
 * build: ensure that sourcemaps are generated/functional for js code in dev
 * build: find a way to inject js code through require or whatever
@@ -71,6 +72,7 @@
   * online/offline status
 * check out viewport units: vw, vh, vmin, vmax
 * check out data URIs (include in build?)
+* check out applicache cache: http://diveintohtml5.info/offline.html & http://alistapart.com/article/application-cache-is-a-douchebag
 * add console wrapper lib (?): http://benalman.com/projects/javascript-debug-console-log/
   * add debug statements during dev & remove when building prod version
 * include a progress bar while loading initial elements and while loading additional ones: https://css-tricks.com/html5-progress-element/
