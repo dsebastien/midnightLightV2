@@ -10,6 +10,7 @@ For more background head over to my blog:
 
 ## Status
 yet-to-be-implemented prototype :)
+Check out the current [TODO list](../blob/master/TODO.md)
 
 ## Features
 None so far
