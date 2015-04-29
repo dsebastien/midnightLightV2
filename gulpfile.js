@@ -12,6 +12,9 @@ var reload = browserSync.reload;
 var packageJsonValidator = require('gulp-nice-package');
 
 // Define global build variables
+var distFolder = './dist';
+var tempFolder = './.tmp';
+var appFolder = './app';
 var finalCssBundleFilename = 'bundle.min.css';
 var finalJsBundleFilename = 'bundle.min.js';
 
@@ -35,7 +38,7 @@ var AUTOPREFIXER_BROWSERS = [
   'bb >= 10'
 ];
 
-gulp.task('clean', 'Clean output directories', del.bind(null, ['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
+gulp.task('clean', 'Clean output directories', del.bind(null, [tempFolder, distFolder+'/*', '!' + distFolder + '/.git'], {dot: true}));
 
 gulp.task('validate-package-json', 'Validate the package.json file', function () {
   return gulp.src('package.json')
@@ -44,7 +47,7 @@ gulp.task('validate-package-json', 'Validate the package.json file', function ()
 
 gulp.task('jshint', 'Check JavaScript code quality using JSHint', function () {
 	return gulp.src([
-		'app/scripts/**/*.js'
+		appFolder + '/scripts/**/*.js'
 	])
 	
 	// Force BrowserSync reload
@@ -72,7 +75,7 @@ gulp.task('pagespeed', 'Run PageSpeed Insights', function (cb) {
 
 gulp.task('images', 'Optimize images', function () {
 	return gulp.src([
-		'app/images/**/*'
+		appFolder + '/images/**/*'
 	])
 	
 	// Minify and cache
@@ -82,7 +85,7 @@ gulp.task('images', 'Optimize images', function () {
     })))
 	
 	// Output files
-    .pipe(gulp.dest('dist/images'))
+    .pipe(gulp.dest(distFolder +'/images'))
 	
 	// Task result
     .pipe($.size({title: 'images'}));
@@ -90,11 +93,11 @@ gulp.task('images', 'Optimize images', function () {
 
 gulp.task('fonts', 'Copy fonts for production', function () {
 	return gulp.src([
-		'app/fonts/**'
+		appFolder + '/fonts/**'
 	])
   
 	// Copy files
-    .pipe(gulp.dest('dist/fonts'))
+    .pipe(gulp.dest(distFolder + '/fonts'))
 	
 	// Task result
     .pipe($.size({title: 'fonts'}));
@@ -106,10 +109,10 @@ gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder
 	)
   
 	// Only take changed files into account
-	.pipe($.changed('./.tmp', {}))
+	.pipe($.changed(tempFolder, {}))
   
 	// Copy files
-	.pipe(gulp.dest('./.tmp'))
+	.pipe(gulp.dest(tempFolder))
   
 	// Task result
 	.pipe($.size({title: 'copyNpmDependencies'}));
@@ -117,7 +120,7 @@ gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder
 
 gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', function () {
 	return gulp.src([
-		'app/styles/**/*.{scss,css}'
+		appFolder + '/styles/**/*.{scss,css}'
 	])
 	
 	// Initialize sourcemap generation
@@ -149,7 +152,7 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	//.pipe($.using())
 	
 	// Output files
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest(tempFolder + '/styles'))
 	
 	// Reload Browser if needed
 	.pipe($.if(browserSync.active, reload({stream: true, once: true})))
@@ -161,7 +164,7 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', function(){
 
 	return gulp.src([
-		'app/styles/**/*.{scss,css}'
+		appFolder + '/styles/**/*.{scss,css}'
 	])
 	
 	// Process Sass files
@@ -175,7 +178,7 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 	// Remove any unused CSS
     //.pipe($.uncss({
     //  html: [
-    //    'app/**/*.html'
+    //    appFolder + '/**/*.html'
     //  ],
     //  // CSS Selectors for UnCSS to ignore
     //  ignore: [
@@ -192,17 +195,17 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 	))
 	
 	// Output file
-	.pipe(gulp.dest('dist/styles'))
+	.pipe(gulp.dest(distFolder + '/styles'))
 	
 	// Task result
     .pipe($.size({title: 'styles-dist'}));
 });
 
 gulp.task('html', 'Optimize HTML and assets', function () {
-	var assets = $.useref.assets({searchPath: '{.tmp,app}'});
+	var assets = $.useref.assets({searchPath: '{' + tempFolder + ',' + appFolder + '}'});
 
 	return gulp.src([
-		'app/**/*.html'
+		appFolder + '/**/*.html'
 	])
 	
     .pipe(assets)
@@ -222,7 +225,7 @@ gulp.task('html', 'Optimize HTML and assets', function () {
     .pipe($.if('*.html', $.minifyHtml()))
     
 	// Output files
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(distFolder))
 	
 	// Task result
     .pipe($.size({title: 'html'}));
@@ -230,17 +233,17 @@ gulp.task('html', 'Optimize HTML and assets', function () {
 
 gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separately', function () {
   return gulp.src([
-    'app/*',
-    '!app/*.html',
-	'!app/styles/*',
-	'!app/scripts/*',
+    appFolder + '/*',
+    '!' + appFolder + '/*.html',
+	'!' + appFolder + '/styles/*',
+	'!' + appFolder + '/scripts/*',
     'node_modules/apache-server-configs/dist/.htaccess'
   ], {
     dot: true
   })
   
   // Copy
-  .pipe(gulp.dest('dist'))
+  .pipe(gulp.dest(distFolder))
   
   // Task result
   .pipe($.size({title: 'copy'}));
@@ -255,7 +258,7 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 		// Note: this uses an unsigned certificate which on first access
 		//       will present a certificate warning in the browser.
 		// https: true,
-		server: ['.tmp', 'app'],
+		server: [tempFolder, appFolder],
 		ghostMode: { // replicate actions in all clients
 			clicks: false,
 			forms: false,
@@ -263,10 +266,10 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 		}
 	});
 
-	gulp.watch(['app/**/*.html'], reload); // html changes will force a reload
-	gulp.watch(['app/styles/**/*.{scss,css}'], ['styles']); // stylesheet changes will force a reload
-	gulp.watch(['app/scripts/**/*.js'], ['jshint']); // jshint will force a reload
-	gulp.watch(['app/images/**/*'], reload); // image changes will force a reload
+	gulp.watch([appFolder + '/**/*.html'], reload); // html changes will force a reload
+	gulp.watch([appFolder + '/styles/**/*.{scss,css}'], ['styles']); // stylesheet changes will force a reload
+	gulp.watch([appFolder + '/scripts/**/*.js'], ['jshint']); // jshint will force a reload
+	gulp.watch([appFolder + '/images/**/*'], reload); // image changes will force a reload
 });
 
 gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' folder contents', ['default'], function () {
@@ -277,7 +280,7 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    server: 'dist'
+    server: distFolder
   });
 });
 

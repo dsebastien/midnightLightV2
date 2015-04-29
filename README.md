@@ -40,7 +40,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * for the production version, run ./runOnDocker.sh
 * for the development version, run ./ronDevOnDocker.sh
 
-## Dependencies
+## Build dependencies
 * apache-server-configs: base Apache HTTP Server config (allows/configures CORS, adds the X-UA-Compatible header, defines all media types correctly such as SVG, ...): https://www.npmjs.com/package/apache-server-configs
 * browser-sync: live CSS reload & browser syncing: https://www.npmjs.com/package/browser-sync
 * del: deletes files/folders: https://www.npmjs.com/package/del
@@ -78,7 +78,11 @@ If you're familiar with Docker then you can easily run the development or produc
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
 * run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
+
+## Runtime dependencies
 * purecss: CSS framework: https://www.npmjs.com/package/purecss
+* jquery
+* angular (angular, angular-route, angular-loader, angular-mocks)
 
 ## Authors
 ### Sebastien Dubois
