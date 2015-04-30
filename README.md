@@ -8,15 +8,12 @@ For more background head over to my blog:
 * http://www.dsebastien.net/2015/04/22/web-3-0-is-closer-than-you-might-think/
 * http://www.dsebastien.net/2015/04/14/time-for-some-web-dev/
 
-## Status
-yet-to-be-implemented prototype :)
+## Status & roadmap
 Check out the current [TODO list](TODO.md)
 
 ## Features
-None so far
-
-## Roadmap
-Check out TODO.md
+* awesome build based on Gulp, a gazillion plugins and some automagic stuff
+* all the yet-to-be-implemented features :)
 
 ## Installation
 In order to use Midnight Light, you need to install the WP REST API plugin in Wordpress:
@@ -83,6 +80,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * purecss: CSS framework: https://www.npmjs.com/package/purecss
 * jquery
 * angular (angular, angular-route, angular-loader, angular-mocks)
+* lodash: https://www.npmjs.com/package/lodash
 
 ## Authors
 ### Sebastien Dubois

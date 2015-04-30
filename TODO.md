@@ -1,5 +1,7 @@
+* integrate webpack
+* integrate typescript
+* integrate lodash
 * integrate angular-mocks and angular-loader
-* build: integrate ES 6TO5
 * build: move js handling in js and js:dist task
 * build: ensure that sourcemaps are generated/functional for js code in dev
 * build: find a way to inject js code through require or whatever
