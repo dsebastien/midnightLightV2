@@ -3,12 +3,14 @@
 
 module MidnightLight.Controllers {
 	'use strict';
+	
+	import Post = Model.Post;
 
 	export class PostsController {
 		static UID : string = 'PostsController';
 		static $inject = ['$scope', Services.PostsService.UID];
 
-		private posts : Array<Model.Post> = new Array<Model.Post>();
+		private posts : Array<Post> = new Array<Post>();
 
 		constructor(private $scope : ng.IScope, private postsService : Services.PostsService) {
 			this.postsService.getPosts().success((rawData) => {
@@ -17,7 +19,7 @@ module MidnightLight.Controllers {
 				for (var i = 0 ; i < rawPosts.length ; i++) {
 					var obj = rawPosts[i];
 
-					var post: Model.Post = new Model.Post();
+					var post: Post = new Post();
 					post.title = obj.title;
 					post.author = obj.author.nickname;
 					post.authorUrl = obj.author.URL;
