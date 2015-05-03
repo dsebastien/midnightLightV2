@@ -39,58 +39,59 @@
 	<!-- endbuild -->
 </head>
 <body ng-app="MidnightLight">
-	<div class="pure-g">
-		<header id="header" class="pure-u-4-5">
-			<h1>Midnight Light</h1>
-			<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p> 
-		</header>
-		<aside id="social" class="pure-u-1-5">
-			<h2>Social</h2>
-			<p>Links here</p>
-		</aside>
+<div ng-view></div>
+<div class="pure-g">
+	<header id="header" class="pure-u-4-5">
+		<h1>Midnight Light</h1>
+		<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p>
+	</header>
+	<aside id="social" class="pure-u-1-5">
+		<h2>Social</h2>
+		<p>Links here</p>
+	</aside>
+</div>
+<nav class="pure-g">
+	<div id="menu" class="pure-u-1">
+		<h2>Menu</h2>
+		<p>Links here...</p>
 	</div>
-	<nav class="pure-g">
-		<div id="menu" class="pure-u-1">
-			<h2>Menu</h2>
-			<p>Links here...</p>
-		</div>
-	</nav>
-	<div class="pure-g">
-		<section id="blog" class="pure-u-4-5">
-			<h2>Blog articles</h2>
-			<article class="post">
-				<h3>Hello world</h3>
-				<section class="post-meta">
-					<ul>
-						<li class="author">Sebastien</li>
-						<li class="categories">Category</li>
-					</ul>
-				</section>
-			</article>
-		</section>
-		<aside id="tools" class="pure-u-1-5">
-			<h2>Tools</h2>        
-			<p>Links here</p>
-		</aside>
+</nav>
+<div class="pure-g">
+	<section id="blog" class="pure-u-4-5">
+		<h2>Blog posts</h2>
+		<article class="post">
+			<h3>Hello world</h3>
+			<section class="post-meta">
+				<ul>
+					<li class="author">Sebastien</li>
+					<li class="categories">Category</li>
+				</ul>
+			</section>
+		</article>
+	</section>
+	<aside id="tools" class="pure-u-1-5">
+		<h2>Tools</h2>        
+		<p>Links here</p>
+	</aside>
+</div>
+<section id="about" class="pure-g">
+	<div class="pure-u-1">
+		<h2>About</h2>
+		<p>Hey there it's me!</p>
 	</div>
-	<section id="about" class="pure-g">
-		<div class="pure-u-1">
-			<h2>About</h2>
-			<p>Hey there it's me!</p>
-		</div>
-	</section>
-	<section id="links" class="pure-g">
-		<div class="pure-u-1">
-			<h2>Links</h2>
-			<p>Show me the links</p>
-		</div>
-	</section>
-	<footer id="footer" class="pure-g">
-		<div class="pure-u-1">
-			<h2>Footer</h2>
-			<h2>© dSebastien</h2>
-		</div>
-	</footer>
+</section>
+<section id="links" class="pure-g">
+	<div class="pure-u-1">
+		<h2>Links</h2>
+		<p>Show me the links</p>
+	</div>
+</section>
+<footer id="footer" class="pure-g">
+	<div class="pure-u-1">
+		<h2>Footer</h2>
+		<h2>© dSebastien</h2>
+	</div>
+</footer>
 
 	<!-- 
 		We can refer node_modules directly here because the 'copy' gulp task copies/caches npm dependencies in the '.tmp' folder for local testing
@@ -99,9 +100,14 @@
 	<!-- build:js scripts/bundle.min.js -->
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.js"></script>
 	<script src="node_modules/angular-route/angular-route.js"></script>
-	
-    <script src="scripts/main.js"></script>
+	<script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+	<script src="node_modules/angular-loader/angular-loader.js"></script>
+    <script src="scripts/app.module.js"></script>
+	<script src="scripts/model/post.js"></script>
+	<script src="scripts/controllers/posts.controller.js"></script>
+	<script src="scripts/services/posts.service.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics for dSebastien.net: UA-12207426-2 -->

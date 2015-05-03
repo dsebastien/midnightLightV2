@@ -1,6 +1,23 @@
+# Project specific
 node_modules
 dist
 .tmp
 *.log
-.DS_Store
+!ts-typings
+ts-typings/*
+!ts-typings/tsd.d.ts
+!ts-typings/typescriptApp.d.ts
+
+# Windows
 Desktop.ini
+
+# JetBrains IDEs
+*.iml
+.idea/
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+# Icon must end with two \r
+Icon

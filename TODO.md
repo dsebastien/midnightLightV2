@@ -1,32 +1,13 @@
-* integrate webpack
-* integrate typescript
+* build: fix ts sourcemaps (path incorrect)
 * integrate lodash
+* integrate ng-animate: https://docs.angularjs.org/api/ngAnimate
 * integrate angular-mocks and angular-loader
-* build: move js handling in js and js:dist task
-* build: ensure that sourcemaps are generated/functional for js code in dev
-* build: find a way to inject js code through require or whatever
 * build: optimize/cache: changed(...)
 * build: externalize build config: https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.md
 * create responsive grid
 * REST API URL: http://dsebastien.net/wp-json
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
-* tags + role=""
-  * pre
-  * blockquote
-  * u
-  * b
-  * small
-  * mark
-  * del
-  * s: strikethrough
-  * strong: bold
-  * i: voice/technical terms
-  * abbr title="OO" Object Oriented ...
-  * address
-  * kbd
-  * samp
 * use tabindex on all main elements (sections, posts, etc)
-* h1 = site title, h2-h6 for the rest
 * replace default app icons (kept from Google Web Starter Kit)
 * check gulp-less-sourcemap effectiveness
   * sourceMapRootpath?? https://www.npmjs.com/package/gulp-less-sourcemap
@@ -99,3 +80,10 @@
 	* quid vs one person with n devices?
   * animations / transitions
   * infinite scrolling
+* build: split bundle in two: vendor.min.js and bundle.min.js
+
+* get wordpress rest API client ws model (backbone.js ?)
+* get posts in the correct order
+* get only posts titles & metadata; load the rest when requested
+* build: integrate webpack ?
+* build: integrate TS 1.5 & tsconfig.json: https://github.com/ivogabe/gulp-typescript/pull/99

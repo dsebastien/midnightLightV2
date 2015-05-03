@@ -28,6 +28,7 @@ If you want to build from source, you need to:
 * clone this git repository
 * go to the folder where you've cloned the project
 * run `$ npm install --global gulp && npm install` to get the dependencies
+* run `$ npm run tsd` to retrieve TypeScript definitions list (for more information, check out the following [link](https://github.com/borisyankov/DefinitelyTyped)
 * run `$ gulp` to build the app
 * take a look at COMMANDS.md in the project for more commands you can use
 
@@ -67,9 +68,14 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-strip-debug: remove console and debugger statements from JS code: https://www.npmjs.com/package/gulp-strip-debug
 * gulp-concat: concatenate files: https://www.npmjs.com/package/gulp-concat
 * gulp-rename: rename files: https://www.npmjs.com/package/gulp-rename
-* gulp-using: useful to verify what the build patterns catch: https://www.npmjs.com/package/gulp-using
+* gulp-debug: useful to verify the stream contents: https://www.npmjs.com/package/gulp-debug
 * gulp-cssimport: replace CSS imports by stylesheet contents: https://www.npmjs.com/package/gulp-cssimport
 * gulp-nice-package: validate npm's package.json file: https://www.npmjs.com/package/gulp-nice-package/
+* gulp-inject: JavaScript, stylesheet and webcomponent injection: https://www.npmjs.com/package/gulp-inject
+* gulp-tsd: TSD plugin for gulp: https://www.npmjs.com/package/gulp-tsd
+* gulp-tslint: Linter for TypeScript code: https://www.npmjs.com/package/gulp-tslint
+* gulp-typescript: TypeScript compiler for Gulp: https://www.npmjs.com/package/gulp-typescript
+* tsd: TypeScript Definition manager: https://www.npmjs.com/package/tsd
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
 * opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
@@ -79,7 +85,7 @@ If you're familiar with Docker then you can easily run the development or produc
 ## Runtime dependencies
 * purecss: CSS framework: https://www.npmjs.com/package/purecss
 * jquery
-* angular (angular, angular-route, angular-loader, angular-mocks)
+* angular (angular, angular-animate, angular-route, angular-loader, angular-mocks)
 * lodash: https://www.npmjs.com/package/lodash
 
 ## Authors

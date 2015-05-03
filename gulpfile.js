@@ -17,6 +17,9 @@ var tempFolder = './.tmp';
 var appFolder = './app';
 var finalCssBundleFilename = 'bundle.min.css';
 var finalJsBundleFilename = 'bundle.min.js';
+var typings = './ts-typings';
+var libraryTypeScriptDefinitions = typings + '/**/*.ts';
+var appTypeScriptReferences = typings + '/typescriptApp.d.ts';
 
 // Misc
 var minifyCssOptions = { // https://www.npmjs.com/package/gulp-minify-css
@@ -45,7 +48,7 @@ gulp.task('validate-package-json', 'Validate the package.json file', function ()
     .pipe(packageJsonValidator());
 });
 
-gulp.task('jshint', 'Check JavaScript code quality using JSHint', function () {
+gulp.task('js-hint', 'Check JavaScript code quality using JSHint', function () {
 	return gulp.src([
 		appFolder + '/scripts/**/*.js'
 	])
@@ -61,6 +64,69 @@ gulp.task('jshint', 'Check JavaScript code quality using JSHint', function () {
 	
 	// Fail the build only if BrowserSync is not active
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+});
+
+gulp.task('ts-lint', 'Lint TypeScript code', function () {
+    return gulp.src([
+		appFolder + '/scripts/**/*.ts'
+	])
+	.pipe($.tslint())
+	
+	// Fail the build only if BrowserSync is not active
+	.pipe($.if(!browserSync.active, $.tslint.report('prose')))
+	.pipe($.if(browserSync.active, $.tslint.report('prose',{
+		emitError: false
+	})));
+});
+
+gulp.task('scripts', 'Compile TypeScript, include references to library and app .d.ts files and generate sourcemaps', function() {
+	var sourceTsFiles = [
+		appFolder + '/scripts/**/*.{ts,js}',
+		libraryTypeScriptDefinitions, // reference to library .d.ts files
+		appTypeScriptReferences // reference to app.d.ts files
+	];
+	
+	var tsResult = gulp.src(sourceTsFiles)
+		.pipe($.sourcemaps.init())
+		.pipe($.typescript({
+			target: 'ES5',
+			declarationFiles: false,
+			noExternalResolve: true
+	}));
+	
+	// Output files
+	tsResult.dts.pipe(gulp.dest(tempFolder +'/scripts'));
+	
+	return tsResult.js
+		.pipe($.sourcemaps.write('.'))
+		.pipe(gulp.dest(tempFolder +'/scripts'))
+		
+		// Task result
+		.pipe($.size({title: 'scripts'})
+		
+		// Reload Browser if needed
+		.pipe($.if(browserSync.active, reload({stream: true, once: true})))
+		
+	);
+});
+
+gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from all application *.ts files', function () {
+    var sources = gulp.src([
+		appFolder + '/scripts/**/*.ts'],
+		{read: false}
+	);
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}));
+	
+    return gulp.src(appTypeScriptReferences)
+		.pipe($.inject(sources, {
+			starttag: '//{',
+			endtag: '//}',
+			transform: function (filepath) {
+				return '/// <reference path="..' + filepath + '" />';
+			}
+		}))
+		//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+		.pipe(gulp.dest(typings));
 });
 
 gulp.task('pagespeed', 'Run PageSpeed Insights', function (cb) {
@@ -148,8 +214,8 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
 	.pipe($.sourcemaps.write()) // use '.' to write the sourcemap to a separate file in the same dir
 	
-	// Display the files that will be copied
-	//.pipe($.using())
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 	
 	// Output files
     .pipe(gulp.dest(tempFolder + '/styles'))
@@ -202,7 +268,9 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 });
 
 gulp.task('html', 'Optimize HTML and assets', function () {
-	var assets = $.useref.assets({searchPath: '{' + tempFolder + ',' + appFolder + '}'});
+	var assets = $.useref.assets({
+		searchPath: '{' + tempFolder + ',' + appFolder + '}'
+	});
 
 	return gulp.src([
 		appFolder + '/**/*.html'
@@ -218,7 +286,6 @@ gulp.task('html', 'Optimize HTML and assets', function () {
 	.pipe(assets.restore())
     .pipe($.useref())
 	
-	//.pipe($.replace('styles/main.css', 'styles/'+finalCssBundleFilename))
 	//.pipe($.replace('scripts/main.js', 'scripts/'+finalJsBundleFilename))
     
 	// Minify HTML
@@ -249,7 +316,7 @@ gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separat
   .pipe($.size({title: 'copy'}));
 });
 
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['styles', 'copyNpmDependencies'], function () {
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['ts-lint', 'gen-ts-refs', 'js-hint', 'scripts', 'styles', 'copyNpmDependencies'], function () {
 	browserSync({ // http://www.browsersync.io/docs/options/
 		notify: false,
 		// Customize the BrowserSync console logging prefix
@@ -268,7 +335,7 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 
 	gulp.watch([appFolder + '/**/*.html'], reload); // html changes will force a reload
 	gulp.watch([appFolder + '/styles/**/*.{scss,css}'], ['styles']); // stylesheet changes will force a reload
-	gulp.watch([appFolder + '/scripts/**/*.js'], ['jshint']); // jshint will force a reload
+	gulp.watch([appFolder + '/scripts/**/*.{js,ts}'], ['ts-lint', 'js-hint','scripts', 'gen-ts-refs']); // JavaScript/TypeScript changes will force a reload
 	gulp.watch([appFolder + '/images/**/*'], reload); // image changes will force a reload
 });
 
@@ -284,6 +351,6 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
   });
 });
 
-gulp.task('default', 'Build production files', ['clean'], function (cb) {
-	runSequence('copyNpmDependencies', ['jshint', 'styles:dist', 'html', 'images', 'fonts', 'copy', 'validate-package-json'], cb);
+gulp.task('default', 'Build production files', ['clean', 'ts-lint', 'js-hint', 'gen-ts-refs', 'scripts'], function (cb) {
+	runSequence('copyNpmDependencies', ['styles:dist', 'html', 'images', 'fonts', 'copy', 'validate-package-json'], cb);
 });
