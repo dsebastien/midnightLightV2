@@ -1,11 +1,7 @@
-* build: fix ts sourcemaps (path incorrect)
 * integrate lodash
 * integrate ng-animate: https://docs.angularjs.org/api/ngAnimate
 * integrate angular-mocks and angular-loader
-* build: optimize/cache: changed(...)
-* build: externalize build config: https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.md
 * create responsive grid
-* REST API URL: http://dsebastien.net/wp-json
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
 * use tabindex on all main elements (sections, posts, etc)
 * replace default app icons (kept from Google Web Starter Kit)
@@ -82,8 +78,12 @@
   * infinite scrolling
 * build: split bundle in two: vendor.min.js and bundle.min.js
 
-* get wordpress rest API client ws model (backbone.js ?)
+* create a full blown wordpress rest API client. Reference client APIs:
+  * NodeJS: https://github.com/kadamwhite/wordpress-rest-api
+  * Backbone.js: https://github.com/WP-API/client-js
 * get posts in the correct order
 * get only posts titles & metadata; load the rest when requested
 * build: integrate webpack ?
 * build: integrate TS 1.5 & tsconfig.json: https://github.com/ivogabe/gulp-typescript/pull/99
+* build: optimize/cache: changed(...)
+* build: externalize build config: https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.md
