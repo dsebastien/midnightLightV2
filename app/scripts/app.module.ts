@@ -1,9 +1,10 @@
 ///<reference path="../../ts-typings/tsd.d.ts" />
 ///<reference path="../../ts-typings/typescriptApp.d.ts" />
 
-'use strict';
-
 ((): void => {
+
+	'use strict';
+
 	//var querySelector = document.querySelector.bind(document);
 	//var body = document.body;
 	//var main = querySelector('main');
@@ -11,7 +12,7 @@
 
 	app.config(['$routeProvider', ($routeProvider) => {
         $routeProvider.when('/', {
-            controller: 'MidnightLight.PostsController',
+            controller: 'MidnightLight.Controllers.PostsController',
             templateUrl: 'views/posts.html',
             controllerAs: 'controller'
         }

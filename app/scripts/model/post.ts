@@ -1,7 +1,7 @@
 ///<reference path="../../../ts-typings/tsd.d.ts" />
 ///<reference path="../../../ts-typings/typescriptApp.d.ts" />
 
-module MidnightLight {
+module MidnightLight.Model {
 	'use strict';
 
 	export class Post {

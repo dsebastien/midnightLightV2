@@ -98,7 +98,10 @@ gulp.task('scripts', 'Compile TypeScript, include references to library and app 
 	tsResult.dts.pipe(gulp.dest(tempFolder +'/scripts'));
 	
 	return tsResult.js
-		.pipe($.sourcemaps.write('.'))
+		.pipe($.sourcemaps.write('.',{
+			includeContent: false,
+			sourceRoot: '../'
+		}))
 		.pipe(gulp.dest(tempFolder +'/scripts'))
 		
 		// Task result

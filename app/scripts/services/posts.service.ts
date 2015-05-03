@@ -1,12 +1,12 @@
 ///<reference path="../../../ts-typings/tsd.d.ts" />
 ///<reference path="../../../ts-typings/typescriptApp.d.ts" />
 
-module MidnightLight {
+module MidnightLight.Services {
 	'use strict';
 
 	export class PostsService {
 		static $inject = ['$http'];
-		
+
 		constructor(private $http: ng.IHttpService) {
 		}
 
@@ -16,6 +16,6 @@ module MidnightLight {
 	}
 
 	angular.module('MidnightLight')
-		.service('MidnightLight.PostsService', PostsService);
+		.service('MidnightLight.Services.PostsService', PostsService);
 
 }
