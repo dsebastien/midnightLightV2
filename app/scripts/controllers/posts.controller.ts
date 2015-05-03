@@ -5,7 +5,8 @@ module MidnightLight.Controllers {
 	'use strict';
 
 	export class PostsController {
-		static $inject = ['$scope', 'MidnightLight.Services.PostsService'];
+		static UID : string = 'PostsController';
+		static $inject = ['$scope', Services.PostsService.UID];
 
 		private posts : Array<Model.Post> = new Array<Model.Post>();
 
@@ -28,6 +29,6 @@ module MidnightLight.Controllers {
 	}
 
 	angular.module('MidnightLight')
-		.controller('MidnightLight.Controllers.PostsController', PostsController);
+		.controller(PostsController.UID, PostsController);
 
 }

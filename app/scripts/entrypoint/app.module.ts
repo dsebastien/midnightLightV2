@@ -12,7 +12,7 @@
 
 	app.config(['$routeProvider', ($routeProvider) => {
         $routeProvider.when('/', {
-            controller: 'MidnightLight.Controllers.PostsController',
+            controller: MidnightLight.Controllers.PostsController.UID,
             templateUrl: 'views/posts.html',
             controllerAs: 'controller'
         }
