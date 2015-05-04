@@ -17,7 +17,6 @@
   * https://www.npmjs.com/package/karma
   * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
 * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
-* add lodash: https://www.npmjs.com/package/lodash
 * add gulp-karma to build: https://www.npmjs.com/package/gulp-karma
 * use z-index correctly
 * add rss feed link <link rel="alternate" type="application/rss+xml" title="..." href="...">
@@ -33,12 +32,11 @@
 	width:1026px; /* 1140px - 10% for margins */
     margin:0 auto;
   }
-* add travis.yml
 * add modernizr
 * add html class="no-js" and check if js is enabled. 
 * handle 404 gracefully
 * uncomment google analytics once ready
-* configure fonts and review typography.less and variables.less
+* configure fonts and review typography.scss and variables.scss
 * drop shadow below header
 * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
 * use
@@ -81,6 +79,7 @@
 * create a full blown wordpress rest API client. Reference client APIs:
   * NodeJS: https://github.com/kadamwhite/wordpress-rest-api
   * Backbone.js: https://github.com/WP-API/client-js
+  * AngularJS: https://github.com/jeffsebring/angular-wp-api
 * get posts in the correct order
 * get only posts titles & metadata; load the rest when requested
 * build: integrate webpack ?
