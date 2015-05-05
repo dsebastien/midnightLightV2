@@ -1,6 +1,6 @@
-<div>
+<div id="blog" class="pure-u-1">
     <h2>Blog Posts</h2>
-	<article class="post" ng-repeat="post in controller.posts |  filter:controller.filter | orderBy:'title'">
+	<article class="post" ng-repeat="post in controller.posts |  filter:controller.filter">
 		<h3 ng-bind-html="post.title"></h3>
 		<section class="post-meta">
 			<ul>

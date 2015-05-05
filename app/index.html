@@ -39,7 +39,7 @@
 	<!-- endbuild -->
 </head>
 <body ng-app="MidnightLight">
-<div ng-view></div>
+
 <div class="pure-g">
 	<header id="header" class="pure-u-4-5">
 		<h1>Midnight Light</h1>
@@ -51,41 +51,36 @@
 	</aside>
 </div>
 <nav class="pure-g">
-	<div id="menu" class="pure-u-1">
+	<div id="menu" class="pure-u-4-5">
 		<h2>Menu</h2>
+		<ul>
+			<li><a href="#blog">Blog</a></li>
+			<li><a href="#links">Links</a></li>
+			<li><a href="#about">About</a></li>
+		</ul>
 		<p>Links here...</p>
 	</div>
-</nav>
-<div class="pure-g">
-	<section id="blog" class="pure-u-4-5">
-		<h2>Blog posts</h2>
-		<article class="post">
-			<h3>Hello world</h3>
-			<section class="post-meta">
-				<ul>
-					<li class="author">Sebastien</li>
-					<li class="categories">Category</li>
-				</ul>
-			</section>
-		</article>
-	</section>
 	<aside id="tools" class="pure-u-1-5">
-		<h2>Tools</h2>        
-		<p>Links here</p>
+		<h2>Tools</h2>
+	<p>Hey</p>
 	</aside>
-</div>
-<section id="about" class="pure-g">
-	<div class="pure-u-1">
-		<h2>About</h2>
-		<p>Hey there it's me!</p>
-	</div>
-</section>
+<div ng-view class="pure-g"></div>
+
 <section id="links" class="pure-g">
 	<div class="pure-u-1">
 		<h2>Links</h2>
 		<p>Show me the links</p>
 	</div>
 </section>
+
+
+<section id="about" class="pure-g">
+	<div class="pure-u-1">
+		<h2>About</h2>
+		<p>Hey there it's me!</p>
+	</div>
+</section>
+
 <footer id="footer" class="pure-g">
 	<div class="pure-u-1">
 		<h2>Footer</h2>
@@ -93,7 +88,7 @@
 	</div>
 </footer>
 
-	<!-- 
+	<!--
 		We can refer node_modules directly here because the 'copy' gulp task copies/caches npm dependencies in the '.tmp' folder for local testing
 		The path below is used when running off the dev version using gulp serve (i.e., thus not gulp serve:dist)
 	-->

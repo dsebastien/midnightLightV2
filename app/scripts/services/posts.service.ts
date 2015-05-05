@@ -12,7 +12,7 @@ module MidnightLight.Services {
 		}
 
 		getPosts(): ng.IHttpPromise<Array<{}>> {
-			return this.$http.get('http://dsebastien.net/wp-json/posts?filter[posts_per_page]=10&withoutcomments');
+			return this.$http.get('http://dsebastien.net/wp-json/posts?filter[posts_per_page]=2&withoutcomments');
 		}
 	}
 
