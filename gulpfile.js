@@ -16,6 +16,7 @@ var distFolder = './dist';
 var tempFolder = './.tmp';
 var appFolder = './app';
 var finalCssBundleFilename = 'bundle.min.css';
+var finalVendorCssBundleFilename = 'vendor.min.css';
 var finalJsBundleFilename = 'bundle.min.js';
 var typings = './ts-typings';
 var libraryTypeScriptDefinitions = typings + '/**/*.ts';
@@ -230,10 +231,10 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
     .pipe($.size({title: 'styles'}));
 });
 
-gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', function(){
+gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for production', function() {
 
 	return gulp.src([
-		appFolder + '/styles/**/*.{scss,css}'
+		appFolder + '/styles/vendor.{scss,css}'
 	])
 	
 	// Process Sass files
@@ -245,6 +246,7 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 	.pipe($.cssimport())
 	
 	// Remove any unused CSS
+	// Breaks the sourcemaps
     //.pipe($.uncss({
     //  html: [
     //    appFolder + '/**/*.html'
@@ -253,6 +255,52 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
     //  ignore: [
     //  ]
     //}))
+	
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	
+	// Regroup all files together
+	.pipe($.concat(finalVendorCssBundleFilename))
+	
+	// Optimize and minimize
+	.pipe($.csso()) // https://www.npmjs.com/package/gulp-csso
+	.pipe($.minifyCss(
+		minifyCssOptions
+	))
+	
+	// Output file
+	.pipe(gulp.dest(distFolder + '/styles'))
+	
+	// Task result
+    .pipe($.size({title: 'styles-vendor-dist'}));
+});
+
+gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', function(){
+
+	return gulp.src([
+		appFolder + '/styles/**/*.{scss,css}',
+		'!' + appFolder + '/styles/vendor.{scss,css}'
+	])
+	
+	// Process Sass files
+    .pipe($.sass({
+		errLogToConsole: true
+	}))
+	
+	// Replace CSS imports by actual contents
+	.pipe($.cssimport())
+	
+	// Remove any unused CSS
+	// Breaks the sourcemaps
+    //.pipe($.uncss({
+    //  html: [
+    //    appFolder + '/**/*.html'
+    //  ],
+    //  // CSS Selectors for UnCSS to ignore
+    //  ignore: [
+    //  ]
+    //}))
+	
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 	
 	// Regroup all files together
 	.pipe($.concat(finalCssBundleFilename))
@@ -355,5 +403,5 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
 });
 
 gulp.task('default', 'Build production files', ['clean', 'ts-lint', 'js-hint', 'gen-ts-refs', 'scripts'], function (cb) {
-	runSequence('copyNpmDependencies', ['styles:dist', 'html', 'images', 'fonts', 'copy', 'validate-package-json'], cb);
+	runSequence('copyNpmDependencies', ['styles-vendor:dist', 'styles:dist', 'html', 'images', 'fonts', 'copy', 'validate-package-json'], cb);
 });

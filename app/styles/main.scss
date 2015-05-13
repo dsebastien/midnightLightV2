@@ -1,9 +1,5 @@
 /*
- * Main application stylesheet.
- * It includes/imports all third-party stylesheets used throughout the application.
+ * Main stylesheet.
+ * Should define common styles used throughout the application.
  * 
  */
-
-// PureCSS.io
-@import '../../node_modules/purecss/build/pure.css';
-@import '../../node_modules/purecss/build/grids-responsive.css';
