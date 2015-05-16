@@ -2,12 +2,12 @@
 ///<reference path="../../../ts-typings/typescriptApp.d.ts" />
 
 ((): void => {
-
 	'use strict';
 
 	//var querySelector = document.querySelector.bind(document);
 	//var body = document.body;
-	//var main = querySelector('main');
+	//var main = querySelector('#main');
+	
 	var app = angular.module('MidnightLight', ['ngRoute', 'ngSanitize', 'ngAnimate']);
 
 	app.config(['$routeProvider', ($routeProvider) => {
