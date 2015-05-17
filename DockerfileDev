@@ -10,6 +10,7 @@ RUN npm install -g gulp http-server
 # Build the app
 WORKDIR /opt/midnight_light/
 
+# Note that we add package.json separately in order not to bust the cache
 ADD package.json ./
 RUN npm install
 ADD gulpfile.js ./
