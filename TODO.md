@@ -75,7 +75,7 @@
   * animations / transitions
   * infinite scrolling
 * build: split bundle in two: vendor.min.js and bundle.min.js
-
+* search box: http://www.pluralsight.com/
 * create a full blown wordpress rest API client. Reference client APIs:
   * NodeJS: https://github.com/kadamwhite/wordpress-rest-api
   * Backbone.js: https://github.com/WP-API/client-js
