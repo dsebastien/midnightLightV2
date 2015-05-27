@@ -1,0 +1,1 @@
+Note that all SASS partials (files beginning with a _) should be placed in a sub-directory and should be imported by one of the SASS files in this folder

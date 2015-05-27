@@ -80,9 +80,41 @@ gulp.task('ts-lint', 'Lint TypeScript code', function () {
 	})));
 });
 
-gulp.task('scripts', 'Compile TypeScript, include references to library and app .d.ts files and generate sourcemaps', function() {
+gulp.task('scripts-javascript', 'Compile JavaScript and generate sourcemaps', function(){
+	return gulp.src([
+		appFolder + '/scripts/**/*.js'
+	])
+	
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	
+	// speed things up by ignoring unchanged resources
+	.pipe($.changed(tempFolder + '/scripts', {extension: '.js'}))
+	
+	// Initialize sourcemap generation
+	.pipe($.sourcemaps.init({
+		//debug: true
+	}))
+	
+	// Copy files
+    .pipe(gulp.dest(tempFolder + '/scripts'))
+	
+	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
+	.pipe($.sourcemaps.write()) // use '.' to write the sourcemap to a separate file in the same dir
+	
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	
+	// Task result
+	.pipe($.size({title: 'scripts-javascript'}))
+	
+	// Reload Browser if needed
+	.pipe($.if(browserSync.active, reload({stream: true, once: true})));
+});
+
+gulp.task('scripts-typescript', 'Compile TypeScript, include references to library and app .d.ts files and generate sourcemaps', function() {
 	var sourceTsFiles = [
-		appFolder + '/scripts/**/*.{ts,js}',
+		appFolder + '/scripts/**/*.ts',
 		libraryTypeScriptDefinitions, // reference to library .d.ts files
 		appTypeScriptReferences // reference to app.d.ts files
 	];
@@ -106,7 +138,7 @@ gulp.task('scripts', 'Compile TypeScript, include references to library and app 
 		.pipe(gulp.dest(tempFolder +'/scripts'))
 		
 		// Task result
-		.pipe($.size({title: 'scripts'})
+		.pipe($.size({title: 'scripts-typescript'})
 		
 		// Reload Browser if needed
 		.pipe($.if(browserSync.active, reload({stream: true, once: true})))
@@ -190,29 +222,43 @@ gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder
 
 gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', function () {
 	return gulp.src([
-		appFolder + '/styles/**/*.{scss,css}'
+		appFolder + '/styles/**/*.{scss,css}' // the sass plugin now correctly ignores sass partials
 	])
 	
-	// Initialize sourcemap generation
-	.pipe($.sourcemaps.init({
-		//debug: true
-	}))
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	
+	// speed things up by ignoring unchanged resources
+	//.pipe($.changed(tempFolder + '/styles', {extension: '.css'}))
+	
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 	
 	// Process Sass files
     .pipe($.sass({
-		errLogToConsole: true
+		precision: 10,
+		sourcemap: true
+		//errLogToConsole: true
+	}).on('error', $.sass.logError))
+	
+
+	// Initialize sourcemap generation
+	.pipe($.sourcemaps.init({
+		loadMaps: true
+		//debug: true
 	}))
 	
 	// workaround for a sourcemap generation issue: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
+	/*
 	.pipe($.minifyCss(
 		minifyCssOptions
 	))
+	*/
 	
 	// Include vendor prefixes
-    .pipe($.autoprefixer({
+   .pipe($.autoprefixer({
 		browsers: AUTOPREFIXER_BROWSERS
 	}))
-	
 	// alternative: $.autoprefixer('last 2 version')
 	
 	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
@@ -239,8 +285,9 @@ gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for pr
 	
 	// Process Sass files
     .pipe($.sass({
-		errLogToConsole: true
-	}))
+		precision: 10
+		//errLogToConsole: true
+	}).on('error', $.sass.logError))
 	
 	// Replace CSS imports by actual contents
 	.pipe($.cssimport())
@@ -367,7 +414,7 @@ gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separat
   .pipe($.size({title: 'copy'}));
 });
 
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['ts-lint', 'gen-ts-refs', 'js-hint', 'scripts', 'styles', 'copyNpmDependencies'], function () {
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['ts-lint', 'gen-ts-refs', 'js-hint', 'scripts-javascript', 'scripts-typescript', 'styles', 'copyNpmDependencies'], function () {
 	browserSync({ // http://www.browsersync.io/docs/options/
 		notify: false,
 		// Customize the BrowserSync console logging prefix
@@ -386,7 +433,8 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 
 	gulp.watch([appFolder + '/**/*.html'], reload); // html changes will force a reload
 	gulp.watch([appFolder + '/styles/**/*.{scss,css}'], ['styles']); // stylesheet changes will force a reload
-	gulp.watch([appFolder + '/scripts/**/*.{js,ts}'], ['ts-lint', 'js-hint','scripts', 'gen-ts-refs']); // JavaScript/TypeScript changes will force a reload
+	gulp.watch([appFolder + '/scripts/**/*.ts'], ['ts-lint','scripts-typescript', 'gen-ts-refs']); // TypeScript changes will force a reload
+	gulp.watch([appFolder + '/scripts/**/*.js'], ['js-hint','scripts-javascript']); // JavaScript changes will force a reload
 	gulp.watch([appFolder + '/images/**/*'], reload); // image changes will force a reload
 });
 
@@ -402,6 +450,6 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
   });
 });
 
-gulp.task('default', 'Build production files', ['clean', 'ts-lint', 'js-hint', 'gen-ts-refs', 'scripts'], function (cb) {
+gulp.task('default', 'Build production files', ['clean', 'ts-lint', 'js-hint', 'gen-ts-refs', 'scripts-typescript', 'scripts-javascript'], function (cb) {
 	runSequence('copyNpmDependencies', ['styles-vendor:dist', 'styles:dist', 'html', 'images', 'fonts', 'copy', 'validate-package-json'], cb);
 });
