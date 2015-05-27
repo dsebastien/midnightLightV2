@@ -319,8 +319,9 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 	
 	// Process Sass files
     .pipe($.sass({
-		errLogToConsole: true
-	}))
+		precision: 10
+		//errLogToConsole: true
+	}).on('error', $.sass.logError))
 	
 	// Replace CSS imports by actual contents
 	.pipe($.cssimport())
