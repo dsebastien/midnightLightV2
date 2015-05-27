@@ -221,51 +221,40 @@ gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder
 });
 
 gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', function () {
-	return gulp.src([
-		appFolder + '/styles/**/*.{scss,css}' // the sass plugin now correctly ignores sass partials
-	])
+	return gulp.src(
+		appFolder + '/styles/**/*.{scss,css}'
+	)
 	
 	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 	
-	// speed things up by ignoring unchanged resources
-	//.pipe($.changed(tempFolder + '/styles', {extension: '.css'}))
+    // Initialize sourcemap generation
+    .pipe($.sourcemaps.init({
+        //debug: true
+    }))
 	
-	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
-	
-	// Process Sass files
-    .pipe($.sass({
-		precision: 10,
-		sourcemap: true
+	// Process the sass files
+	.pipe($.sass({
 		//errLogToConsole: true
 	}).on('error', $.sass.logError))
 	
-
-	// Initialize sourcemap generation
-	.pipe($.sourcemaps.init({
-		loadMaps: true
-		//debug: true
-	}))
-	
 	// workaround for a sourcemap generation issue: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
-	/*
-	.pipe($.minifyCss(
-		minifyCssOptions
-	))
-	*/
+    /*
+    .pipe($.minifyCss(
+        minifyCssOptions
+    ))
+    */
 	
 	// Include vendor prefixes
-   .pipe($.autoprefixer({
+	/*
+	.pipe($.autoprefixer({
 		browsers: AUTOPREFIXER_BROWSERS
 	}))
+	*/
 	// alternative: $.autoprefixer('last 2 version')
 	
 	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
 	.pipe($.sourcemaps.write()) // use '.' to write the sourcemap to a separate file in the same dir
-	
-	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 	
 	// Output files
     .pipe(gulp.dest(tempFolder + '/styles'))
