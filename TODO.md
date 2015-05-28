@@ -141,3 +141,4 @@
 * check out postcss
   * https://github.com/postcss/postcss
   * https://twitter.com/postcss
+* try to use async on all scripts (for production), even if loaded at the end of the page

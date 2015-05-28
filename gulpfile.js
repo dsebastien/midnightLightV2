@@ -34,15 +34,15 @@ var minifyCssOptions = { // https://www.npmjs.com/package/gulp-minify-css
 };
 
 var AUTOPREFIXER_BROWSERS = [
-  'ie >= 10',
-  'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 7',
-  'opera >= 23',
-  'ios >= 7',
-  'android >= 4.4',
-  'bb >= 10'
+    'ie >= 10',
+    'ie_mob >= 10',
+    'ff >= 30',
+    'chrome >= 34',
+    'safari >= 7',
+    'opera >= 23',
+    'ios >= 7',
+    'android >= 4.4',
+    'bb >= 10'
 ];
 
 // Utilities
@@ -112,7 +112,7 @@ gulp.task('validate-package-json', 'Validate the package.json file', function ()
 });
 
 gulp.task('js-hint', 'Check JavaScript code quality using JSHint', function () {
-	return gulp.src([
+	return gulp.plumbedSrc([ // handle errors nicely (i.e., without breaking watch)
 		appFolder + '/scripts/**/*.js'
 	])
 	
@@ -131,7 +131,7 @@ gulp.task('js-hint', 'Check JavaScript code quality using JSHint', function () {
 });
 
 gulp.task('ts-lint', 'Lint TypeScript code', function () {
-    return gulp.src([
+    return gulp.plumbedSrc([ // handle errors nicely (i.e., without breaking watch)
 		appFolder + '/scripts/**/*.ts'
 	])
 	.pipe($.tslint())
@@ -302,18 +302,30 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	.pipe($.sass({
 		//errLogToConsole: true
 	}))
-	
+
+	// Writing the sourcemaps without content & re-initializing is necessary to work around an annoying issue: https://github.com/sindresorhus/gulp-autoprefixer/issues/8
+
+	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
+	.pipe($.sourcemaps.write({
+		includeContent: false, 
+		sourceRoot: '.' // use '.' to write the sourcemap to a separate file in the same dir
+	}))
+
+	// Initialize sourcemap generation
+    .pipe($.sourcemaps.init({
+        //debug: true
+        loadMaps: true // we reload the maps we've just created
+    }))
+
 	// workaround for a sourcemap generation issue: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
-    .pipe($.minifyCss(
-        minifyCssOptions
-    ))
+    // .pipe($.minifyCss(
+    //     minifyCssOptions
+    // ))
 	
 	// Include vendor prefixes
-	/*
 	.pipe($.autoprefixer({
 		browsers: AUTOPREFIXER_BROWSERS
 	}))
-	*/
 	// alternative: $.autoprefixer('last 2 version')
 	
 	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
