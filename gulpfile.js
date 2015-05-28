@@ -88,7 +88,7 @@ var reportError = function (error) {
 
 // easily integrate plumber invocation
 // reference: https://gist.github.com/floatdrop/8269868
-gulp.plumbedSrc = function( ){
+gulp.plumbedSrc = function (){
   return gulp.src.apply( gulp, arguments )
     .pipe( $.plumber({
 		errorHandler: reportError
@@ -98,7 +98,13 @@ gulp.plumbedSrc = function( ){
 
 // Build tasks
 
-gulp.task('clean', 'Clean output directories', del.bind(null, [tempFolder, distFolder+'/*', '!' + distFolder + '/.git'], {dot: true}));
+gulp.task('clean', 'Clean output directories', 
+	del.bind(null, [
+		tempFolder, 
+		distFolder+'/*', 
+		'!' + distFolder + '/.git'
+	], {dot: true})
+);
 
 gulp.task('validate-package-json', 'Validate the package.json file', function () {
   return gulp.src('package.json')
@@ -120,7 +126,8 @@ gulp.task('js-hint', 'Check JavaScript code quality using JSHint', function () {
     .pipe($.jshint.reporter('jshint-stylish'))
 	
 	// Fail the build only if BrowserSync is not active
-    .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+	// Actually, failing the build is counter-productive thus evil
+    //.pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
 gulp.task('ts-lint', 'Lint TypeScript code', function () {
@@ -136,8 +143,8 @@ gulp.task('ts-lint', 'Lint TypeScript code', function () {
 	})));
 });
 
-gulp.task('scripts-javascript', 'Compile JavaScript and generate sourcemaps', function(){
-	return gulp.src([
+gulp.task('scripts-javascript', 'Compile JavaScript and generate sourcemaps', function (){
+	return gulp.plumbedSrc([ // handle errors nicely (i.e., without breaking watch)
 		appFolder + '/scripts/**/*.js'
 	])
 	
@@ -322,7 +329,7 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
     .pipe($.size({title: 'styles'}));
 });
 
-gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for production', function() {
+gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for production', function () {
 	return gulp.plumbedSrc([ // handle errors nicely (i.e., without breaking watch)([
 		appFolder + '/styles/vendor.{scss,css}'
 	])
@@ -456,7 +463,7 @@ gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separat
   .pipe($.size({title: 'copy'}));
 });
 
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['ts-lint', 'gen-ts-refs', 'js-hint', 'scripts-javascript', 'scripts-typescript', 'styles', 'copyNpmDependencies', 'validate-package-json'], function () {
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['prepare-serve'], function () {
 	browserSync({ // http://www.browsersync.io/docs/options/
 		notify: false,
 		// Customize the BrowserSync console logging prefix
@@ -480,6 +487,17 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 	gulp.watch([appFolder + '/images/**/*'], reload); // image changes will force a reload
 });
 
+gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', ['ts-lint', 'js-hint'], function (){
+	return runSequence([
+		'gen-ts-refs', 
+		'scripts-javascript', 
+		'scripts-typescript', 
+		'styles', 
+		'copyNpmDependencies', 
+		'validate-package-json'
+	]);
+});
+
 gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' folder contents', ['default'], function () {
   browserSync({
     notify: false,
@@ -492,6 +510,23 @@ gulp.task('serve:dist', 'Build and serve the production version (i.e., \'dist\' 
   });
 });
 
-gulp.task('default', 'Build production files', ['clean', 'ts-lint', 'js-hint', 'gen-ts-refs', 'scripts-typescript', 'scripts-javascript'], function (cb) {
-	runSequence('copyNpmDependencies', ['styles-vendor:dist', 'styles:dist', 'html', 'images', 'fonts', 'copy', 'validate-package-json'], cb);
+gulp.task('default', 'Build production files', ['prepare-default'], function () {
+	return runSequence('copyNpmDependencies', [
+		'styles-vendor:dist', 
+		'styles:dist', 
+		'html', 
+		'images', 
+		'fonts', 
+		'copy', 
+		'validate-package-json'
+	]);
 });
+
+gulp.task('prepare-default', 'Do all the necessary preparatory work for the default task', ['ts-lint', 'js-hint'], function (){
+	return runSequence('clean', [
+		'gen-ts-refs', 
+		'scripts-typescript', 
+		'scripts-javascript'
+	]);
+});
+

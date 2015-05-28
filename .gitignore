@@ -21,3 +21,6 @@ Desktop.ini
 .LSOverride
 # Icon must end with two \r
 Icon
+
+# Sublime text
+.sublime-gulp.cache

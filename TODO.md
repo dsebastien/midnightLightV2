@@ -86,6 +86,7 @@
 * printing
   * create/test print stylesheet (media query + display: none on everything not needed, add page breaks where appropriate)
   * button to print an article
+  * add print preview https://github.com/etimbo/jquery-print-preview-plugin
 * characteristics/features to implement
   * responsive design
   * mobile first
@@ -101,11 +102,15 @@
   * post comment
   * menu
     * search box: http://www.pluralsight.com/
+	* header: something like http://benfrain.com/
+  * reading progress bar under header
+	* https://github.com/jeremenichelli/scrollProgress
+	* https://css-tricks.com/reading-position-indicator/
   * social widgets
   * tools
     * client-side: translate, increase/reduce size, chat
 * picture modes
-  * lightbox
+  * lightbox: http://www.jacklmoore.com/colorbox/
   * fullscreen
   * dim light
   * adapt pictures to size (responsive images)
@@ -133,3 +138,6 @@
 * build: optimize/cache: changed(...)
 * build: externalize build config: https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.md
 * uncomment google analytics once ready
+* check out postcss
+  * https://github.com/postcss/postcss
+  * https://twitter.com/postcss

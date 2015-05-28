@@ -1,4 +1,4 @@
-# Midnight Light
+n# Midnight Light
 
 ## About
 Midnight Light is a modern personal Web front-end.
@@ -84,6 +84,8 @@ If you're familiar with Docker then you can easily run the development or produc
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
 * run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
+* clear: clear the console: https://www.npmjs.com/package/clear
+* bluebird: Promises/A+ implementation;: https://www.npmjs.com/package/bluebird
 
 ## Runtime dependencies
 * purecss: CSS framework: https://www.npmjs.com/package/purecss
