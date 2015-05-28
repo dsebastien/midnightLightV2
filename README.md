@@ -1,4 +1,4 @@
-n# Midnight Light
+# Midnight Light
 
 ## About
 Midnight Light is a modern personal Web front-end.
