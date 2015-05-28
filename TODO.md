@@ -1,4 +1,3 @@
-* fix CSS sourcemaps w/ autoprefixer (autoprefixer breaks sourcemaps)
 * integrate lodash
 * integrate ng-animate: https://docs.angularjs.org/api/ngAnimate
 * integrate angular-mocks and angular-loader
