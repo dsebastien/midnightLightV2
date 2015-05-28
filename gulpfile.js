@@ -318,9 +318,9 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
     }))
 
 	// workaround for a sourcemap generation issue: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
-    // .pipe($.minifyCss(
-    //     minifyCssOptions
-    // ))
+    .pipe($.minifyCss(
+         minifyCssOptions
+    ))
 	
 	// Include vendor prefixes
 	.pipe($.autoprefixer({
@@ -334,8 +334,10 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	// Output files
     .pipe(gulp.dest(tempFolder + '/styles'))
 	
-	// Reload Browser if needed
-	.pipe($.if(browserSync.active, reload({stream: true, once: true})))
+	// Stream the results through BrowserSync if it's running (i.e., load the new stylesheets directly)
+	.pipe($.if(browserSync.active, browserSync.stream()))
+	//Reload Browser if needed
+	//.pipe($.if(browserSync.active, reload({stream: true, once: true})))
 	
 	// Task result
     .pipe($.size({title: 'styles'}));
