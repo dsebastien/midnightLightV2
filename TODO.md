@@ -6,12 +6,8 @@
 * add meta name="keywords" and adapt contents based on the section currently displayed (e.g., keywords of the current post)
 * use tabindex on all main elements (sections, posts, etc)
 * replace default app icons (kept from Google Web Starter Kit)
-* check gulp-less-sourcemap effectiveness
-  * sourceMapRootpath?? https://www.npmjs.com/package/gulp-less-sourcemap
-* tags
 * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
 * integrate authentication to be able to post comments, edit posts, etc
-* SEOoooooo
 * add link to WP admin section
 * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
 * add tests (karma, mocha, protractor ...)
@@ -33,23 +29,23 @@
 	width:1026px; /* 1140px - 10% for margins */
     margin:0 auto;
   }
-* add modernizr
-* add html class="no-js" and check if js is enabled. 
+* check out viewport units: vw, vh, vmin, vmax
+* check out data URIs (include in build?)
+  * add modernizr
+* add html class="no-js" and check if js is enabled
 * handle 404 gracefully
-* uncomment google analytics once ready
 * configure fonts and review typography.scss and variables.scss
 * drop shadow below header
 * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
 * use
   * user-select: none (prevent selection of some elements)
-  * css3 3d transforms
-  * css3 transforms
-  * css3 animation
-  * css3 bow-decoration-break
+  * css 3
+    * transforms / 3d transforms
+    * animation
+    * box-decoration-break
+	* box-sizing: border-box (padding and border included in the element's total w/h
   * flexible box layout module
   * online/offline status
-* check out viewport units: vw, vh, vmin, vmax
-* check out data URIs (include in build?)
 * check out applicache cache: http://diveintohtml5.info/offline.html & http://alistapart.com/article/application-cache-is-a-douchebag
 * add console wrapper lib (?): http://benalman.com/projects/javascript-debug-console-log/
   * add debug statements during dev & remove when building prod version
@@ -61,8 +57,31 @@
 * integrate markdown support: if posts are written using markdown on the server, they should display correctly on the client
 * create the theme & choose color scheme
   * dark/gray but this time avoiding styling errors of the past: http://www.webdesignerdepot.com/2009/08/the-dos-and-donts-of-dark-web-design/
+    * orange links with animated underlining
+	* icons going white on mouse over (animation)
   * choose a nice font
   * replace msapplication-TileColor and theme-color with final color once defined
+* right sidebar hideable
+  * archives
+  * recent posts
+  * categories
+  * tags cloud
+  * meta
+* right sidebar collapsible
+  * automatic if width too small
+  * see satellite at demo.wordpress.com
+* hide main menu bar when scrolling down & show small logo (text only to limit height) (like linked in)
+  * if width too small => put links in a dropdown
+  * use media queries to act as toggles for UI sections (toggle + focus on if visible)
+  * same angular controller for different elements that present the same data differently
+* search
+  * like linked in (dropdown on the left to select search type (posts, tag, ... depending on WP api capabilities)
+* links section
+  * show latest links (10?)
+  * show ellipsis for next ones (infinite scroll)
+  * provide search
+* favicon
+* rss and pingback: <link rel="canonical" ...>
 * syntax highlighting + collapse on small devices: https://eduardoboucas.com/blog/2014/11/30/collapsing-code-snippets-on-mobile-devices.html
 * printing
   * create/test print stylesheet (media query + display: none on everything not needed, add page breaks where appropriate)
@@ -75,15 +94,42 @@
 	* quid vs one person with n devices?
   * animations / transitions
   * infinite scrolling
-* build: split bundle in two: vendor.min.js and bundle.min.js
-* search box: http://www.pluralsight.com/
+* ui sections
+  * posts & comments
+    * tags
+  * archives (list years/months posts)
+  * post comment
+  * menu
+    * search box: http://www.pluralsight.com/
+  * social widgets
+  * tools
+    * client-side: translate, increase/reduce size, chat
+* picture modes
+  * lightbox
+  * fullscreen
+  * dim light
+  * adapt pictures to size (responsive images)
+* have nice quotes
+* if polymer
+  * core-media-query query="max-width: 500px" queryMatches="{{smallscreen}}" <- becomes true when matches the query
+* if no polymer
+  * link rel="stylesheet" media="(max-width: 800px)" href="..." />
 * create a full blown wordpress rest API client. Reference client APIs:
   * NodeJS: https://github.com/kadamwhite/wordpress-rest-api
   * Backbone.js: https://github.com/WP-API/client-js
   * AngularJS: https://github.com/jeffsebring/angular-wp-api
+* Q: how to generate sitemap?
+* put back permalinks in WP config + doc necessity
 * get posts in the correct order
 * get only posts titles & metadata; load the rest when requested
+* check out fontawesome (icons and transforms)
+* check out jquery sticky
+* review midnight light v1 jquery plugins
+* support two posts display styles: compact vs expanded (ala GReader)
+* SEOoooooo
+* build: version css & js code (add timestamp)
 * build: integrate webpack ?
 * build: integrate TS 1.5 & tsconfig.json: https://github.com/ivogabe/gulp-typescript/pull/99
 * build: optimize/cache: changed(...)
 * build: externalize build config: https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.md
+* uncomment google analytics once ready
