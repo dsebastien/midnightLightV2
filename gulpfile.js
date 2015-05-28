@@ -24,6 +24,8 @@ var libraryTypeScriptDefinitions = typings + '/**/*.ts';
 var appTypeScriptReferences = typings + '/typescriptApp.d.ts';
 
 // Settings
+var exitOnError = false; // whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
+
 var minifyCssOptions = { // https://www.npmjs.com/package/gulp-minify-css
 	keepBreaks: false, // no problem here
 	keepSpecialComments: true, // necessary for licensing
@@ -58,10 +60,10 @@ var reportError = function (error) {
 		//sound: 'Sosumi' // See: https://github.com/mikaelbr/node-notifier#all-notification-options-with-their-defaults
     }).write(error);
 
-    //gutil.beep(); // Beep 'sosumi' again
+    gutil.beep(); // Beep 'sosumi' again
 
     // Inspect the error object
-    //console.log(error);
+    //gutil.log(error);
 
     // Easy error reporting
     //console.log(error.toString());
@@ -76,8 +78,12 @@ var reportError = function (error) {
     if (error.fileName)   { report += chalk('FILE:') + ' ' + error.fileName + '\n'; }
     console.error(report);
 
-    // Prevent the 'watch' task from stopping
-    this.emit('end');
+	if (exitOnError){
+		process.exit(1);
+	}else{
+		// Prevent the 'watch' task from stopping
+		this.emit('end');
+	}
 }
 
 // easily integrate plumber invocation
