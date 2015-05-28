@@ -334,10 +334,9 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	// Output files
     .pipe(gulp.dest(tempFolder + '/styles'))
 	
-	// Stream the results through BrowserSync if it's running (i.e., load the new stylesheets directly)
-	.pipe($.if(browserSync.active, browserSync.stream()))
-	//Reload Browser if needed
-	//.pipe($.if(browserSync.active, reload({stream: true, once: true})))
+	// Reload Browser if needed
+	// Stream if possible
+	.pipe($.if(browserSync.active, reload({stream: true, once: true})))
 	
 	// Task result
     .pipe($.size({title: 'styles'}));
@@ -486,12 +485,12 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 		// Note: this uses an unsigned certificate which on first access
 		//       will present a certificate warning in the browser.
 		// https: true,
-		server: [tempFolder, appFolder],
-		ghostMode: { // replicate actions in all clients
-			clicks: false,
-			forms: false,
-			scroll: false
-		}
+		// ghostMode: { // replicate actions in all clients
+		// 	clicks: false,
+		// 	forms: false,
+		// 	scroll: false
+		// },
+		server: [tempFolder, appFolder]
 	});
 
 	gulp.watch([appFolder + '/**/*.html'], reload); // html changes will force a reload

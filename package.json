@@ -27,7 +27,7 @@
 	"devDependencies": {
 		"apache-server-configs": "2.14.x",
 		"bower": "1.4.x",
-		"browser-sync": "2.6.x",
+		"browser-sync": "2.7.x",
 		"del": "1.1.x",
 		"gulp": "3.8.x",
 		"gulp-debug": "2.0.x",
