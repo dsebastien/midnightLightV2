@@ -3,6 +3,7 @@
 // Include Gulp & tools we'll use
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+var gutil = require('gulp-util');
 var gulpNpmFiles = require('gulp-npm-files');
 var del = require('del');
 var runSequence = require('run-sequence');
@@ -22,7 +23,7 @@ var typings = './ts-typings';
 var libraryTypeScriptDefinitions = typings + '/**/*.ts';
 var appTypeScriptReferences = typings + '/typescriptApp.d.ts';
 
-// Misc
+// Settings
 var minifyCssOptions = { // https://www.npmjs.com/package/gulp-minify-css
 	keepBreaks: false, // no problem here
 	keepSpecialComments: true, // necessary for licensing
@@ -41,6 +42,55 @@ var AUTOPREFIXER_BROWSERS = [
   'android >= 4.4',
   'bb >= 10'
 ];
+
+// Utilities
+
+// display errors nicely and avoid having errors breaking tasks/watch
+// reference: https://github.com/mikaelbr/gulp-notify/issues/81
+var reportError = function (error) {
+    var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
+
+    $.notify({
+        title: 'Task Failed [' + error.plugin + ']',
+        message: lineNumber + 'See console.',
+		sound: true,
+		// the version below probably works on OSX
+		//sound: 'Sosumi' // See: https://github.com/mikaelbr/node-notifier#all-notification-options-with-their-defaults
+    }).write(error);
+
+    //gutil.beep(); // Beep 'sosumi' again
+
+    // Inspect the error object
+    //console.log(error);
+
+    // Easy error reporting
+    //console.log(error.toString());
+
+    // Pretty error reporting
+    var report = '';
+    var chalk = gutil.colors.white.bgRed;
+
+    report += chalk('TASK:') + ' [' + error.plugin + ']\n';
+    report += chalk('ISSUE:') + ' ' + error.message + '\n';
+    if (error.lineNumber) { report += chalk('LINE:') + ' ' + error.lineNumber + '\n'; }
+    if (error.fileName)   { report += chalk('FILE:') + ' ' + error.fileName + '\n'; }
+    console.error(report);
+
+    // Prevent the 'watch' task from stopping
+    this.emit('end');
+}
+
+// easily integrate plumber invocation
+// reference: https://gist.github.com/floatdrop/8269868
+gulp.plumbedSrc = function( ){
+  return gulp.src.apply( gulp, arguments )
+    .pipe( $.plumber({
+		errorHandler: reportError
+	}));
+}
+
+
+// Build tasks
 
 gulp.task('clean', 'Clean output directories', del.bind(null, [tempFolder, distFolder+'/*', '!' + distFolder + '/.git'], {dot: true}));
 
@@ -135,6 +185,8 @@ gulp.task('scripts-typescript', 'Compile TypeScript, include references to libra
 			includeContent: false,
 			sourceRoot: '../'
 		}))
+		
+		// Output files
 		.pipe(gulp.dest(tempFolder +'/scripts'))
 		
 		// Task result
@@ -221,9 +273,9 @@ gulp.task('copyNpmDependencies', 'Copy NPM dependencies to the temp build folder
 });
 
 gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', function () {
-	return gulp.src(
+	return gulp.plumbedSrc([ // handle errors nicely (i.e., without breaking watch)
 		appFolder + '/styles/**/*.{scss,css}'
-	)
+	])
 	
 	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
@@ -236,14 +288,12 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	// Process the sass files
 	.pipe($.sass({
 		//errLogToConsole: true
-	}).on('error', $.sass.logError))
+	}))
 	
 	// workaround for a sourcemap generation issue: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
-    /*
     .pipe($.minifyCss(
         minifyCssOptions
     ))
-    */
 	
 	// Include vendor prefixes
 	/*
@@ -267,30 +317,28 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 });
 
 gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for production', function() {
-
-	return gulp.src([
+	return gulp.plumbedSrc([ // handle errors nicely (i.e., without breaking watch)([
 		appFolder + '/styles/vendor.{scss,css}'
 	])
 	
 	// Process Sass files
     .pipe($.sass({
-		precision: 10
 		//errLogToConsole: true
-	}).on('error', $.sass.logError))
+	}))
 	
 	// Replace CSS imports by actual contents
 	.pipe($.cssimport())
 	
 	// Remove any unused CSS
-	// Breaks the sourcemaps
-    //.pipe($.uncss({
-    //  html: [
-    //    appFolder + '/**/*.html'
-    //  ],
-    //  // CSS Selectors for UnCSS to ignore
-    //  ignore: [
-    //  ]
-    //}))
+	// Note that it breaks the sourcemaps (but we shouldn't care for dist since we don't need sourcemaps there)
+    .pipe($.uncss({
+      html: [
+        appFolder + '/**/*.html'
+      ],
+      // CSS Selectors for UnCSS to ignore
+      ignore: [
+      ]
+    }))
 	
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 	
@@ -311,31 +359,29 @@ gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for pr
 });
 
 gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', function(){
-
-	return gulp.src([
+	return gulp.plumbedSrc([ // handle errors nicely (i.e., without breaking watch)
 		appFolder + '/styles/**/*.{scss,css}',
 		'!' + appFolder + '/styles/vendor.{scss,css}'
 	])
 	
 	// Process Sass files
     .pipe($.sass({
-		precision: 10
 		//errLogToConsole: true
-	}).on('error', $.sass.logError))
+	}))
 	
 	// Replace CSS imports by actual contents
 	.pipe($.cssimport())
 	
 	// Remove any unused CSS
-	// Breaks the sourcemaps
-    //.pipe($.uncss({
-    //  html: [
-    //    appFolder + '/**/*.html'
-    //  ],
-    //  // CSS Selectors for UnCSS to ignore
-    //  ignore: [
-    //  ]
-    //}))
+	// Note that it breaks the sourcemaps (but we shouldn't care for dist since we don't need sourcemaps there)
+    .pipe($.uncss({
+      html: [
+        appFolder + '/**/*.html'
+      ],
+      // CSS Selectors for UnCSS to ignore
+      ignore: [
+      ]
+    }))
 	
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 	
@@ -404,7 +450,7 @@ gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separat
   .pipe($.size({title: 'copy'}));
 });
 
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['ts-lint', 'gen-ts-refs', 'js-hint', 'scripts-javascript', 'scripts-typescript', 'styles', 'copyNpmDependencies'], function () {
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', ['ts-lint', 'gen-ts-refs', 'js-hint', 'scripts-javascript', 'scripts-typescript', 'styles', 'copyNpmDependencies', 'validate-package-json'], function () {
 	browserSync({ // http://www.browsersync.io/docs/options/
 		notify: false,
 		// Customize the BrowserSync console logging prefix

@@ -63,6 +63,9 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-uglify: minify files using Uglify JS: https://www.npmjs.com/package/gulp-uglify
 * gulp-uncss: remove unused CSS selectors: https://www.npmjs.com/package/gulp-uncss
 * gulp-useref: parses 'build' blocks in HTML files to replace references to non-optimized scripts/stylesheets: https://www.npmjs.com/package/gulp-useref
+* gulp-util: utility methods for gulp: https://www.npmjs.com/package/gulp-util
+* gulp-plumber: prevent pipe breaking caused by errors from gulp plugins: https://www.npmjs.com/package/gulp-plumber
+* gulp-notify: display notifications on OSX, Linux and Windows (native). Fallsback to Growl or simply logging: https://www.npmjs.com/package/gulp-notify
 * gulp-npm-files: list package.json dependencies so that we can process them (e.g., copy them to the dist folder): https://www.npmjs.com/package/gulp-npm-files
 * gulp-help: create a list of gulp tasks with documentation: https://www.npmjs.com/package/gulp-help/
 * gulp-strip-debug: remove console and debugger statements from JS code: https://www.npmjs.com/package/gulp-strip-debug
