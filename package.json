@@ -64,13 +64,13 @@
 		"gulp-tsd": "0.0.x",
 		"gulp-tslint": "2.0.x",
 		"gulp-typescript": "2.6.x",
+		"gulp-babel": "5.1.x",
 		"tsd": "0.5.x",
 		"jshint-stylish": "1.0.x",
 		"opn": "1.0.x",
 		"psi": "1.0.x",
 		"require-dir": "0.3.x",
-		"run-sequence": "1.1.x",
-		"clear": "0.0.x"
+		"run-sequence": "1.1.x"
 	},
 	"engines": {
 		"node": ">=0.12.2"
