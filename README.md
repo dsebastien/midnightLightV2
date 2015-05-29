@@ -88,7 +88,7 @@ If you're familiar with Docker then you can easily run the development or produc
 ## Runtime dependencies
 * purecss: CSS framework: https://www.npmjs.com/package/purecss
 * jquery
-* angular (angular, angular-animate, angular-route, angular-loader, angular-mocks)
+* angular (angular, angular-animate, angular-new-router, angular-loader, angular-mocks)
 * lodash: https://www.npmjs.com/package/lodash
 
 ## Authors

@@ -1,4 +1,3 @@
-* replace ng-route by the new Angular 1.4 route
 * integrate lodash
 * integrate ng-animate: https://docs.angularjs.org/api/ngAnimate
 * integrate angular-mocks and angular-loader
@@ -142,3 +141,5 @@
   * https://github.com/postcss/postcss
   * https://twitter.com/postcss
 * try to use async on all scripts (for production), even if loaded at the end of the page
+* TSD: add angular new router to tsd.json once the types are availble
+* TSD: update the Angular definitions once the ones for 1.4.x are available

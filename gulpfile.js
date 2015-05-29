@@ -510,7 +510,7 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', [
 	gulp.watch([appFolder + '/images/**/*'], reload); // image changes will force a reload
 });
 
-gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', ['clean', 'ts-lint', 'js-hint'], function (){
+gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', ['ts-lint', 'js-hint'], function (){
 	return runSequence([
 		'gen-ts-refs',
 		'scripts-javascript',

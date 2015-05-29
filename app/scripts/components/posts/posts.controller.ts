@@ -1,5 +1,5 @@
-///<reference path="../../../ts-typings/tsd.d.ts" />
-///<reference path="../../../ts-typings/typescriptApp.d.ts" />
+///<reference path="../../../../ts-typings/tsd.d.ts" />
+///<reference path="../../../../ts-typings/typescriptApp.d.ts" />
 
 module MidnightLight.Controllers {
 	'use strict';
@@ -8,11 +8,12 @@ module MidnightLight.Controllers {
 
 	export class PostsController {
 		static UID : string = 'PostsController';
-		static $inject = ['$scope', Services.PostsService.UID];
+		static $inject = [Services.PostsService.UID]; // Angular-way to inject dependencies
 
 		private posts : Array<Post> = new Array<Post>();
 
-		constructor(private $scope : ng.IScope, private postsService : Services.PostsService) {
+		constructor(private postsService : Services.PostsService) {
+			console.log(`Loading the ${PostsController.UID} controller`);
 			this.postsService.getPosts().success((rawData) => {
 				var rawPosts : any[] = rawData;
 
@@ -32,5 +33,4 @@ module MidnightLight.Controllers {
 
 	angular.module('MidnightLight')
 		.controller(PostsController.UID, PostsController);
-
 }
