@@ -1,0 +1,1 @@
+Note that all script files (whether JavaScript or TypeScript) MUST be placed in a sub-directory; otherwise sourcemaps will break)

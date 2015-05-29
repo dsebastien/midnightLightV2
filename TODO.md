@@ -1,3 +1,4 @@
+* replace ng-route by the new Angular 1.4 route
 * integrate lodash
 * integrate ng-animate: https://docs.angularjs.org/api/ngAnimate
 * integrate angular-mocks and angular-loader

@@ -55,8 +55,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-minify-html: minify html with minimize: https://www.npmjs.com/package/gulp-minify-html
 * gulp-minify-css: minify css with clean-css: https://www.npmjs.com/package/gulp-minify-css
 * gulp-replace: string replace plugin for gulp: https://www.npmjs.com/package/gulp-replace
-* gulp-less: less plugin for gulp: https://www.npmjs.com/package/gulp
-* gulp-sass: sass plugin for gulp (since I haven't decided yet which one I prefer): https://www.npmjs.com/package/sass
+* gulp-sass: sass plugin for gulp: https://www.npmjs.com/package/sass
 * node-sass: used by gulp-sass and normally not needed but added to fix an issue with sourcemaps: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
 * gulp-size: display the size of the project: https://www.npmjs.com/package/gulp-size
 * gulp-sourcemaps: js source map support for gulp: https://www.npmjs.com/package/gulp-sourcemaps
@@ -77,15 +76,14 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-inject: JavaScript, stylesheet and webcomponent injection: https://www.npmjs.com/package/gulp-inject
 * gulp-tsd: TSD plugin for gulp: https://www.npmjs.com/package/gulp-tsd
 * gulp-tslint: Linter for TypeScript code: https://www.npmjs.com/package/gulp-tslint
-* gulp-typescript: TypeScript compiler for Gulp: https://www.npmjs.com/package/gulp-typescript
+* gulp-typescript: TypeScript transpiler plugin for gulp: https://www.npmjs.com/package/gulp-typescript
+* gulp-babel: ES6 to ES5 transpiler plugin for gulp: https://www.npmjs.com/package/gulp-babel
 * tsd: TypeScript Definition manager: https://www.npmjs.com/package/tsd
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
 * opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
-* run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
-* clear: clear the console: https://www.npmjs.com/package/clear
-* bluebird: Promises/A+ implementation;: https://www.npmjs.com/package/bluebird
+* run-sequence: run a series of dependent Gulp tasks in order: https://www.npmjs.com/package/run-sequence
 
 ## Runtime dependencies
 * purecss: CSS framework: https://www.npmjs.com/package/purecss
