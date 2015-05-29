@@ -3,7 +3,7 @@
 
 module MidnightLight.Controllers {
 	'use strict';
-	
+
 	import Post = Model.Post;
 
 	export class PostsController {

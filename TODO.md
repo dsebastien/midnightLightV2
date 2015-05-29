@@ -1,3 +1,5 @@
+* rename ng-viewport once renamed in angular new router
+* find a way to rename the controller for the view (posts vs postsController)
 * integrate lodash
 * integrate ng-animate: https://docs.angularjs.org/api/ngAnimate
 * integrate angular-mocks and angular-loader

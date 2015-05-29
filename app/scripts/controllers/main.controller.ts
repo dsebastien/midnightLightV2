@@ -12,7 +12,7 @@ module MidnightLight.Controllers {
 			console.log(`Loading the ${MainController.UID} controller`);
 			// This is the configuration of the router
 			$router.config([
-				{ path: '/', component: 'posts' },
+				{ path: '/', redirectTo: '/posts' },
 				{ path: '/posts', component: 'posts' }
 			]);
 		}
