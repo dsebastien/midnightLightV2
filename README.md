@@ -91,6 +91,24 @@ If you're familiar with Docker then you can easily run the development or produc
 * angular (angular, angular-animate, angular-new-router, angular-loader, angular-mocks)
 * lodash: https://www.npmjs.com/package/lodash
 
+## Project configuration files
+The project includes multiple configuration files. Here's some information about these:
+* .dockerignore: files that are ignored by Docker when creating images
+* .editorconfig: helps configure code style for various text editors (more information here: http://editorconfig.org)
+* .gitattributes: allows to define git attributes per path (more information here: http://git-scm.com/docs/gitattributes)
+* .gitignore: configures files/folders that are ignored by git
+* .jscsrc: configuration file for JSCS. It defines the JS code style (more information: http://jscs.info/overview.html#options)
+  * note that it is configured to use ES Next
+* .jshintrc: JSHint configuration (more information: http://jshint.com/docs/)
+* bower.json and .bowerrc: bower's configuration file (just in case bower is later used to manage the project's dependencies). For now I'm using NPM and am satisfied with it (more information: http://bower.io/)
+* Dockerfile and DockerfileDev: Docker configuration files used to describe how Docker images should be created for this project (more information: https://www.docker.com/ and http://docs.docker.com/reference/builder/)
+* gulpfile.js: Gulp's configuration file. This is where the build magic happens (more information: http://gulpjs.com/)
+* package.Json: NPM's configuration file. This is where all dependencies are defined: project ones under 'dependencies' and build-related ones under 'devDependencies' (more information: https://docs.npmjs.com/files/package.json)
+* runOnDocker.sh and runDevOnDocker.sh: build scripts that create/run Docker images
+* travis.yml: Travis CI configuration files (more information: http://docs.travis-ci.com/user/build-configuration/)
+* tsd.json: TypeScript's DefinitelyTyped (tsd) definitions configuration (more information: https://github.com/DefinitelyTyped/tsd)
+* tslint.json: TypeScript code style configuration (more information: https://www.npmjs.com/package/tslint)
+
 ## Authors
 ### Sebastien Dubois
 * [@Blog](http://www.dsebastien.net)

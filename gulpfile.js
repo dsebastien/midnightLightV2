@@ -367,14 +367,14 @@ gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for pr
 
 	// Remove any unused CSS
 	// Note that it breaks the sourcemaps (but we shouldn't care for dist since we don't need sourcemaps there)
-    .pipe($.uncss({
-      html: [
-        appFolder + '/**/*.html'
-      ],
-      // CSS Selectors for UnCSS to ignore
-      ignore: [
-      ]
-    }))
+    //.pipe($.uncss({
+    //  html: [
+    //    appFolder + '/**/*.html'
+    //  ],
+    //  // CSS Selectors for UnCSS to ignore
+    //  ignore: [
+    //  ]
+    //}))
 
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
@@ -391,7 +391,7 @@ gulp.task('styles-vendor:dist', 'Optimize and minimize vendor stylesheets for pr
 	.pipe(gulp.dest(distFolder + '/styles'))
 
 	// Task result
-    .pipe($.size({title: 'styles-vendor-dist'}));
+    .pipe($.size({title: 'styles-vendor:dist'}));
 });
 
 gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', function(){
@@ -410,14 +410,14 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 
 	// Remove any unused CSS
 	// Note that it breaks the sourcemaps (but we shouldn't care for dist since we don't need sourcemaps there)
-    .pipe($.uncss({
-      html: [
-        appFolder + '/**/*.html'
-      ],
-      // CSS Selectors for UnCSS to ignore
-      ignore: [
-      ]
-    }))
+    //.pipe($.uncss({
+    //  html: [
+    //    appFolder + '/**/*.html'
+    //  ],
+    //  // CSS Selectors for UnCSS to ignore
+    //  ignore: [
+    //  ]
+    //}))
 
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
@@ -434,7 +434,7 @@ gulp.task('styles:dist', 'Optimize and minimize stylesheets for production', fun
 	.pipe(gulp.dest(distFolder + '/styles'))
 
 	// Task result
-    .pipe($.size({title: 'styles-dist'}));
+    .pipe($.size({title: 'styles:dist'}));
 });
 
 gulp.task('html', 'Optimize HTML and assets', function () {
@@ -552,4 +552,3 @@ gulp.task('prepare-default', 'Do all the necessary preparatory work for the defa
 		'scripts-javascript'
 	]);
 });
-

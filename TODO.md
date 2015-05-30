@@ -1,5 +1,4 @@
 * rename ng-viewport once renamed in angular new router
-* find a way to rename the controller for the view (posts vs postsController)
 * integrate lodash
 * integrate ng-animate: https://docs.angularjs.org/api/ngAnimate
 * integrate angular-mocks and angular-loader
@@ -11,9 +10,11 @@
 * integrate authentication to be able to post comments, edit posts, etc
 * add link to WP admin section
 * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
-* add tests (karma, mocha, protractor ...)
-  * https://www.npmjs.com/package/karma
-  * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
+* prepare build for testing
+  * karma, mocha, jasmine for unit testing
+    * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
+  * protractor for functional tests
+* add tests
 * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 * add gulp-karma to build: https://www.npmjs.com/package/gulp-karma
 * use z-index correctly
@@ -145,3 +146,4 @@
 * try to use async on all scripts (for production), even if loaded at the end of the page
 * TSD: add angular new router to tsd.json once the types are availble
 * TSD: update the Angular definitions once the ones for 1.4.x are available
+* find a way to rename the controller for the view (posts vs postsController)
