@@ -65,6 +65,8 @@
 		"gulp-tslint": "2.0.x",
 		"gulp-typescript": "2.6.x",
 		"gulp-babel": "5.1.x",
+		"gulp-jscs": "1.6.x",
+		"gulp-jscs-stylish": "1.1.x",
 		"tsd": "0.5.x",
 		"jshint-stylish": "1.0.x",
 		"opn": "1.0.x",

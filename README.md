@@ -50,7 +50,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-flatten: remove or replace relative path for files: https://www.npmjs.com/package/gulp-flatten
 * gulp-if: conditionally run a task: https://www.npmjs.com/package/gulp-if
 * gulp-imagemin: minify png, jpeg, gif and svg images: https://www.npmjs.com/package/gulp-imagemin
-* gulp-jshint: JSHint plugin for gulp: https://www.npmjs.com/package/gulp-jshint
+* gulp-jshint: JavaScript code quality checker plugin for gulp that uses JSHint: https://www.npmjs.com/package/gulp-jshint
 * gulp-load-plugins: automatically load any gulp plugins defined in package.json: https://www.npmjs.com/package/gulp-load-plugins
 * gulp-minify-html: minify html with minimize: https://www.npmjs.com/package/gulp-minify-html
 * gulp-minify-css: minify css with clean-css: https://www.npmjs.com/package/gulp-minify-css
@@ -78,6 +78,8 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-tslint: Linter for TypeScript code: https://www.npmjs.com/package/gulp-tslint
 * gulp-typescript: TypeScript transpiler plugin for gulp: https://www.npmjs.com/package/gulp-typescript
 * gulp-babel: ES6 to ES5 transpiler plugin for gulp: https://www.npmjs.com/package/gulp-babel
+* gulp-jscs: JavaScript code style checker plugin for gulp: https://www.npmjs.com/package/gulp-jscs 
+* gulp-jscs-stylish: Stylish reporter for gulp-jscs: https://www.npmjs.com/package/gulp-jscs-stylish
 * tsd: TypeScript Definition manager: https://www.npmjs.com/package/tsd
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
 * opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
@@ -99,7 +101,11 @@ The project includes multiple configuration files. Here's some information about
 * .gitignore: configures files/folders that are ignored by git
 * .jscsrc: configuration file for JSCS. It defines the JS code style (more information: http://jscs.info/overview.html#options)
   * note that it is configured to use ES Next
-* .jshintrc: JSHint configuration (more information: http://jshint.com/docs/)
+  * rules reference: http://jscs.info/rules.html
+  * news: https://github.com/jscs-dev/node-jscs/blob/master/CHANGELOG.md
+* .jshintrc: JSHint configuration
+  * rules reference: http://jshint.com/docs/options
+  * more information: http://jshint.com/docs/)
 * bower.json and .bowerrc: bower's configuration file (just in case bower is later used to manage the project's dependencies). For now I'm using NPM and am satisfied with it (more information: http://bower.io/)
 * Dockerfile and DockerfileDev: Docker configuration files used to describe how Docker images should be created for this project (more information: https://www.docker.com/ and http://docs.docker.com/reference/builder/)
 * gulpfile.js: Gulp's configuration file. This is where the build magic happens (more information: http://gulpjs.com/)
