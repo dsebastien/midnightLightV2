@@ -7,3 +7,7 @@
 html, body {
 	height: 100%;
 }
+
+img, embed, object, video {
+	max-width: 100%; // prevent these from overflowing their containers
+}
