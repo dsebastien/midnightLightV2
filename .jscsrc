@@ -31,7 +31,7 @@
   "disallowNamedUnassignedFunctions": true,
   "disallowNewlineBeforeBlockStatements": true,
   "requirePaddingNewLinesAfterBlocks": {
-    "allExcept": ["inCallExpressions", "inArrayExpressions", "inProperties"]
+	"allExcept": ["inCallExpressions", "inArrayExpressions", "inProperties"]
   },
   "disallowPaddingNewlinesInBlocks": true,
   "disallowQuotedKeysInObjects": true,
@@ -73,7 +73,7 @@
   "disallowSpaceBeforeBlockStatements": true,
   "disallowSpaceBeforeKeywords": null,
   "disallowSpaceBeforePostfixUnaryOperators": [
-	"++", 
+	"++",
 	"--"
   ],
   "requireSpaceBetweenArguments": true,
@@ -167,7 +167,7 @@
   "requirePaddingNewLinesBeforeLineComments": { "allExcept": "firstAfterCurly" },
   "requirePaddingNewLinesInObjects": true,
   "requireParenthesesAroundIIFE": null,
-  "requireSpaceAfterLineComment": { 
+  "requireSpaceAfterLineComment": {
 	"allExcept": ["#", "="]
   },
   "disallowSpaceAfterLineComment": null,

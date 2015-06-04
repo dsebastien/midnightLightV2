@@ -33,6 +33,10 @@ If you want to build from source, you need to:
 * run `$ gulp` to build the app
 * take a look at COMMANDS.md in the project for more commands you can use
 
+## Running manually
+* dev version with BrowserSync: run `$ npm run serve`
+* prod version: run `$ npm run serve-dist`
+
 ## Developping/Running on Docker
 If you're familiar with Docker then you can easily run the development or production version of this application in a Docker container.
 * install Docker (or Boot2Docker if you're on Windows)

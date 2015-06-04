@@ -3,12 +3,11 @@
 * build
   * remove dep on meyer's css reset
   * remove dep on PureCSS.io
-  * ensure that partials in app/scripts/components are taken into account by the sass/css tasks
-  * switch tasks from styles/**/* and scripts/**/* towards a more global glob to fix the above
-	* and just write towards the global folder, the paths should be respected automatically
-	* once done, load the posts scss
-	* once done, take components and core outside of the scripts folder
-	* once done, remove styles/components
+  * import _posts.scss partial
+  * take components and core outside of the scripts folder
+  * remove styles/components
+  * move styles to 'core' and 'vendor' & adapt html
+  * try to use the changed plugin to limit the overhead of allowing js/ts/styles to be anywhere in the app folder
   * integrate tsconfig.json:
 	* https://www.npmjs.com/package/gulp-typescript
 	* http://json.schemastore.org/tsconfig
@@ -31,7 +30,7 @@
   * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
   * integrate webpack or browserify?
 	* avoid <script> tags and apply DRY principle
-	* require component styles
+	* require component styles rather than importing
   * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
   * remove gulp-tsd ?
   * enforce code quality/style checks (pre-commit hooks?)
