@@ -1,9 +1,10 @@
-/*
- * Midnight Light Theme
- *
- */
+//
+// Midnight Light Theme
+//
+//
+
 #header{
-	background-color: $gray;
+	background-color: #aaa;
 }
 
 #social{
@@ -19,7 +20,8 @@
 }
 
 #blog{
-	background-color: magenta;
+	background-color: $gray;
+	color: black;
 }
 
 #about{

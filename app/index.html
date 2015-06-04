@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="A blog about software development, photography, electronics, guitar and all those other things that I love.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Midnight Light</title>
-        <!-- Add to homescreen -->
-        <link rel="manifest" href="manifest.json">
-        <!-- Fallback to homescreen for Chrome <39 on Android -->
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="application-name" content="Midnight Light">
-        <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
-        <!-- Add to homescreen for Safari on iOS -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="Midnight Light">
-        <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
-        <!-- Tile icon for Win8 (144x144 + tile color) -->
-        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-        <meta name="msapplication-TileColor" content="#656970">
-        <!-- Define the toolbar color (Android): http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android -->
-        <meta name="theme-color" content="#656970">
-        <link rel="canonical" href="http://www.dsebastien.net">
-        <!-- Stylesheets -->
-        <!-- build:css styles/vendor.min.css -->
-        <link rel="stylesheet" href="styles/vendor.css">
-        <!-- endbuild -->
-        <!-- build:css styles/bundle.min.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-        <base href="/">
-    </head>
-    <body ng-app="MidnightLight" ng-controller="MainController as mainController">
-        <div class="pure-g">
-            <header id="header" class="pure-u-4-5">
-                <h1>Midnight Light</h1>
-                <p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p>
-            </header>
-            <aside id="social" class="pure-u-1-5">
-                <h2>Social</h2>
-                <p>Links here</p>
-            </aside>
-        </div>
-        <nav class="pure-g">
-            <div id="menu" class="pure-u-4-5">
-                <h2>Menu</h2>
-                <ul>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#links">Links</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
-                <p>Links here...</p>
-            </div>
-            <aside id="tools" class="pure-u-1-5">
-                <h2>Tools</h2>
-                <p>Hey</p>
-            </aside>
-            <div ng-viewport class="pure-g"></div>
-            <section id="links" class="pure-g">
-                <div class="pure-u-1">
-                    <h2>Links</h2>
-                    <p>Show me the links</p>
-                </div>
-            </section>
-            <section id="about" class="pure-g">
-                <div class="pure-u-1">
-                    <h2>About</h2>
-                    <p>Hey there!</p>
-                </div>
-            </section>
-            <footer id="footer" class="pure-g">
-                <div class="pure-u-1">
-                    <h2>Footer</h2>
-                    <h2>&copy; dSebastien</h2>
-                </div>
-            </footer>
-            <!--
-            We can refer node_modules directly here because the 'copy' gulp task copies/caches npm dependencies in the '.tmp' folder for local testing
-            The path below is used when running off the dev version using gulp serve (i.e., thus not gulp serve:dist)
-            -->
-            <!-- build:js scripts/vendor.min.js -->
-            <script src="node_modules/jquery/dist/jquery.min.js"></script>
-            <script src="node_modules/angular/angular.js"></script>
-            <script src="node_modules/angular-animate/angular-animate.js"></script>
-            <script src="node_modules/angular-new-router/dist/router.es5.js"></script>
-            <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
-            <script src="node_modules/angular-loader/angular-loader.js"></script>
-            <!-- endbuild -->
-            <!-- build:js scripts/bundle.min.js -->
-            <script src="scripts/entrypoint/app.module.js"></script>
-            <script src="scripts/model/post.js"></script>
-            <script src="scripts/services/posts.service.js"></script>
-            <script src="scripts/controllers/main.controller.js"></script>
-            <script src="scripts/components/posts/posts.controller.js"></script>
-            <!-- endbuild -->
-            <!-- Google Analytics for dSebastien.net: UA-12207426-2 -->
-            <script>
-            /*
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-12207426-2', 'auto');
-            ga('send', 'pageview');
-            */
-            </script>
-        </body>
-    </html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="A blog about software development, photography, electronics, guitar and all those other things that I love.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Midnight Light</title>
+	<!-- Add to homescreen -->
+	<link rel="manifest" href="manifest.json">
+	<!-- Fallback to homescreen for Chrome <39 on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="Midnight Light">
+	<link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Midnight Light">
+	<link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+	<meta name="msapplication-TileColor" content="#656970">
+	<!-- Define the toolbar color (Android): http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android -->
+	<meta name="theme-color" content="#656970">
+	<link rel="canonical" href="http://www.dsebastien.net">
+
+	<!-- Stylesheets -->
+	<!-- build:css styles/vendor.min.css -->
+	<link rel="stylesheet" href="styles/vendor.css">
+	<!-- endbuild -->
+	<!-- build:css styles/bundle.min.css -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+	<base href="/">
+</head>
+<body ng-app="MidnightLight" ng-controller="MainController as mainController">
+	<div id="container" class="container">
+		<header id="header" class="box">
+			<h1>Midnight Light</h1>
+			<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p>
+		</header>
+		<aside id="social" class="box">
+			<h2>Social</h2>
+			<p>Links here</p>
+		</aside>
+		<nav id="menu" class="box">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="#blog">Blog</a></li>
+				<li><a href="#links">Links</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+			<p>Links here...</p>
+		</nav>
+		<aside id="tools" class="box">
+			<h2>Tools</h2>
+			<p>Hey</p>
+		</aside>
+		<div ng-viewport></div>
+		<section id="links" class="box">
+			<div>
+				<h2>Links</h2>
+				<p>Show me the links</p>
+			</div>
+		</section>
+		<section id="about" class="box">
+			<div>
+				<h2>About</h2>
+				<blockquote cite="http://example.com/facts">
+					<p>It's me, Mario! Although I could also just be a very long quote</p>
+				</blockquote>
+			</div>
+		</section>
+		<footer id="footer" class="box">
+			<div>
+				<h2>Footer</h2>
+				<h2>&copy; dSebastien</h2>
+			</div>
+		</footer>
+	</div>
+	<!--
+		We can refer node_modules directly here because the 'copy' gulp task copies/caches npm dependencies in the '.tmp' folder for local testing
+			The path below is used when running off the dev version using gulp serve (i.e., thus not gulp serve:dist)
+		-->
+		<!-- build:js scripts/vendor.min.js -->
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="node_modules/angular/angular.js"></script>
+		<script src="node_modules/angular-animate/angular-animate.js"></script>
+		<script src="node_modules/angular-new-router/dist/router.es5.js"></script>
+		<script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+		<script src="node_modules/angular-loader/angular-loader.js"></script>
+		<!-- endbuild -->
+		<!-- build:js scripts/bundle.min.js -->
+		<script src="scripts/core/app.bootstrap.module.js"></script>
+		<script src="scripts/core/controllers/main.controller.js"></script>
+		<script src="scripts/components/posts/post.model.js"></script>
+		<script src="scripts/components/posts/posts.service.js"></script>
+		<script src="scripts/components/posts/posts.controller.js"></script>
+		<!-- endbuild -->
+		<!-- Google Analytics for dSebastien.net: UA-12207426-2 -->
+		<script>
+		/*(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-12207426-2', 'auto');
+			ga('send', 'pageview');
+			*/
+		</script>
+	</body>
+	</html>

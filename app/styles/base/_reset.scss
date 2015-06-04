@@ -1,4 +1,102 @@
-/*
- * Reset stylesheet.
- * 
- */
+//
+// Reset stylesheet.
+// The base styling approach is to use Nicolas Gallagher's Normalize.css (http://necolas.github.io/normalize.css/) and only reset relevant elements.
+// This is why some styles below are taken from Eric Meyer's CSS reset v2 (http://meyerweb.com/eric/tools/css/reset/) rather than applying it in its entirety
+//
+
+ // ensure that the body uses (at least the full browser height)
+ // http://stackoverflow.com/questions/6654958/make-body-have-100-of-the-browser-height
+ html {
+	height: 100%;
+ }
+
+ body{
+	min-height: 100%;
+ }
+
+ // ensure we have a common line-height set as baseline
+ body {
+	line-height: 1;
+ }
+
+ // prevent these from overflowing their containers
+ img, embed, object, video {
+	max-width: 100%;
+ }
+
+ // reset HTML5 display-role for older browsers
+ article, aside, details, figcaption, figure,
+ footer, header, hgroup, menu, nav, section, main, li{
+	display: block;
+ }
+
+ // use a real/logical box model
+ // https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ // http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ html {
+	box-sizing: border-box;
+ }
+
+ *, *:before, *:after {
+	box-sizing: inherit;
+ }
+
+ // reset on common elements
+ // add/remove elements based on what's used in the project
+ // http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation
+ html, body, div, span,
+ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+ a, abbr, acronym, cite, code,
+ del, dfn, em, img, ins, kbd, q, s, samp,
+ small, strike, strong, sub, sup, tt, var,
+ b, u, i, center,
+ dl, dt, dd, ol, ul, li,
+ fieldset, form, label, legend,
+ table, caption, tbody, tfoot, thead, tr, th, td,
+ article, aside, canvas, details, embed,
+ figure, figcaption, footer, header, hgroup,
+ menu, nav, output, ruby, section, summary,
+ time, mark, audio, video  {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+ }
+
+ // make sure that headings inherit the same size as the surrounding text by default
+ // rather than having an arbitrary larger size. There'll be less to override that way
+ // http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation
+ h1, h2, h3, h4, h5, h6{
+	font-size: inherit;
+ }
+
+ // less surprises when linking to things
+ // links are styled many different ways on the same page (e.g., menus, sidebars, footers, buttons and within text).
+ // some parts of the text is light-on-dark, some is dark-on-light
+ // the browser default blue or any other color would be illegible
+ // simplifies styles by making the links inherit the color intended for the region they're in
+ a,
+ button {
+	color: inherit;
+	transition: .3s;
+ }
+ a {
+	text-decoration: none;
+ }
+
+ // make buttons consistent for starters
+ // http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation
+ button {
+	overflow: visible; // for IE
+	border: 0; // reset
+	font: inherit; // reset
+	-webkit-font-smoothing: inherit; // fix buggy inheritance
+	letter-spacing: inherit; // reset
+	background: none; // reset
+	cursor: pointer; // pointers FTW
+ }
+
+ ::-moz-focus-inner { // fix a known bug in FF that causes buttons to display larger than expected: https://bugzilla.mozilla.org/show_bug.cgi?id=140562
+	padding: 0;
+	border: 0;
+ }

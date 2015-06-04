@@ -1,13 +1,38 @@
-/*
- * Base stylesheet.
- * Should define common styles used throughout the application.
- *
- */
-// From specific to generic
-html, body {
-	height: 100%;
+//
+// Base stylesheet.
+// Should define common styles used throughout the application.
+// Should be defined from specific to generic
+//
+
+// nice looking blockquotes
+// https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
+blockquote {
+	background: #f9f9f9;
+	font-style: italic;
+	border-left: 0.8em solid #ccc;
+	margin: 1.5em 0 1.5em;
+	padding: 1em 1.5em 1em 2.5em;
+	quotes: "\201C""\201D";
+	position: relative;
+	/*box-shadow: 3px 3px 0 0 #555;*/
+}
+blockquote:before, blockquote:after {
+	color: #ccc;
+	font-size: 4em;
+	line-height: 0.1; // unit-less: https://css-tricks.com/almanac/properties/l/line-height/
+	position: absolute;
+}
+blockquote:before {
+	content: open-quote;
+	left: 5px;
+	top: 0.6em;
 }
 
-img, embed, object, video {
-	max-width: 100%; // prevent these from overflowing their containers
+blockquote:after {
+	content: close-quote;
+	bottom: 0;
+}
+
+blockquote p{
+	display: inline;
 }

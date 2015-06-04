@@ -1,4 +1,16 @@
-/*
- * Midnight Light layout
- *
- */
+//
+// Midnight Light layout
+//
+//
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.box {
+	width: 100%;
+}
+
+// flexbox order of the element

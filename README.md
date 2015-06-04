@@ -12,7 +12,8 @@ For more background head over to my blog:
 Check out the current [TODO list](TODO.md)
 
 ## Features
-* awesome build based on Gulp, a gazillion plugins and some automagic stuff
+* mobile first and responsive design
+* awesome build based on Gulp, a ton of automagic stuff
 * all the yet-to-be-implemented features :)
 
 ## Installation
@@ -78,7 +79,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-tslint: Linter for TypeScript code: https://www.npmjs.com/package/gulp-tslint
 * gulp-typescript: TypeScript transpiler plugin for gulp: https://www.npmjs.com/package/gulp-typescript
 * gulp-babel: ES6 to ES5 transpiler plugin for gulp: https://www.npmjs.com/package/gulp-babel
-* gulp-jscs: JavaScript code style checker plugin for gulp: https://www.npmjs.com/package/gulp-jscs 
+* gulp-jscs: JavaScript code style checker plugin for gulp: https://www.npmjs.com/package/gulp-jscs
 * gulp-jscs-stylish: Stylish reporter for gulp-jscs: https://www.npmjs.com/package/gulp-jscs-stylish
 * tsd: TypeScript Definition manager: https://www.npmjs.com/package/tsd
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
@@ -88,6 +89,8 @@ If you're familiar with Docker then you can easily run the development or produc
 * run-sequence: run a series of dependent Gulp tasks in order: https://www.npmjs.com/package/run-sequence
 
 ## Runtime dependencies
+* node-reset-scss: Eric Meyer's CSS reset: https://www.npmjs.com/package/node-reset-scss
+* normalize.css: Nicolas Gallagher's Normalize CSS (alternative to CSS resets): https://www.npmjs.com/package/normalize.css
 * purecss: CSS framework: https://www.npmjs.com/package/purecss
 * jquery
 * angular (angular, angular-animate, angular-new-router, angular-loader, angular-mocks)

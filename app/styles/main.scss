@@ -1,8 +1,7 @@
-/*
- * Main stylesheet.
- * Should import all the other stylesheets
- *
- */
+//
+// Main stylesheet.
+// Should import all the other stylesheets
+//
 
 // Variables, functions and mixins
 @import "base/variables";
@@ -10,11 +9,11 @@
 @import "base/responsive";
 
 // Base/generic style rules
-@import "base/fonts";
 @import "base/reset";
-
-@import "layout/layout";
+@import "base/fonts";
+@import "base/typography";
 @import "base/base-styles";
+@import "layout/layout";
 
 // Layout
 @import "layout/theme";
