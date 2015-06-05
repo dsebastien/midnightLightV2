@@ -1,24 +1,24 @@
 {
-  "version": "v4",
-  "repo": "borisyankov/DefinitelyTyped",
-  "ref": "master",
-  "path": "ts-typings",
-  "bundle": "ts-typings/tsd.d.ts",
-  "installed": {
-    "angularjs/angular.d.ts": {
-      "commit": "7576bf3119c0430aeb32415550bb9f1ddecf8897"
-    },
-    "angularjs/angular-sanitize.d.ts": {
-      "commit": "7576bf3119c0430aeb32415550bb9f1ddecf8897"
-    },
-    "angularjs/angular-animate.d.ts": {
-      "commit": "7576bf3119c0430aeb32415550bb9f1ddecf8897"
-    },
-    "jquery/jquery.d.ts": {
-      "commit": "dd393c9e0f182009a65e9b9ab411e39d8e5a64b8"
-    },
-    "lodash/lodash.d.ts": {
-      "commit": "78ca9de07e5634c25a9e5f7817053e79a8406c96"
-    }
-  }
+	"version": "v4",
+	"repo": "borisyankov/DefinitelyTyped",
+	"ref": "master",
+	"path": "ts-typings",
+	"bundle": "ts-typings/tsd.d.ts",
+	"installed": {
+		"angularjs/angular.d.ts": {
+			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
+		},
+		"angularjs/angular-sanitize.d.ts": {
+			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
+		},
+		"angularjs/angular-animate.d.ts": {
+			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
+		},
+		"jquery/jquery.d.ts": {
+			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
+		},
+		"lodash/lodash.d.ts": {
+			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
+		}
+	}
 }

@@ -1,3 +1,4 @@
+
 'use strict';
 
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
@@ -8,7 +9,7 @@ var reload = browserSync.reload;
 var config = require('../config');
 var utils = require('../utils');
 
-gulp.task('check-js-quality', 'Check JavaScript code quality using JSHint', function () {
+gulp.task('check-js-quality', 'Check JavaScript code quality using JSHint', function(){
 	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)
 			config.javascript.src
 	)
@@ -18,8 +19,8 @@ gulp.task('check-js-quality', 'Check JavaScript code quality using JSHint', func
 
 		// Force BrowserSync reload
 			.pipe(reload({
-				stream: true,
-				once: true
+				stream : true,
+				once   : true
 			}))
 
 		// Run JSHint

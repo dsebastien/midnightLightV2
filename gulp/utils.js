@@ -9,13 +9,14 @@ var config = require('./config');
 
 // display errors nicely and avoid having errors breaking tasks/watch
 // reference: https://github.com/mikaelbr/gulp-notify/issues/81
-var reportError = function (error) {
+var reportError = function(error){
 	var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
 	$.notify({
-		title: 'Task Failed [' + error.plugin + ']',
-		message: lineNumber + 'See console.',
-		sound: true
+		title   : 'Task Failed [' + error.plugin + ']',
+		message : lineNumber + 'See console.',
+		sound   : true
+
 		// the version below probably works on OSX
 		//sound: 'Sosumi' // See: https://github.com/mikaelbr/node-notifier#all-notification-options-with-their-defaults
 	}).write(error);
@@ -35,19 +36,19 @@ var reportError = function (error) {
 	report += chalk('TASK:') + ' [' + error.plugin + ']\n';
 	report += chalk('ISSUE:') + ' ' + error.message + '\n';
 
-	if(error.lineNumber) {
+	if(error.lineNumber){
 		report += chalk('LINE:') + ' ' + error.lineNumber + '\n';
 	}
 
-	if(error.fileName) {
+	if(error.fileName){
 		report += chalk('FILE:') + ' ' + error.fileName + '\n';
 	}
 
 	console.error(report);
 
-	if(config.exitOnError) {
+	if(config.exitOnError){
 		process.exit(1);
-	} else {
+	} else{
 		// Prevent the 'watch' task from stopping
 		this.emit('end');
 	}
@@ -55,21 +56,21 @@ var reportError = function (error) {
 
 // easily integrate plumber invocation
 // reference: https://gist.github.com/floatdrop/8269868
-var plumbedSrc = function () {
+var plumbedSrc = function(){
 	return gulp.src.apply(gulp, arguments)
 			.pipe($.plumber({
-				errorHandler: reportError
+				errorHandler : reportError
 			}));
 };
 
 // utility function to exclude files from globs
 var not = '!';
-var exclude = function (providedPath) {
+var exclude = function(providedPath){
 	return not + providedPath;
 };
 
 module.exports = {
-	'exclude': exclude,
+	'exclude'     : exclude,
 	'reportError' : reportError,
-	'plumbedSrc': plumbedSrc
+	'plumbedSrc'  : plumbedSrc
 };

@@ -6,21 +6,20 @@ var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-lo
 var config = require('../config');
 var utils = require('../utils');
 
-gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separately', function () {
+gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separately', function(){
 	return utils.plumbedSrc(
-			config.copy.src
-			, {
-				dot: true
+			config.copy.src , {
+				dot : true
 			})
 
 		// Display the files in the stream
 		//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
 		// Copy
-			.pipe(gulp.dest(config.copy.dest))
+		.pipe(gulp.dest(config.copy.dest))
 
 		// Task result
 			.pipe($.size({
-				title: 'copy'
+				title : 'copy'
 			}));
 });

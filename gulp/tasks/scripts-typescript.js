@@ -21,8 +21,8 @@ gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references
 
 	return tsResult.js
 			.pipe($.sourcemaps.write({ // use '.' to write the sourcemap to a separate file in the same dir
-				includeContent: false,
-				sourceRoot: '../'
+				includeContent: false, // alternative: include the contents and remove sourceRoot. Avoids issues but prevents from editing the sources directly in the browser
+				sourceRoot: '/' // use an absolute path because we have scripts in different subpaths
 			}))
 
 		// Output files

@@ -1,11 +1,6 @@
 * check out susy + breakpoint
 * create responsive grid
 * build
-  * remove dep on meyer's css reset
-  * remove dep on PureCSS.io
-  * import _posts.scss partial
-  * take components and core outside of the scripts folder
-  * remove styles/components
   * move styles to 'core' and 'vendor' & adapt html
   * try to use the changed plugin to limit the overhead of allowing js/ts/styles to be anywhere in the app folder
   * integrate tsconfig.json:
@@ -26,15 +21,31 @@
   * split gulpfile https://github.com/greypants/gulp-starter/blob/2.0/gulpfile.js/index.js
   * TSD: add angular new router to tsd.json once the types are availble
   * TSD: update the Angular definitions once the ones for 1.4.x are available
+  * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
   * improve JS code style config (not great with object literals)
   * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
   * integrate webpack or browserify?
 	* avoid <script> tags and apply DRY principle
 	* require component styles rather than importing
   * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
-  * remove gulp-tsd ?
   * enforce code quality/style checks (pre-commit hooks?)
   * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
+  * add a debug boolean config param to determine whether to display stream contents or not
+  * add scss-lint
+	* https://www.npmjs.com/package/gulp-scss-lint
+	* https://github.com/brigade/scss-lint#configuration
+	* https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint
+	* q: plugin for webstorm?
+	* add to npm run serve
+  * add css-lint
+	* https://www.npmjs.com/package/gulp-csslint
+	* rules: https://github.com/CSSLint/csslint/wiki/Rules-by-ID
+	* example: https://github.com/twbs/bootstrap/blob/master/less/.csslintrc
+	* https://github.com/SublimeLinter/SublimeLinter-csslint
+	* q: plugin for webstorm?
+	* add to npm run serve
+  * js/ts formatting in webstorm?
+  * npm run serve: add clean
 * css
   * ensure that tap targets are big enough
 	* (nav a, button -> min-width: 48px, max-width: 48px)

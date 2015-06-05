@@ -22,7 +22,7 @@
 		"placeOpenBraceOnNewLineForControlBlocks": false
 	},
 	"filesGlob": [
-		"./scripts/**/*.ts",
+		"./**/*.ts",
 		"!./node_modules/**/*.ts"
 	],
 	"files": []

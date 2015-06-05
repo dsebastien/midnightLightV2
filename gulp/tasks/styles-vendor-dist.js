@@ -6,7 +6,7 @@ var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-lo
 var config = require('../config');
 var utils = require('../utils');
 
-gulp.task('styles-vendor-dist', 'Optimize and minimize vendor stylesheets for production', function () {
+gulp.task('styles-vendor-dist', 'Optimize and minimize vendor stylesheets for production', function(){
 	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)([
 			config.styles.srcVendorOnly
 	)
@@ -48,6 +48,6 @@ gulp.task('styles-vendor-dist', 'Optimize and minimize vendor stylesheets for pr
 
 		// Task result
 			.pipe($.size({
-				title: 'styles-vendor-dist'
+				title : 'styles-vendor-dist'
 			}));
 });

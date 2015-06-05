@@ -6,7 +6,7 @@
   },
   "validateIndentation": {
 	"value": "\t",
-	"includeEmptyLines": true
+	"includeEmptyLines": false
   },
   "validateLineBreaks": "LF",
   "validateNewlineAfterArrayElements": {
@@ -19,7 +19,7 @@
   "requireSemicolons": true,
   "maximumLineLength": 120,
   "disallowTrailingComma": true,
-  "disallowTrailingWhitespace": true,
+  "disallowTrailingWhitespace": null,
   "disallowDanglingUnderscores": { "allExcept": ["_exception"] },
   "disallowEmptyBlocks": null,
   "disallowImplicitTypeConversion": null,
@@ -27,14 +27,13 @@
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineBreaks": true,
-  "disallowMultipleSpaces": true,
+  "disallowMultipleSpaces": null,
   "disallowNamedUnassignedFunctions": true,
   "disallowNewlineBeforeBlockStatements": true,
   "requirePaddingNewLinesAfterBlocks": {
 	"allExcept": ["inCallExpressions", "inArrayExpressions", "inProperties"]
   },
   "disallowPaddingNewlinesInBlocks": true,
-  "disallowQuotedKeysInObjects": true,
   "requireSpaceAfterBinaryOperators": [
 	"=",
 	",",
@@ -68,7 +67,6 @@
 	"try",
 	"catch"
   ],
-  "disallowSpaceAfterObjectKeys": true,
   "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
   "disallowSpaceBeforeBlockStatements": true,
   "disallowSpaceBeforeKeywords": null,
@@ -109,7 +107,6 @@
   },
   "requireSpacesInsideParentheses": null,
   "requireYodaConditions": null,
-  "requireAlignedObjectValues": "ignoreFunction",
   "requireAnonymousFunctions": true,
   "requireBlocksOnNewline": true,
   "requireCamelCaseOrUpperCaseIdentifiers": true,
@@ -165,18 +162,18 @@
 	"function"
   ],
   "requirePaddingNewLinesBeforeLineComments": { "allExcept": "firstAfterCurly" },
-  "requirePaddingNewLinesInObjects": true,
   "requireParenthesesAroundIIFE": null,
-  "requireSpaceAfterLineComment": {
-	"allExcept": ["#", "="]
-  },
-  "disallowSpaceAfterLineComment": null,
-  "requireSpaceBeforeObjectValues": true,
+  "requireSpaceAfterLineComment": null,
   "requireSpacesInConditionalExpression": {
 	"afterTest": true,
 	"beforeConsequent": true,
 	"afterConsequent": true,
 	"beforeAlternate": true
   },
-  "requireSpacesInForStatement": true
+  "requireSpacesInForStatement": true,
+  "requirePaddingNewLinesInObjects": true,
+  "disallowQuotedKeysInObjects": true,
+  "requireAlignedObjectValues": "ignoreFunction",
+  "disallowSpaceAfterObjectKeys": null,
+  "requireSpaceBeforeObjectValues": true
 }

@@ -1,5 +1,5 @@
-///<reference path="../../../ts-typings/tsd.d.ts" />
-///<reference path="../../../ts-typings/typescriptApp.d.ts" />
+///<reference path="../../ts-typings/tsd.d.ts" />
+///<reference path="../../ts-typings/typescriptApp.d.ts" />
 
 ((): void => {
 	'use strict';
@@ -24,7 +24,7 @@
 		$componentLoaderProvider.setTemplateMapping(function (name) {
 			var dashName = dashCase(name);
 			// customized to a different base path
-			return './scripts/components/' + dashName + '/' + dashName + '.template.html';
+			return './components/' + dashName + '/' + dashName + '.template.html';
 		});
 	}]);
 

@@ -1,1 +1,0 @@
-This folder should contain stylesheets for specific components

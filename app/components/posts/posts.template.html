@@ -4,10 +4,10 @@
 		<h1 ng-bind-html="post.title"></h1>
 		<section class="post-meta">
 			<ul>
-				<li class="author"><a href="{{ post.authorUrl }}">{{ post.author }}</a></li>
+				<li class="post-author"><a href="{{ post.authorUrl }}">{{ post.author }}</a></li>
 			</ul>
 		</section>
-		<section class="post-contents" ng-bind-html="post.content">
+		<section class="post-content" ng-bind-html="post.content">
 		</section>
 	</article>
 </div>

@@ -43,6 +43,9 @@ If you're familiar with Docker then you can easily run the development or produc
 * for the production version, run ./runOnDocker.sh
 * for the development version, run ./ronDevOnDocker.sh
 
+## Updating the TypeScript definitions
+* run `$ npm run tsd-update`. This will update everything in tsd.json to the head version of the DefinitelyTyped repository
+
 ## Build dependencies
 * apache-server-configs: base Apache HTTP Server config (allows/configures CORS, adds the X-UA-Compatible header, defines all media types correctly such as SVG, ...): https://www.npmjs.com/package/apache-server-configs
 * browser-sync: live CSS reload & browser syncing: https://www.npmjs.com/package/browser-sync

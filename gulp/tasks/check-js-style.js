@@ -8,18 +8,19 @@ var reload = browserSync.reload;
 var config = require('../config');
 var utils = require('../utils');
 
-gulp.task('check-js-style', 'Enforce JavaScript code style', function () {
+gulp.task('check-js-style', 'Enforce JavaScript code style', function(){
 	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)
 			config.javascript.src
 	)
+
 		// Display the files in the stream
 		//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
 		// Check JS code style (uses .jscsrc)
 			.pipe(
 			$.jscs({
-				esnext: true, // seems broken: https://github.com/jscs-dev/gulp-jscs/issues/69
-				fix: false
+				esnext : true, // seems broken: https://github.com/jscs-dev/gulp-jscs/issues/69
+				fix    : false
 			})
 	)
 			.pipe($.jscsStylish()) // log style errors
@@ -29,6 +30,6 @@ gulp.task('check-js-style', 'Enforce JavaScript code style', function () {
 
 		// Task result
 			.pipe($.size({
-				title: 'check-js-style'
+				title : 'check-js-style'
 			}));
 });

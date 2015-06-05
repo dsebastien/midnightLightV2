@@ -8,10 +8,10 @@ var utils = require('../utils');
 
 var gulpNpmFiles = require('gulp-npm-files');
 
-gulp.task('copy-npm-dependencies', 'Copy NPM dependencies to the temp build folder (useful for scripts and stylesheets during development)', function () {
+gulp.task('copy-npm-dependencies', 'Copy NPM dependencies to the temp build folder (useful for scripts and stylesheets during development)', function(){
 	return utils.plumbedSrc(
 			gulpNpmFiles(), {
-				base: './'
+				base : './'
 			}
 	)
 
@@ -23,6 +23,6 @@ gulp.task('copy-npm-dependencies', 'Copy NPM dependencies to the temp build fold
 
 		// Task result
 			.pipe($.size({
-				title: 'copy-npm-dependencies'
+				title : 'copy-npm-dependencies'
 			}));
 });
