@@ -51,6 +51,7 @@
   * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 	* dynamically add scripts/stylesheets in the HTML without having to add script tags manually
 * css
+  * reset: apply margin 0 & padding 0 to all elements (?)
   * ensure that font-size defined at html is 16px
   * ensure that the line-height is set to 1.2em (browser default)
   * ensure that tap targets are big enough
