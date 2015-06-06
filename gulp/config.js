@@ -54,7 +54,6 @@ var files = {
 var exitOnError = false; // whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
 
 var javascript = {
-	// finalJsBundleFilename : 'bundle.min.js',
 	src  : [
 	folders.app + globs.scripts.javascript
 	],

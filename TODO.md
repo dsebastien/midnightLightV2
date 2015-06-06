@@ -1,36 +1,17 @@
 * check out susy + breakpoint
 * create responsive grid
+  * short & wide: tighten up and/or move things up (e.g., tablet in landscape)
+  * narrow & tall: reposition things off canvas or move things down
+  * enlarge font size if screen wider AND more vertical space
 * build
-  * move styles to 'core' and 'vendor' & adapt html
+  * add ESlint? (also in sublime): http://eslint.org/
   * try to use the changed plugin to limit the overhead of allowing js/ts/styles to be anywhere in the app folder
   * integrate tsconfig.json:
 	* https://www.npmjs.com/package/gulp-typescript
 	* http://json.schemastore.org/tsconfig
 	* https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
 	* https://github.com/ivogabe/gulp-typescript/pull/99super
-  * prepare build for testing
-	* karma, mocha, jasmine for unit testing
-	  * https://www.npmjs.com/package/gulp-karma
-	  * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
-	* protractor for functional tests
-  * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
   * version css & js code (add timestamp)
-  * optimize/cache: changed(...)super
-  * externalize build config: https://github.com/gulpjs/gulp/blob/master/docs/recipes/using-external-config-file.mdsuper
-  * add ESlint? (also in sublime): http://eslint.org/
-  * split gulpfile https://github.com/greypants/gulp-starter/blob/2.0/gulpfile.js/index.js
-  * TSD: add angular new router to tsd.json once the types are availble
-  * TSD: update the Angular definitions once the ones for 1.4.x are available
-  * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
-  * improve JS code style config (not great with object literals)
-  * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
-  * integrate webpack or browserify?
-	* avoid <script> tags and apply DRY principle
-	* require component styles rather than importing
-  * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
-  * enforce code quality/style checks (pre-commit hooks?)
-  * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
-  * add a debug boolean config param to determine whether to display stream contents or not
   * add scss-lint
 	* https://www.npmjs.com/package/gulp-scss-lint
 	* https://github.com/brigade/scss-lint#configuration
@@ -44,9 +25,34 @@
 	* https://github.com/SublimeLinter/SublimeLinter-csslint
 	* q: plugin for webstorm?
 	* add to npm run serve
+  * prepare build for testing
+	* karma, mocha, jasmine for unit testing
+	  * https://www.npmjs.com/package/gulp-karma
+	  * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
+	  * http://jasmine.github.io/2.3/introduction.html
+	  * https://github.com/jasmine/jasmine
+	  * https://www.npmjs.com/package/gulp-jasmine
+	* protractor for functional tests
+  * optimize/cache: changed(...)
+  * TSD: add angular new router to tsd.json once the types are availble
+  * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
+  * improve JS code style config (not great with object literals)
+  * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
+  * integrate webpack or browserify?
+	* avoid <script> tags and apply DRY principle
+	* require component styles rather than importing
+  * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
+  * add a debug boolean config param to determine whether to display stream contents or not
+  * enforce code quality/style checks (pre-commit hooks?)
   * js/ts formatting in webstorm?
   * npm run serve: add clean
+  * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
+  * add Travis (?)
+  * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
+	* dynamically add scripts/stylesheets in the HTML without having to add script tags manually
 * css
+  * ensure that font-size defined at html is 16px
+  * ensure that the line-height is set to 1.2em (browser default)
   * ensure that tap targets are big enough
 	* (nav a, button -> min-width: 48px, max-width: 48px)
 	* padding to a tags (?)
@@ -74,7 +80,6 @@
 	* add print preview https://github.com/etimbo/jquery-print-preview-plugin
 * html
   * use tabindex on all main elements (sections, posts, etc)
-  * add link to WP admin section (footer)
   * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
   * add rss feed link <link rel="alternate" type="application/rss+xml" title="..." href="...">
   * add <link rel="publisher" href="...g+?" />
@@ -123,6 +128,7 @@
 * testing
   * add tests
 * research
+  * review pure.css code (e.g., find useful classes, responsive images, hiding elements, ...)
   * check out data URIs (include in build?)
   * check out applicache cache: http://diveintohtml5.info/offline.html & http://alistapart.com/article/application-cache-is-a-douchebag
   * user-select: none (prevent selection of some elements)
@@ -133,6 +139,8 @@
   * how to generate sitemap?
 	* keep WP plugin or make the app independent (i.e., specific route in app to dynamically generate the sitemap)
   * check latest way to incorporate touch icons for iOS and chrome: https://mathiasbynens.be/notes/touch-icons
+  * add touch/pointer events support (e.g., double tap?)
+  * add keyboard shortcuts
 * functional
   * integrate authentication to be able to post comments, edit posts, etc
   * handle 404 gracefully
@@ -148,26 +156,33 @@
   * markdown support: if posts are written using markdown on the server, they should display correctly on the client
 * ui & behavior
   * loading overlay while fetching data (e.g., when posts are loading)
- example: https://css-tricks.com/html5-progress-element/
+	* example: https://css-tricks.com/html5-progress-element/
   * header: something like http://benfrain.com/
+	* social: links to Fb, Tw, G+, Li
   * reading progress bar under header
   * menu bar
 	* search box
-	* social: links to Fb, Tw, G+, Li
 	* hide when scrolling down & show small logo (text only to limit height) (like linked in)
 	* if width too small => put links in a dropdown
 	* use media queries to act as toggles for UI sections (toggle + focus on if visible)
 	* same angular controller for different elements that present the same data differently
   * posts & comments
+	* title
+	* author + image
+	* date
 	* badges
 	* tags
-  * post comment
+	* comments
+	  * not displayed by default (but count visible)
+	  * button bar to display posts (5?) then again the button bar to load more
+	  * support disqus
+	  * support gravatar (?)
   * archives (list years/months posts)
   * sidebar
 	* hideable (automatic if width too small)
 	* see satellite at demo.wordpress.com
 	* tools
-	  * social share
+	  * social share buttons: https://gauntface.com/styleguide/view/socialbtns/
 	  * local translate (using gtranslate)
 	  * increase/reduce size
 	  * chat (?)
@@ -181,6 +196,9 @@
 	* show latest Sharlii links (10?)
 	* show ellipsis for next ones (infinite scroll)
 	* provide search
+  * footer
+	* back to top link
+	* add link to WP admin section (footer)
 * UI sugar
   * animations / transitions
   * infinite scrolling

@@ -6,12 +6,12 @@ var browserSync = require('browser-sync');
 
 var config = require('../config');
 
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', function () {
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', function(){
 	runSequence('prepare-serve', startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
 });
 
-gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [ 'ts-lint', 'check-js-style', 'check-js-quality' ], function (callback) {
-	return runSequence('copy-npm-dependencies',[
+gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [ 'ts-lint', 'check-js-style', 'check-js-quality' ], function(callback){
+	return runSequence('copy-npm-dependencies', [
 		'gen-ts-refs',
 		'scripts-javascript',
 		'scripts-typescript',
@@ -22,10 +22,10 @@ gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve 
 
 var startBrowserSync = function(){
 	browserSync({ // http://www.browsersync.io/docs/options/
-		notify: false,
+		notify    : false,
 
 		// Customize the BrowserSync console logging prefix
-		logPrefix: 'MDL',
+		logPrefix : 'MDL',
 
 		// Run as an https by uncommenting 'https: true'
 		// Note: this uses an unsigned certificate which on first access
@@ -36,7 +36,7 @@ var startBrowserSync = function(){
 		//  forms: false,
 		//  scroll: false
 		// },
-		server: config.webServerFolders.dev
+		server    : config.webServerFolders.dev
 	});
 
 	gulp.watch(config.html.src, browserSync.reload); // html changes will force a reload

@@ -6,25 +6,28 @@ var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-lo
 var config = require('../config');
 var utils = require('../utils');
 
-gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from all application *.ts files', function () {
+gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from all application *.ts files', function(){
 	var sources = utils.plumbedSrc(
 			config.typescript.srcAppOnly,
 			{
-				read: false
+				read : false
 			}
 	);
 
+	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}));
 
 	return utils.plumbedSrc(config.files.appTypeScriptReferences)
-			.pipe($.inject(sources, {
-				starttag: '//{',
-				endtag: '//}',
-				transform: function (filepath) {
-					return '/// <reference path="..' + filepath + '" />';
-				}
-			}))
-
+		.pipe($.inject(sources, {
+			starttag: '//{',
+			endtag: '//}',
+			transform: function(filepath){
+			return '/// <reference path="..' + filepath + '" />';
+		}
+		}))
+		
+		// Display the files in the stream
 		//.pipe($.debug({title: 'Stream contents:', minimal: true}))
-			.pipe(gulp.dest(config.folders.typings));
+	
+		.pipe(gulp.dest(config.folders.typings));
 });
