@@ -8,7 +8,7 @@ import utils from '../utils';
 
 gulp.task('html', 'Optimize HTML and assets', () =>{
 	var assets = $.useref.assets({
-		searchPath : '{' + config.folders.temp + ',' + config.folders.app + '}'
+		searchPath: '{' + config.folders.temp + ',' + config.folders.app + '}'
 	});
 
 	return utils.plumbedSrc(
@@ -25,7 +25,7 @@ gulp.task('html', 'Optimize HTML and assets', () =>{
 
 	.pipe($.if(config.files.any + config.extensions.js, $.stripDebug())) // remove console/debug statements
 	.pipe($.if(config.files.any + config.extensions.js, $.uglify({
-		preserveComments : 'some'
+		preserveComments: 'some'
 	}))) // keep comments that have a '!': https://github.com/gruntjs/grunt-contrib-uglify#preservecomments
 
 	.pipe(assets.restore())
@@ -39,6 +39,6 @@ gulp.task('html', 'Optimize HTML and assets', () =>{
 
 	// Task result
 	.pipe($.size({
-		title : 'html'
+		title: 'html'
 	}));
 });

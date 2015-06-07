@@ -11,17 +11,20 @@
  Principle taken from gulp-starter: https://github.com/greypants/gulp-starter
  */
 
-'use strict';
+ 'use strict';
+
 import requireDir from 'require-dir';
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 import runSequence from 'run-sequence';
 
 // Load all tasks in gulp/tasks, including subfolders
-requireDir('./gulp/tasks', { recurse: true });
+requireDir('./gulp/tasks', {
+	recurse: true
+});
 
 // Default task
-gulp.task('default', 'Build production files', [ 'prepare-default' ], (callback) => {
-	return runSequence('copy-npm-dependencies', [
+gulp.task('default', 'Build production files', [ 'prepare-default' ], (callback) =>{
+	return runSequence('copy-npm-dependencies', 			[
 		'styles-vendor-dist',
 		'styles-dist',
 		'html',
@@ -29,13 +32,19 @@ gulp.task('default', 'Build production files', [ 'prepare-default' ], (callback)
 		'fonts',
 		'copy',
 		'validate-package-json'
-	], callback);
+		], callback);
 });
 
-gulp.task('prepare-default', 'Do all the necessary preparatory work for the default task', [ 'clean', 'ts-lint', 'check-js-style', 'check-js-quality' ], () => {
-	return runSequence([
-		'gen-ts-refs',
-		'scripts-typescript',
-		'scripts-javascript'
-	]);
-});
+gulp.task('prepare-default', 'Do all the necessary preparatory work for the default task', [
+		'clean',
+		'ts-lint',
+		'check-js-style',
+		'check-js-quality'
+	], () =>{
+		return runSequence([
+			'gen-ts-refs',
+			'scripts-typescript',
+			'scripts-javascript'
+		]);
+	}
+);

@@ -13,7 +13,7 @@ Check out the current [TODO list](TODO.md)
 
 ## Features
 * mobile first and responsive design
-* awesome build based on Gulp, a ton of automagic stuff
+* awesome build based on gulp, a ton of automagic stuff
 * all the yet-to-be-implemented features :)
 
 ## Installation
@@ -94,7 +94,8 @@ If you're familiar with Docker then you can easily run the development or produc
 * opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
-* run-sequence: run a series of dependent Gulp tasks in order: https://www.npmjs.com/package/run-sequence
+* run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
+* babel: ES6 to ES5 transpiler; used for the gulp build
 
 ## Runtime dependencies
 * node-reset-scss: Eric Meyer's CSS reset: https://www.npmjs.com/package/node-reset-scss
@@ -119,7 +120,7 @@ The project includes multiple configuration files. Here's some information about
   * more information: http://jshint.com/docs/)
 * bower.json and .bowerrc: bower's configuration file (just in case bower is later used to manage the project's dependencies). For now I'm using NPM and am satisfied with it (more information: http://bower.io/)
 * Dockerfile and DockerfileDev: Docker configuration files used to describe how Docker images should be created for this project (more information: https://www.docker.com/ and http://docs.docker.com/reference/builder/)
-* gulpfile.js: Gulp's configuration file. This is where the build magic happens (more information: http://gulpjs.com/)
+* gulpfile.js: gulp's configuration file. This is where the build magic happens (more information: http://gulpjs.com/)
 * package.Json: NPM's configuration file. This is where all dependencies are defined: project ones under 'dependencies' and build-related ones under 'devDependencies' (more information: https://docs.npmjs.com/files/package.json)
 * runOnDocker.sh and runDevOnDocker.sh: build scripts that create/run Docker images
 * travis.yml: Travis CI configuration files (more information: http://docs.travis-ci.com/user/build-configuration/)

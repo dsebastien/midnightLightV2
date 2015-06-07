@@ -17,9 +17,9 @@
   "excludeFiles": ["node_modules/**"],
   "fileExtensions": [".js"],
   "requireSemicolons": true,
-  "maximumLineLength": 120,
+  "maximumLineLength": null,
   "disallowTrailingComma": true,
-  "disallowTrailingWhitespace": null,
+  "disallowTrailingWhitespace": true,
   "disallowDanglingUnderscores": { "allExcept": ["_exception"] },
   "disallowEmptyBlocks": null,
   "disallowImplicitTypeConversion": null,
@@ -88,9 +88,9 @@
 	"beforeOpeningRoundBrace": true,
 	"beforeOpeningCurlyBrace": true
   },
+  "disallowSpacesInsideParentheses": true,
   "disallowSpacesInFunction": {
-	"beforeOpeningRoundBrace": true,
-	"beforeOpeningCurlyBrace": true
+	"beforeOpeningRoundBrace": true
   },
   "disallowSpacesInNamedFunctionExpression": {
 	"beforeOpeningRoundBrace": true,
@@ -112,17 +112,7 @@
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCapitalizedConstructors": true,
   "requireCommaBeforeLineBreak": true,
-  "requireCurlyBraces": [
-	"if",
-	"else",
-	"for",
-	"while",
-	"do",
-	"try",
-	"catch",
-	"case",
-	"default"
-  ],
+  "requireCurlyBraces": true,
   "requireDotNotation": true,
   "requireFunctionDeclarations": null,
   "requireLineBreakAfterVariableAssignment": true,
@@ -173,7 +163,7 @@
   "requireSpacesInForStatement": true,
   "requirePaddingNewLinesInObjects": true,
   "disallowQuotedKeysInObjects": true,
-  "requireAlignedObjectValues": "ignoreFunction",
-  "disallowSpaceAfterObjectKeys": null,
+  "requireAlignedObjectValues": null,
+  "disallowSpaceAfterObjectKeys": true,
   "requireSpaceBeforeObjectValues": true
 }

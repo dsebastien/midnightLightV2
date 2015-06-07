@@ -7,7 +7,7 @@ import config from '../config';
 import utils from '../utils';
 
 gulp.task('styles-dist', 'Optimize and minimize stylesheets for production', () =>{
-	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)
+	return utils.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
 			config.styles.srcWithoutVendor
 	)
 
@@ -47,6 +47,6 @@ gulp.task('styles-dist', 'Optimize and minimize stylesheets for production', () 
 
 	// Task result
 	.pipe($.size({
-		title : 'styles-dist'
+		title: 'styles-dist'
 	}));
 });

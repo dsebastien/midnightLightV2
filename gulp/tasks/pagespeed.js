@@ -9,7 +9,7 @@ var packageJSON = require('../../' + config.files.packageJSON);
 gulp.task('pagespeed', 'Run PageSpeed Insights', (cb) =>{
 	// Update the below URL to the public URL of your site
 	pagespeed.output(packageJSON.homepage, {
-		strategy : 'mobile' // desktop
+		strategy: 'mobile' // desktop
 
 		// Use the PageSpeed Insights free (no API key) tier.
 		// Use a Google Developer API key if you have one: http://goo.gl/RkN0vE

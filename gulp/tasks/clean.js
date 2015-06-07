@@ -12,7 +12,7 @@ gulp.task('clean', 'Clean output directories',
 			config.folders.dist + config.globs.any,
 			utils.exclude(config.folders.dist + '/.git')
 		], {
-		dot : true
+			dot: true
 		}
 	)
 );

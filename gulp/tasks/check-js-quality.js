@@ -8,7 +8,7 @@ import config from '../config';
 import utils from '../utils';
 
 gulp.task('check-js-quality', 'Check JavaScript code quality using JSHint', () =>{
-	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)
+	return utils.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
 			config.javascript.src
 	)
 
@@ -17,8 +17,8 @@ gulp.task('check-js-quality', 'Check JavaScript code quality using JSHint', () =
 
 	// Force BrowserSync reload
 	.pipe(browserSync.reload({
-		stream : true,
-		once   : true
+		stream: true,
+		once: true
 	}))
 
 	// Run JSHint

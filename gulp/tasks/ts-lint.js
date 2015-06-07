@@ -2,13 +2,15 @@
 
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+
+
 import browserSync from 'browser-sync';
 
 import config from '../config';
 import utils from '../utils';
 
 gulp.task('ts-lint', 'Lint TypeScript code', () =>{
-	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)
+	return utils.plumbedSrc(// handle errors nicely (i.e., without breaking watch)
 			config.typescript.srcAppOnly // only the application's code needs to be checked
 	)
 

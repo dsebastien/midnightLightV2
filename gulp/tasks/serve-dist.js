@@ -8,14 +8,14 @@ import config from '../config';
 
 var startBrowserSync = () =>{
 	browserSync({
-		notify    : false,
-		logPrefix : 'MDL',
+		notify: false,
+		logPrefix: 'MDL',
 
 		// Run as an https by uncommenting 'https: true'
 		// Note: this uses an unsigned certificate which on first access
-		//       will present a certificate warning in the browser.
+		// will present a certificate warning in the browser.
 		// https: true,
-		server    : config.webServerFolders.dist
+		server: config.webServerFolders.dist
 	});
 };
 

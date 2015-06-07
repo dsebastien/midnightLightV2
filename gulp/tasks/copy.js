@@ -9,7 +9,7 @@ import utils from '../utils';
 gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separately', () =>{
 	return utils.plumbedSrc(
 		config.copy.src , {
-		dot : true
+		dot: true
 	})
 
 	// Display the files in the stream
@@ -20,6 +20,6 @@ gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separat
 
 	// Task result
 	.pipe($.size({
-		title : 'copy'
+		title: 'copy'
 	}));
 });

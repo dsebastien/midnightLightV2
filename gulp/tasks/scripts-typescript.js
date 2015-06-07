@@ -11,9 +11,9 @@ gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references
 	var tsResult = utils.plumbedSrc(config.typescript.src) // handle errors nicely (i.e., without breaking watch)
 			.pipe($.sourcemaps.init())
 			.pipe($.typescript({
-				target            : 'ES5',
-				declarationFiles  : true, // mhh
-				noExternalResolve : true
+				target: 'ES5',
+				declarationFiles: true, // mhh
+				noExternalResolve: true
 			}));
 
 	// Output files
@@ -21,8 +21,8 @@ gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references
 
 	return tsResult.js
 		.pipe($.sourcemaps.write({ // use '.' to write the sourcemap to a separate file in the same dir
-			includeContent : false, // alternative: include the contents and remove sourceRoot. Avoids issues but prevents from editing the sources directly in the browser
-			sourceRoot     : '/' // use an absolute path because we have scripts in different subpaths
+			includeContent: false, // alternative: include the contents and remove sourceRoot. Avoids issues but prevents from editing the sources directly in the browser
+			sourceRoot: '/' // use an absolute path because we have scripts in different subpaths
 		}))
 
 		// Output files
@@ -30,11 +30,11 @@ gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references
 
 		// Task result
 		.pipe($.size({
-			title : 'scripts-typescript'
+			title: 'scripts-typescript'
 		}))
 
 		// Reload Browser if needed
 		.pipe($.if(browserSync.active, browserSync.reload({
-			stream: true, once : true
+			stream: true, once: true
 		})));
 });

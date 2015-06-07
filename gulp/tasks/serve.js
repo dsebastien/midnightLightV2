@@ -1,17 +1,18 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-import runSequence from 'run-sequence';
+var gulp = require('gulp-help')(require('gulp'));
+
+import runSequence from 'run-sequence'; // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 import browserSync from 'browser-sync';
 
 import config from '../config';
 
 var startBrowserSync = () =>{
 	browserSync({ // http://www.browsersync.io/docs/options/
-		notify    : false,
+		notify: false,
 
 		// Customize the BrowserSync console logging prefix
-		logPrefix : 'MDL',
+		logPrefix: 'MDL',
 
 		// Run as an https by uncommenting 'https: true'
 		// Note: this uses an unsigned certificate which on first access
@@ -22,13 +23,21 @@ var startBrowserSync = () =>{
 		//  forms: false,
 		//  scroll: false
 		// },
-		server    : config.webServerFolders.dev
+		server: config.webServerFolders.dev
 	});
 
 	gulp.watch(config.html.src, browserSync.reload); // html changes will force a reload
 	gulp.watch(config.styles.src, [ 'styles' ]); // stylesheet changes will force a reload
-	gulp.watch(config.typescript.srcAppOnly, [ 'ts-lint', 'scripts-typescript', 'gen-ts-refs' ]); // TypeScript changes will force a reload
-	gulp.watch(config.javascript.src, [ 'check-js-style', 'check-js-quality', 'scripts-javascript' ]); // JavaScript changes will force a reload
+	gulp.watch(config.typescript.srcAppOnly, [
+		'ts-lint',
+		'scripts-typescript',
+		'gen-ts-refs'
+	]); // TypeScript changes will force a reload
+	gulp.watch(config.javascript.src, [
+		'check-js-style',
+		'check-js-quality',
+		'scripts-javascript'
+	]); // JavaScript changes will force a reload
 	gulp.watch(config.images.src, browserSync.reload); // image changes will force a reload
 };
 
@@ -36,12 +45,16 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', (
 	runSequence('prepare-serve', startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
 });
 
-gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [ 'ts-lint', 'check-js-style', 'check-js-quality' ], (callback) =>{
-	return runSequence('copy-npm-dependencies', [
-		'gen-ts-refs',
-		'scripts-javascript',
-		'scripts-typescript',
-		'styles',
-		'validate-package-json'
-	], callback);
-});
+gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [
+		'ts-lint',
+		'check-js-style',
+		'check-js-quality'
+		], (callback) =>{
+			return runSequence('copy-npm-dependencies', [
+				'gen-ts-refs',
+				'scripts-javascript',
+				'scripts-typescript',
+				'styles',
+				'validate-package-json'
+			], callback);
+		});

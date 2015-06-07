@@ -7,7 +7,7 @@ import config from '../config';
 import utils from '../utils';
 
 gulp.task('styles-vendor-dist', 'Optimize and minimize vendor stylesheets for production', () =>{
-	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)([
+	return utils.plumbedSrc(// handle errors nicely (i.e., without breaking watch)([
 			config.styles.srcVendorOnly
 	)
 
@@ -48,6 +48,6 @@ gulp.task('styles-vendor-dist', 'Optimize and minimize vendor stylesheets for pr
 
 	// Task result
 	.pipe($.size({
-		title : 'styles-vendor-dist'
+		title: 'styles-vendor-dist'
 	}));
 });
