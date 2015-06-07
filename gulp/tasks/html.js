@@ -3,10 +3,10 @@
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
 
-var config = require('../config');
-var utils = require('../utils');
+import config from '../config';
+import utils from '../utils';
 
-gulp.task('html', 'Optimize HTML and assets', function(){
+gulp.task('html', 'Optimize HTML and assets', () =>{
 	var assets = $.useref.assets({
 		searchPath : '{' + config.folders.temp + ',' + config.folders.app + '}'
 	});

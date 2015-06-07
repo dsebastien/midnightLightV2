@@ -3,14 +3,14 @@
 // Include Gulp & tools we'll use
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
-var gutil = require('gulp-util');
+import gutil from 'gulp-util';
 
-var config = require('./config');
+import config from './config';
 
 // display errors nicely and avoid having errors breaking tasks/watch
 // reference: https://github.com/mikaelbr/gulp-notify/issues/81
-var reportError = function(error){
-	var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
+var reportError = (error) =>{
+	var lineNumber = error.lineNumber ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
 	$.notify({
 		title   : 'Task Failed [' + error.plugin + ']',
@@ -70,7 +70,7 @@ var exclude = function(providedPath){
 };
 
 module.exports = {
-	'exclude'     : exclude,
-	'reportError' : reportError,
-	'plumbedSrc'  : plumbedSrc
+	exclude,
+	reportError,
+	plumbedSrc
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-var utils = require('./utils');
+import utils from './utils';
 
 var extensions = {
 	javascript : '.js',
@@ -145,19 +145,19 @@ var minifyCss = { // https://www.npmjs.com/package/gulp-minify-g
 };
 
 module.exports = {
-	extensions           : extensions,
-	folders              : folders,
-	globs                : globs,
-	files                : files,
-	exitOnError          : exitOnError,
-	javascript           : javascript,
-	typescript           : typescript,
-	styles               : styles,
-	images               : images,
-	fonts                : fonts,
-	html                 : html,
-	copy                 : copy,
-	autoprefixerBrowsers : autoprefixerBrowsers,
-	minifyCss            : minifyCss,
-	webServerFolders     : webServerFolders
+	extensions,
+	folders,
+	globs,
+	files,
+	exitOnError,
+	javascript,
+	typescript,
+	styles,
+	images,
+	fonts,
+	html,
+	copy,
+	autoprefixerBrowsers,
+	minifyCss,
+	webServerFolders
 };

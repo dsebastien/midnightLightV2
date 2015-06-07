@@ -1,16 +1,12 @@
 'use strict';
 
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
+import runSequence from 'run-sequence';
+import browserSync from 'browser-sync';
 
-var config = require('../config');
+import config from '../config';
 
-gulp.task('serve-dist', 'Build and serve the production version (i.e., \'dist\' folder contents', function(){
-	runSequence('default', startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
-});
-
-var startBrowserSync = function(){
+var startBrowserSync = () =>{
 	browserSync({
 		notify    : false,
 		logPrefix : 'MDL',
@@ -22,3 +18,7 @@ var startBrowserSync = function(){
 		server    : config.webServerFolders.dist
 	});
 };
+
+gulp.task('serve-dist', 'Build and serve the production version (i.e., \'dist\' folder contents', () =>{
+	runSequence('default', startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
+});

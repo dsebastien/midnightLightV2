@@ -1,26 +1,12 @@
 'use strict';
 
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var runSequence = require('run-sequence');
-var browserSync = require('browser-sync');
+import runSequence from 'run-sequence';
+import browserSync from 'browser-sync';
 
-var config = require('../config');
+import config from '../config';
 
-gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', function(){
-	runSequence('prepare-serve', startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
-});
-
-gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [ 'ts-lint', 'check-js-style', 'check-js-quality' ], function(callback){
-	return runSequence('copy-npm-dependencies', [
-		'gen-ts-refs',
-		'scripts-javascript',
-		'scripts-typescript',
-		'styles',
-		'validate-package-json'
-	], callback);
-});
-
-var startBrowserSync = function(){
+var startBrowserSync = () =>{
 	browserSync({ // http://www.browsersync.io/docs/options/
 		notify    : false,
 
@@ -45,3 +31,17 @@ var startBrowserSync = function(){
 	gulp.watch(config.javascript.src, [ 'check-js-style', 'check-js-quality', 'scripts-javascript' ]); // JavaScript changes will force a reload
 	gulp.watch(config.images.src, browserSync.reload); // image changes will force a reload
 };
+
+gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', () =>{
+	runSequence('prepare-serve', startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
+});
+
+gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [ 'ts-lint', 'check-js-style', 'check-js-quality' ], (callback) =>{
+	return runSequence('copy-npm-dependencies', [
+		'gen-ts-refs',
+		'scripts-javascript',
+		'scripts-typescript',
+		'styles',
+		'validate-package-json'
+	], callback);
+});

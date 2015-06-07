@@ -159,7 +159,7 @@
   * loading overlay while fetching data (e.g., when posts are loading)
 	* example: https://css-tricks.com/html5-progress-element/
   * header: something like http://benfrain.com/
-	* social: links to Fb, Tw, G+, Li
+	* social: links to Fb, Tw, G+, Li, StackOverflow, GitHub
   * reading progress bar under header
   * menu bar
 	* search box

@@ -12,16 +12,15 @@
  */
 
 'use strict';
-
+import requireDir from 'require-dir';
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var requireDir = require('require-dir');
-var runSequence = require('run-sequence');
+import runSequence from 'run-sequence';
 
 // Load all tasks in gulp/tasks, including subfolders
 requireDir('./gulp/tasks', { recurse: true });
 
 // Default task
-gulp.task('default', 'Build production files', [ 'prepare-default' ], function (callback) {
+gulp.task('default', 'Build production files', [ 'prepare-default' ], (callback) => {
 	return runSequence('copy-npm-dependencies', [
 		'styles-vendor-dist',
 		'styles-dist',
@@ -33,7 +32,7 @@ gulp.task('default', 'Build production files', [ 'prepare-default' ], function (
 	], callback);
 });
 
-gulp.task('prepare-default', 'Do all the necessary preparatory work for the default task', [ 'clean', 'ts-lint', 'check-js-style', 'check-js-quality' ], function () {
+gulp.task('prepare-default', 'Do all the necessary preparatory work for the default task', [ 'clean', 'ts-lint', 'check-js-style', 'check-js-quality' ], () => {
 	return runSequence([
 		'gen-ts-refs',
 		'scripts-typescript',

@@ -2,39 +2,39 @@
 
 var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
-var browserSync = require('browser-sync');
+import browserSync from 'browser-sync';
 
-var config = require('../config');
-var utils = require('../utils');
+import config from '../config';
+import utils from '../utils';
 
-gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references to library and app .d.ts files and generate sourcemaps', function () {
+gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references to library and app .d.ts files and generate sourcemaps', () =>{
 	var tsResult = utils.plumbedSrc(config.typescript.src) // handle errors nicely (i.e., without breaking watch)
 			.pipe($.sourcemaps.init())
 			.pipe($.typescript({
-				target: 'ES5',
-				declarationFiles: true, // mhh
-				noExternalResolve: true
+				target            : 'ES5',
+				declarationFiles  : true, // mhh
+				noExternalResolve : true
 			}));
 
 	// Output files
 	tsResult.dts.pipe(gulp.dest(config.typescript.dest));
 
 	return tsResult.js
-			.pipe($.sourcemaps.write({ // use '.' to write the sourcemap to a separate file in the same dir
-				includeContent: false, // alternative: include the contents and remove sourceRoot. Avoids issues but prevents from editing the sources directly in the browser
-				sourceRoot: '/' // use an absolute path because we have scripts in different subpaths
-			}))
+		.pipe($.sourcemaps.write({ // use '.' to write the sourcemap to a separate file in the same dir
+			includeContent : false, // alternative: include the contents and remove sourceRoot. Avoids issues but prevents from editing the sources directly in the browser
+			sourceRoot     : '/' // use an absolute path because we have scripts in different subpaths
+		}))
 
 		// Output files
-			.pipe(gulp.dest(config.typescript.dest))
+		.pipe(gulp.dest(config.typescript.dest))
 
 		// Task result
-			.pipe($.size({
-				title: 'scripts-typescript'
-			}))
+		.pipe($.size({
+			title : 'scripts-typescript'
+		}))
 
 		// Reload Browser if needed
-			.pipe($.if(browserSync.active, browserSync.reload({
-				stream: true, once: true
-			})));
+		.pipe($.if(browserSync.active, browserSync.reload({
+			stream: true, once : true
+		})));
 });

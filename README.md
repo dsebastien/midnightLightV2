@@ -28,13 +28,14 @@ If you want to build from source, you need to:
 * install NodeJS:
 * clone this git repository
 * go to the folder where you've cloned the project
-* run `$ npm install --global gulp && npm install` to get the dependencies
+* run `$ npm install --global gulp babel` to get the build tools
+* run `$ npm install` to download all dependencies
 * run `$ npm run tsd` to retrieve TypeScript definitions list (for more information, check out the following [link](https://github.com/borisyankov/DefinitelyTyped)
 * run `$ gulp` to build the app
 * take a look at COMMANDS.md in the project for more commands you can use
 
 ## Running manually
-* dev version with BrowserSync: run `$ npm run serve`
+* dev version with BrowserSync: run `$ npm start` or `$ npm run serve`
 * prod version: run `$ npm run serve-dist`
 
 ## Developping/Running on Docker

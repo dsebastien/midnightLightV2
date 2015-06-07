@@ -4,10 +4,10 @@ var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is load
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
 var browserSync = require('browser-sync');
 
-var config = require('../config');
-var utils = require('../utils');
+import config from '../config';
+import utils from '../utils';
 
-gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', function(){
+gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', () =>{
 	return utils.plumbedSrc( // handle errors nicely (i.e., without breaking watch)
 			config.styles.src
 	)
@@ -34,7 +34,7 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	// Include vendor prefixes
 	// The if clause prevents autoprefixer from messing up the sourcemaps (necessary if the maps are put in separate files)
 	// reference: https://github.com/sindresorhus/gulp-autoprefixer/issues/8#issuecomment-93817177
-	.pipe($.if([config.extensions.css, '!*.map'], $.autoprefixer({
+	.pipe($.if([ config.extensions.css, '!*.map' ], $.autoprefixer({
 		browsers : config.autoprefixerBrowsers // alternative: $.autoprefixer('last 2 version')
 	})))
 	
@@ -44,7 +44,7 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', func
 	// Reload Browser if needed
 	// Stream if possible
 	.pipe($.if(browserSync.active, browserSync.reload({
-		stream                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     : true, once : true
+		stream                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      : true, once : true
 	})))
 	
 	// Task result
