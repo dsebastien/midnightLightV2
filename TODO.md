@@ -50,9 +50,9 @@
   * add a debug boolean config param to determine whether to display stream contents or not
   * enforce code quality/style checks (pre-commit hooks?)
   * js/ts formatting in webstorm?
-  * npm run serve: add clean
   * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
   * add Travis (?)
+	* check meaning of iojs
   * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 	* dynamically add scripts/stylesheets in the HTML without having to add script tags manually
 * css
