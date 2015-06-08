@@ -16,9 +16,7 @@ gulp.task('scripts-javascript', 'Transpile JavaScript (ES6 to ES5 using Babel) a
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
 	// speed things up by ignoring unchanged resources
-	.pipe($.changed(config.javascript.dest, {
-		extension: '.js'
-	}))
+	.pipe($.changed(config.javascript.dest))
 
 	// Initialize sourcemap generation
 	.pipe($.sourcemaps.init({

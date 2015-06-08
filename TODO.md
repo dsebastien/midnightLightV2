@@ -87,6 +87,9 @@
 	* add print preview https://github.com/etimbo/jquery-print-preview-plugin
   * replace text-rendering: optimizeLegibility
 	* by font-feature-settings once broadly supported: http://caniuse.com/#feat=font-feature
+  * icon fonts
+	* define (responsive) font-awesome icon style
+	* add loading icons
 * html
   * use tabindex on all main elements (sections, posts, etc)
   * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
@@ -146,7 +149,6 @@
   * check out data URIs (include in build?)
   * check out applicache cache: http://diveintohtml5.info/offline.html & http://alistapart.com/article/application-cache-is-a-douchebag
   * user-select: none (prevent selection of some elements)
-  * check out icon fonts and fontawesome (icons and transforms) w/ or without svg?
   * check out postcss
 	* https://github.com/postcss/postcsssuper
 	* https://twitter.com/postcsssuper
@@ -173,6 +175,8 @@
 	* example: https://css-tricks.com/html5-progress-element/
   * header: something like http://benfrain.com/
 	* social: links to Fb, Tw, G+, Li, StackOverflow, GitHub
+	  * use fontawesome icons (http://fortawesome.github.io/Font-Awesome/cheatsheet/)
+	  * example: <i class="icon-github-squared" style="font-size: 16rem;"></i>
   * reading progress bar under header
   * menu bar
 	* search box

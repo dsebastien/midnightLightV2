@@ -14,12 +14,12 @@ gulp.task('html', 'Optimize HTML and assets', () =>{
 	return utils.plumbedSrc(
 			config.html.src
 	)
-	
+
 	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
 	.pipe(assets)
-	
+
 	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 

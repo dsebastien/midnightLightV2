@@ -104,6 +104,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * jquery
 * angular (angular, angular-animate, angular-new-router, angular-loader, angular-mocks)
 * lodash: https://www.npmjs.com/package/lodash
+* font-awesome: pictographic icons https://www.npmjs.com/package/font-awesome
 
 ## Project configuration files
 The project includes multiple configuration files. Here's some information about these:

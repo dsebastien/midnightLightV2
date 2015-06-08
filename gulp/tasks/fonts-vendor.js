@@ -4,27 +4,27 @@ var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is load
 var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
 
 import config from '../config';
-import utils from'../utils';
+import utils from '../utils';
 
-gulp.task('images', 'Optimize images', () =>{
+gulp.task('fonts-vendor', 'Copy vendor fonts for dev', () =>{
 	return utils.plumbedSrc(
-			config.images.src
+			config.fonts.srcVendorOnly // application fonts are copied by the 'copy' task
 	)
 
 	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
-	// Minify and cache
-	.pipe($.cache($.imagemin({
-		progressive: true,
-		interlaced: true
-	})))
+	// speed things up by ignoring unchanged resources
+	.pipe($.changed(config.fonts.dest))
 
-	// Output files
-	.pipe(gulp.dest(config.images.dest))
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+
+	// Copy files
+	.pipe(gulp.dest(config.fonts.dest))
 
 	// Task result
 	.pipe($.size({
-		title: 'images'
+		title: 'fonts-vendor'
 	}));
 });

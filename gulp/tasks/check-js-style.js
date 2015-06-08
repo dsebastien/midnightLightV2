@@ -21,7 +21,7 @@ gulp.task('check-js-style', 'Enforce JavaScript code style', () =>{
 			fix: false
 		})
 	)
-	
+
 	.pipe($.jscsStylish()) // log style errors
 
 	// Save modified files

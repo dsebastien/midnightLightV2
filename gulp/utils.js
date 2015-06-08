@@ -13,9 +13,9 @@ var reportError = (error) =>{
 	var lineNumber = error.lineNumber ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
 	$.notify({
-		title   : 'Task Failed [' + error.plugin + ']',
-		message : lineNumber + 'See console.',
-		sound   : true
+		title: 'Task Failed [' + error.plugin + ']',
+		message: lineNumber + 'See console.',
+		sound: true
 
 		// the version below probably works on OSX
 		//sound: 'Sosumi' // See: https://github.com/mikaelbr/node-notifier#all-notification-options-with-their-defaults
@@ -59,7 +59,7 @@ var reportError = (error) =>{
 var plumbedSrc = function(){
 	return gulp.src.apply(gulp, arguments)
 			.pipe($.plumber({
-				errorHandler : reportError
+				errorHandler: reportError
 			}));
 };
 

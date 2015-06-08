@@ -55,6 +55,7 @@ gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve 
 				'scripts-javascript',
 				'scripts-typescript',
 				'styles',
+				'fonts-vendor',
 				'validate-package-json'
 			], callback);
 		});

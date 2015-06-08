@@ -25,9 +25,9 @@ gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from
 			return '/// <reference path="..' + filepath + '" />';
 		}
 		}))
-		
+
 		// Display the files in the stream
 		//.pipe($.debug({title: 'Stream contents:', minimal: true}))
-	
+
 		.pipe(gulp.dest(config.folders.typings));
 });

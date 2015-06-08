@@ -22,7 +22,8 @@
 		"angular-animate": "1.4.x",
 		"angular-sanitize": "1.4.x",
 		"angular-mocks": "1.4.x",
-		"lodash": "3.9.x"
+		"lodash": "3.9.x",
+		"font-awesome": "4.3.x"
 	},
 	"devDependencies": {
 		"apache-server-configs": "2.14.x",
@@ -97,6 +98,6 @@
 		"serve-dist": "nodemon --watch gulpfile.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tsd.json --watch tslint.json --exec gulp serve-dist",
 		"tsd": "tsd reinstall --save --overwrite",
 		"tsd-update": "tsd update --save --overwrite",
-		"install": "npm install --global gulp babel && npm install"
+		"setup": "npm install --global gulp babel && npm install"
 	}
 }

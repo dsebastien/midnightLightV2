@@ -25,12 +25,12 @@ requireDir('./gulp/tasks', {
 // Default task
 gulp.task('default', 'Build production files', [ 'prepare-default' ], (callback) =>{
 	return runSequence('copy-npm-dependencies', 			[
+		'copy',
 		'styles-vendor-dist',
 		'styles-dist',
 		'html',
 		'images',
-		'fonts',
-		'copy',
+		'fonts-dist',
 		'validate-package-json'
 		], callback);
 });

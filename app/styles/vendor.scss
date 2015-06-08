@@ -5,3 +5,9 @@
 
 // Nicolas Gallagher's Normalize.css
 @import '../../node_modules/normalize.css/normalize.css';
+
+// FontAwesome
+// By default it refers to the font files as being under ../fonts/, which is valid in our case
+// unicode codes (usable in content: ): http://fortawesome.github.io/Font-Awesome/cheatsheet/
+// WARNING: use only for dev given the HUGE file size. Use fontello to generate friendlier files containing only the required icons: http://fontello.com/
+//@import '../../node_modules/font-awesome/scss/font-awesome.scss';

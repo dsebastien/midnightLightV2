@@ -3,126 +3,134 @@
 import utils from './utils';
 
 var extensions = {
-	javascript : '.js',
-	typescript : '.ts',
-	css        : '.css',
-	sass       : '.scss',
-	html       : '*.html'
+	javascript: '.js',
+	typescript: '.ts',
+	css: '.css',
+	sass: '.scss',
+	html: '*.html'
 };
 
 var folders = {
-	dist    : './dist',
-	temp    : './.tmp',
-	app     : './app',
-	typings : './ts-typings'
+	dist: './dist',
+	temp: './.tmp',
+	app: './app',
+	typings: './ts-typings',
+	nodeModules: './node_modules'
 };
 
 var webServerFolders = {
-	dev  : [
-	folders.temp,
-	folders.app
+	dev: [
+		folders.temp,
+		folders.app
 	],
-	dist : [
-	folders.dist
+	dist: [
+		folders.dist
 	]
 };
 
 var globs = {
-	any     : '/*',
-	scripts : {
-		javascript : '/**/*' + extensions.javascript,
-		typescript : '/**/*' + extensions.typescript
+	any: '/**/*',
+	scripts: {
+		javascript: '/**/*' + extensions.javascript,
+		typescript: '/**/*' + extensions.typescript
 	},
-	styles  : {
-		css    : '/**/*' + extensions.css,
-		sass   : '/**/*' + extensions.sass,
-		vendor : '/styles/vendor{' + extensions.sass + ',' + extensions.css + '}'
+	styles: {
+		css: '/**/*' + extensions.css,
+		sass: '/**/*' + extensions.sass,
+		vendor: '/styles/vendor{' + extensions.sass + ',' + extensions.css + '}'
 	},
-	images  : '/images/**/*',
-	fonts   : '/fonts/**/*',
-	html    : '/**/*.html'
+	images: '/images/**/*',
+	fonts: {
+		application: '/fonts/**/*',
+		vendor: '/font-awesome/fonts/fontawesome-webfont.*'
+	},
+	html: '/**/*.html'
 };
 
 var files = {
-	any                          : '*',
-	packageJSON                  : 'package.json',
-	appTypeScriptReferences      : folders.typings + '/typescriptApp.d.ts',
-	libraryTypeScriptDefinitions : folders.typings + globs.scripts.typescript,
-	htaccess                     : 'node_modules/apache-server-configs/dist/.htaccess'
+	any: '*',
+	packageJSON: 'package.json',
+	appTypeScriptReferences: folders.typings + '/typescriptApp.d.ts',
+	libraryTypeScriptDefinitions: folders.typings + globs.scripts.typescript,
+	htaccess: 'node_modules/apache-server-configs/dist/.htaccess'
 };
 
 var exitOnError = false; // whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
 
 var javascript = {
-	src  : [
-	folders.app + globs.scripts.javascript
+	src: [
+		folders.app + globs.scripts.javascript
 	],
-	dest : folders.temp
+	dest: folders.temp
 };
 
 var typescript = {
-	src        : [
+	src: [
 	folders.app + globs.scripts.typescript,
 		files.libraryTypeScriptDefinitions, // reference to library .d.ts files
 		files.appTypeScriptReferences // reference to app.d.ts files
 		],
-	srcAppOnly : [
-	folders.app + globs.scripts.typescript
+	srcAppOnly: [
+		folders.app + globs.scripts.typescript
 	],
-	dest       : folders.temp
+	dest: folders.temp
 };
 
 var styles = {
-	src                          : [
-	folders.app + globs.styles.css,
-	folders.app + globs.styles.sass
+	src: [
+		folders.app + globs.styles.css,
+		folders.app + globs.styles.sass
 	],
-	srcVendorOnly                : [
-	folders.app + globs.styles.vendor
+	srcVendorOnly: [
+		folders.app + globs.styles.vendor
 	],
-	srcWithoutVendor             : [
-	folders.app + globs.styles.css,
-	folders.app + globs.styles.sass,
-	utils.exclude(folders.app + globs.styles.vendor)
+	srcWithoutVendor: [
+		folders.app + globs.styles.css,
+		folders.app + globs.styles.sass,
+		utils.exclude(folders.app + globs.styles.vendor)
 	],
-	dest                         : folders.temp, // during DEV
-	destDist                     : folders.dist + '/styles', // for PROD
-	finalCssBundleFilename       : 'bundle.min.css',
-	finalVendorCssBundleFilename : 'vendor.min.css'
+	dest: folders.temp, // during DEV
+	destDist: folders.dist + '/styles', // for PROD
+	finalCssBundleFilename: 'bundle.min.css',
+	finalVendorCssBundleFilename: 'vendor.min.css'
 };
 
 var images = {
-	src  : [
-	folders.app + globs.images
+	src: [
+		folders.app + globs.images
 	],
-	dest : folders.dist + '/images'
+	dest: folders.dist + '/images'
 };
 
 var fonts = {
-	src  : [
-	folders.app + globs.fonts
+	src: [
+		folders.app + globs.fonts.application
 	],
-	dest : folders.dist + '/fonts'
+	srcVendorOnly: [
+		folders.nodeModules + globs.fonts.vendor
+	],
+	dest: folders.temp + '/fonts',
+	destDist: folders.dist + '/fonts'
 };
 
 var html = {
-	src  : [
-	folders.app + globs.html
+	src: [
+		folders.app + globs.html
 	],
-	dest : folders.dist
+	dest: folders.dist
 };
 
 var copy = {
-	src  : [
-	folders.app + globs.any,
-	utils.exclude(folders.app + globs.html),
-	utils.exclude(folders.app + globs.styles.css),
-	utils.exclude(folders.app + globs.styles.sass),
-	utils.exclude(folders.app + globs.scripts.javascript),
-	utils.exclude(folders.app + globs.scripts.typescript),
-	files.htaccess
+	src: [
+		folders.app + globs.any,
+		utils.exclude(folders.app + globs.html),
+		utils.exclude(folders.app + globs.styles.css),
+		utils.exclude(folders.app + globs.styles.sass),
+		utils.exclude(folders.app + globs.scripts.javascript),
+		utils.exclude(folders.app + globs.scripts.typescript),
+		files.htaccess
 	],
-	dest : folders.dist
+	dest: folders.dist
 };
 
 var autoprefixerBrowsers = [
@@ -138,10 +146,10 @@ var autoprefixerBrowsers = [
 ];
 
 var minifyCss = { // https://www.npmjs.com/package/gulp-minify-g
-	keepBreaks          : false, // no problem here
-	keepSpecialComments : true, // necessary for licensing
-	compatibility       : false, // no problem here
-	aggressiveMerging   : false // necessary because it breaks PureCSS
+	keepBreaks: false, // no problem here
+	keepSpecialComments: true, // necessary for licensing
+	compatibility: false, // no problem here
+	aggressiveMerging: false // necessary because it breaks PureCSS
 };
 
 module.exports = {

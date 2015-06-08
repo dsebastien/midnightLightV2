@@ -6,16 +6,19 @@ var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-lo
 import config from '../config';
 import utils from '../utils';
 
-gulp.task('fonts', 'Copy fonts for production', () =>{
+gulp.task('fonts-dist', 'Copy fonts for production', () =>{
 	return utils.plumbedSrc(
-			config.fonts.src
+			config.fonts.srcVendorOnly
 	)
 
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+
 	// Copy files
-	.pipe(gulp.dest(config.fonts.dest))
+	.pipe(gulp.dest(config.fonts.destDist))
 
 	// Task result
 	.pipe($.size({
-		title: 'fonts'
+		title: 'fonts-dist'
 	}));
 });

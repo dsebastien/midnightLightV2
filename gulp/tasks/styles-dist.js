@@ -24,6 +24,7 @@ gulp.task('styles-dist', 'Optimize and minimize stylesheets for production', () 
 
 	// Remove any unused CSS
 	// Note that it breaks the sourcemaps (but we shouldn't care for dist since we don't need sourcemaps there)
+	// Note that it also causes weird output during build in combination w/ Angular
 	//.pipe($.uncss({
 	//  html: [
 	//    config.html.src
