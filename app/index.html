@@ -20,6 +20,8 @@
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
 	<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
 	<meta name="msapplication-TileColor" content="#656970">
+	<meta name="msapplication-config" content="none">
+
 	<!-- Define the toolbar color (Android): http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android -->
 	<meta name="theme-color" content="#656970">
 	<link rel="canonical" href="http://www.dsebastien.net">
@@ -33,7 +35,7 @@
 	<!-- endbuild -->
 	<base href="/">
 </head>
-<body ng-app="MidnightLight" ng-controller="MainController as mainController">
+<body ng-app="MidnightLight" ng-controller="core.controllers.MainController as mainController">
 	<div id="container" class="container">
 		<header id="header" class="box">
 			<h1>Midnight Light</h1>
@@ -91,6 +93,7 @@
 		<script src="node_modules/angular-loader/angular-loader.js"></script>
 		<!-- endbuild -->
 		<!-- build:js scripts/bundle.min.js -->
+		<script src="core/commons/core.commons.configuration.js"></script>
 		<script src="core/app.bootstrap.module.js"></script>
 		<script src="core/controllers/main.controller.js"></script>
 		<script src="components/posts/post.model.js"></script>

@@ -16,7 +16,6 @@ body {
 	// https://css-tricks.com/almanac/properties/t/text-rendering/
 	// http://aestheticallyloyal.com/public/optimize-legibility/
 	// non-standard and buggy in older Android browser versions
-	// TODO replace with font-feature-settings once broadly supported: http://caniuse.com/#feat=font-feature
 	text-rendering: optimizeLegibility;
 
 	// Make'em look nice
@@ -33,7 +32,7 @@ body {
 	font-style: normal;
 	font-weight: normal; // 400: http://www.w3schools.com/cssref/pr_font_weight.asp
 	letter-spacing: -0.02em;
-	color: rgba(0, 0, 0, 0.8);
+	color: $fontColorDefault;
 }
 
 .container > header > h1 {

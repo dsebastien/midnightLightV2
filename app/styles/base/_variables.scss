@@ -6,4 +6,14 @@
 // colors
 $black:		#000;
 $gray:		#C0C0C0;
+$grayLight: lighten($gray, 20%);
 $red:		#F00;
+
+$quotesColor: $gray;
+$quotesBackgroundColor: $grayLight;
+$textSelectionColor: $gray;
+$hrColor: $gray;
+
+$tapHighlightColor: rgba(0,0,0,0);
+
+$fontColorDefault: rgba(0, 0, 0, 0.8);

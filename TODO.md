@@ -1,9 +1,15 @@
-* check out susy + breakpoint
+* move all guidelines to guidelines.md and link in main readme
+* migrate to Angular 2
+* check out susy: http://susy.oddbird.net/
+* check out breakpoint: http://breakpoint-sass.com/
 * create responsive grid
   * short & wide: tighten up and/or move things up (e.g., tablet in landscape)
   * narrow & tall: reposition things off canvas or move things down
   * enlarge font size if screen wider AND more vertical space
 * build
+  * integrate PatternLab or something similar to create a style guide for dev/prod
+	* goal: easily see all components (atomic design approach)
+	* http://yeo-lab.com/#learn-more
   * add ESlint? (also in sublime): http://eslint.org/
   * try to use the changed plugin to limit the overhead of allowing js/ts/styles to be anywhere in the app folder
   * integrate tsconfig.json:
@@ -79,6 +85,8 @@
 	* create/test print stylesheet (media query + display: none on everything not needed, add page breaks where appropriate)
 	* button to print an article
 	* add print preview https://github.com/etimbo/jquery-print-preview-plugin
+  * replace text-rendering: optimizeLegibility
+	* by font-feature-settings once broadly supported: http://caniuse.com/#feat=font-feature
 * html
   * use tabindex on all main elements (sections, posts, etc)
   * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
@@ -86,6 +94,9 @@
   * add <link rel="publisher" href="...g+?" />
   * add html class="no-js" and check if js is enabled
   * rss and pingback: <link rel="canonical" ...>
+  * replace color for
+	* msapplication-TileColor
+	* theme-color
 * design
   * create the theme & choose color scheme
 	* dark/gray but this time avoiding styling errors of the past: http://www.webdesignerdepot.com/2009/08/the-dos-and-donts-of-dark-web-design/
@@ -129,12 +140,13 @@
 * testing
   * add tests
 * research
+  * evaluate haml: http://haml.info/
   * review pure.css code (e.g., find useful classes, responsive images, hiding elements, ...)
   * check out data URIs (include in build?)
   * check out applicache cache: http://diveintohtml5.info/offline.html & http://alistapart.com/article/application-cache-is-a-douchebag
   * user-select: none (prevent selection of some elements)
-  * check out fontawesome (icons and transforms)
-  * check out postcsssuper
+  * check out icon fonts and fontawesome (icons and transforms)
+  * check out postcss
 	* https://github.com/postcss/postcsssuper
 	* https://twitter.com/postcsssuper
   * how to generate sitemap?

@@ -1,13 +1,14 @@
 ///<reference path="../../../ts-typings/tsd.d.ts" />
 ///<reference path="../../../ts-typings/typescriptApp.d.ts" />
 
-module MidnightLight.Controllers {
+module MidnightLight.Posts.Controllers {
 	'use strict';
 
+	import Configuration = MidnightLight.Core.Commons.Configuration;
 	import Post = Model.Post;
 
 	export class PostsController {
-		static UID : string = 'PostsController';
+		static UID : string = 'PostsController'; // Note that this name MUST be the same as the controller name. This is related to the Angular router. If the convention is not respected, the router will fail to identify this controller. Refer to https://angular.github.io/router/$componentLoaderProvider
 		static $inject = [Services.PostsService.UID]; // Angular-way to inject dependencies
 
 		private posts : Array<Post> = new Array<Post>();
@@ -31,6 +32,6 @@ module MidnightLight.Controllers {
 		}
 	}
 
-	angular.module('MidnightLight')
+	angular.module(Configuration.applicationName)
 		.controller(PostsController.UID, PostsController);
 }
