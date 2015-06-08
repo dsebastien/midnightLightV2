@@ -1,6 +1,6 @@
 //
 // Typography related styles.
-//
+// Taken from various sources (e.g., HTML5boilerplate, Web Starter Kit, SUITCSS, ...)
 //
 
 html {
@@ -18,7 +18,11 @@ body {
 	// non-standard and buggy in older Android browser versions
 	text-rendering: optimizeLegibility;
 
-	// Make'em look nice
+	// ensure that kerning is enabled in most browsers (addition to the above)
+	font-feature-settings: "kern" 1; // Chrome (not Windows), Firefox, IE 10+
+	font-kerning: normal; // Safari 7 and future browsers
+
+	// make'em look nice
 	// fonts on OSX will look more consistent with other systems that do not render text using sub-pixel anti-aliasing
 	// although grayscale is inferior to sub-pixel anti-aliasing, most fonts were designed for the 'thinner' anti-aliasing and look better that way
 	// setting the smoothing beforehand prevents an ugly flickering of font 'thickness' when animations start and stop

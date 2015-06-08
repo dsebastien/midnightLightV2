@@ -3,7 +3,16 @@ Note that all SASS partials (files beginning with a _) should be placed in a sub
 
 The vendor.scss (or vendor.css if renamed) file will be processed separately for dist during the build. This allows to cleanly separate what belongs to the application and what comes from third parties.
 
-# Styles guidelines
+# Design approach
+Goal: follow a _component_ design approach such as:
+  * _Atomic Design_: [http://bradfrost.com/blog/post/atomic-web-design]
+  * _SUIT CSS_: [http://suitcss.github.io/]
+  * _BEM_: [https://css-tricks.com/bem-101/]
+  * _SMACSS_: [https://smacss.com/]
+
+... or a mix thereof :)
+
+# General guidelines
 * separate structure from chrome
 * (re)use variables whenever possible
 * try to provide flexibility: define what you don't know, particularly width & height
@@ -14,70 +23,210 @@ The vendor.scss (or vendor.css if renamed) file will be processed separately for
   * minimize the dependency on the HTML structure (related to the above)
 * predictability: ensure that the components work consistently
 
-# Naming convention
-Goal: follow a common naming approach such as:
-  * SMACSS (https://smacss.com/)
-  * BEM (https://css-tricks.com/bem-101/)
-  * Atomic Design approach (http://bradfrost.com/blog/post/atomic-web-design)
-  * or a mix therof: CCSS (https://github.com/sathify/CCSS) (SMACSS + BEM)
-
-Basic convention: `<namespace>-<ComponentName>-<elementName>--<modifierName> { ... }`
-Mind the case!
-  * namespace: lowercase
-  * ComponentName: PascalCase (i.e., camelCase with first character uppercase)
-  * elementName: camelCase with first character lowercase
-  * modifierName: idem
-* namespace: isolate different groups of styles (i.e., categories)
-  * b: base -- style rules which are almost exclusively single element selectors but can include attribute selectors, pseudo-class selectors, child selectors or sibling selectors
-  * examples
-	* generic styles, css resets, default link styles, default font styles, body backgrounds, ...
-	* `b-fontSize--normal, b-fontSize--large, a { ... }, a:hover{ ... }`
-* u: utility -- utility styles
-  * examples: `u-clearBoth, u-w100`
-* c: component
-  * components should do one thing and do it well
-  * examples: login form, search box, carousel, social share buttons, ...
-  * components should not rely on IDs or element selectors
-  * components should be standalone, portable and reusable
-* m: module -- larger part of the UI, for example a set of components put together (e.g., product grid, sidebar sections, ...)
-  * modules should be standalone, portable and reusable
-  * modules should be moveable to different parts of the layout without breaking
-  * modules can be nested in one another
-  * modules should not rely on IDs or element selectors
-  * modules should avoid specificity battles
-* l: layout -- divide the page into sections. Layouts hold one or more modules together
-  * layouts should only care about positioning and placement
-  * can be split in two parts: major (used only once in any given page) or minor (might be used multiple times on a single page)
-  * major layout elements can have an ID and be styled using ID selectors
-  * examples
-	* header
-	* footer
-	* sidebar
-	* ...
-* t: theme -- describe alternative looks for layouts/modules/...
-  * only use if you want/need to get fancy
-  * themes can affect any of the other namespaces
-  * examples
-	* override a base style to modify the look and feel of an element
-	* modify some element of a component
-	* ...
+# Components
+Examples of components:
+* login form
+* search box
+* carousel
+* social links
 * ...
-* Atomic design approach relation:
-  * base styles = atoms
-  * components = molecules
-  * modules = organisms
-  * layouts = templates
-* ComponentName: the B of BEM -- the component (mandatory if it's a component)
-* elementName: the E of BEM -- the element (not necessarily part of a component) (mandatory)
-* modifierName: the M of BEM -- a variant (e.g., opened vs closed) (optional) (the M of BEM)
 
-Some examples:
-  * `.c-Posts-title`
-  * `.c-Posts-author`
-  * `.c-Posts-a`
-  * `.c-Posts-comments-closed`
-  * `.c-Posts-comments-opened`
+Guidelines for components:
+* components should be identified (modularity)
+* components should do one thing and do it well
+  * a component should implement a single part of the UI
+  * the functionality and presentation defined by a component must be semantically related (cohesion)
+* components should be standalone, portable and reusable (composability/configurability)
+  * it should be possible to assemble components in various combinations
+* components should not be coupled/entangled even if that requires you to violate the DRY principle. Component reusability is more important than DRY (loose coupling)
+* components should not expose their implementation to other components (encapsulation)
+* components should not rely on IDs or element selectors
+* most components should NOT set their own width, margin, and positioning. By authoring a component to be full-width or inline, it can better adapt to the dimensions of an ancestral context
+* components should NOT know about the implementation of their dependencies
+  * the appareance of dependencies must be configured using the interface they provide
+  * controlling dimensions, margins, position and inheritable styles of a component can be done _indirectly_ by adding a class to its root element or wrapping it in another element [reference](https://github.com/suitcss/suit/blob/master/doc/components.md)
+* each component should have a dedicated CSS/SASS file
+* each component should include CSS documentation answering the following questions
+  * what is the intended presentation?
+  * what are the modifiers and states?
+  * what are the reasons for specific, opaque property values?
+  * what are the known limitations?
+  * do not assume that CSS is self-documenting
+
+# Naming convention
+
+## Overview
+Basic convention:
+
+`<namespace>-<ComponentName>-<elementName>--<modifierName> { ... }`
+
+The convention relies on structured class names and meaningfull hyphens (i.e., not using hyphens merely to separate words). This helps work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
+
+## Mind the case
+* namespace: lowercase
+* ComponentName: PascalCase (i.e., CamelCase with first character in uppercase)
+* elementName: CamelCase with first character in lowercase
+* modifierName: idem
+
+## namespace (mandatory except for components)
+
+The goal of the namespace is to isolate different "groups" or "types" of styles (i.e., categories) and directly making the type clear.
+
+### b: base
+Style rules which are almost exclusively single element selectors but can include attribute selectors, pseudo-class selectors, child selectors or sibling selectors.
+
+Examples:
+* generic styles, css resets, default link styles, default font styles, body backgrounds, ...
+* `a { ... }, a:hover{ ... }`
+
+### u: utility
+Low-level utility styles with a very narrow scope. Utilities should modify a single trait (a small collection of similar styles).
+
+Utilities can use `!important` to ensure that their styles always apply.
+
+Examples:
+
+```
+.u-floatLeft {
+  float: left !important;
+}
+
+.u-posAbsolute {
+  position: absolute !important;
+}
+
+.u-block {
+  display: block !important;
+}
+
+```
+
+### m: module
+
+A module is a larger part of the UI composed which can be composed of components, basic elements and/or of other modules.
+
+Examples of modules:
+* product grid
+* sidebar section
+* ...
+
+Guidelines for modules:
+* modules should be standalone, portable and reusable
+* modules should be moveable to different parts of the layout without breaking
+* modules should not rely on IDs or element selectors
+* modules should avoid specificity battles
+* modules can be nested in one another
+
+### l: layout
+Layout styles dictate how the page is divided into sections. Layouts hold one or more modules together.
+
+Layouts can be split in two parts:
+* major: used only once in any given page
+* minor: might be used multiple times on a single page
+
+Examples of layout elements:
+* header
+* fooder
+* sidebar
+
+Guidelines for layout styles:
+* layouts should only care about positioning and placement
+* major layout elements can have an ID and be styled using ID selectors
+
+### t: theme
+Theme styles describe alternative looks for layouts/modules/...
+Theme styles can affect any of the other namespaces.
+Only use these if you want/need to get fancy
+
+Example of theme styles:
+* override a base style to modify the look and feel of an element
+* modify some element of a component
+* define a different color scheme
+* ...
+
+### custom
+If necessary, components can be prefixed with a namespace in order to avoid the potential for collisions between libraries and your custom components.
+
+Èxamples:
+```
+.myapp-Button { ... }
+```
+
+## ComponentName (required only for components)
+Check out the section about components above.
+
+Components are the only elements to use Pascal Case.).
+
+## elementName (mandatory except for components)
+If a style class is NOT defined for a component, then an element name is mandatory.
+
+An element name can also be specified for a component; in that case it is considered as a descendant name.
+
+A descendant component style class is a class that is attached to a particular descendant node of a component. It is responsible for applying presentation directly to the descendant on behalf of a particular component.
+
+Example of a basic element name:
+```
+.u-floatLeft { ... }
+.b-fontSize--normal { ... }
+.b-fontSize--large { ... }
+```
+
+Example of a descendant component style class:
+```
+.Post-header { ... }
+```
+
+## modifierName (optional)
+A modifier style class modifies the presentation of the base style class/component in some form (e.g., for a certain configuration or variant).
+
+Note that modifiers are separated from the rest of the name by two hyphens.
+
+Modifier classes should be included in the HTML _in addition_ to the base component class.
+
+Example:
+```
+.Button { ... }
+.Button--default { ... }
+.Button--disabled { ... }
+...
+<button class="Button Button--default" type="button">...</button>
+...
+<button class="Button Button--default Button--disabled">...</button>
+```
+
+## Examples
+
+```
+.u-floatLeft { ... }
+.Post-title { ... }
+.Post-author { ... }
+.Post-a { ... }
+.Post-comments--closed { ... }
+.Post-comments--opened { ... }
+```
+
+## Variables
+If a component contains variables, then they MUST also be scoped to their component by including the component name in the variable name.
+
+Example (SASS):
+```
+$PostsBorderWidth: 1px;
+...
+.Post {
+	border-width: $PostsBorderWidth;
+}
+```
+
+This makes it easier for themes to override a component's look & feel.
+Moreover, it also makes clear that the variable is part of that component.
+
+## Atomic design approach relation
+* HTML tags + base styles = atoms
+* elementName = atoms
+* components = molecules
+* modules = organisms
+
+The Atomic design templates/pages are embodied by the template files/partial views for components and/or the examples in the CSS documentation.
 
 # Sass guidelines
-* use nested styles using @include (e.g., https://github.com/sathify/CCSS/tree/master/styles/scss)
-
+* use nested styles using @include (e.g., [https://github.com/sathify/CCSS/tree/master/styles/scss])

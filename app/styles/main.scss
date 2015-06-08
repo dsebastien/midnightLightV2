@@ -3,19 +3,21 @@
 // Should import all the other stylesheets
 //
 
-// Variables, functions and mixins
+// Variables, functions, mixins and utils
 @import "base/variables";
+@import "base/functions";
 @import "base/mixins";
+@import "base/utils";
 
 // Base/generic style rules
 @import "base/reset";
 @import "base/responsive";
 @import "base/fonts";
 @import "base/typography";
-@import "base/base-styles";
-@import "layout/layout";
+@import "base/base";
 
 // Layout
+@import "layout/layout";
 @import "layout/theme";
 @import "layout/print";
 

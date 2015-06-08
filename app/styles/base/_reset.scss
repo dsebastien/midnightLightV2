@@ -1,5 +1,6 @@
 //
 // Reset stylesheet.
+// Bits and pieces taken from various sources (e.g., HTML5boilerplate, Web Starter Kit, SUITCSS, ...)
 // The base styling approach is to use Nicolas Gallagher's Normalize.css (http://necolas.github.io/normalize.css/) and only reset relevant elements.
 // This is why some styles below are taken from Eric Meyer's CSS reset v2 (http://meyerweb.com/eric/tools/css/reset/) rather than applying it in its entirety
 //
@@ -136,7 +137,6 @@ a {
 	text-shadow: none;
 }
 
-
 // remove the gap between audio, canvas, iframes,
 // images, videos and the bottom of their containers
 audio,
@@ -151,4 +151,24 @@ video {
 // allow only vertical resizing of textareas.
 textarea {
 	resize: vertical;
+}
+
+// we're going to change these anyway
+ol,
+ul {
+  list-style: none;
+}
+
+// suppress the focus outline on links that cannot be accessed via keyboard.
+// This prevents an unwanted focus outline from appearing around elements that
+// might still respond to pointer events.
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
+// work around a Firefox/IE bug where the transparent `button` background
+// results in a loss of the default `button` focus styles.
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
