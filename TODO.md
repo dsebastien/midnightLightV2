@@ -141,11 +141,12 @@
   * add tests
 * research
   * evaluate haml: http://haml.info/
+	* or mustache :)
   * review pure.css code (e.g., find useful classes, responsive images, hiding elements, ...)
   * check out data URIs (include in build?)
   * check out applicache cache: http://diveintohtml5.info/offline.html & http://alistapart.com/article/application-cache-is-a-douchebag
   * user-select: none (prevent selection of some elements)
-  * check out icon fonts and fontawesome (icons and transforms)
+  * check out icon fonts and fontawesome (icons and transforms) w/ or without svg?
   * check out postcss
 	* https://github.com/postcss/postcsssuper
 	* https://twitter.com/postcsssuper
