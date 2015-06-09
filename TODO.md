@@ -1,4 +1,15 @@
+* check out SystemJS
+* check out JSPM:
+  * https://medium.com/@swirlycheetah/getting-started-with-jspm-systemjs-d6f2560b7eb4
+  * https://engineering.iconnect360.com/angularjs/
 * migrate to Angular 2
+  * add dep for systemjs
+  * add angular 2 tsd: http://www.nuget.org/packages/angular2.TypeScript.DefinitelyTyped/0.0.3
+  * re-add dependencies
+	* "angular-loader": "1.4.x",
+	* "angular-animate": "1.4.x",
+	* "angular-sanitize": "1.4.x",
+	* "angular-mocks": "1.4.x",
 * check out susy: http://susy.oddbird.net/
 * check out breakpoint: http://breakpoint-sass.com/
 * create responsive grid
@@ -15,7 +26,9 @@
 	* https://www.npmjs.com/package/gulp-typescript
 	* http://json.schemastore.org/tsconfig
 	* https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
-	* https://github.com/ivogabe/gulp-typescript/pull/99super
+	* https://github.com/Microsoft/TypeScript/issues/1927
+	* https://github.com/Microsoft/TypeScript/pull/3188
+	* https://github.com/ivogabe/gulp-typescript/pull/99
   * version css & js code (add timestamp)
   * add scss-lint
 	* https://www.npmjs.com/package/gulp-scss-lint
@@ -44,9 +57,11 @@
   * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
   * improve JS code style config (not great with object literals)
   * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
-  * integrate webpack or browserify?
+  * integrate webpack?
 	* avoid <script> tags and apply DRY principle
 	* require component styles rather than importing
+	* use local scope of css-loader: https://github.com/webpack/css-loader#local-scope
+	  * check css modules webpack demo: https://github.com/css-modules/webpack-demo
   * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
   * add a debug boolean config param to determine whether to display stream contents or not
   * enforce code quality/style checks (pre-commit hooks?)
@@ -152,8 +167,8 @@
   * check out applicache cache: http://diveintohtml5.info/offline.html & http://alistapart.com/article/application-cache-is-a-douchebag
   * user-select: none (prevent selection of some elements)
   * check out postcss
-	* https://github.com/postcss/postcsssuper
-	* https://twitter.com/postcsssuper
+	* https://github.com/postcss/postcss
+	* https://twitter.com/postcss
   * how to generate sitemap?
 	* keep WP plugin or make the app independent (i.e., specific route in app to dynamically generate the sitemap)
   * check latest way to incorporate touch icons for iOS and chrome: https://mathiasbynens.be/notes/touch-icons
@@ -230,4 +245,4 @@
 * preprod
   * put back permalinks in WP config + doc necessity
   * SEOoooooo
-  * uncomment google analytics once readysuper
+  * uncomment google analytics once ready

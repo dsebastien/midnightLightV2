@@ -95,7 +95,7 @@ Examples of components:
   * do not assume that CSS is self-documenting
 
 ## Module
-A module is a larger part of the UI composed which can be composed of components, basic elements and/or of other modules.
+A module is a larger part of the UI which can be composed of components, basic elements and/or of other modules.
 
 Examples of modules:
 * product grid
