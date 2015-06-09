@@ -10,7 +10,7 @@ Goal: follow a _component_ design approach such as:
   * _BEM_: [https://css-tricks.com/bem-101/]
   * _SMACSS_: [https://smacss.com/]
 
-... or a mix thereof :)
+... or rather a mix thereof :)
 
 # General guidelines
 * separate structure from chrome
@@ -23,7 +23,48 @@ Goal: follow a _component_ design approach such as:
   * minimize the dependency on the HTML structure (related to the above)
 * predictability: ensure that the components work consistently
 
-# Components
+# Style types
+
+## About
+Here we describe a way to categorize the different types of styles that can be defined. In the next section, the naming convention is provided and explained.
+
+## Base
+Base styles are style rules which are almost exclusively single element selectors but can include attribute selectors, pseudo-class selectors, child selectors or sibling selectors.
+
+Examples:
+* generic styles, css resets, default link styles, default font styles, body backgrounds, ...
+* `a { ... }, a:hover{ ... }`
+
+## Utility
+Utility styles are low-level styles with a very narrow scope. Utilities should modify a single trait (a small collection of similar styles).
+
+Utilities can use `!important` to ensure that their styles always apply.
+
+Examples:
+
+```
+.u-floatLeft {
+  float: left !important;
+}
+
+.u-posAbsolute {
+  position: absolute !important;
+}
+
+.u-block {
+  display: block !important;
+}
+
+```
+
+## Component
+### About
+We are entering in the era of components. Soon, [Web Components](http://webcomponents.org/) will become the norm so we need to get prepared any way we can.
+
+Web components will make it possible to fully encapsulate styles belonging to a specific element and thus make specificity issues a thing of the past.
+
+We can emulate the properties of encapsulated styles today by applying a naming convention and respecting some design guidelines.
+
 Examples of components:
 * login form
 * search box
@@ -31,7 +72,7 @@ Examples of components:
 * social links
 * ...
 
-Guidelines for components:
+### Guidelines for components
 * components should be identified (modularity)
 * components should do one thing and do it well
   * a component should implement a single part of the UI
@@ -53,56 +94,7 @@ Guidelines for components:
   * what are the known limitations?
   * do not assume that CSS is self-documenting
 
-# Naming convention
-
-## Overview
-Basic convention:
-
-`<namespace>-<ComponentName>-<elementName>--<modifierName> { ... }`
-
-The convention relies on structured class names and meaningfull hyphens (i.e., not using hyphens merely to separate words). This helps work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
-
-## Mind the case
-* namespace: lowercase
-* ComponentName: PascalCase (i.e., CamelCase with first character in uppercase)
-* elementName: CamelCase with first character in lowercase
-* modifierName: idem
-
-## namespace (mandatory except for components)
-
-The goal of the namespace is to isolate different "groups" or "types" of styles (i.e., categories) and directly making the type clear.
-
-### b: base
-Style rules which are almost exclusively single element selectors but can include attribute selectors, pseudo-class selectors, child selectors or sibling selectors.
-
-Examples:
-* generic styles, css resets, default link styles, default font styles, body backgrounds, ...
-* `a { ... }, a:hover{ ... }`
-
-### u: utility
-Low-level utility styles with a very narrow scope. Utilities should modify a single trait (a small collection of similar styles).
-
-Utilities can use `!important` to ensure that their styles always apply.
-
-Examples:
-
-```
-.u-floatLeft {
-  float: left !important;
-}
-
-.u-posAbsolute {
-  position: absolute !important;
-}
-
-.u-block {
-  display: block !important;
-}
-
-```
-
-### m: module
-
+## Module
 A module is a larger part of the UI composed which can be composed of components, basic elements and/or of other modules.
 
 Examples of modules:
@@ -117,7 +109,7 @@ Guidelines for modules:
 * modules should avoid specificity battles
 * modules can be nested in one another
 
-### l: layout
+## Layout
 Layout styles dictate how the page is divided into sections. Layouts hold one or more modules together.
 
 Layouts can be split in two parts:
@@ -133,7 +125,7 @@ Guidelines for layout styles:
 * layouts should only care about positioning and placement
 * major layout elements can have an ID and be styled using ID selectors
 
-### t: theme
+## Theme
 Theme styles describe alternative looks for layouts/modules/...
 Theme styles can affect any of the other namespaces.
 Only use these if you want/need to get fancy
@@ -144,10 +136,34 @@ Example of theme styles:
 * define a different color scheme
 * ...
 
-### custom
-If necessary, components can be prefixed with a namespace in order to avoid the potential for collisions between libraries and your custom components.
 
-Èxamples:
+# Naming convention
+
+## Global
+`<namespace>-<ComponentName>-<elementName>--<modifierName> { ... }`
+
+The convention relies on structured class names and meaningfull hyphens (i.e., not using hyphens merely to separate words). This helps work around the current limits of applying CSS to the DOM (i.e., the lack of style encapsulation), and to better communicate the relationships between classes.
+
+## Mind the case
+* namespace: lowercase
+* ComponentName: PascalCase (i.e., CamelCase with first character in uppercase)
+* elementName: CamelCase with first character in lowercase
+* modifierName: idem
+
+## namespace (mandatory except for components)
+The goal of the namespace is to isolate the different "groups" or "types" of styles (i.e., categories) and directly making the type and intent clear.
+
+Possible values:
+* b: base
+* u: utility
+* m: module
+* l: layout
+* t: theme
+* ?: custom
+
+If necessary, components can be prefixed with a namespace in order to avoid the potential for collisions between libraries and your custom components
+
+Èxample:
 ```
 .myapp-Button { ... }
 ```

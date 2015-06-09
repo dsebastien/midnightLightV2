@@ -46,3 +46,9 @@ hr {
 	margin: 1em 0;
 	padding: 0;
 }
+
+// code highlighting
+pre, code {
+  font-family: "Roboto-Mono", "lucida console", "Courier New", monospace;
+  overflow-wrap: break-word;
+}

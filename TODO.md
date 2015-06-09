@@ -38,6 +38,7 @@
 	  * https://github.com/jasmine/jasmine
 	  * https://www.npmjs.com/package/gulp-jasmine
 	* protractor for functional tests
+	  * E2E test framework for angular apps
   * optimize/cache: changed(...)
   * TSD: add angular new router to tsd.json once the types are availble
   * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
@@ -56,6 +57,7 @@
   * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 	* dynamically add scripts/stylesheets in the HTML without having to add script tags manually
 * css
+  * apply styleguide to the codebase
   * define list styles
   * reset: apply margin 0 & padding 0 to all elements (?)
   * ensure that font-size defined at html is 16px
