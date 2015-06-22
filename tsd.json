@@ -5,20 +5,68 @@
 	"path": "ts-typings",
 	"bundle": "ts-typings/tsd.d.ts",
 	"installed": {
-		"angularjs/angular.d.ts": {
-			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
-		},
-		"angularjs/angular-sanitize.d.ts": {
-			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
-		},
-		"angularjs/angular-animate.d.ts": {
-			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
-		},
-		"jquery/jquery.d.ts": {
-			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
-		},
 		"lodash/lodash.d.ts": {
 			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
+		},
+		"es6-promise/es6-promise.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.async.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"angular2/angular2.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.coincidence.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.binding.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.aggregates.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.backpressure.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.backpressure-lite.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.lite.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.joinpatterns.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.async-lite.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.time-lite.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.binding-lite.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.time.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.coincidence-lite.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.experimental.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx-lite.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.testing.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+		},
+		"rx/rx.virtualtime.d.ts": {
+			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
 		}
 	}
 }

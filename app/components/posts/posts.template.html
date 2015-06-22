@@ -1,13 +1,12 @@
 <div id="blog" role="main" class="box">
 	<h2>Blog Posts</h2>
-	<article class="post" ng-repeat="post in posts.posts |  filter:posts.filter"> <!-- note that 'in posts' means in the posts controller -->
-		<h1 ng-bind-html="post.title"></h1>
+	<article class="post" *ng-for="#post of posts">
+		<h1>{{ post.title }}</h1>
 		<section class="post-meta">
 			<ul>
 				<li class="post-author"><a href="{{ post.authorUrl }}">{{ post.author }}</a></li>
 			</ul>
 		</section>
-		<section class="post-content" ng-bind-html="post.content">
-		</section>
+		<section class="post-content">{{ post.content }}</section>
 	</article>
 </div>

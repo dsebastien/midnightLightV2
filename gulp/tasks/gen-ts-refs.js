@@ -1,7 +1,9 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
+import inject from 'gulp-inject';
 
 import config from '../config';
 import utils from '../utils';
@@ -18,7 +20,7 @@ gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}));
 
 	return utils.plumbedSrc(config.files.appTypeScriptReferences)
-		.pipe($.inject(sources, {
+		.pipe(inject(sources, {
 			starttag: '//{',
 			endtag: '//}',
 			transform: function(filepath){

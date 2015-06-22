@@ -7,25 +7,20 @@ var extensions = {
 	typescript: '.ts',
 	css: '.css',
 	sass: '.scss',
-	html: '*.html'
+	html: '.html'
 };
 
 var folders = {
+	root: '.',
 	dist: './dist',
 	temp: './.tmp',
 	app: './app',
+	styles: '/styles',
+	scripts: '/scripts',
+	images: '/images',
 	typings: './ts-typings',
-	nodeModules: './node_modules'
-};
-
-var webServerFolders = {
-	dev: [
-		folders.temp,
-		folders.app
-	],
-	dist: [
-		folders.dist
-	]
+	nodeModules: './node_modules',
+	jspmPackages: './jspm_packages'
 };
 
 var globs = {
@@ -37,39 +32,50 @@ var globs = {
 	styles: {
 		css: '/**/*' + extensions.css,
 		sass: '/**/*' + extensions.sass,
-		vendor: '/styles/vendor{' + extensions.sass + ',' + extensions.css + '}'
+		vendor: folders.styles + '/vendor{' + extensions.sass + ',' + extensions.css + '}'
 	},
-	images: '/images/**/*',
-	fonts: {
-		application: '/fonts/**/*',
-		vendor: '/font-awesome/fonts/fontawesome-webfont.*'
-	},
-	html: '/**/*.html'
+	images: folders.images + '/**/*',
+	html: '/**/*' + extensions.html
 };
 
 var files = {
 	any: '*',
-	packageJSON: 'package.json',
+	packageJSON: folders.root + '/package.json',
 	appTypeScriptReferences: folders.typings + '/typescriptApp.d.ts',
 	libraryTypeScriptDefinitions: folders.typings + globs.scripts.typescript,
-	htaccess: 'node_modules/apache-server-configs/dist/.htaccess'
+	htaccess: folders.nodeModules + '/apache-server-configs/dist/.htaccess',
+	jspmConfigFile: folders.root + '/jspm.conf.js'
 };
 
-var exitOnError = false; // whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
+var webServerFolders = {
+	dev: [
+		folders.root, // necessary to have jspm_packages & jspm config file without needing a copy step
+		folders.temp,
+		folders.app
+	],
+	dist: [
+		folders.dist
+	]
+};
+
+var finalJsBundleName = 'bundle.min.js';
 
 var javascript = {
 	src: [
 		folders.app + globs.scripts.javascript
 	],
-	dest: folders.temp
+	srcDist: folders.temp + '/core/core.bootstrap.js',
+	dest: folders.temp,
+	destDist: folders.dist + folders.scripts + '/' + finalJsBundleName,
+	finalJsBundlePath: folders.scripts + '/' + finalJsBundleName
 };
 
 var typescript = {
 	src: [
-	folders.app + globs.scripts.typescript,
+		folders.app + globs.scripts.typescript,
 		files.libraryTypeScriptDefinitions, // reference to library .d.ts files
 		files.appTypeScriptReferences // reference to app.d.ts files
-		],
+	],
 	srcAppOnly: [
 		folders.app + globs.scripts.typescript
 	],
@@ -90,27 +96,18 @@ var styles = {
 		utils.exclude(folders.app + globs.styles.vendor)
 	],
 	dest: folders.temp, // during DEV
-	destDist: folders.dist + '/styles', // for PROD
+	destDist: folders.dist + folders.styles, // for PROD
 	finalCssBundleFilename: 'bundle.min.css',
-	finalVendorCssBundleFilename: 'vendor.min.css'
+	finalCssBundlePath: folders.styles + '/bundle.min.css',
+	finalVendorCssBundleFilename: 'vendor.min.css',
+	finalVendorCssBundlePath: folders.styles + '/vendor.min.css'
 };
 
 var images = {
 	src: [
 		folders.app + globs.images
 	],
-	dest: folders.dist + '/images'
-};
-
-var fonts = {
-	src: [
-		folders.app + globs.fonts.application
-	],
-	srcVendorOnly: [
-		folders.nodeModules + globs.fonts.vendor
-	],
-	dest: folders.temp + '/fonts',
-	destDist: folders.dist + '/fonts'
+	dest: folders.dist + folders.images
 };
 
 var html = {
@@ -123,12 +120,14 @@ var html = {
 var copy = {
 	src: [
 		folders.app + globs.any,
+		files.htaccess,
+
+		// ignore stuff handled by the other tasks
 		utils.exclude(folders.app + globs.html),
 		utils.exclude(folders.app + globs.styles.css),
 		utils.exclude(folders.app + globs.styles.sass),
 		utils.exclude(folders.app + globs.scripts.javascript),
-		utils.exclude(folders.app + globs.scripts.typescript),
-		files.htaccess
+		utils.exclude(folders.app + globs.scripts.typescript)
 	],
 	dest: folders.dist
 };
@@ -157,12 +156,10 @@ module.exports = {
 	folders,
 	globs,
 	files,
-	exitOnError,
 	javascript,
 	typescript,
 	styles,
 	images,
-	fonts,
 	html,
 	copy,
 	autoprefixerBrowsers,

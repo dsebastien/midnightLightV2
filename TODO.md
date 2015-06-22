@@ -1,15 +1,37 @@
-* check out SystemJS
-* check out JSPM:
-  * https://medium.com/@swirlycheetah/getting-started-with-jspm-systemjs-d6f2560b7eb4
-  * https://engineering.iconnect360.com/angularjs/
-* migrate to Angular 2
-  * add dep for systemjs
-  * add angular 2 tsd: http://www.nuget.org/packages/angular2.TypeScript.DefinitelyTyped/0.0.3
-  * re-add dependencies
-	* "angular-loader": "1.4.x",
-	* "angular-animate": "1.4.x",
-	* "angular-sanitize": "1.4.x",
-	* "angular-mocks": "1.4.x",
+* mig to angular 2
+  * how to inject service based on interface
+  * find how to use relative path in templateUrl
+  * import {Injector} from 'di/injector';
+	* import {ClassName} from '...';
+	* var injector = new Injector();
+	* var Brol = injector.get(ClassName);
+	* OR
+	  * @Inject(ClassName)
+		export class Bidule {
+		  constructor(brol: Brol){ ... }
+  * add router tsd once available
+	* remove custom.angular2.d.ts
+  * decide whether to rename Posts to PostsController (and the rest) or not
+* mig to jspm and systemjs
+  * fix Docker config (probably dep version issues)
+  * how to properly import the CSS if in JSPM and version in folder name
+  * remove jspm@beta from readme, dockerfile, package.json etc once stable release available
+  * remove copy-jspm-packages task
+* mig to TypeScript 1.5+
+  * update the package.json once available
+  * modify ts gulp plugin config to generate system modules
+  * put back 'use strict' in the core.bootstrap.ts
+  * use tsconfig.json
+  * https://www.npmjs.com/package/gulp-typescript
+  * http://json.schemastore.org/tsconfig
+  * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
+  * https://github.com/Microsoft/TypeScript/issues/1927
+  * https://github.com/Microsoft/TypeScript/pull/3188
+  * https://github.com/ivogabe/gulp-typescript/pull/99
+  * var tsProject = tsc.createProject('tsconfig.json', {
+	  typescript: require('typescript')
+	});
+* add template again
 * check out susy: http://susy.oddbird.net/
 * check out breakpoint: http://breakpoint-sass.com/
 * create responsive grid
@@ -20,22 +42,16 @@
   * integrate PatternLab or something similar to create a style guide for dev/prod
 	* goal: easily see all components (atomic design approach)
 	* http://yeo-lab.com/#learn-more
+  * check out json server: https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server
   * add ESlint? (also in sublime): http://eslint.org/
   * try to use the changed plugin to limit the overhead of allowing js/ts/styles to be anywhere in the app folder
-  * integrate tsconfig.json:
-	* https://www.npmjs.com/package/gulp-typescript
-	* http://json.schemastore.org/tsconfig
-	* https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
-	* https://github.com/Microsoft/TypeScript/issues/1927
-	* https://github.com/Microsoft/TypeScript/pull/3188
-	* https://github.com/ivogabe/gulp-typescript/pull/99
-  * version css & js code (add timestamp)
+  * use cache busting
   * add scss-lint
-	* https://www.npmjs.com/package/gulp-scss-lint
-	* https://github.com/brigade/scss-lint#configuration
-	* https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint
-	* q: plugin for webstorm?
-	* add to npm run serve
+  * https://www.npmjs.com/package/gulp-scss-lint
+  * https://github.com/brigade/scss-lint#configuration
+  * https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint
+  * q: plugin for webstorm?
+  * add to npm run serve
   * add css-lint
 	* https://www.npmjs.com/package/gulp-csslint
 	* rules: https://github.com/CSSLint/csslint/wiki/Rules-by-ID
@@ -44,7 +60,7 @@
 	* q: plugin for webstorm?
 	* add to npm run serve
   * prepare build for testing
-	* karma, mocha, jasmine for unit testing
+	* karma, mocha, jasmine, testacular for unit testing
 	  * https://www.npmjs.com/package/gulp-karma
 	  * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
 	  * http://jasmine.github.io/2.3/introduction.html
@@ -57,23 +73,43 @@
   * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
   * improve JS code style config (not great with object literals)
   * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
-  * integrate webpack?
-	* avoid <script> tags and apply DRY principle
-	* require component styles rather than importing
-	* use local scope of css-loader: https://github.com/webpack/css-loader#local-scope
-	  * check css modules webpack demo: https://github.com/css-modules/webpack-demo
   * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
-  * add a debug boolean config param to determine whether to display stream contents or not
   * enforce code quality/style checks (pre-commit hooks?)
   * js/ts formatting in webstorm?
   * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
-  * add Travis (?)
-	* check meaning of iojs
+  * configure Travis
+	* once configured, enable for the project in https://travis-ci.org/profile/dsebastien
   * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 	* dynamically add scripts/stylesheets in the HTML without having to add script tags manually
+  * generate release notes on GitHub like https://github.com/mgonto/restangular/releases (through GitHub's api)
+  * check out plato for code complexity checks
+  * add hthint: https://www.npmjs.com/package/gulp-htmlhint
+  * if release, then fail the build in case of jshint, tshint, ... error
+  * remove gulp load plugins plugin (?)
+  * ensure that babel supports experimental features (e.g., decorators, etc)
+  * ts-lint nok w/ TS 1.5: https://github.com/palantir/tslint/issues/356
+	* re-add ts-lint to
+	* prepare-default (gulpfile.babel.js)
+	* serve (2 places: watch + prepare-serve)
+  * add gulp-template
+	* https://www.npmjs.com/package/gulp-template
+	* var template = require('gulp-template');
+	* goal: replace tokens in html, js, etc
+	  * e.g., normalize.css version before sass is invoked
+	  * app version
+	* get the app version
+		function getVersion(){
+		  var pkg = JSON.parse(fs.readFileSync('package.json'));
+		  return pkg.version;
+		}
+  * add gulp-bump
+	* goal: easily bump the project version
+	  * bump.major, bump.minor, bump.patch
+	* var bump = require('gulp-bump');
 * css
   * apply styleguide to the codebase
   * define list styles
+  * define link styles a{ }, a:visited{}, a:hover{}
   * reset: apply margin 0 & padding 0 to all elements (?)
   * ensure that font-size defined at html is 16px
   * ensure that the line-height is set to 1.2em (browser default)
@@ -160,6 +196,7 @@
 * testing
   * add tests
 * research
+  * check out stealJS
   * evaluate haml: http://haml.info/
 	* or mustache :)
   * review pure.css code (e.g., find useful classes, responsive images, hiding elements, ...)

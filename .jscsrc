@@ -14,7 +14,10 @@
   },
   "validateParameterSeparator": ", ",
   "validateQuoteMarks": { "mark": "'", "escape": true },
-  "excludeFiles": ["node_modules/**"],
+  "excludeFiles": [
+	"node_modules/**",
+	"jspm_packages/**"
+  ],
   "fileExtensions": [".js"],
   "requireSemicolons": true,
   "maximumLineLength": null,

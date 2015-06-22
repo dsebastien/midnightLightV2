@@ -1,6 +1,6 @@
 {
   "esnext": true,
-  "strict": false,
+  "strict": true,
   "devel": true,
   "browser": true,
   "forin": true,
@@ -20,5 +20,9 @@
   "undef": true,
   "unused": true,
   "jquery": true,
-  "mocha": true
+  "mocha": true,
+  "globals": {
+	"protractor": false,
+	"someWordYouShouldNotCheck": false
+	}
 }

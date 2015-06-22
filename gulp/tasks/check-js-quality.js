@@ -1,7 +1,9 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
+import jshint from 'gulp-jshint';
 import browserSync from 'browser-sync';
 
 import config from '../config';
@@ -22,10 +24,10 @@ gulp.task('check-js-quality', 'Check JavaScript code quality using JSHint', () =
 	}))
 
 	// Run JSHint
-	.pipe($.jshint())
+	.pipe(jshint())
 
 	// Generate a stylish report
-	.pipe($.jshint.reporter('jshint-stylish'));
+	.pipe(jshint.reporter('jshint-stylish'));
 
 	// Fail the build only if BrowserSync is not active
 	// Actually, failing the build is counter-productive thus evil

@@ -1,7 +1,10 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
+import eventStream from 'event-stream';
+import size from 'gulp-size';
 
 import config from '../config';
 import utils from '../utils';
@@ -15,11 +18,17 @@ gulp.task('copy', 'Copy all files except HTML/CSS/JS which are processed separat
 	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
+	// Filter out the empty directories
+	.pipe(utils.filterEmptyDirectories(eventStream))
+
+	// Display the files in the stream
+	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+
 	// Copy
 	.pipe(gulp.dest(config.copy.dest))
 
 	// Task result
-	.pipe($.size({
+	.pipe(size({
 		title: 'copy'
 	}));
 });

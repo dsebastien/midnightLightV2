@@ -1,6 +1,8 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp'));
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
 
 import runSequence from 'run-sequence'; // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 import browserSync from 'browser-sync';
@@ -10,6 +12,7 @@ import config from '../config';
 var startBrowserSync = () =>{
 	browserSync({ // http://www.browsersync.io/docs/options/
 		notify: false,
+		//port: 8000,
 
 		// Customize the BrowserSync console logging prefix
 		logPrefix: 'MDL',
@@ -29,7 +32,7 @@ var startBrowserSync = () =>{
 	gulp.watch(config.html.src, browserSync.reload); // html changes will force a reload
 	gulp.watch(config.styles.src, [ 'styles' ]); // stylesheet changes will force a reload
 	gulp.watch(config.typescript.srcAppOnly, [
-		'ts-lint',
+		//'ts-lint',
 		'scripts-typescript',
 		'gen-ts-refs'
 	]); // TypeScript changes will force a reload
@@ -46,16 +49,15 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', (
 });
 
 gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [
-		'ts-lint',
+		//'ts-lint',
 		'check-js-style',
 		'check-js-quality'
 		], (callback) =>{
-			return runSequence('copy-npm-dependencies', [
+			return runSequence([
 				'gen-ts-refs',
 				'scripts-javascript',
 				'scripts-typescript',
 				'styles',
-				'fonts-vendor',
 				'validate-package-json'
 			], callback);
 		});

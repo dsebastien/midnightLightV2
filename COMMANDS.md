@@ -19,7 +19,7 @@ This outputs an IP address you can use to locally test and another that can be u
 You can also serve from the 'dist' folder (i.e., using the 'production' files):
 
 ```sh
-$ gulp serve:dist
+$ gulp serve-dist
 ```
 
 ## Build & Optimize

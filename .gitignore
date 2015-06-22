@@ -1,12 +1,18 @@
 # Project specific
-node_modules
 dist
 .tmp
 *.log
+*.map
 !ts-typings
 ts-typings/*
 !ts-typings/tsd.d.ts
 !ts-typings/typescriptApp.d.ts
+
+# NPM
+node_modules
+
+# JSPM
+jspm_packages
 
 # Windows
 Desktop.ini

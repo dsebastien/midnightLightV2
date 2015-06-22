@@ -28,10 +28,11 @@ If you want to build from source, you need to:
 * install NodeJS:
 * clone this git repository
 * go to the folder where you've cloned the project
-* run `$ npm install --global gulp babel` to get the build tools
-* run `$ npm install` to download all dependencies
+* run `$ npm install --global gulp babel jspm@beta` to get the build tools
+* run `$ npm install` to download all build dependencies
+* run `$ jspm install` to download all the application dependencies
 * run `$ npm run tsd` to retrieve TypeScript definitions list (for more information, check out the following [link](https://github.com/borisyankov/DefinitelyTyped)
-* run `$ gulp` to build the app
+* run `$ gulp` to build the app (in the dist folder)
 * take a look at COMMANDS.md in the project for more commands you can use
 
 ## Running manually
@@ -48,10 +49,14 @@ If you're familiar with Docker then you can easily run the development or produc
 * run `$ npm run tsd-update`. This will update everything in tsd.json to the head version of the DefinitelyTyped repository
 
 ## Build dependencies
+* jspm: JS package manager; abstracts away npm, bower etc: https://www.npmjs.com/package/jspm
+* gulp: build system (https://www.npmjs.com/package/gulp)
+* babel: ES6 to ES5 transpiler; used for the gulp build
+* typescript: the typescript tools (compiler, ...)
+* systemjs-builder: build tool for systemjs allows to create a single-file build of mixed-dependency module trees: https://www.npmjs.com/package/systemjs-builder
 * apache-server-configs: base Apache HTTP Server config (allows/configures CORS, adds the X-UA-Compatible header, defines all media types correctly such as SVG, ...): https://www.npmjs.com/package/apache-server-configs
 * browser-sync: live CSS reload & browser syncing: https://www.npmjs.com/package/browser-sync
 * del: deletes files/folders: https://www.npmjs.com/package/del
-* gulp: build system (https://www.npmjs.com/package/gulp)
 * gulp-autoprefixer: automatically adds vendor prefixes to CSS: https://www.npmjs.com/package/gulp-autoprefixer
 * gulp-cache: temp file based caching proxy task for gulp: https://www.npmjs.com/package/gulp-cache
 * gulp-changed: only pass through changed files: https://www.npmjs.com/package/gulp-changed
@@ -70,12 +75,11 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-sourcemaps: js source map support for gulp: https://www.npmjs.com/package/gulp-sourcemaps
 * gulp-uglify: minify files using Uglify JS: https://www.npmjs.com/package/gulp-uglify
 * gulp-uncss: remove unused CSS selectors: https://www.npmjs.com/package/gulp-uncss
-* gulp-useref: parses 'build' blocks in HTML files to replace references to non-optimized scripts/stylesheets: https://www.npmjs.com/package/gulp-useref
 * gulp-util: utility methods for gulp: https://www.npmjs.com/package/gulp-util
 * gulp-plumber: prevent pipe breaking caused by errors from gulp plugins: https://www.npmjs.com/package/gulp-plumber
 * gulp-notify: display notifications on OSX, Linux and Windows (native). Fallsback to Growl or simply logging: https://www.npmjs.com/package/gulp-notify
-* gulp-npm-files: list package.json dependencies so that we can process them (e.g., copy them to the dist folder): https://www.npmjs.com/package/gulp-npm-files
 * gulp-help: create a list of gulp tasks with documentation: https://www.npmjs.com/package/gulp-help/
+* gulp-html-replace: replace build blocks in HTML: https://www.npmjs.com/package/gulp-html-replace
 * gulp-strip-debug: remove console and debugger statements from JS code: https://www.npmjs.com/package/gulp-strip-debug
 * gulp-concat: concatenate files: https://www.npmjs.com/package/gulp-concat
 * gulp-rename: rename files: https://www.npmjs.com/package/gulp-rename
@@ -86,16 +90,16 @@ If you're familiar with Docker then you can easily run the development or produc
 * gulp-tsd: TSD plugin for gulp: https://www.npmjs.com/package/gulp-tsd
 * gulp-tslint: Linter for TypeScript code: https://www.npmjs.com/package/gulp-tslint
 * gulp-typescript: TypeScript transpiler plugin for gulp: https://www.npmjs.com/package/gulp-typescript
+* tsd: TypeScript Definition manager: https://www.npmjs.com/package/tsd
 * gulp-babel: ES6 to ES5 transpiler plugin for gulp: https://www.npmjs.com/package/gulp-babel
 * gulp-jscs: JavaScript code style checker plugin for gulp: https://www.npmjs.com/package/gulp-jscs
 * gulp-jscs-stylish: Stylish reporter for gulp-jscs: https://www.npmjs.com/package/gulp-jscs-stylish
-* tsd: TypeScript Definition manager: https://www.npmjs.com/package/tsd
 * jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
 * opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
 * psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
 * run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
-* babel: ES6 to ES5 transpiler; used for the gulp build
+* event-stream: construct pipes of streams of events: https://www.npmjs.com/package/event-stream
 
 ## Runtime dependencies
 * node-reset-scss: Eric Meyer's CSS reset: https://www.npmjs.com/package/node-reset-scss
@@ -121,8 +125,8 @@ The project includes multiple configuration files. Here's some information about
   * more information: http://jshint.com/docs/)
 * bower.json and .bowerrc: bower's configuration file (just in case bower is later used to manage the project's dependencies). For now I'm using NPM and am satisfied with it (more information: http://bower.io/)
 * Dockerfile and DockerfileDev: Docker configuration files used to describe how Docker images should be created for this project (more information: https://www.docker.com/ and http://docs.docker.com/reference/builder/)
-* gulpfile.js: gulp's configuration file. This is where the build magic happens (more information: http://gulpjs.com/)
-* package.Json: NPM's configuration file. This is where all dependencies are defined: project ones under 'dependencies' and build-related ones under 'devDependencies' (more information: https://docs.npmjs.com/files/package.json)
+* gulpfile.babel.js: gulp's configuration file. This is where the build magic happens (more information: http://gulpjs.com/)
+* package.Json: NPM's configuration file. This is where all dependencies are defined: project ones under 'jspm' and build-related ones under 'devDependencies' (more information: https://docs.npmjs.com/files/package.json)
 * runOnDocker.sh and runDevOnDocker.sh: build scripts that create/run Docker images
 * travis.yml: Travis CI configuration files (more information: http://docs.travis-ci.com/user/build-configuration/)
 * tsd.json: TypeScript's DefinitelyTyped (tsd) definitions configuration (more information: https://github.com/DefinitelyTyped/tsd)

@@ -1,16 +1,17 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
+import htmlReplace from 'gulp-html-replace';
+import iff from 'gulp-if';
+import minifyHtml from 'gulp-minify-html';
+import size from 'gulp-size';
 
 import config from '../config';
 import utils from '../utils';
 
-gulp.task('html', 'Optimize HTML and assets', () =>{
-	var assets = $.useref.assets({
-		searchPath: '{' + config.folders.temp + ',' + config.folders.app + '}'
-	});
-
+gulp.task('html', 'Optimize HTML', () =>{
 	return utils.plumbedSrc(
 			config.html.src
 	)
@@ -18,27 +19,21 @@ gulp.task('html', 'Optimize HTML and assets', () =>{
 	// Display the files in the stream
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
-	.pipe(assets)
-
-	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
-
-	.pipe($.if(config.files.any + config.extensions.js, $.stripDebug())) // remove console/debug statements
-	.pipe($.if(config.files.any + config.extensions.js, $.uglify({
-		preserveComments: 'some'
-	}))) // keep comments that have a '!': https://github.com/gruntjs/grunt-contrib-uglify#preservecomments
-
-	.pipe(assets.restore())
-	.pipe($.useref())
+	// Inject production assets path: https://www.npmjs.com/package/gulp-html-replace
+	.pipe(htmlReplace({
+		'css-vendor': config.styles.finalVendorCssBundlePath,
+		'css-bundle': config.styles.finalCssBundlePath,
+		'js-app': config.javascript.finalJsBundlePath
+	}))
 
 	// Minify HTML
-	.pipe($.if(config.files.any + config.extensions.html, $.minifyHtml()))
+	.pipe(iff(config.files.any + config.extensions.html, minifyHtml()))
 
 	// Output files
 	.pipe(gulp.dest(config.html.dest))
 
 	// Task result
-	.pipe($.size({
+	.pipe(size({
 		title: 'html'
 	}));
 });

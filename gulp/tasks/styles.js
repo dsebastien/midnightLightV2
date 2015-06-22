@@ -1,8 +1,14 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
-var browserSync = require('browser-sync');
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
+import sass from 'gulp-sass';
+import sourcemaps from 'gulp-sourcemaps';
+import autoprefixer from 'gulp-autoprefixer';
+import iff from 'gulp-if';
+import browserSync from 'browser-sync';
+import size from 'gulp-size';
 
 import config from '../config';
 import utils from '../utils';
@@ -16,17 +22,18 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', () =
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
 	// Initialize sourcemap generation
-	.pipe($.sourcemaps.init({
+	.pipe(sourcemaps.init({
 		//debug: true
 	}))
 
 	// Process the sass files
-	.pipe($.sass({
+	.pipe(sass({
+		style: "compressed"
 		//errLogToConsole: true
 	}))
 
 	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
-	.pipe($.sourcemaps.write({ // use '.' to write the sourcemap to a separate file in the same dir
+	.pipe(sourcemaps.write({ // use '.' to write the sourcemap to a separate file in the same dir
 		includeContent: false, // alternative: include the contents and remove sourceRoot. Avoids issues but prevents from editing the sources directly in the browser
 		sourceRoot: './' // use the file's folder as source root
 	}))
@@ -34,7 +41,7 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', () =
 	// Include vendor prefixes
 	// The if clause prevents autoprefixer from messing up the sourcemaps (necessary if the maps are put in separate files)
 	// reference: https://github.com/sindresorhus/gulp-autoprefixer/issues/8#issuecomment-93817177
-	.pipe($.if([ config.extensions.css, '!*.map' ], $.autoprefixer({
+	.pipe(iff([ config.extensions.css, '!*.map' ], autoprefixer({
 		browsers: config.autoprefixerBrowsers // alternative: $.autoprefixer('last 2 version')
 	})))
 
@@ -43,12 +50,12 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', () =
 
 	// Reload Browser if needed
 	// Stream if possible
-	.pipe($.if(browserSync.active, browserSync.reload({
+	.pipe(iff(browserSync.active, browserSync.reload({
 		stream: true, once: true
 	})))
 
 	// Task result
-	.pipe($.size({
+	.pipe(size({
 		title: 'styles'
 	}));
 });

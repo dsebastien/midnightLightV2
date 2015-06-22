@@ -1,6 +1,8 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 
@@ -9,6 +11,9 @@ import config from '../config';
 var startBrowserSync = () =>{
 	browserSync({
 		notify: false,
+		//port: 8000,
+
+		// Customize the BrowserSync console logging prefix
 		logPrefix: 'MDL',
 
 		// Run as an https by uncommenting 'https: true'
@@ -20,5 +25,5 @@ var startBrowserSync = () =>{
 };
 
 gulp.task('serve-dist', 'Build and serve the production version (i.e., \'dist\' folder contents', () =>{
-	runSequence('default', startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
+	return runSequence(['default'], startBrowserSync); // here we need to ensure that all the other tasks are done before we start BrowserSync
 });

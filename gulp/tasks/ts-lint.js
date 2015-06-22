@@ -1,10 +1,12 @@
 'use strict';
 
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
-
-
+import gulp from 'gulp';
+import help from 'gulp-help';
+help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
+import tslint from 'gulp-tslint';
+import iff from 'gulp-if';
 import browserSync from 'browser-sync';
+import size from 'gulp-size';
 
 import config from '../config';
 import utils from '../utils';
@@ -18,16 +20,16 @@ gulp.task('ts-lint', 'Lint TypeScript code', () =>{
 	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
 
 	// Check the code quality
-	.pipe($.tslint())
+	.pipe(tslint())
 
 	// Fail the build only if BrowserSync is not active
-	.pipe($.if(!browserSync.active, $.tslint.report('prose')))
-	.pipe($.if(browserSync.active, $.tslint.report('prose', {
+	.pipe(iff(!browserSync.active, tslint.report('prose')))
+	.pipe(iff(browserSync.active, tslint.report('prose', {
 		emitError: false
 	})))
 
 	// Task result
-	.pipe($.size({
+	.pipe(size({
 		title: 'ts-lint'
 	}));
 });

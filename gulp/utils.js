@@ -1,18 +1,20 @@
 'use strict';
 
 // Include Gulp & tools we'll use
-var gulp = require('gulp-help')(require('gulp')); // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
-var $ = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+import gulp from 'gulp';
+import notify from 'gulp-notify';
 import gutil from 'gulp-util';
+import plumber from 'gulp-plumber';
 
-import config from './config';
+var exitOnError = false; // whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
 
 // display errors nicely and avoid having errors breaking tasks/watch
 // reference: https://github.com/mikaelbr/gulp-notify/issues/81
-var reportError = (error) =>{
+var reportError = function(error) {
+
 	var lineNumber = error.lineNumber ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
-	$.notify({
+	notify({
 		title: 'Task Failed [' + error.plugin + ']',
 		message: lineNumber + 'See console.',
 		sound: true
@@ -46,7 +48,7 @@ var reportError = (error) =>{
 
 	console.error(report);
 
-	if(config.exitOnError){
+	if(exitOnError){
 		process.exit(1);
 	} else{
 		// Prevent the 'watch' task from stopping
@@ -58,7 +60,7 @@ var reportError = (error) =>{
 // reference: https://gist.github.com/floatdrop/8269868
 var plumbedSrc = function(){
 	return gulp.src.apply(gulp, arguments)
-			.pipe($.plumber({
+			.pipe(plumber({
 				errorHandler: reportError
 			}));
 };
@@ -69,8 +71,21 @@ var exclude = function(providedPath){
 	return not + providedPath;
 };
 
+// utility function that filters out empty directories
+// reference: http://stackoverflow.com/questions/23719731/gulp-copying-empty-directories
+var filterEmptyDirectories = function(es){
+	return es.map(function(file, cb){
+	  if(file.stat.isFile()){
+		return cb(null, file);
+	  } else{
+		return cb();
+	  }
+  });
+};
+
 module.exports = {
 	exclude,
 	reportError,
-	plumbedSrc
+	plumbedSrc,
+	filterEmptyDirectories
 };
