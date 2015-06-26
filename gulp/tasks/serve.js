@@ -6,6 +6,7 @@ help(gulp); // provide help through 'gulp help' -- the help text is the second g
 
 import runSequence from 'run-sequence'; // note that gulp-help is loaded first: https://www.npmjs.com/package/gulp-help/
 import browserSync from 'browser-sync';
+import historyApiFallback from 'connect-history-api-fallback'; // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 
 import config from '../config';
 
@@ -26,7 +27,13 @@ var startBrowserSync = () =>{
 		//  forms: false,
 		//  scroll: false
 		// },
-		server: config.webServerFolders.dev
+		server: {
+			baseDir: config.webServerFolders.dev,
+
+			// fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
+			// reference: https://github.com/BrowserSync/browser-sync/issues/204
+			middleware: [ historyApiFallback() ]
+		}
 	});
 
 	gulp.watch(config.html.src, browserSync.reload); // html changes will force a reload

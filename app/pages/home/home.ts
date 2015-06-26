@@ -9,10 +9,10 @@ import { Component, View } from 'angular2/angular2';
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 
 @Component({
-	selector: 'component-home'
+	selector: 'page-home'
 })
 @View({
-	templateUrl: 'components/home/home.template.html',
+	templateUrl: 'home.template.html',
 	directives: []
 })
 export class Home {

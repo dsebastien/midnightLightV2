@@ -5,6 +5,7 @@ import help from 'gulp-help';
 help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
 import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
+import historyApiFallback from 'connect-history-api-fallback'; // fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 
 import config from '../config';
 
@@ -20,7 +21,13 @@ var startBrowserSync = () =>{
 		// Note: this uses an unsigned certificate which on first access
 		// will present a certificate warning in the browser.
 		// https: true,
-		server: config.webServerFolders.dist
+		server: {
+			baseDir: config.webServerFolders.dist,
+
+			// fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
+			// reference: https://github.com/BrowserSync/browser-sync/issues/204
+			middleware: [ historyApiFallback() ]
+		}
 	});
 };
 

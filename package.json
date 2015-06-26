@@ -92,7 +92,8 @@
     "run-sequence": "1.1.x",
     "systemjs-builder": "0.11.x",
     "tsd": "0.5.x",
-    "typescript": "1.5.0-beta"
+    "typescript": "1.5.0-beta",
+	"connect-history-api-fallback": "1.1.0"
   },
   "engines": {
     "node": ">=0.12.0",
