@@ -27,15 +27,16 @@ System.config({
 
 System.config({
   "map": {
-    "angular2": "npm:angular2@2.0.0-alpha.27",
-    "babel": "npm:babel-core@5.6.1",
-    "babel-runtime": "npm:babel-runtime@5.6.1",
+    "angular2": "npm:angular2@2.0.0-alpha.28",
+    "babel": "npm:babel-core@5.6.15",
+    "babel-runtime": "npm:babel-runtime@5.6.15",
     "core-js": "npm:core-js@0.9.18",
     "es6-shim": "github:es-shims/es6-shim@0.32.2",
     "font-awesome": "npm:font-awesome@4.3.0",
     "lodash": "npm:lodash@3.9.3",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "reflect-metadata": "npm:reflect-metadata@0.1.0",
+    "rx": "npm:rx@2.5.1",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
     "zone.js": "npm:zone.js@0.5.1",
@@ -91,7 +92,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:angular2@2.0.0-alpha.27": {
+    "npm:angular2@2.0.0-alpha.28": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
@@ -103,7 +104,7 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:babel-runtime@5.6.1": {
+    "npm:babel-runtime@5.6.15": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:buffer@3.2.2": {

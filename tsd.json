@@ -2,71 +2,71 @@
 	"version": "v4",
 	"repo": "borisyankov/DefinitelyTyped",
 	"ref": "master",
-	"path": "ts-typings",
-	"bundle": "ts-typings/tsd.d.ts",
+	"path": "typings",
+	"bundle": "typings/tsd.d.ts",
 	"installed": {
 		"lodash/lodash.d.ts": {
-			"commit": "8b7cc13f6dbabd0a49de7ccba75c342160e600ad"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"es6-promise/es6-promise.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.async.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"angular2/angular2.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.coincidence.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.binding.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.aggregates.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.backpressure.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.backpressure-lite.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.lite.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.joinpatterns.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.async-lite.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.time-lite.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.binding-lite.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.time.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.coincidence-lite.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.experimental.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx-lite.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.testing.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		},
 		"rx/rx.virtualtime.d.ts": {
-			"commit": "066819c65ff561ca109955e0b725c253e243f0a2"
+			"commit": "6f04d25ad38982d372cc3cda62fa4c0eef9e24d7"
 		}
 	}
 }

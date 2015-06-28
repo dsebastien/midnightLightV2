@@ -1,5 +1,5 @@
 # About
-Should contain components including everything they're made of (e.g., controller, service, model, directive, filter, stylesheet, tests, ...).
+Should contain components including everything they're made of (e.g., controller, service, model, template, directive, filter, stylesheet, tests, ...).
 
 # Design approach
 The idea being to isolate components as much as possible so that removing one can be done in a clean manner without worrying (too much) about side-effects.

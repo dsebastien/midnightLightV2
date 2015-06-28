@@ -18,7 +18,7 @@ var folders = {
 	styles: '/styles',
 	scripts: '/scripts',
 	images: '/images',
-	typings: './ts-typings',
+	typings: './typings',
 	nodeModules: './node_modules',
 	jspmPackages: './jspm_packages'
 };

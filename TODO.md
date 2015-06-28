@@ -1,22 +1,12 @@
-* mig to angular 2
-  * how to inject service based on interface
-  * find how to use relative path in templateUrl
-  * import {Injector} from 'di/injector';
-	* import {ClassName} from '...';
-	* var injector = new Injector();
-	* var Brol = injector.get(ClassName);
-	* OR
-	  * @Inject(ClassName)
-		export class Bidule {
-		  constructor(brol: Brol){ ... }
+* learn RxJs
+* mig to angular 2 
+  * find if/how to inject service based on interface
   * add router tsd once available
 	* remove custom.angular2.d.ts
-  * decide whether to rename Posts to PostsController (and the rest) or not
 * mig to jspm and systemjs
   * fix Docker config (probably dep version issues)
   * how to properly import the CSS if in JSPM and version in folder name
   * remove jspm@beta from readme, dockerfile, package.json etc once stable release available
-  * remove copy-jspm-packages task
 * mig to TypeScript 1.5+
   * update the package.json once available
   * modify ts gulp plugin config to generate system modules

@@ -1,33 +1,34 @@
-///<reference path="../../../ts-typings/tsd.d.ts" />
-///<reference path="../../../ts-typings/typescriptApp.d.ts" />
+///<reference path="../../../typings/tsd.d.ts" />
+///<reference path="../../../typings/typescriptApp.d.ts" />
 
 'use strict';
 
+import {Component, Http, httpInjectables} from "angular2/angular2";
+
+import * as Rx from 'rx';
+
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
-//import {Inject} from 'angular2/di';
 
+@Component({
+	appInjector: [httpInjectables]
+})
 export class PostsService{
-	constructor(){
-		
-	}
+	private http: Http;
 	
-	//TODO implement
-}
-
-/*
-	import Configuration = MidnightLight.Core.Commons.Configuration;
-
-	export class PostsService {
-		static $inject = ['$http'];
-
-		constructor(private $http: ng.IHttpService) {
-		}
-
-		getPosts(): ng.IHttpPromise<Array<{}>> {
-			return this.$http.get(Configuration.applicationUrlWpApi + '/posts?filter[posts_per_page]=2&withoutcomments');
-		}
+	//constructor(){
+	constructor(http: Http){
+		console.log('Loading the Posts service');
+		this.http = http;
 	}
 
-	angular.module(Configuration.applicationName)
-		.service(PostsService.UID, PostsService);
-*/
+	//TODO implement
+	fetchPosts(): Rx.Observable<any>{ // todo set correct type
+		return this.http.get(Configuration.applicationUrlWpApi + '/posts?filter[posts_per_page]=2&withoutcomments');
+		/*
+		 Rx.Observable<any>
+		return Rx.Observable
+			.interval(4000)
+		.flatMap(() => this.http.get(Configuration.applicationUrlWpApi + '/posts?filter[posts_per_page]=2&withoutcomments'));
+		*/
+	}
+}

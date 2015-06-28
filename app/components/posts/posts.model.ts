@@ -1,5 +1,5 @@
-///<reference path="../../../ts-typings/tsd.d.ts" />
-///<reference path="../../../ts-typings/typescriptApp.d.ts" />
+///<reference path="../../../typings/tsd.d.ts" />
+///<reference path="../../../typings/typescriptApp.d.ts" />
 
 'use strict';
 

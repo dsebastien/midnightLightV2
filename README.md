@@ -131,6 +131,7 @@ The project includes multiple configuration files. Here's some information about
 * travis.yml: Travis CI configuration files (more information: http://docs.travis-ci.com/user/build-configuration/)
 * tsd.json: TypeScript's DefinitelyTyped (tsd) definitions configuration (more information: https://github.com/DefinitelyTyped/tsd)
 * tslint.json: TypeScript code style configuration (more information: https://www.npmjs.com/package/tslint)
+* connect-history-api-fallback: useful to automatically redirect all non-existent directories to the index file; required for SPAs: https://www.npmjs.com/package/connect-history-api-fallback
 
 ## Authors
 ### Sebastien Dubois

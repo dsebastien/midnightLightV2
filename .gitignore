@@ -3,10 +3,10 @@ dist
 .tmp
 *.log
 *.map
-!ts-typings
-ts-typings/*
-!ts-typings/tsd.d.ts
-!ts-typings/typescriptApp.d.ts
+!typings
+typings/*
+!typings/tsd.d.ts
+!typings/typescriptApp.d.ts
 
 # NPM
 node_modules
@@ -20,6 +20,7 @@ Desktop.ini
 # JetBrains IDEs
 *.iml
 .idea/
+.webstorm/
 
 # OSX
 .DS_Store

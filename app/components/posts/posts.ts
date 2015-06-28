@@ -1,37 +1,52 @@
-///<reference path="../../../ts-typings/tsd.d.ts" />
-///<reference path="../../../ts-typings/typescriptApp.d.ts" />
+///<reference path="../../../typings/tsd.d.ts" />
+///<reference path="../../../typings/typescriptApp.d.ts" />
 
 'use strict';
 
 // import Angular 2
-import { Component, View, NgFor } from 'angular2/angular2';
+import {Component, View, coreDirectives} from 'angular2/angular2';
+
+import * as Rx from 'rx';
 
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
-import {Post} from './post.model';
-import {PostsService} from './posts.service';
+import {Post} from 'components/posts/posts.model';
+import {PostsService} from 'components/posts/posts.service';
 
 @Component({
-	selector: 'component-posts'
+	selector: 'posts',
+	appInjector: [PostsService] // needed so that the service gets injected
 })
 @View({
 	templateUrl: 'components/posts/posts.template.html',
-	directives: [NgFor]
+	directives: [coreDirectives]
 })
 export class Posts {
-	private posts : Array<Post> = new Array<Post>();
+	private postsServices: PostsService;
 	
-	//TODO inject posts service
+	//private posts : Array<Post> = new Array<Post>();
 	
-	constructor() {
+	constructor(postsService: PostsService) {
 		console.log('Loading the Posts component');
+		this.postsServices = postsService;
+		
+		// todo extract the data
+		//postsService.fetchPosts().subscribe()
+		//posts.subscribe().
+		//console.log(posts);
 		
 		// todo replace w/ service usage
+		/*
 		var post: Post = new Post();
 		post.title = "Super title";
 		post.author = "Sebastien";
 		post.authorUrl = "https://www.dsebastien.net";
 		post.content = "The content you always dreamed of";
 		this.posts.push(post);
+		*/
+		
+		//postsService.getPosts()
+		//	.map(res => console.log(res));
+			//.subscribe(posts => {this.posts = posts;});
 		
 		//this.postsService.getPosts().success((rawData) => {
 		//	var rawPosts : any[] = rawData;
