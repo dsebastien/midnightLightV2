@@ -7,6 +7,7 @@ dist
 typings/*
 !typings/tsd.d.ts
 !typings/typescriptApp.d.ts
+!typings/custom.d.ts
 
 # NPM
 node_modules
