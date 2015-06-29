@@ -40,7 +40,7 @@ import {Posts} from 'components/posts/posts';
 class App {
 	name: string;
 
-	constructor(router: Router) {
+	constructor() {
 		this.name = Configuration.applicationName;
 	}
 }
