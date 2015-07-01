@@ -129,11 +129,6 @@ declare module "angular2/change_detection" {
 	var defaultPipes: any;
 }
 
-declare module "angular2/directives" {
-	class NgFor {}
-	class NgIf {}
-}
-
 declare module "angular2/forms" {
 	class CheckboxControlValueAccessor {}
 	interface ControlValueAccessor {

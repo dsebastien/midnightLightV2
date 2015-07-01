@@ -14,7 +14,8 @@ import { Component, View, coreDirectives, bind, bootstrap, httpInjectables} from
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
-import {RouteConfig, RouterOutlet, RouterLink, Router, LocationStrategy, HashLocationStrategy, routerInjectables} from 'angular2/router';
+import {RouteConfig, RouterOutlet, RouterLink, Router, LocationStrategy, HashLocationStrategy, routerInjectables} from 'angular2/router'; // todo add HTML5LocationStrategy
+// TODO remove hash location strategy
 
 // app configuration
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
@@ -54,6 +55,8 @@ bootstrap(App, [
 	routerInjectables,
 	httpInjectables,
 	bind(LocationStrategy).toClass(HashLocationStrategy) // enable HashLocationStrategy: /#/<component_name> rather than /<component_name>
+	//todo replace with
+	//bind(LocationStrategy).toClass(HTML5LocationStrategy) // enable HTML5 history API location strategy
 	
 ]).then(
 	success => console.log('Bootstrap successful'),
