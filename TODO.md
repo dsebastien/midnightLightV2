@@ -3,6 +3,7 @@
   * find if/how to inject service based on interface
   * add router tsd once available
 	* remove custom.angular2.d.ts
+  * cleanup tsd.json (some Rx modules are probably not needed)
 * mig to jspm and systemjs
   * fix Docker config (probably dep version issues)
   * how to properly import the CSS if in JSPM and version in folder name

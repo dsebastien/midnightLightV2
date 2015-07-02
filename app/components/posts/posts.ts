@@ -23,55 +23,44 @@ import {PostsService} from 'components/posts/posts.service';
 export class Posts {
 	private postsServices: PostsService;
 	
-	//private posts : Array<Post> = new Array<Post>();
+	private posts : Array<Post> = new Array<Post>();
 	
+	// todo try and inject the interface rather than the concrete type --> adapt the view injector?
 	constructor(postsService: PostsService) {
 		console.log('Loading the Posts component');
 		this.postsServices = postsService;
 		
-		// todo extract the data
-		var subscription = postsService.fetchPosts().subscribe(
-			function onNext(x){
-				console.log('Result received: ',x);
-			},
-			function onError(err){
-				console.log('An error occurred: ',err);
-			},
-			function onCompleted(){
-				console.log("Done!");
-				subscription.dispose(); // we've got enough
+		// todo refactor: perform the json -> Post objects transformation in the service and feed the posts in the observable one by one
+		postsService.fetchPosts().subscribe(
+			(rawPosts: Array<any>) => { // todo set correct type
+				console.log('Posts received: ' + rawPosts.length);
+				
+				for (var i = 0 ; i < rawPosts.length ; i++) {
+					var obj = rawPosts[i];
+			
+					var post: Post = new Post();
+					post.title = obj.title;
+					post.author = obj.author.nickname;
+					post.authorUrl = obj.author.URL;
+					post.content = obj.content;
+					this.posts.push(post);
 			}
-		);
-		//posts.subscribe().
-		//console.log(posts);
-		
-		// todo replace w/ service usage
-		/*
-		var post: Post = new Post();
-		post.title = "Super title";
-		post.author = "Sebastien";
-		post.authorUrl = "https://www.dsebastien.net";
-		post.content = "The content you always dreamed of";
-		this.posts.push(post);
-		*/
-		
-		//postsService.getPosts()
-		//	.map(res => console.log(res));
-			//.subscribe(posts => {this.posts = posts;});
-		
-		//this.postsService.getPosts().success((rawData) => {
-		//	var rawPosts : any[] = rawData;
-		//
-		//	for (var i = 0 ; i < rawPosts.length ; i++) {
-		//		var obj = rawPosts[i];
-		//
-		//		var post: Post = new Post();
-		//		post.title = obj.title;
-		//		post.author = obj.author.nickname;
-		//		post.authorUrl = obj.author.URL;
-		//		post.content = obj.content;
-		//		this.posts.push(post);
-		//	}
-		//});
+				
+				//var post: Post = new Post();
+				//post.title = "Super title";
+				//post.author = "Sebastien";
+				//post.authorUrl = "https://www.dsebastien.net";
+				//post.content = "The content you always dreamed of";
+				//this.posts.push(post);
+				
+				
+			},
+			(error: any) => { // todo set correct type
+				console.log('An error occurred while retrieving the posts: ' + error);
+			},
+			() => {
+				console.log('Posts retrieval completed');
+				//console.log(this.posts);
+			});
 	}
 }

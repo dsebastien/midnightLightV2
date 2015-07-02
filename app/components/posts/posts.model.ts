@@ -40,4 +40,6 @@ export class Post {
 	set content(newContent: string) {
 		this._content = newContent;
 	}
+	
+	//todo toString method? Way to do it in TS??
 }
