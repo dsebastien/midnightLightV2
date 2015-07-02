@@ -14,7 +14,7 @@ import {PostsService} from 'components/posts/posts.service';
 
 @Component({
 	selector: 'posts',
-	appInjector: [PostsService] // needed so that the service gets injected
+	viewInjector: [PostsService] // needed so that the service gets injected (configured the injector of this specific component
 })
 @View({
 	templateUrl: 'components/posts/posts.template.html',
@@ -30,7 +30,18 @@ export class Posts {
 		this.postsServices = postsService;
 		
 		// todo extract the data
-		//postsService.fetchPosts().subscribe()
+		var subscription = postsService.fetchPosts().subscribe(
+			function onNext(x){
+				console.log('Result received: ',x);
+			},
+			function onError(err){
+				console.log('An error occurred: ',err);
+			},
+			function onCompleted(){
+				console.log("Done!");
+				subscription.dispose(); // we've got enough
+			}
+		);
 		//posts.subscribe().
 		//console.log(posts);
 		

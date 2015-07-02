@@ -10,7 +10,7 @@
 * mig to TypeScript 1.5+
   * update the package.json once available
   * modify ts gulp plugin config to generate system modules
-  * put back 'use strict' in the core.bootstrap.ts
+  * put back 'use strict' in the core.bootstrap.ts & posts.service.ts
   * use tsconfig.json
   * https://www.npmjs.com/package/gulp-typescript
   * http://json.schemastore.org/tsconfig
@@ -273,3 +273,5 @@
   * put back permalinks in WP config + doc necessity
   * SEOoooooo
   * uncomment google analytics once ready
+* review CORS config
+  * should the api allow credentials to be passed (ie cookies)? http://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do

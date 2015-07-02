@@ -32,7 +32,13 @@ var startBrowserSync = () =>{
 
 			// fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 			// reference: https://github.com/BrowserSync/browser-sync/issues/204
-			middleware: [ historyApiFallback() ]
+			middleware: [ 
+				historyApiFallback(), 
+				function (req, res, next) {
+					res.setHeader('Access-Control-Allow-Origin', '*'); // add CORS to the response headers (for resources served by BrowserSync)
+					next();
+				}
+			]
 		}
 	});
 

@@ -1,7 +1,7 @@
 ///<reference path="../../typings/tsd.d.ts" />
 ///<reference path="../../typings/typescriptApp.d.ts" />
 
-//'use strict'; // TODO put back strict mode once TypeScript 1.5 final is available: https://github.com/Microsoft/TypeScript/issues/3251#issuecomment-104669769
+//'use strict'; // todo put back strict mode once TypeScript 1.5 final is available: https://github.com/Microsoft/TypeScript/issues/3251#issuecomment-104669769
 
 // import Angular2 deps
 import 'zone.js';
