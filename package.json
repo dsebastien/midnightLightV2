@@ -21,7 +21,7 @@
     "directories": {},
     "configFile": "jspm.conf.js",
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-alpha.28",
+      "angular2": "npm:angular2@^2.0.0-alpha.29",
       "es6-shim": "github:es-shims/es6-shim@^0.32.2",
       "font-awesome": "npm:font-awesome@^4.3.0",
       "lodash": "npm:lodash@^3.9.3",
