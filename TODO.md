@@ -1,30 +1,17 @@
 * find how to pass parameters to an existing route
 * create a page renderer component
   * should receive a Page object
-    * Q: if invoked through the router, how to pass the object?
+	* Q: if invoked through the router, how to pass the object?
   * should use the pages service to load the page's content
   * should display the page contents
-* create a pages component
-  * retrieve all static wordpress pages (titles / links only)
-    * https://www.dsebastien.net/wp-json/pages?filter[type]=page
-    * should automatically add one entry for the blog itself
-  * dynamically construct the menu
-    * goal: have the app automatically take into account new pages defined in WP
-  * once a page is selected in the menu, the pages service should be used to retrieve the actual/up-to-date contents
-    * initially directly
-    * later through a service worker..
-  * should be notified when a different page is selected in order to highlight the current selection
-* wp API usage
-  * create a WP rest api client in core and inject it in all related services rather than spreading wp-related code all over the place
-  * inject the wpi API class in the root injector through bootstrap
-  * limit the retrieved fields -- currently not supported: https://github.com/WP-API/WP-API/issues/572
+  * should notify the pages component so that it can highlight the current selection
 * check out susy: http://susy.oddbird.net/
 * check out breakpoint: http://breakpoint-sass.com/
 * create responsive grid
   * short & wide: tighten up and/or move things up (e.g., tablet in landscape)
   * narrow & tall: reposition things off canvas or move things down
   * enlarge font size if screen wider AND more vertical space
-* mig to angular 2 
+* mig to angular 2
   * find if/how to inject service based on interface: http://stackoverflow.com/questions/31202162/interface-based-programming-with-typescript-angular-2-systemjs
   * add router tsd once available
 	* remove custom.angular2.d.ts
@@ -38,10 +25,10 @@
   * modify ts gulp plugin config to generate system modules
   * put back 'use strict' in the core.bootstrap.ts & posts.service.ts
   * use tsconfig.json
-    * check the status of files, filesGlob (currently only supported by the Atom typescript editor.. and exclude
-      * https://github.com/Microsoft/TypeScript/issues/1927
-      * https://github.com/Microsoft/TypeScript/pull/3188
-        * exclude list does not support wilcards. It must simply be a list of files and/or directories
+	* check the status of files, filesGlob (currently only supported by the Atom typescript editor.. and exclude
+	  * https://github.com/Microsoft/TypeScript/issues/1927
+	  * https://github.com/Microsoft/TypeScript/pull/3188
+		* exclude list does not support wilcards. It must simply be a list of files and/or directories
   * https://www.npmjs.com/package/gulp-typescript
   * http://json.schemastore.org/tsconfig
   * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
@@ -301,3 +288,7 @@
 * abstract the data access layer
 * review CORS config
   * should the api allow credentials to be passed (ie cookies)? http://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
+* wp API usage
+  * create a WP rest api client in core and inject it in all related services rather than spreading wp-related code all over the place
+  * inject the wpi API class in the root injector through bootstrap
+  * limit the retrieved fields -- currently not supported: https://github.com/WP-API/WP-API/issues/572
