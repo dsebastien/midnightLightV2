@@ -14,7 +14,7 @@ import {Page} from 'components/pages/pages.model';
 import {PagesService, PagesServiceImpl} from 'components/pages/pages.service';
 
 @Component({
-	selector: 'pages', // todo rename to something clearer? menu? list? meeeeh
+	selector: 'navigation-menu', // todo rename to something clearer? menu? list? meeeeh
 	viewInjector: [
 		PagesServiceImpl //todo rename to PagesService -- assume that during testing the types won't matter (?)
 	]
