@@ -21,7 +21,9 @@ System.config({
   "paths": {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "core/*": "./.tmp/core/*"
+    "core/*": "./.tmp/core/*",
+	"components/*": "./.tmp/components/*",
+	"pages/*": "./.tmp/pages/*"  
   }
 });
 
