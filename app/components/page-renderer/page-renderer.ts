@@ -24,13 +24,13 @@ import {PagesService, PagesServiceImpl} from 'components/pages/pages.service';
 // todo review/complete: depends on fixing the router link issue in the template!
 export class PageRenderer {
 	private pagesService: PagesService;
-	
+
 	pageToRender: Page; // to check: visibility: private ok?
-	
+
 	constructor(pagesService: PagesServiceImpl) { // fixme use the interface instead
 		console.log('Loading the Page renderer component');
 		this.pagesService = pagesService;
-		
+
 		// fixme how do we get the route param?
 	}
 }

@@ -31,11 +31,11 @@ export class Pages {
 	 * @type {any[]}
 	 */
 	private pages : Array<Page> = [];
-	
+
 	constructor(pagesService: PagesServiceImpl) { // fixme use the interface instead
 		console.log('Loading the Pages component');
 		this.pagesService = pagesService;
-		
+
 		pagesService.fetchPages().subscribe(
 			(page: Page) => {
 				this.pages.push(page);

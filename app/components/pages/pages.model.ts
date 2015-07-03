@@ -6,7 +6,7 @@
 export class Page {
 	private _title : string;
 	private _content: string;
-	
+
 	get title(): string {
 	return this._title;
 }

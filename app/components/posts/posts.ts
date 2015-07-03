@@ -30,12 +30,12 @@ export class Posts {
 	 * @type {any[]}
 	 */
 	private posts : Array<Post> = new Array<Post>();
-	
+
 	// todo try and inject the interface rather than the concrete type --> adapt the view injector?
 	constructor(postsService: PostsServiceImpl) { // fixme use the interface instead
 		console.log('Loading the Posts component');
 		this.postsService = postsService;
-		
+
 		postsService.fetchPosts().subscribe(
 			(post: Post) => {
 					this.posts.push(post);

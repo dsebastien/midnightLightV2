@@ -12,8 +12,8 @@ export class BlogMetadata {
 	private _title: string;
 	private _description: string;
 	private _url: string;
-	
-	constructor(){ 
+
+	constructor() {
 		// default to mine.. :)
 		this.title = Configuration.applicationName;
 		this._description = Configuration.applicationDescription;

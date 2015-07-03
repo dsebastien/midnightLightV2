@@ -37,7 +37,7 @@ import {PageRenderer} from 'components/page-renderer/page-renderer';
 	selector: 'app' // tag used in the index.html
 })
 @View({
-	templateUrl: 'core/core.bootstrap.template.html', //template: '<router-outlet></router-outlet>',  
+	templateUrl: 'core/core.bootstrap.template.html', //template: '<router-outlet></router-outlet>',
 	directives: [coreDirectives, RouterOutlet, RouterLink, Pages]
 })
 @RouteConfig([
@@ -53,19 +53,19 @@ class App {
 
 	constructor() { // http: Http
 		this.name = Configuration.applicationName;
-		
+
 		/* TODO implement once I better understand how change detection works
 		this.blogMetadataService = new BlogMetadataService(http); // loads the metadata (async)
-		
+
 		this.blogMetadataService.fetchMetadata().subscribe(
 			(blogMetadata: BlogMetadata) => {
-				
+
 				//this.blogMetadata.title = blogMetadata.title;
 				//this.blogMetadata.description = blogMetadata.description;
 				//this.blogMetadata.url = blogMetadata.url;
-				
+
 				//this.blogMetadata = blogMetadata;
-				
+
 			},
 			(error: any) => { // todo set correct type
 				console.log(`An error occurred while retrieving the blog metadata: ${error}`);
@@ -78,7 +78,7 @@ class App {
 }
 
 // bootstrap our app
-console.log("Bootstrapping the App");
+console.log('Bootstrapping the App');
 
 // in [] is the list of injector bindings. Those bindings are used when an injector is created. Passing these here make the bindings available application-wide
 bootstrap(App, [
@@ -88,7 +88,7 @@ bootstrap(App, [
 	bind(LocationStrategy).toClass(HashLocationStrategy) // enable HashLocationStrategy: /#/<component_name> rather than /<component_name>
 	//todo replace with
 	//bind(LocationStrategy).toClass(HTML5LocationStrategy) // enable HTML5 history API location strategy
-	
+
 ]).then(
 	success => console.log('Bootstrap successful'),
 	error => console.log('Bootstrap failed!' + error)

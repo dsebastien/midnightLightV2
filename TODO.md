@@ -108,6 +108,10 @@
 	* goal: easily bump the project version
 	  * bump.major, bump.minor, bump.patch
 	* var bump = require('gulp-bump');
+  * check gulp-watch for incremental builds
+	* https://www.npmjs.com/package/gulp-watch
+	* https://github.com/floatdrop/gulp-watch/blob/master/docs/readme.md
+	* combined with gulp-batch: https://www.npmjs.com/package/gulp-batch
 * css
   * apply styleguide to the codebase
   * define list styles
