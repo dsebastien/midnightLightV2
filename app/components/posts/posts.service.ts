@@ -4,23 +4,19 @@
 //'use strict'; // todo put back strict mode once TypeScript 1.5 final is available: https://github.com/Microsoft/TypeScript/issues/3251#issuecomment-104669769
 
 import {Component, Http, Inject, Response} from "angular2/angular2"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
-
 import * as Rx from 'rx';
 
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 
-// TODO refactor; goal: rely on the interface externally
-export interface IPostsService{
+export interface PostsService{
 	fetchPosts(): Rx.Observable<any>;
 }
 
 /**
  * Service responsible for retrieving the blog posts
  */
-export class PostsService implements IPostsService{
+export class PostsServiceImpl implements PostsService{
 	private http: Http;
-	
-	private postsJson : any;
 
 	constructor(@Inject(Http) http: Http){ // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 		console.log('Loading the Posts service');
@@ -30,7 +26,7 @@ export class PostsService implements IPostsService{
 	/**
 	 * Fetch the most recent blog posts.
 	 * @returns {Rx.Subject<any>}
-	 */ 
+	 */
 	fetchPosts(): Rx.Observable<any>{ // todo set correct type (? Rx.Observable<any>)
 		// example Rx.Observable usage: https://jsbin.com/dosumoqexe/edit?js,console
 		// reference about subject: https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/subject.md

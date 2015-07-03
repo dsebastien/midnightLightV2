@@ -21,7 +21,7 @@ import {RouteConfig, RouterOutlet, RouterLink, Router, LocationStrategy, HashLoc
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 
 // app components
-import {Home} from '../pages/home/home';
+import {Home} from 'pages/home/home';
 import {Posts} from 'components/posts/posts';
 
 // app services

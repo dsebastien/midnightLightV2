@@ -1,10 +1,42 @@
-<nav>
-	<ul>
-		<li><a [router-link]=['/home']>Home</a></li>
-		<li><a [router-link]=['/posts']>Posts</a></li>
-	</ul>
-</nav>
-
-<hr>		
-
-<router-outlet></router-outlet>
+<div id="container" class="container">
+	<header id="header" class="box">
+		<h1>Midnight Light</h1>
+		<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p>
+	</header>
+	<aside id="social" class="box">
+		<h2>Social</h2>
+		<p>Links here</p>
+	</aside>
+	<nav id="menu" class="box">
+		<h2>Menu</h2>
+		<ul>
+			<li><a [router-link]=['/home']>Home</a></li>
+			<li><a [router-link]=['/posts']>Posts</a></li>
+		</ul>
+	</nav>
+	<aside id="tools" class="box">
+		<h2>Tools</h2>
+		<p>Hey</p>
+	</aside>
+	<router-outlet></router-outlet>
+	<section id="links" class="box">
+		<div>
+			<h2>Links</h2>
+			<p>Show me the links</p>
+		</div>
+	</section>
+	<section id="about" class="box">
+		<div>
+			<h2>About</h2>
+			<blockquote cite="http://example.com/facts">
+				<p>It's me, Mario! Although I could also just be a very long quote</p>
+			</blockquote>
+		</div>
+	</section>
+	<footer id="footer" class="box">
+		<div>
+			<h2>Footer</h2>
+			<h2>&copy; dSebastien</h2>
+		</div>
+	</footer>
+</div>

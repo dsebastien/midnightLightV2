@@ -91,7 +91,7 @@
     "psi": "1.0.x",
     "require-dir": "0.3.x",
     "run-sequence": "1.1.x",
-    "systemjs-builder": "0.11.x",
+    "systemjs-builder": "0.12.x",
     "typescript": "1.5.0-beta",
     "connect-history-api-fallback": "1.1.0",
     "tsd": "0.6.x"

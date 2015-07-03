@@ -1,6 +1,15 @@
-* learn RxJs
+* create a pages component
+  * retrieve all static wordpress pages (titles / links only)
+  * dynamically construct the menu
+    * goal: have the app automatically take into account new pages defined in WP
+* check out susy: http://susy.oddbird.net/
+* check out breakpoint: http://breakpoint-sass.com/
+* create responsive grid
+  * short & wide: tighten up and/or move things up (e.g., tablet in landscape)
+  * narrow & tall: reposition things off canvas or move things down
+  * enlarge font size if screen wider AND more vertical space
 * mig to angular 2 
-  * find if/how to inject service based on interface
+  * find if/how to inject service based on interface: http://stackoverflow.com/questions/31202162/interface-based-programming-with-typescript-angular-2-systemjs
   * add router tsd once available
 	* remove custom.angular2.d.ts
   * cleanup tsd.json (some Rx modules are probably not needed)
@@ -13,6 +22,10 @@
   * modify ts gulp plugin config to generate system modules
   * put back 'use strict' in the core.bootstrap.ts & posts.service.ts
   * use tsconfig.json
+    * check the status of files, filesGlob (currently only supported by the Atom typescript editor.. and exclude
+      * https://github.com/Microsoft/TypeScript/issues/1927
+      * https://github.com/Microsoft/TypeScript/pull/3188
+        * exclude list does not support wilcards. It must simply be a list of files and/or directories
   * https://www.npmjs.com/package/gulp-typescript
   * http://json.schemastore.org/tsconfig
   * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
@@ -22,13 +35,6 @@
   * var tsProject = tsc.createProject('tsconfig.json', {
 	  typescript: require('typescript')
 	});
-* add template again
-* check out susy: http://susy.oddbird.net/
-* check out breakpoint: http://breakpoint-sass.com/
-* create responsive grid
-  * short & wide: tighten up and/or move things up (e.g., tablet in landscape)
-  * narrow & tall: reposition things off canvas or move things down
-  * enlarge font size if screen wider AND more vertical space
 * build
   * integrate PatternLab or something similar to create a style guide for dev/prod
 	* goal: easily see all components (atomic design approach)
