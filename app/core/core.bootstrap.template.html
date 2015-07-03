@@ -1,19 +1,15 @@
 <div id="container" class="container">
 	<header id="header" class="box">
-		<h1>Midnight Light</h1>
-		<p>A blog about software development, photography, electronics, guitar and all those other things that I love.</p>
+		<h1>{{blogMetadata.title}}</h1>
+		<p>{{blogMetadata.description}}</p>
 	</header>
 	<aside id="social" class="box">
 		<h2>Social</h2>
 		<p>Links here</p>
 	</aside>
-	<nav id="menu" class="box">
-		<h2>Menu</h2>
-		<ul>
-			<li><a [router-link]=['/home']>Home</a></li>
-			<li><a [router-link]=['/posts']>Posts</a></li>
-		</ul>
-	</nav>
+	
+	<pages></pages> <!-- todo rename -->
+	
 	<aside id="tools" class="box">
 		<h2>Tools</h2>
 		<p>Hey</p>

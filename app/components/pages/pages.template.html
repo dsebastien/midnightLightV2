@@ -1,0 +1,14 @@
+<nav id="menu" class="box">
+	<h2>Menu</h2>
+	<ul>
+		<li><a [router-link]=['/home']>Home</a></li>
+		<li><a [router-link]=['/posts']>Posts</a></li>
+		<li *ng-for="#page of pages">
+			<!-- https://github.com/angular/angular/blob/master/modules/angular2/src/router/router_link.ts#L26 -->
+			<!--
+			<a [router-link]=['/render-page', {pageToRender: page}]>{{ page.title }}</a>
+			-->
+			{{ page.title }}
+		</li>
+	</ul>
+</nav>

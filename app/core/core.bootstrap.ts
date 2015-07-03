@@ -9,7 +9,7 @@ import 'reflect-metadata';
 import 'es6-shim'; // fixes an issue relating to list.fill (list.fill is not a function)
 
 // import Angular 2
-import { Component, View, coreDirectives, bind, bootstrap, httpInjectables} from 'angular2/angular2';
+import {Component, View, Http, coreDirectives, bind, bootstrap, httpInjectables} from 'angular2/angular2';
 //import * as ng from 'angular2/angular2';
 
 // import Angular 2 Component Router
@@ -20,9 +20,15 @@ import {RouteConfig, RouterOutlet, RouterLink, Router, LocationStrategy, HashLoc
 // app configuration
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 
+// app services
+import {BlogMetadataService} from 'core/services/blogmetadata.service';
+import {BlogMetadata} from 'core/services/blogmetadata.model';
+
 // app components
 import {Home} from 'pages/home/home';
 import {Posts} from 'components/posts/posts';
+import {Pages} from 'components/pages/pages';
+import {PageRenderer} from 'components/page-renderer/page-renderer';
 
 // app services
 //import {appServicesInjectables} from 'core/services/services';
@@ -32,17 +38,42 @@ import {Posts} from 'components/posts/posts';
 })
 @View({
 	templateUrl: 'core/core.bootstrap.template.html', //template: '<router-outlet></router-outlet>',  
-	directives: [coreDirectives, RouterOutlet, RouterLink]
+	directives: [coreDirectives, RouterOutlet, RouterLink, Pages]
 })
 @RouteConfig([
 	{path: '/', component: Home, as: 'home'}, // the as serves as alias for links, etc
-	{path: '/posts', component: Posts, as: 'posts'}
+	{path: '/posts', component: Posts, as: 'posts'},
+	{path: '/render-page', component: PageRenderer, as: 'page-renderer'}
 ])
 class App {
 	name: string;
 
-	constructor() {
+	//blogMetadataService: BlogMetadataService;
+	blogMetadata: BlogMetadata = new BlogMetadata();
+
+	constructor() { // http: Http
 		this.name = Configuration.applicationName;
+		
+		/* TODO implement once I better understand how change detection works
+		this.blogMetadataService = new BlogMetadataService(http); // loads the metadata (async)
+		
+		this.blogMetadataService.fetchMetadata().subscribe(
+			(blogMetadata: BlogMetadata) => {
+				
+				//this.blogMetadata.title = blogMetadata.title;
+				//this.blogMetadata.description = blogMetadata.description;
+				//this.blogMetadata.url = blogMetadata.url;
+				
+				//this.blogMetadata = blogMetadata;
+				
+			},
+			(error: any) => { // todo set correct type
+				console.log(`An error occurred while retrieving the blog metadata: ${error}`);
+			},
+			() => {
+				console.log('Blog metadata retrieval completed');
+			});
+		*/
 	}
 }
 

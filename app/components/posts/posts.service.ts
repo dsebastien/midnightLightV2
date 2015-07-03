@@ -3,13 +3,14 @@
 
 //'use strict'; // todo put back strict mode once TypeScript 1.5 final is available: https://github.com/Microsoft/TypeScript/issues/3251#issuecomment-104669769
 
-import {Component, Http, Inject, Response} from "angular2/angular2"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
+import {Http, Inject, Response} from "angular2/angular2"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 import * as Rx from 'rx';
 
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
+import {Post} from 'components/posts/posts.model';
 
 export interface PostsService{
-	fetchPosts(): Rx.Observable<any>;
+	fetchPosts(): Rx.Observable<Post>;
 }
 
 /**
@@ -25,12 +26,12 @@ export class PostsServiceImpl implements PostsService{
 
 	/**
 	 * Fetch the most recent blog posts.
-	 * @returns {Rx.Subject<any>}
+	 * @returns {Rx.Observable<Post>}
 	 */
-	fetchPosts(): Rx.Observable<any>{ // todo set correct type (? Rx.Observable<any>)
+	fetchPosts(): Rx.Observable<Post>{
 		// example Rx.Observable usage: https://jsbin.com/dosumoqexe/edit?js,console
 		// reference about subject: https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/subject.md
-		var retVal:Rx.Subject<any> = new Rx.Subject();
+		var retVal:Rx.Subject<Post> = new Rx.Subject<Post>();
 		
 		// TODO configure API calls (posts to retrieve etc)
 		var observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/posts?filter[posts_per_page]=2&withoutcomments').toRx();
@@ -38,8 +39,19 @@ export class PostsServiceImpl implements PostsService{
 			(response:Response) => response.json()
 		).subscribe(
 			(postsJson:any) => {
-				retVal.onNext(postsJson);
-				retVal.onCompleted(); // there's only one to wait for
+				for (var i = 0 ; i < postsJson.length ; i++) {
+					var obj = postsJson[i];
+					
+					var post:Post = new Post();
+					post.title = obj.title;
+					post.author = obj.author.nickname;
+					post.authorUrl = obj.author.URL;
+					post.content = obj.content;
+
+					retVal.onNext(post);
+				}
+				console.debug(`Found ${postsJson.length} posts`);
+				retVal.onCompleted();
 			}
 		);
 		

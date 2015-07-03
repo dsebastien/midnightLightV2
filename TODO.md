@@ -1,7 +1,23 @@
+* find how to pass parameters to an existing route
+* create a page renderer component
+  * should receive a Page object
+    * Q: if invoked through the router, how to pass the object?
+  * should use the pages service to load the page's content
+  * should display the page contents
 * create a pages component
   * retrieve all static wordpress pages (titles / links only)
+    * https://www.dsebastien.net/wp-json/pages?filter[type]=page
+    * should automatically add one entry for the blog itself
   * dynamically construct the menu
     * goal: have the app automatically take into account new pages defined in WP
+  * once a page is selected in the menu, the pages service should be used to retrieve the actual/up-to-date contents
+    * initially directly
+    * later through a service worker..
+  * should be notified when a different page is selected in order to highlight the current selection
+* wp API usage
+  * create a WP rest api client in core and inject it in all related services rather than spreading wp-related code all over the place
+  * inject the wpi API class in the root injector through bootstrap
+  * limit the retrieved fields -- currently not supported: https://github.com/WP-API/WP-API/issues/572
 * check out susy: http://susy.oddbird.net/
 * check out breakpoint: http://breakpoint-sass.com/
 * create responsive grid
@@ -35,6 +51,8 @@
   * var tsProject = tsc.createProject('tsconfig.json', {
 	  typescript: require('typescript')
 	});
+* mig to TypeScript 1.6 (?)
+  * implement the generic service once abstract classes are supported
 * build
   * integrate PatternLab or something similar to create a style guide for dev/prod
 	* goal: easily see all components (atomic design approach)
@@ -280,5 +298,6 @@
   * put back permalinks in WP config + doc necessity
   * SEOoooooo
   * uncomment google analytics once ready
+* abstract the data access layer
 * review CORS config
   * should the api allow credentials to be passed (ie cookies)? http://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
