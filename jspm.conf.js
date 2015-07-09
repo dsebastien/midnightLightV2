@@ -22,14 +22,14 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
     "core/*": "./.tmp/core/*",
-	"components/*": "./.tmp/components/*",
-	"pages/*": "./.tmp/pages/*"  
+    "components/*": "./.tmp/components/*",
+    "pages/*": "./.tmp/pages/*"
   }
 });
 
 System.config({
   "map": {
-    "angular2": "npm:angular2@2.0.0-alpha.29",
+    "angular2": "npm:angular2@2.0.0-alpha.30",
     "babel": "npm:babel-core@5.6.15",
     "babel-runtime": "npm:babel-runtime@5.6.15",
     "core-js": "npm:core-js@0.9.18",
@@ -41,7 +41,7 @@ System.config({
     "rx": "npm:rx@2.5.1",
     "traceur": "github:jmcriffey/bower-traceur@0.0.88",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
-    "zone.js": "npm:zone.js@0.5.1",
+    "zone.js": "npm:zone.js@0.5.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -94,14 +94,14 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:angular2@2.0.0-alpha.29": {
+    "npm:angular2@2.0.0-alpha.30": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "reflect-metadata": "npm:reflect-metadata@0.1.0",
       "rx": "npm:rx@2.5.1",
       "url": "github:jspm/nodelibs-url@0.1.0",
-      "zone.js": "npm:zone.js@0.5.1"
+      "zone.js": "npm:zone.js@0.5.2"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -202,7 +202,7 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:zone.js@0.5.1": {
+    "npm:zone.js@0.5.2": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     }
   }

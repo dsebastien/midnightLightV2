@@ -190,6 +190,9 @@ declare module 'angular2/router' {
 	var RouteConfig: any;
 	var LocationStrategy: any;
 	var HashLocationStrategy: any;
+	class RouteParams{
+		get(param: string): string;
+	}
 }
 
 

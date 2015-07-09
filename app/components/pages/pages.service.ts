@@ -11,18 +11,15 @@ import {Page} from 'components/pages/pages.model';
 
 // todo add a method to retrieve the page content
 // (or make it a bool switch on fetchPages)
-// two use cases:
-// menu creation: no content
-// actual page display: content =)
-export interface PagesService {
-	fetchPages(): Rx.Observable<Page>;
-}
 
 /**
- * Service responsible for retrieving the blog pages (i.e., pages defined in Wordpress)
+ * Service responsible for retrieving the blog pages (i.e., pages defined in Wordpress).
+ * Caches the loaded pages
  */
-export class PagesServiceImpl implements PagesService {
+export class PagesService {
 	private http: Http;
+	
+	private pages: Array<Page> = [];
 
 	constructor( @Inject(Http) http: Http) { // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 		console.log('Loading the Pages service');
@@ -30,24 +27,26 @@ export class PagesServiceImpl implements PagesService {
 	}
 
 	/**
-	 * Fetch all blog pages.
+	 * Fetch all blog pages (always issues a request & caches the results).
 	 * @returns {Rx.Observable<Page>}
 	 */
 	fetchPages(): Rx.Observable<Page> {
 		var retVal: Rx.Subject<Page> = new Rx.Subject<Page>();
 
-		var observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page').toRx();
+		var observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page').toRx(); // todo filter the post contents in the WS call (not possible now)
 
 		observable.map(
 			(response: Response) => response.json()
 			).subscribe(
 				(pagesJson: any) => {
+					this.pages = []; // reset the cache pages array
 					for (var i = 0; i < pagesJson.length; i++) {
 						var obj = pagesJson[i];
 
 						var page: Page = new Page();
 						page.title = obj.title;
-
+						page.content = obj.content; // TODO remove once filtered
+						this.pages.push(page); // cache
 						retVal.onNext(page);
 					}
 					console.debug(`Found ${pagesJson.length} pages`);
@@ -56,5 +55,18 @@ export class PagesServiceImpl implements PagesService {
 				);
 
 		return retVal.asObservable();
+	}
+
+	/**
+	 * Retrieve a page from cache
+	 * @param name the name of the page to retrieve
+	 * @returns {Page|T}
+	 */
+	getPage(name: string): Page{ // todo improve, handle case where no match & case where >1 match
+		return this.pages.filter(
+			(page) => {
+				return page.title === name;
+			}
+		)[0];
 	}
 }

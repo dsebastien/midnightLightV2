@@ -11,12 +11,12 @@ import {RouterLink} from 'angular2/router';
 
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {Page} from 'components/pages/pages.model';
-import {PagesService, PagesServiceImpl} from 'components/pages/pages.service';
+import {PagesService} from 'components/pages/pages.service';
 
 @Component({
 	selector: 'navigation-menu', // todo rename to something clearer? menu? list? meeeeh
 	viewInjector: [
-		PagesServiceImpl //todo rename to PagesService -- assume that during testing the types won't matter (?)
+		PagesService
 	]
 })
 @View({
@@ -30,15 +30,15 @@ export class Pages {
 	 * The currently loaded pages
 	 * @type {any[]}
 	 */
-	private pages : Array<Page> = [];
+	private _pages : Array<Page> = [];
 
-	constructor(pagesService: PagesServiceImpl) { // fixme use the interface instead
+	constructor(pagesService: PagesService) {
 		console.log('Loading the Pages component');
 		this.pagesService = pagesService;
 
 		pagesService.fetchPages().subscribe(
 			(page: Page) => {
-				this.pages.push(page);
+				this._pages.push(page);
 			},
 			(error: any) => { // todo set correct type
 				console.log(`An error occurred while retrieving the pages: ${error}`);
@@ -46,5 +46,13 @@ export class Pages {
 			() => {
 				console.log('Pages retrieval completed');
 			});
+	}
+
+	/**
+	 * Get all pages
+	 * @returns {Array<Page>}
+	 */
+	get pages(): Array<Page> {
+		return this._pages;
 	}
 }

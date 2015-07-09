@@ -9,14 +9,10 @@ import * as Rx from 'rx';
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {Post} from 'components/posts/posts.model';
 
-export interface PostsService {
-	fetchPosts(): Rx.Observable<Post>;
-}
-
 /**
  * Service responsible for retrieving the blog posts
  */
-export class PostsServiceImpl implements PostsService{
+export class PostsService{
 	private http: Http;
 
 	constructor(@Inject(Http) http: Http) { // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724

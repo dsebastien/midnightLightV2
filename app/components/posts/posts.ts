@@ -10,12 +10,12 @@ import * as Rx from 'rx';
 
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {Post} from 'components/posts/posts.model';
-import {PostsService, PostsServiceImpl} from 'components/posts/posts.service';
+import {PostsService} from 'components/posts/posts.service';
 
 @Component({
 	selector: 'posts',
 	viewInjector: [
-		PostsServiceImpl //todo rename to PostsService -- assume that during testing the types won't matter (?)
+		PostsService
 	] // needed so that the service gets injected (configured the injector of this specific component
 })
 @View({
@@ -30,9 +30,8 @@ export class Posts {
 	 * @type {any[]}
 	 */
 	private posts : Array<Post> = new Array<Post>();
-
-	// todo try and inject the interface rather than the concrete type --> adapt the view injector?
-	constructor(postsService: PostsServiceImpl) { // fixme use the interface instead
+	
+	constructor(postsService: PostsService) {
 		console.log('Loading the Posts component');
 		this.postsService = postsService;
 

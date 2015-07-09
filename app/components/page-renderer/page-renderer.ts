@@ -5,16 +5,17 @@
 
 // import Angular 2
 import {Component, View, coreDirectives} from 'angular2/angular2';
+import {RouteParams} from 'angular2/router';
 
 import * as Rx from 'rx';
 
 import {Page} from 'components/pages/pages.model';
-import {PagesService, PagesServiceImpl} from 'components/pages/pages.service';
+import {PagesService} from 'components/pages/pages.service';
 
 @Component({
 	selector: 'render-page', // todo check if selector is mandatory given that it won't be used (if not mandatory, also remove from posts & home)
 	viewInjector: [
-		PagesServiceImpl //todo rename to PagesService -- assume that during testing the types won't matter (?)
+		PagesService //todo rename to PagesService -- assume that during testing the types won't matter (?)
 	]
 })
 @View({
@@ -23,14 +24,15 @@ import {PagesService, PagesServiceImpl} from 'components/pages/pages.service';
 })
 // todo review/complete: depends on fixing the router link issue in the template!
 export class PageRenderer {
-	private pagesService: PagesService;
+	private pageToRender: Page; // to check: visibility: private ok?
 
-	pageToRender: Page; // to check: visibility: private ok?
-
-	constructor(pagesService: PagesServiceImpl) { // fixme use the interface instead
+	constructor(pagesService: PagesService, routeParams: RouteParams) { // how to inject the route params
 		console.log('Loading the Page renderer component');
-		this.pagesService = pagesService;
-
-		// fixme how do we get the route param?
+		
+		console.log('route params: ',routeParams);
+		var pageToRender:string = routeParams.get('pageToRender'); //FIXME nok
+		console.log(pageToRender);
+		
+		this.pageToRender = pagesService.getPage(pageToRender);
 	}
 }

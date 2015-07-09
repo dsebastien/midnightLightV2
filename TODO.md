@@ -1,4 +1,3 @@
-* find how to pass parameters to an existing route
 * create a page renderer component
   * should receive a Page object
 	* Q: if invoked through the router, how to pass the object?
@@ -47,7 +46,7 @@
   * check out json server: https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server
   * add ESlint? (also in sublime): http://eslint.org/
   * try to use the changed plugin to limit the overhead of allowing js/ts/styles to be anywhere in the app folder
-  * use cache busting
+  * use cache busting: gulp-cachebust
   * add scss-lint
   * https://www.npmjs.com/package/gulp-scss-lint
   * https://github.com/brigade/scss-lint#configuration
@@ -112,6 +111,10 @@
 	* https://www.npmjs.com/package/gulp-watch
 	* https://github.com/floatdrop/gulp-watch/blob/master/docs/readme.md
 	* combined with gulp-batch: https://www.npmjs.com/package/gulp-batch
+  * gulp 4 migration
+    * remove gulp-plumber
+    * remove run-sequence
+  * add archive task (depend on default): https://github.com/h5bp/html5-boilerplate/blob/master/gulpfile.js
 * css
   * apply styleguide to the codebase
   * define list styles
@@ -296,3 +299,4 @@
   * create a WP rest api client in core and inject it in all related services rather than spreading wp-related code all over the place
   * inject the wpi API class in the root injector through bootstrap
   * limit the retrieved fields -- currently not supported: https://github.com/WP-API/WP-API/issues/572
+* add !default to scss variables
