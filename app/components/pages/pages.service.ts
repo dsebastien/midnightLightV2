@@ -14,13 +14,10 @@ import {Page} from 'components/pages/pages.model';
 
 /**
  * Service responsible for retrieving the blog pages (i.e., pages defined in Wordpress).
- * Caches the loaded pages
  */
 export class PagesService {
 	private http: Http;
 	
-	private pages: Array<Page> = [];
-
 	constructor( @Inject(Http) http: Http) { // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 		console.log('Loading the Pages service');
 		this.http = http;
@@ -37,36 +34,50 @@ export class PagesService {
 
 		observable.map(
 			(response: Response) => response.json()
-			).subscribe(
-				(pagesJson: any) => {
-					this.pages = []; // reset the cache pages array
-					for (var i = 0; i < pagesJson.length; i++) {
-						var obj = pagesJson[i];
+		).subscribe(
+			(pagesJson: any) => {
+				for (var i = 0; i < pagesJson.length; i++) {
+					var obj = pagesJson[i];
 
-						var page: Page = new Page();
-						page.title = obj.title;
-						page.content = obj.content; // TODO remove once filtered
-						this.pages.push(page); // cache
-						retVal.onNext(page);
-					}
-					console.debug(`Found ${pagesJson.length} pages`);
-					retVal.onCompleted();
+					var page: Page = new Page();
+					page.id = obj.ID;
+					page.title = obj.title;
+					page.content = obj.content; // TODO remove once filtered
+					retVal.onNext(page);
 				}
-				);
+				console.debug(`Found ${pagesJson.length} pages`);
+				retVal.onCompleted();
+			}
+		);
 
 		return retVal.asObservable();
 	}
 
 	/**
-	 * Retrieve a page from cache
-	 * @param name the name of the page to retrieve
+	 * Fetch a page along with its contents
+	 * @param id the id of the page to retrieve
 	 * @returns {Page|T}
 	 */
-	getPage(name: string): Page{ // todo improve, handle case where no match & case where >1 match
-		return this.pages.filter(
-			(page) => {
-				return page.title === name;
+	fetchPage(id: string): Rx.Observable<Page>{
+		// todo improve, handle case where no match & case where >1 match
+		// todo improve, use cache posts & have a "isReady" observable
+		var retVal: Rx.Subject<Page> = new Rx.Subject<Page>();
+		var observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page&filter[ID]='+name).toRx();
+
+		observable.map(
+			(response: Response) => response.json()
+		).subscribe(
+			(pageJson: any) => {
+				var page: Page = new Page();
+				page.id = pageJson.ID;
+				page.title = pageJson.title;
+				page.content = pageJson.content; // TODO remove once filtered
+				retVal.onNext(page);
+				console.debug(`Loaded the ${page.title} page`);
+				retVal.onCompleted();
 			}
-		)[0];
+		);
+
+		return retVal.asObservable();
 	}
 }

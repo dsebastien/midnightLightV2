@@ -1,35 +1,9 @@
+///<reference path="./rx/rx.d.ts"/>
+
 /**
  * Angular 2
  */
-
-declare module 'angular2/render' {
-	class NativeShadowDomStrategy {
-		constructor(styleUrlResolver: any)
-	}
-	interface EventDispatcher {
-		dispatchEvent(elementIndex: number, eventName: string, locals: Map<string, any>): any;
-	}
-	class RenderViewRef {}
-	class RenderProtoViewRef {}
-	class ShadowDomStrategy {}
-	class Renderer {
-		attachComponentView(hostViewRef: RenderViewRef, elementIndex: number, componentViewRef: RenderViewRef): any;
-		attachViewInContainer(parentViewRef: RenderViewRef, boundElementIndex: number, atIndex: number, viewRef: RenderViewRef): any;
-		callAction(viewRef: RenderViewRef, elementIndex: number, actionExpression: string, actionArgs: any): any;
-		createRootHostView(hostProtoViewRef: RenderProtoViewRef, hostElementSelector: string): RenderViewRef;
-		createView(protoViewRef: RenderProtoViewRef): RenderViewRef;
-		dehydrateView(viewRef: RenderViewRef): any;
-		destroyView(viewRef: RenderViewRef): any;
-		detachComponentView(hostViewRef: RenderViewRef, boundElementIndex: number, componentViewRef: RenderViewRef): any;
-		detachFreeView(view: RenderViewRef): any;
-		detachViewInContainer(parentViewRef: RenderViewRef, boundElementIndex: number, atIndex: number, viewRef: RenderViewRef): any;
-		hydrateView(viewRef: RenderViewRef): any;
-		setElementProperty(viewRef: RenderViewRef, elementIndex: number, propertyName: string, propertyValue: any): any;
-		setEventDispatcher(viewRef: RenderViewRef, dispatcher: EventDispatcher): any;
-		setText(viewRef: RenderViewRef, textNodeIndex: number, text: string): any;
-	}
-}
-
+/*	
 declare module 'angular2/core' {
 import { RenderViewRef } from 'angular2/render';
 	class Injector {}
@@ -176,25 +150,7 @@ declare module 'angular2/src/http/static_response' {
 		text(): string;
 	}
 }
-
-declare module 'angular2/router' {
-	class Instruction {}
-	class Router {
-		navigate(url: string): Promise<any>
-		config(config: any): Promise<any>
-		subscribe(onNext: Function): Promise<any>
-	}
-	var RouterOutlet: any;
-	var RouterLink: any;
-	var routerInjectables: any;
-	var RouteConfig: any;
-	var LocationStrategy: any;
-	var HashLocationStrategy: any;
-	class RouteParams{
-		get(param: string): string;
-	}
-}
-
+*/
 
 /**
  * ES6

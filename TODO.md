@@ -1,3 +1,6 @@
+* create a page component
+  * pass it a page to render (model): http://victorsavkin.com/post/119943127151/angular-2-template-syntax
+  * use an event to notify (EventEmitter) when the page is loaded and can be displayed: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
 * create a page renderer component
   * should receive a Page object
 	* Q: if invoked through the router, how to pass the object?

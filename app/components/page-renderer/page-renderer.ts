@@ -28,11 +28,18 @@ export class PageRenderer {
 
 	constructor(pagesService: PagesService, routeParams: RouteParams) { // how to inject the route params
 		console.log('Loading the Page renderer component');
+		var pageToRender: string = routeParams.get('pageToRender'); //FIXME nok
+		console.log(`Page to render: ${pageToRender}`);
 		
-		console.log('route params: ',routeParams);
-		var pageToRender:string = routeParams.get('pageToRender'); //FIXME nok
-		console.log(pageToRender);
-		
-		this.pageToRender = pagesService.getPage(pageToRender);
+		pagesService.fetchPage(pageToRender).subscribe(
+			(page: Page) => {
+				this.pageToRender = page;
+			},
+			(error: any) => { // todo set correct type
+				console.log('An error occurred while retrieving the page to render',error);
+			},
+			() => {
+				console.log('Page to render loaded');
+			});
 	}
 }

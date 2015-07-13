@@ -5,7 +5,7 @@
 		<li><a [router-link]=['/posts']>Posts</a></li>
 		<li *ng-for="#page of pages">
 			<!-- https://github.com/angular/angular/blob/master/modules/angular2/src/router/router_link.ts#L26 -->
-			<a [router-link]="['/page-renderer',{pageToRender:page.title}]">{{ page.title }}</a> <!-- note that the router link path corresponds to the 'as'
+			<a [router-link]="['/page-renderer',{'pageToRender':page.id}]">{{ page.title }}</a> <!-- note that the router link path corresponds to the 'as'
 			<!--
 			{{ page.title }}
 			-->

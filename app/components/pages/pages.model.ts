@@ -4,12 +4,21 @@
 'use strict';
 
 export class Page {
+	private _id : string;
 	private _title : string;
 	private _content: string;
 
+	get id(): string {
+		return this._id;
+	}
+
+	set id(newId: string) {
+		this._id = newId;
+	}
+	
 	get title(): string {
-	return this._title;
-}
+		return this._title;
+	}
 
 	set title(newTitle: string) {
 		this._title = newTitle;
@@ -22,6 +31,8 @@ export class Page {
 	set content(newContent: string) {
 		this._content = newContent;
 	}
-
-	//todo toString method? Way to do it in TS??
+	
+	toString(): string {
+		return this._title;
+	}
 }

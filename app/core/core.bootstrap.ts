@@ -43,7 +43,7 @@ import {PageRenderer} from 'components/page-renderer/page-renderer';
 @RouteConfig([
 	{path: '/', component: Home, as: 'home'}, // the as serves as alias for links, etc
 	{path: '/posts', component: Posts, as: 'posts'},
-	{path: '/page-renderer', component: PageRenderer, as: 'page-renderer'} // given a Page object, it renders a page
+	{path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'} // given the parameter it renders a page
 ])
 class App {
 	name: string;
