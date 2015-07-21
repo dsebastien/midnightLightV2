@@ -129,6 +129,9 @@ The project includes multiple configuration files. Here's some information about
 * package.Json: NPM's configuration file. This is where all dependencies are defined: project ones under 'jspm' and build-related ones under 'devDependencies' (more information: https://docs.npmjs.com/files/package.json)
 * runOnDocker.sh and runDevOnDocker.sh: build scripts that create/run Docker images
 * travis.yml: Travis CI configuration files (more information: http://docs.travis-ci.com/user/build-configuration/)
+* tsconfig.json: TypeScript compiler configuration. Contains all compiler options, code style rules and file selection/exclusion rules (bypassed by the gulp-typescript plugin!)
+  * http://json.schemastore.org/tsconfig
+  * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
 * tsd.json: TypeScript's DefinitelyTyped (tsd) definitions configuration (more information: https://github.com/DefinitelyTyped/tsd)
 * tslint.json: TypeScript code style configuration (more information: https://www.npmjs.com/package/tslint)
 * connect-history-api-fallback: useful to automatically redirect all non-existent directories to the index file; required for SPAs: https://www.npmjs.com/package/connect-history-api-fallback

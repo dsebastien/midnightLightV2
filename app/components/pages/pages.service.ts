@@ -17,7 +17,7 @@ import {Page} from 'components/pages/pages.model';
  */
 export class PagesService {
 	private http: Http;
-	
+
 	constructor( @Inject(Http) http: Http) { // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 		console.log('Loading the Pages service');
 		this.http = http;
@@ -58,7 +58,7 @@ export class PagesService {
 	 * @param id the id of the page to retrieve
 	 * @returns {Page|T}
 	 */
-	fetchPage(id: string): Rx.Observable<Page>{
+	fetchPage(id: string): Rx.Observable<Page> {
 		// todo improve, handle case where no match & case where >1 match
 		// todo improve, use cache posts & have a "isReady" observable
 		var retVal: Rx.Subject<Page> = new Rx.Subject<Page>();

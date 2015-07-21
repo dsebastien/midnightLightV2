@@ -1,39 +1,43 @@
 {
-	"NOT_USED_FOR_NOW_SEE_TODO_LIST": "...",
-	"optionsToCheckLater": "noExternalResolve: true, inlineSourceMap: true, inlineSources: false, isolateModules: true, sortOutput: true",
-	"version": "1.5.0",
-	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"outDir": "./.tmp",
-		"project": "./app",
-		"declaration": false,
-		"noImplicitAny": false,
-		"removeComments": true,
-		"noLib": false,
-		"emitDecoratorMetadata": true,
-		"preserveConstEnums": true,
-		"noEmitOnError": false
-	},
-	"formatCodeOptions": {
-		"indentSize": 2,
-		"tabSize": 4,
-		"newLineCharacter": "\r\n",
-		"convertTabsToSpaces": false,
-		"insertSpaceAfterCommaDelimiter": true,
-		"insertSpaceAfterSemicolonInForStatements": true,
-		"insertSpaceBeforeAndAfterBinaryOperators": true,
-		"insertSpaceAfterKeywordsInControlFlowStatements": true,
-		"insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-		"insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
-		"placeOpenBraceOnNewLineForFunctions": false,
-		"placeOpenBraceOnNewLineForControlBlocks": false
-	},
-	"filesGlob": [
-		"./app/**/*.ts"
-	],
-	"exclude": [
-		"./node_modules",
-		"./jspm_packages"
-	]
+  "version": "1.5.3",
+  "compilerOptions": {
+	"target": "es5",
+	"module": "commonjs",
+	"module_about": "goal is system rather than commonjs but systemjs does not seem to like the emitted code for now..",
+	"declaration": false,
+	"noImplicitAny": false,
+	"removeComments": true,
+	"noLib": false,
+	"emitDecoratorMetadata": true,
+	"experimentalDecorators": true,
+	"noResolve": true,
+	"noEmitOnError": false,
+	"preserveConstEnums": true,
+	"inlineSources": false,
+	"sourceMap": false,
+	"sourceMap_about": "Not used because the gulp task creates the sourcemaps",
+	"outDir": "./.tmp",
+	"project": "./app"
+  },
+  "formatCodeOptions": {
+	"indentSize": 2,
+	"tabSize": 4,
+	"newLineCharacter": "\r\n",
+	"convertTabsToSpaces": false,
+	"insertSpaceAfterCommaDelimiter": true,
+	"insertSpaceAfterSemicolonInForStatements": true,
+	"insertSpaceBeforeAndAfterBinaryOperators": true,
+	"insertSpaceAfterKeywordsInControlFlowStatements": true,
+	"insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+	"insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+	"placeOpenBraceOnNewLineForFunctions": false,
+	"placeOpenBraceOnNewLineForControlBlocks": false
+  },
+  "filesGlob": [
+	"./app/**/*.ts"
+  ],
+  "exclude": [
+	"node_modules",
+	"jspm_packages"
+  ]
 }

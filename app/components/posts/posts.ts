@@ -30,7 +30,7 @@ export class Posts {
 	 * @type {any[]}
 	 */
 	private posts : Array<Post> = new Array<Post>();
-	
+
 	constructor(postsService: PostsService) {
 		console.log('Loading the Posts component');
 		this.postsService = postsService;

@@ -1,7 +1,7 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
 
-//'use strict'; // todo put back strict mode once TypeScript 1.5 final is available: https://github.com/Microsoft/TypeScript/issues/3251#issuecomment-104669769
+'use strict';
 
 import {Http, Inject, Response} from 'angular2/angular2'; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 import * as Rx from 'rx';
@@ -12,7 +12,7 @@ import {Post} from 'components/posts/posts.model';
 /**
  * Service responsible for retrieving the blog posts
  */
-export class PostsService{
+export class PostsService {
 	private http: Http;
 
 	constructor(@Inject(Http) http: Http) { // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724

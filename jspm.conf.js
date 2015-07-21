@@ -29,7 +29,7 @@ System.config({
 
 System.config({
   "map": {
-    "angular2": "npm:angular2@2.0.0-alpha.30",
+    "angular2": "npm:angular2@2.0.0-alpha.31",
     "babel": "npm:babel-core@5.6.15",
     "babel-runtime": "npm:babel-runtime@5.6.15",
     "core-js": "npm:core-js@0.9.18",
@@ -94,7 +94,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:angular2@2.0.0-alpha.30": {
+    "npm:angular2@2.0.0-alpha.31": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",

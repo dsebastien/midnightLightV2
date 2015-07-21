@@ -1,3 +1,6 @@
+* add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
+* create local storage service
+  * load data once & cache / retrieve from cache rather than from network
 * create a page component
   * pass it a page to render (model): http://victorsavkin.com/post/119943127151/angular-2-template-syntax
   * use an event to notify (EventEmitter) when the page is loaded and can be displayed: http://victorsavkin.com/post/119943127151/angular-2-template-syntax
@@ -13,33 +16,21 @@
   * short & wide: tighten up and/or move things up (e.g., tablet in landscape)
   * narrow & tall: reposition things off canvas or move things down
   * enlarge font size if screen wider AND more vertical space
-* mig to angular 2
-  * find if/how to inject service based on interface: http://stackoverflow.com/questions/31202162/interface-based-programming-with-typescript-angular-2-systemjs
+* angular 2
   * add router tsd once available
-	* remove custom.angular2.d.ts
-  * cleanup tsd.json (some Rx modules are probably not needed)
+    * remove custom.angular2.d.ts
+  * cleanup tsd.json (some Rx modules are probably not needed) 
 * mig to jspm and systemjs
   * fix Docker config (probably dep version issues)
   * how to properly import the CSS if in JSPM and version in folder name
   * remove jspm@beta from readme, dockerfile, package.json etc once stable release available
 * mig to TypeScript 1.5+
-  * update the package.json once available
-  * modify ts gulp plugin config to generate system modules
-  * put back 'use strict' in the core.bootstrap.ts & posts.service.ts
-  * use tsconfig.json
-	* check the status of files, filesGlob (currently only supported by the Atom typescript editor.. and exclude
-	  * https://github.com/Microsoft/TypeScript/issues/1927
-	  * https://github.com/Microsoft/TypeScript/pull/3188
-		* exclude list does not support wilcards. It must simply be a list of files and/or directories
-  * https://www.npmjs.com/package/gulp-typescript
+    * https://www.npmjs.com/package/gulp-typescript
   * http://json.schemastore.org/tsconfig
   * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
   * https://github.com/Microsoft/TypeScript/issues/1927
   * https://github.com/Microsoft/TypeScript/pull/3188
   * https://github.com/ivogabe/gulp-typescript/pull/99
-  * var tsProject = tsc.createProject('tsconfig.json', {
-	  typescript: require('typescript')
-	});
 * mig to TypeScript 1.6 (?)
   * implement the generic service once abstract classes are supported
 * build
@@ -80,7 +71,6 @@
   * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
   * enforce code quality/style checks (pre-commit hooks?)
   * js/ts formatting in webstorm?
-  * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
   * configure Travis
 	* once configured, enable for the project in https://travis-ci.org/profile/dsebastien
   * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
@@ -303,3 +293,13 @@
   * inject the wpi API class in the root injector through bootstrap
   * limit the retrieved fields -- currently not supported: https://github.com/WP-API/WP-API/issues/572
 * add !default to scss variables
+* angular alpha 32
+  * replace @Parent by @Ancestor: https://github.com/angular/angular/pull/3159
+* TypeScript: check the status of files, filesGlob (currently only supported by the Atom typescript editor.. and exclude
+  * https://github.com/Microsoft/TypeScript/issues/1927
+  * https://github.com/Microsoft/TypeScript/pull/3188
+  * exclude list does not support wilcards. It must simply be a list of files and/or directories
+* Typescript:
+   * use system instead of commonjs (currently not loading)
+* TypeScript 1.6
+  * find if/how to inject service based on abstract classes: http://stackoverflow.com/questions/31202162/interface-based-programming-with-typescript-angular-2-systemjs

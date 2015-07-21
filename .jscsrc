@@ -16,7 +16,8 @@
   "validateQuoteMarks": { "mark": "'", "escape": true },
   "excludeFiles": [
 	"node_modules/**",
-	"jspm_packages/**"
+	"jspm_packages/**",
+	"gulpfile.babel.js"
   ],
   "fileExtensions": [".js"],
   "requireSemicolons": true,
