@@ -300,6 +300,6 @@
   * https://github.com/Microsoft/TypeScript/pull/3188
   * exclude list does not support wilcards. It must simply be a list of files and/or directories
 * Typescript:
-   * use system instead of commonjs (currently not loading)
+   * remove 'format register'; when the following is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 * TypeScript 1.6
   * find if/how to inject service based on abstract classes: http://stackoverflow.com/questions/31202162/interface-based-programming-with-typescript-angular-2-systemjs

@@ -1,6 +1,6 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
-
+'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 'use strict';
 
 import {Http, Inject, Response} from 'angular2/angular2'; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
