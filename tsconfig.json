@@ -3,7 +3,6 @@
   "compilerOptions": {
 	"target": "es5",
 	"module": "system",
-	"module_about": "goal is system rather than commonjs but systemjs does not seem to like the emitted code for now..",
 	"declaration": false,
 	"noImplicitAny": false,
 	"removeComments": true,
@@ -15,7 +14,6 @@
 	"preserveConstEnums": true,
 	"inlineSources": false,
 	"sourceMap": false,
-	"sourceMap_about": "Not used because the gulp task creates the sourcemaps",
 	"outDir": "./.tmp",
 	"project": "./app"
   },

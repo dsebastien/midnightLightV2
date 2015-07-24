@@ -1,3 +1,4 @@
+* use const/let (incl in Configuration class)
 * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
 * create local storage service
   * load data once & cache / retrieve from cache rather than from network
@@ -108,6 +109,7 @@
     * remove gulp-plumber
     * remove run-sequence
   * add archive task (depend on default): https://github.com/h5bp/html5-boilerplate/blob/master/gulpfile.js
+  * switch build to TypeScript? https://www.npmjs.com/package/typescript-node
 * css
   * apply styleguide to the codebase
   * define list styles
