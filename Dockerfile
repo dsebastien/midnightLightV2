@@ -5,14 +5,14 @@ FROM dockerfile/nodejs
 MAINTAINER Sebastien Dubois <seb@dsebastien.net>
 
 # Install Gulp
-RUN npm install --global gulp jspm@beta typescript babel http-server
+RUN npm install --global gulp jspm@beta typescript@next babel babel-core http-server --no-optional
 
 # Build the app
 WORKDIR /opt/midnight_light/
 
 # Note that we add package.json separately in order not to bust the cache
 ADD package.json ./
-RUN npm install
+RUN npm install --no-optional
 RUN jspm install
 
 # Note that we avoid unwanted files from being added by listing them in the .dockerignore file

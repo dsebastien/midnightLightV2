@@ -21,19 +21,19 @@
     "directories": {},
     "configFile": "jspm.conf.js",
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-alpha.31",
-      "es6-shim": "github:es-shims/es6-shim@^0.32.2",
+      "angular2": "npm:angular2@^2.0.0-alpha.32",
+      "es6-shim": "github:es-shims/es6-shim@^0.32.3",
       "font-awesome": "npm:font-awesome@^4.3.0",
-      "lodash": "npm:lodash@^3.9.3",
+      "lodash": "npm:lodash@^3.10.0",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
       "reflect-metadata": "npm:reflect-metadata@^0.1.0",
       "rx": "npm:rx@2.5.1",
       "zone.js": "npm:zone.js@^0.5.1"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.6.4",
-      "babel-runtime": "npm:babel-runtime@^5.6.4",
-      "core-js": "npm:core-js@^0.9.17",
+      "babel": "npm:babel-core@^5.8.5",
+      "babel-runtime": "npm:babel-runtime@^5.8.5",
+      "core-js": "npm:core-js@^0.9.18",
       "traceur": "github:jmcriffey/bower-traceur@0.0.88",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
     }
@@ -43,7 +43,7 @@
     "apache-server-configs": "2.14.x",
     "autoprefixer": "5.2.x",
     "babel": "5.6.x",
-	"babel-core": "5.7.x",
+    "babel-core": "5.7.x",
     "bower": "1.4.x",
     "browser-sync": "2.7.x",
     "del": "1.1.x",
@@ -117,6 +117,7 @@
     "serve-dist": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tsd.json --watch tslint.json --watch jspm.conf.js --exec gulp serve-dist",
     "tsd": "tsd reinstall --save --overwrite",
     "tsd-update": "tsd update --save --overwrite",
-    "setup": "npm install --global gulp babel && npm install && jspm install"
+    "update": "npm install --no-optional && jspm update",
+    "setup": "npm install --global gulp babel babel-core jspm@beta typescript@next tsd --no-optional && npm install --no-optional && jspm install"
   }
 }
