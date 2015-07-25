@@ -4,7 +4,7 @@
 /*
 import {PostsService} from 'components/posts/posts.service';
 
-export var appServicesInjectables : Array<any> = [
+export let appServicesInjectables : Array<any> = [
 	PostsService
 ];
 */

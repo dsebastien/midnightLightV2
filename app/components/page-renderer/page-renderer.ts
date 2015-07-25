@@ -28,7 +28,7 @@ export class PageRenderer {
 
 	constructor(pagesService: PagesService, routeParams: RouteParams) { // how to inject the route params
 		console.log('Loading the Page renderer component');
-		var pageToRender: string = routeParams.get('pageToRender'); //FIXME nok
+		let pageToRender: string = routeParams.get('pageToRender'); //FIXME nok
 		console.log(`Page to render: ${pageToRender}`);
 		pagesService.fetchPage(pageToRender).subscribe(
 			(page: Page) => {

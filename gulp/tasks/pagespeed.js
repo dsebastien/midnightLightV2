@@ -6,7 +6,7 @@ help(gulp); // provide help through 'gulp help' -- the help text is the second g
 import pagespeed from 'psi';
 
 import config from '../config';
-var packageJSON = require('../../' + config.files.packageJSON);
+let packageJSON = require('../../' + config.files.packageJSON);
 
 gulp.task('pagespeed', 'Run PageSpeed Insights', (cb) =>{
 	// Update the below URL to the public URL of your site

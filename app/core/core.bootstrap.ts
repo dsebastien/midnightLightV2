@@ -55,10 +55,11 @@ class App {
 	constructor() { // http: Http
 		this.name = Configuration.applicationName;
 
-		/* TODO implement once I better understand how change detection works
+	    /* TODO implement once I better understand how change detection works
 		this.blogMetadataService = new BlogMetadataService(http); // loads the metadata (async)
 
-		this.blogMetadataService.fetchMetadata().subscribe(
+		let blogMetadataObservable: Rx.Observable = this.blogMetadataService.fetchMetadata()
+		let blogMetadataObservableSubscription: Rx.IDisposable = blogMetadataObservable.subscribe(
 			(blogMetadata: BlogMetadata) => {
 
 				//this.blogMetadata.title = blogMetadata.title;
@@ -73,6 +74,7 @@ class App {
 			},
 			() => {
 				console.log('Blog metadata retrieval completed');
+				blogMetadataObservableSubscription.dispose();
 			});
 		*/
 	}

@@ -9,7 +9,7 @@ import historyApiFallback from 'connect-history-api-fallback'; // fix for SPAs w
 
 import config from '../config';
 
-var startBrowserSync = () =>{
+let startBrowserSync = () =>{
 	browserSync({
 		notify: false,
 		//port: 8000,

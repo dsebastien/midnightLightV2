@@ -6,13 +6,13 @@ import notify from 'gulp-notify';
 import gutil from 'gulp-util';
 import plumber from 'gulp-plumber';
 
-var exitOnError = false; // whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
+let exitOnError = false; // whether we should make the house explode whenever errors occur (e.g., stop gulp serve)
 
 // display errors nicely and avoid having errors breaking tasks/watch
 // reference: https://github.com/mikaelbr/gulp-notify/issues/81
-var reportError = function(error) {
+let reportError = function(error) {
 
-	var lineNumber = error.lineNumber ? 'LINE ' + error.lineNumber + ' -- ' : '';
+	let lineNumber = error.lineNumber ? 'LINE ' + error.lineNumber + ' -- ' : '';
 
 	notify({
 		title: 'Task Failed [' + error.plugin + ']',
@@ -32,8 +32,8 @@ var reportError = function(error) {
 	//console.log(error.toString());
 
 	// Pretty error reporting
-	var report = '';
-	var chalk = gutil.colors.white.bgRed;
+	let report = '';
+	let chalk = gutil.colors.white.bgRed;
 
 	report += chalk('TASK:') + ' [' + error.plugin + ']\n';
 	report += chalk('ISSUE:') + ' ' + error.message + '\n';
@@ -58,7 +58,7 @@ var reportError = function(error) {
 
 // easily integrate plumber invocation
 // reference: https://gist.github.com/floatdrop/8269868
-var plumbedSrc = function(){
+let plumbedSrc = function(){
 	return gulp.src.apply(gulp, arguments)
 			.pipe(plumber({
 				errorHandler: reportError
@@ -66,14 +66,14 @@ var plumbedSrc = function(){
 };
 
 // utility function to exclude files from globs
-var not = '!';
-var exclude = function(providedPath){
+let not = '!';
+let exclude = function(providedPath){
 	return not + providedPath;
 };
 
 // utility function that filters out empty directories
 // reference: http://stackoverflow.com/questions/23719731/gulp-copying-empty-directories
-var filterEmptyDirectories = function(es){
+let filterEmptyDirectories = function(es){
 	return es.map(function(file, cb){
 	  if(file.stat.isFile()){
 		return cb(null, file);

@@ -16,7 +16,7 @@ gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references
 	
 	// references:
 	// https://www.npmjs.com/package/gulp-typescript
-	var tsProject = ts.createProject('tsconfig.json', {
+	let tsProject = ts.createProject('tsconfig.json', {
 		typescript: require('typescript'), // override the typescript version by that defined in package.json
 		
 		// other overrides here if needed
@@ -24,7 +24,7 @@ gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references
 		// https://github.com/Microsoft/TypeScript/wiki/Compiler%20Options
 	});
 	
-	var tsResult = utils.plumbedSrc(config.typescript.src) // handle errors nicely (i.e., without breaking watch)
+	let tsResult = utils.plumbedSrc(config.typescript.src) // handle errors nicely (i.e., without breaking watch)
 		.pipe(sourcemaps.init())
 		.pipe(ts(
 			tsProject

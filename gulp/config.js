@@ -2,7 +2,7 @@
 
 import utils from './utils';
 
-var extensions = {
+let extensions = {
 	javascript: '.js',
 	typescript: '.ts',
 	css: '.css',
@@ -10,12 +10,12 @@ var extensions = {
 	html: '.html'
 };
 
-var folders = {
+let folders = {
 	root: '.',
 	dist: './dist',
 	temp: './.tmp',
 	app: './app',
-	styles: '/styles',
+			styles: '/styles',
 	scripts: '/scripts',
 	images: '/images',
 	typings: './typings',
@@ -23,7 +23,7 @@ var folders = {
 	jspmPackages: './jspm_packages'
 };
 
-var globs = {
+let globs = {
 	any: '/**/*',
 	scripts: {
 		javascript: '/**/*' + extensions.javascript,
@@ -38,7 +38,7 @@ var globs = {
 	html: '/**/*' + extensions.html
 };
 
-var files = {
+let files = {
 	any: '*',
 	packageJSON: folders.root + '/package.json',
 	appTypeScriptReferences: folders.typings + '/typescriptApp.d.ts',
@@ -47,7 +47,7 @@ var files = {
 	jspmConfigFile: folders.root + '/jspm.conf.js'
 };
 
-var webServerFolders = {
+let webServerFolders = {
 	dev: [
 		folders.root, // necessary to have jspm_packages & jspm config file without needing a copy step
 		folders.temp,
@@ -58,9 +58,9 @@ var webServerFolders = {
 	]
 };
 
-var finalJsBundleName = 'bundle.min.js';
+let finalJsBundleName = 'bundle.min.js';
 
-var javascript = {
+let javascript = {
 	src: [
 		folders.app + globs.scripts.javascript
 	],
@@ -70,7 +70,7 @@ var javascript = {
 	finalJsBundlePath: folders.scripts + '/' + finalJsBundleName
 };
 
-var typescript = {
+let typescript = {
 	src: [
 		folders.app + globs.scripts.typescript,
 		files.libraryTypeScriptDefinitions, // reference to library .d.ts files
@@ -82,7 +82,7 @@ var typescript = {
 	dest: folders.temp
 };
 
-var styles = {
+let styles = {
 	src: [
 		folders.app + globs.styles.css,
 		folders.app + globs.styles.sass
@@ -103,21 +103,21 @@ var styles = {
 	finalVendorCssBundlePath: folders.styles + '/vendor.min.css'
 };
 
-var images = {
+let images = {
 	src: [
 		folders.app + globs.images
 	],
 	dest: folders.dist + folders.images
 };
 
-var html = {
+let html = {
 	src: [
 		folders.app + globs.html
 	],
 	dest: folders.dist
 };
 
-var copy = {
+let copy = {
 	src: [
 		folders.app + globs.any,
 		files.htaccess,
@@ -132,7 +132,7 @@ var copy = {
 	dest: folders.dist
 };
 
-var autoprefixerBrowsers = [
+let autoprefixerBrowsers = [
 'ie >= 10',
 'ie_mob >= 10',
 'ff >= 30',
@@ -144,7 +144,7 @@ var autoprefixerBrowsers = [
 'bb >= 10'
 ];
 
-var minifyCss = { // https://www.npmjs.com/package/gulp-minify-g
+let minifyCss = { // https://www.npmjs.com/package/gulp-minify-g
 	keepBreaks: false, // no problem here
 	keepSpecialComments: true, // necessary for licensing
 	compatibility: false, // no problem here

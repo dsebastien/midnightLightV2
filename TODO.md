@@ -1,4 +1,3 @@
-* use const/let (incl in Configuration class)
 * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
 * create local storage service
   * load data once & cache / retrieve from cache rather than from network
@@ -11,6 +10,7 @@
   * should use the pages service to load the page's content
   * should display the page contents
   * should notify the pages component so that it can highlight the current selection
+* use const/let (incl in Configuration class)
 * check out susy: http://susy.oddbird.net/
 * check out breakpoint: http://breakpoint-sass.com/
 * create responsive grid
@@ -110,6 +110,8 @@
     * remove run-sequence
   * add archive task (depend on default): https://github.com/h5bp/html5-boilerplate/blob/master/gulpfile.js
   * switch build to TypeScript? https://www.npmjs.com/package/typescript-node
+  * csslint
+  * htmlhint
 * css
   * apply styleguide to the codebase
   * define list styles
@@ -146,7 +148,7 @@
 	* by font-feature-settings once broadly supported: http://caniuse.com/#feat=font-feature
   * icon fonts
 	* define (responsive) font-awesome icon style
-	* add loading icons
+	* add loading icons & animate whenever async ops are busy
 * html
   * use tabindex on all main elements (sections, posts, etc)
   * add <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png"> with different sizes
@@ -199,8 +201,13 @@
   * get only posts titles & metadata; load the rest when requested
 * testing
   * add tests
+  * to check
+    * assertions: chai
+    * mocking: sinon.js
+    * functional testing: browserstack / nightwatch
+    * codequality & complexity: complexityReport.js / plato
+    * free Gemnasium alternatives?
 * research
-  * check out stealJS
   * evaluate haml: http://haml.info/
 	* or mustache :)
   * review pure.css code (e.g., find useful classes, responsive images, hiding elements, ...)

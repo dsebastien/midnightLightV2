@@ -35,7 +35,8 @@ export class Posts {
 		console.log('Loading the Posts component');
 		this.postsService = postsService;
 
-		postsService.fetchPosts().subscribe(
+		let postsObservable: Rx.Observable<Post> = postsService.fetchPosts();
+		let postsObservableSubscription: Rx.IDisposable = postsObservable.subscribe(
 			(post: Post) => {
 					this.posts.push(post);
 			},
@@ -44,6 +45,7 @@ export class Posts {
 			},
 			() => {
 				console.log('Posts retrieval completed');
+				postsObservableSubscription.dispose();
 			});
 	}
 }

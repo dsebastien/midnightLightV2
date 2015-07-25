@@ -27,18 +27,18 @@ export class PostsService {
 	fetchPosts(): Rx.Observable<Post> {
 		// example Rx.Observable usage: https://jsbin.com/dosumoqexe/edit?js,console
 		// reference about subject: https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/subjects/subject.md
-		var retVal:Rx.Subject<Post> = new Rx.Subject<Post>();
+		let retVal:Rx.Subject<Post> = new Rx.ReplaySubject<Post>();
 
 		// TODO configure API calls (posts to retrieve etc)
-		var observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/posts?filter[posts_per_page]=2&withoutcomments').toRx();
+		let observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/posts?filter[posts_per_page]=2&withoutcomments').toRx();
 		observable.map(
 			(response:Response) => response.json()
 		).subscribe(
 			(postsJson:any) => {
-				for (var i = 0 ; i < postsJson.length ; i++) {
-					var obj = postsJson[i];
+				for (let i = 0 ; i < postsJson.length ; i++) {
+					let obj = postsJson[i];
 
-					var post:Post = new Post();
+					let post:Post = new Post();
 					post.title = obj.title;
 					post.author = obj.author.nickname;
 					post.authorUrl = obj.author.URL;

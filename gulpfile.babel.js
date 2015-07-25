@@ -13,8 +13,8 @@
 
  'use strict';
 
-var gulp = require('gulp');
-var help = require('gulp-help')
+let gulp = require('gulp');
+let help = require('gulp-help')
 help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
 import requireDir from 'require-dir';
 import runSequence from 'run-sequence';

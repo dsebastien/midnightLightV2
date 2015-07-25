@@ -36,7 +36,8 @@ export class Pages {
 		console.log('Loading the Pages component');
 		this.pagesService = pagesService;
 
-		pagesService.fetchPages().subscribe(
+		let pagesObservable: Rx.Observable<Page> = pagesService.fetchPages();
+		let pagesObservableSubscription: Rx.IDisposable = pagesObservable.subscribe(
 			(page: Page) => {
 				this._pages.push(page);
 			},
@@ -45,6 +46,7 @@ export class Pages {
 			},
 			() => {
 				console.log('Pages retrieval completed');
+				pagesObservableSubscription.dispose();
 			});
 	}
 

@@ -26,15 +26,15 @@ export class BlogMetadataService {
 	 */
 	fetchMetadata(): Rx.Observable<BlogMetadata> {
 		//todo check if available in localStorage
-		var retVal:Rx.Subject<BlogMetadata> = new Rx.Subject<BlogMetadata>();
+		let retVal:Rx.Subject<BlogMetadata> = new Rx.ReplaySubject<BlogMetadata>();
 
-		var observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi).toRx(); // the main endpoint returns the metadata we're after
+		let observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi).toRx(); // the main endpoint returns the metadata we're after
 
 		observable.map(
 			(response:Response) => response.json()
 		).subscribe(
 			(metadataJson:any) => {
-				var blogMetadata: BlogMetadata = new BlogMetadata();
+				let blogMetadata: BlogMetadata = new BlogMetadata();
 				blogMetadata.title = metadataJson.title;
 				blogMetadata.description = metadataJson.description;
 				blogMetadata.url = metadataJson.URL;

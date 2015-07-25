@@ -28,18 +28,18 @@ export class PagesService {
 	 * @returns {Rx.Observable<Page>}
 	 */
 	fetchPages(): Rx.Observable<Page> {
-		var retVal: Rx.Subject<Page> = new Rx.Subject<Page>();
+		let retVal: Rx.Subject<Page> = new Rx.ReplaySubject<Page>();
 
-		var observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page').toRx(); // todo filter the post contents in the WS call (not possible now)
+		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page').toRx(); // todo filter the post contents in the WS call (not possible now)
 
 		observable.map(
 			(response: Response) => response.json()
 		).subscribe(
 			(pagesJson: any) => {
-				for (var i = 0; i < pagesJson.length; i++) {
-					var obj = pagesJson[i];
+				for (let i = 0; i < pagesJson.length; i++) {
+					let obj = pagesJson[i];
 
-					var page: Page = new Page();
+					let page: Page = new Page();
 					page.id = obj.ID;
 					page.title = obj.title;
 					page.content = obj.content; // TODO remove once filtered
@@ -61,14 +61,14 @@ export class PagesService {
 	fetchPage(id: string): Rx.Observable<Page> {
 		// todo improve, handle case where no match & case where >1 match
 		// todo improve, use cache posts & have a "isReady" observable
-		var retVal: Rx.Subject<Page> = new Rx.Subject<Page>();
-		var observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page&filter[ID]='+name).toRx();
+		let retVal: Rx.Subject<Page> = new Rx.Subject<Page>();
+		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page&filter[ID]='+name).toRx();
 
 		observable.map(
 			(response: Response) => response.json()
 		).subscribe(
 			(pageJson: any) => {
-				var page: Page = new Page();
+				let page: Page = new Page();
 				page.id = pageJson.ID;
 				page.title = pageJson.title;
 				page.content = pageJson.content; // TODO remove once filtered

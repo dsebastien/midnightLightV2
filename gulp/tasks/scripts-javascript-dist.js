@@ -15,7 +15,7 @@ gulp.task('scripts-javascript-dist', 'Package all JavaScript code for production
 
 	// Create the bundle
 	// Reference: https://github.com/systemjs/builder/issues/203
-	var jspm = require('jspm');
+	let jspm = require('jspm');
 	jspm.setPackagePath('.');
 	return jspm.bundleSFX(
 		config.javascript.srcDist,
@@ -28,15 +28,15 @@ gulp.task('scripts-javascript-dist', 'Package all JavaScript code for production
 			// runtime: false, // to exclude the Traceur or Babel runtime
 			globalDefs: {
 				DEBUG: false
-			},
+			}//,
 			//config: {sourceRoot: '.'}
 		}
 	);
 
 	// Alternative
 	// Reference: https://www.npmjs.com/package/systemjs-builder
-	//var Builder = require('systemjs-builder');
-	//var builder = new Builder();
+	//let Builder = require('systemjs-builder');
+	//let builder = new Builder();
 	//
 	//return builder.loadConfig(config.files.jspmConfigFile)
 	//	.then(function() {

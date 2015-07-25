@@ -9,7 +9,7 @@ import config from '../config';
 import utils from '../utils';
 
 gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from all application *.ts files', () =>{
-	var sources = utils.plumbedSrc(
+	let sources = utils.plumbedSrc(
 			config.typescript.srcAppOnly,
 			{
 				read: false
