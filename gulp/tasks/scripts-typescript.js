@@ -17,8 +17,7 @@ gulp.task('scripts-typescript', 'Transpile TypeScript to ES5, include references
 	// references:
 	// https://www.npmjs.com/package/gulp-typescript
 	var tsProject = ts.createProject('tsconfig.json', {
-		// not needed for now because it's aligned (depends on 1.5.3 like we do)
-		//typescript: require('typescript'), // override the typescript version by that defined in package.json
+		typescript: require('typescript'), // override the typescript version by that defined in package.json
 		
 		// other overrides here if needed
 		// http://json.schemastore.org/tsconfig
