@@ -100,6 +100,7 @@ If you're familiar with Docker then you can easily run the development or produc
 * require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
 * run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
 * event-stream: construct pipes of streams of events: https://www.npmjs.com/package/event-stream
+* connect-history-api-fallback: useful to automatically redirect all non-existent directories to the index file; required for SPAs: https://www.npmjs.com/package/connect-history-api-fallback
 
 ## Runtime dependencies
 * node-reset-scss: Eric Meyer's CSS reset: https://www.npmjs.com/package/node-reset-scss
@@ -134,7 +135,7 @@ The project includes multiple configuration files. Here's some information about
   * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
 * tsd.json: TypeScript's DefinitelyTyped (tsd) definitions configuration (more information: https://github.com/DefinitelyTyped/tsd)
 * tslint.json: TypeScript code style configuration (more information: https://www.npmjs.com/package/tslint)
-* connect-history-api-fallback: useful to automatically redirect all non-existent directories to the index file; required for SPAs: https://www.npmjs.com/package/connect-history-api-fallback
+* npm-shrinkwrap.json: file created using npm shrinkwrap. Blocks dependency versions (including transitive ones), needed for build stability
 
 ## Authors
 ### Sebastien Dubois

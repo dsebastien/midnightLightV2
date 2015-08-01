@@ -29,12 +29,12 @@ System.config({
 
 System.config({
   "map": {
-    "angular2": "npm:angular2@2.0.0-alpha.32",
-    "babel": "npm:babel-core@5.8.5",
-    "babel-runtime": "npm:babel-runtime@5.8.5",
+    "angular2": "npm:angular2@2.0.0-alpha.33",
+    "babel": "npm:babel-core@5.8.20",
+    "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@0.9.18",
     "es6-shim": "github:es-shims/es6-shim@0.32.3",
-    "font-awesome": "npm:font-awesome@4.3.0",
+    "font-awesome": "npm:font-awesome@4.4.0",
     "lodash": "npm:lodash@3.10.0",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "reflect-metadata": "npm:reflect-metadata@0.1.0",
@@ -60,7 +60,7 @@ System.config({
     "github:necolas/normalize.css@3.0.3": {
       "css": "github:systemjs/plugin-css@0.1.13"
     },
-    "npm:angular2@2.0.0-alpha.32": {
+    "npm:angular2@2.0.0-alpha.33": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
@@ -72,7 +72,7 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:babel-runtime@5.8.5": {
+    "npm:babel-runtime@5.8.20": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:core-js@0.9.18": {
@@ -80,7 +80,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:font-awesome@4.3.0": {
+    "npm:font-awesome@4.4.0": {
       "css": "github:systemjs/plugin-css@0.1.13"
     },
     "npm:inherits@2.0.1": {
