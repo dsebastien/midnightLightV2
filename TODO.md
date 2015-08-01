@@ -1,3 +1,5 @@
+* edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)
+* edge error in core.js
 * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
 * create local storage service
   * load data once & cache / retrieve from cache rather than from network
@@ -10,6 +12,7 @@
   * should use the pages service to load the page's content
   * should display the page contents
   * should notify the pages component so that it can highlight the current selection
+* create a progress bar component: to display skills & skill level on my about page
 * use const/let (incl in Configuration class)
 * check out susy: http://susy.oddbird.net/
 * check out breakpoint: http://breakpoint-sass.com/
@@ -19,14 +22,14 @@
   * enlarge font size if screen wider AND more vertical space
 * angular 2
   * add router tsd once available
-    * remove custom.angular2.d.ts
-  * cleanup tsd.json (some Rx modules are probably not needed) 
+	* remove custom.angular2.d.ts
+  * cleanup tsd.json (some Rx modules are probably not needed)
 * mig to jspm and systemjs
   * fix Docker config (probably dep version issues)
   * how to properly import the CSS if in JSPM and version in folder name
   * remove jspm@beta from readme, dockerfile, package.json etc once stable release available
 * mig to TypeScript 1.5+
-    * https://www.npmjs.com/package/gulp-typescript
+	* https://www.npmjs.com/package/gulp-typescript
   * http://json.schemastore.org/tsconfig
   * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
   * https://github.com/Microsoft/TypeScript/issues/1927
@@ -35,6 +38,9 @@
 * mig to TypeScript 1.6 (?)
   * implement the generic service once abstract classes are supported
 * build
+  * change TS pipeline: TS -> ES6 (in app) -> babel -> ES5 (in .tmp)
+	* assume that all *.js files in app should be excluded from Git
+  * add package.json https://david-dm.org/ like https://github.com/boennemann/url-safe
   * integrate PatternLab or something similar to create a style guide for dev/prod
 	* goal: easily see all components (atomic design approach)
 	* http://yeo-lab.com/#learn-more
@@ -106,12 +112,13 @@
 	* https://github.com/floatdrop/gulp-watch/blob/master/docs/readme.md
 	* combined with gulp-batch: https://www.npmjs.com/package/gulp-batch
   * gulp 4 migration
-    * remove gulp-plumber
-    * remove run-sequence
+	* remove gulp-plumber
+	* remove run-sequence
   * add archive task (depend on default): https://github.com/h5bp/html5-boilerplate/blob/master/gulpfile.js
   * switch build to TypeScript? https://www.npmjs.com/package/typescript-node
   * csslint
   * htmlhint
+  * copy htaccess and remove dependency
 * css
   * apply styleguide to the codebase
   * define list styles
@@ -202,11 +209,11 @@
 * testing
   * add tests
   * to check
-    * assertions: chai
-    * mocking: sinon.js
-    * functional testing: browserstack / nightwatch
-    * codequality & complexity: complexityReport.js / plato
-    * free Gemnasium alternatives?
+	* assertions: chai
+	* mocking: sinon.js
+	* functional testing: browserstack / nightwatch
+	* codequality & complexity: complexityReport.js / plato
+	* free Gemnasium alternatives?
 * research
   * evaluate haml: http://haml.info/
 	* or mustache :)
