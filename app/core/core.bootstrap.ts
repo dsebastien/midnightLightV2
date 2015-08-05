@@ -10,7 +10,7 @@ import 'reflect-metadata';
 import 'es6-shim'; // fixes an issue relating to list.fill (list.fill is not a function)
 
 // import Angular 2
-import {Component, View, Http, coreDirectives, bind, bootstrap, httpInjectables} from 'angular2/angular2';
+import {Component, View, Http, coreDirectives, bind, bootstrap, httpInjectables, onInit, onDestroy, onChange, onCheck, onAllChangesDone} from 'angular2/angular2';
 //import * as ng from 'angular2/angular2';
 
 // import Angular 2 Component Router
@@ -35,7 +35,8 @@ import {PageRenderer} from 'components/page-renderer/page-renderer';
 //import {appServicesInjectables} from 'core/services/services';
 
 @Component({
-	selector: 'app' // tag used in the index.html
+	selector: 'app',
+	lifecycle: [onInit, onDestroy, onChange, onCheck, onAllChangesDone]
 })
 @View({
 	templateUrl: 'core/core.bootstrap.template.html', //template: '<router-outlet></router-outlet>',
@@ -77,6 +78,40 @@ class App {
 				blogMetadataObservableSubscription.dispose();
 			});
 		*/
+	}
+
+	onInit() {
+		// Properties are resolved and things like
+		// this.mapWindow and this.mapControls
+		// had a chance to resolve from the
+		// two child components <map-window> and <map-controls>
+		console.log("onInit");
+	}
+
+	onDestroy() {
+		// Speak now or forever hold your peace
+		console.log("onDestroy");
+	}
+
+	onCheck() {
+		// Called right after our bindings have been checked
+		console.log("onCheck");
+	}
+
+	onChange(changes) {
+		// Called right after our bindings have been checked but only
+		// if one of our bindings has changed.
+		//
+		// changes is an object of the format:
+		// {
+		//   'prop': PropertyUpdate
+		// }
+		console.log("onChange");
+	}
+
+	onAllChangesDone() {
+		// Called right after all of our bindings have been checked
+		console.log("onAllChangesDone");
 	}
 }
 

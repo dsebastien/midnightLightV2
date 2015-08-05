@@ -1,4 +1,8 @@
+* update to systemjs 0.18.6
+* update to JSCS 2.0: https://github.com/jscs-dev/node-jscs/releases/tag/v2.0.0
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)
+* enable experimentalAsyncFunctions is tsconfig.json + doc
+* test async/await
 * edge error in core.js
 * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
 * create local storage service
@@ -26,6 +30,8 @@
 * mig to TypeScript 1.6 (?)
   * implement the generic service once abstract classes are supported
 * build
+  * change TS pipeline: TS -> ES6 (in app) -> babel -> ES5 (in .tmp)
+	* assume that all *.js files in app should be excluded from Git
   * add package.json https://david-dm.org/ like https://github.com/boennemann/url-safe
   * integrate PatternLab or something similar to create a style guide for dev/prod
 	* goal: easily see all components (atomic design approach)
