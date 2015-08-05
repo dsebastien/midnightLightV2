@@ -1,5 +1,5 @@
-* update to systemjs 0.18.6
 * update to JSCS 2.0: https://github.com/jscs-dev/node-jscs/releases/tag/v2.0.0
+* extract build tasks to external project
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)
 * enable experimentalAsyncFunctions is tsconfig.json + doc
 * test async/await
@@ -103,6 +103,8 @@
 	* remove run-sequence
   * add archive task (depend on default): https://github.com/h5bp/html5-boilerplate/blob/master/gulpfile.js
   * copy htaccess and remove dependency
+  * try and reuse/improve: https://github.com/lookfirst/gulp-helpers
+  * check-js-style: verify if esnext must be specified or not (it is in the .jscsrc so it should not also have to be in the gulp config)
 * css
   * apply styleguide to the codebase
   * define list styles

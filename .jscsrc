@@ -169,5 +169,14 @@
   "disallowQuotedKeysInObjects": true,
   "requireAlignedObjectValues": null,
   "disallowSpaceAfterObjectKeys": true,
-  "requireSpaceBeforeObjectValues": true
+  "requireSpaceBeforeObjectValues": true,
+  "disallowSpaceBeforeComma": true,
+  "disallowSpaceBeforeSemicolon": true,
+  "requireVarDeclFirst": true,
+  "requireMatchingFunctionName": true,
+  "requireObjectKeysOnNewLine": true,
+  "disallowNodeTypes": ["LabeledStatement"],
+  "requireArrowFunctions": true,
+  "requireNumericLiterals": true,
+  "requireTemplateString": true
 }
