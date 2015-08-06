@@ -38,7 +38,7 @@ gulp.task('default', 'Build production files', [ 'prepare-default' ], (callback)
 
 gulp.task('prepare-default', 'Do all the necessary preparatory work for the default task', [
 		'clean',
-//		'ts-lint',
+		'ts-lint',
 		'check-js-style',
 		'check-js-quality'
 	], (callback) =>{

@@ -56,7 +56,7 @@ class App {
 	constructor() { // http: Http
 		this.name = Configuration.applicationName;
 
-	    /* TODO implement once I better understand how change detection works
+		/* TODO implement once I better understand how change detection works
 		this.blogMetadataService = new BlogMetadataService(http); // loads the metadata (async)
 
 		let blogMetadataObservable: Rx.Observable = this.blogMetadataService.fetchMetadata()
@@ -85,17 +85,17 @@ class App {
 		// this.mapWindow and this.mapControls
 		// had a chance to resolve from the
 		// two child components <map-window> and <map-controls>
-		console.log("onInit");
+		console.log('onInit');
 	}
 
 	onDestroy() {
 		// Speak now or forever hold your peace
-		console.log("onDestroy");
+		console.log('onDestroy');
 	}
 
 	onCheck() {
 		// Called right after our bindings have been checked
-		console.log("onCheck");
+		console.log('onCheck');
 	}
 
 	onChange(changes) {
@@ -106,12 +106,12 @@ class App {
 		// {
 		//   'prop': PropertyUpdate
 		// }
-		console.log("onChange");
+		console.log('onChange');
 	}
 
 	onAllChangesDone() {
 		// Called right after all of our bindings have been checked
-		console.log("onAllChangesDone");
+		console.log('onAllChangesDone');
 	}
 }
 

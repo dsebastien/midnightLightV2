@@ -62,7 +62,7 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', (
 });
 
 gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [
-		//'ts-lint',
+		'ts-lint',
 		'check-js-style',
 		'check-js-quality'
 		], (callback) =>{
