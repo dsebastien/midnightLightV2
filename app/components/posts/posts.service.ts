@@ -30,6 +30,7 @@ export class PostsService {
 		let retVal:Rx.Subject<Post> = new Rx.ReplaySubject<Post>();
 
 		// TODO configure API calls (posts to retrieve etc)
+		// needs WP rest api update (currently doesn't allow for partial posts data retrieval)
 		let observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/posts?filter[posts_per_page]=2&withoutcomments').toRx();
 		observable.map(
 			(response:Response) => response.json()

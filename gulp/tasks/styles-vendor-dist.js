@@ -9,6 +9,7 @@ import concat from 'gulp-concat';
 import csso from 'gulp-csso';
 import minifyCss from 'gulp-minify-css';
 import size from 'gulp-size';
+import debug from 'gulp-debug';
 
 import config from '../config';
 import utils from '../utils';
@@ -19,7 +20,7 @@ gulp.task('styles-vendor-dist', 'Optimize and minimize vendor stylesheets for pr
 	)
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 	// Process Sass files
 	.pipe(sass({

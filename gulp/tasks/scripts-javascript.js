@@ -9,6 +9,7 @@ import babel from 'gulp-babel';
 import browserSync from'browser-sync';
 import iff from 'gulp-if';
 import size from 'gulp-size';
+import debug from 'gulp-debug';
 
 import config from '../config';
 import utils from '../utils';
@@ -19,13 +20,14 @@ gulp.task('scripts-javascript', 'Transpile JavaScript (ES6 to ES5 using Babel) a
 	)
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 	// speed things up by ignoring unchanged resources
 	.pipe(changed(config.javascript.dest))
 
 	// Initialize sourcemap generation
 	.pipe(sourcemaps.init({
+		loadMaps: true
 		//debug: true
 	}))
 
@@ -48,7 +50,7 @@ gulp.task('scripts-javascript', 'Transpile JavaScript (ES6 to ES5 using Babel) a
 	.pipe(gulp.dest(config.javascript.dest))
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 	// Task result
 	.pipe(size({

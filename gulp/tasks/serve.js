@@ -33,7 +33,7 @@ let startBrowserSync = () =>{
 			// fix for SPAs w/ BrowserSync & others: https://github.com/BrowserSync/browser-sync/issues/204
 			// reference: https://github.com/BrowserSync/browser-sync/issues/204
 			middleware: [
-				historyApiFallback(),
+				historyApiFallback(), // not necessary if the app uses hash based routing
 				function (req, res, next) {
 					res.setHeader('Access-Control-Allow-Origin', '*'); // add CORS to the response headers (for resources served by BrowserSync)
 					next();
@@ -45,15 +45,8 @@ let startBrowserSync = () =>{
 	gulp.watch(config.html.src, browserSync.reload); // html changes will force a reload
 	gulp.watch(config.styles.src, [ 'styles' ]); // stylesheet changes will force a reload
 	gulp.watch(config.typescript.srcAppOnly, [
-		'ts-lint',
-		'scripts-typescript',
-		'gen-ts-refs'
+		'scripts-typescript-to-es5'
 	]); // TypeScript changes will force a reload
-	gulp.watch(config.javascript.src, [
-		'check-js-style',
-		'check-js-quality',
-		'scripts-javascript'
-	]); // JavaScript changes will force a reload
 	gulp.watch(config.images.src, browserSync.reload); // image changes will force a reload
 };
 
@@ -62,14 +55,14 @@ gulp.task('serve', 'Watch files for changes and rebuild/reload automagically', (
 });
 
 gulp.task('prepare-serve', 'Do all the necessary preparatory work for the serve task', [
+		'clean',
 		'ts-lint',
-		'check-js-style',
-		'check-js-quality'
+		'gen-ts-refs',
+		//'check-js-style',
+		//'check-js-quality'
 		], (callback) =>{
-			return runSequence([
-				'gen-ts-refs',
+			return runSequence('scripts-typescript',[
 				'scripts-javascript',
-				'scripts-typescript',
 				'styles',
 				'validate-package-json'
 			], callback);

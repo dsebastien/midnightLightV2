@@ -4,6 +4,7 @@ import gulp from 'gulp';
 import help from 'gulp-help';
 help(gulp); // provide help through 'gulp help' -- the help text is the second gulp task argument (https://www.npmjs.com/package/gulp-help/)
 import inject from 'gulp-inject';
+import debug from 'gulp-debug';
 
 import config from '../config';
 import utils from '../utils';
@@ -17,7 +18,7 @@ gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from
 	);
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}));
+	//.pipe(debug({title: 'Stream contents:', minimal: true}));
 
 	return utils.plumbedSrc(config.files.appTypeScriptReferences)
 		.pipe(inject(sources, {
@@ -29,7 +30,7 @@ gulp.task('gen-ts-refs', 'Generate the app.d.ts references file dynamically from
 		}))
 
 		// Display the files in the stream
-		//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+		//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 		.pipe(gulp.dest(config.folders.typings));
 });

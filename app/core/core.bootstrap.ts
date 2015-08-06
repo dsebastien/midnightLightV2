@@ -48,13 +48,15 @@ import {PageRenderer} from 'components/page-renderer/page-renderer';
 	{path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'} // given the parameter it renders a page
 ])
 class App {
-	name: string;
 
 	//blogMetadataService: BlogMetadataService;
 	blogMetadata: BlogMetadata = new BlogMetadata();
 
 	constructor() { // http: Http
-		this.name = Configuration.applicationName;
+		// default to mine.. :)
+		this.blogMetadata.title = Configuration.applicationName;
+		this.blogMetadata.description = Configuration.applicationDescription;
+		this.blogMetadata.url = Configuration.applicationUrl;
 
 		/* TODO implement once I better understand how change detection works
 		this.blogMetadataService = new BlogMetadataService(http); // loads the metadata (async)

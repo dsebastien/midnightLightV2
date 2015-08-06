@@ -6,7 +6,7 @@ help(gulp); // provide help through 'gulp help' -- the help text is the second g
 import jscs from 'gulp-jscs';
 import jscsStylish from 'gulp-jscs-stylish';
 import size from 'gulp-size';
-
+import debug from 'gulp-debug';
 
 import config from '../config';
 import utils from '../utils';
@@ -17,7 +17,7 @@ gulp.task('check-js-style', 'Enforce JavaScript code style', () =>{
 	)
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 	// Check JS code style (uses .jscsrc)
 	.pipe(

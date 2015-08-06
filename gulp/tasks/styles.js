@@ -9,6 +9,7 @@ import autoprefixer from 'gulp-autoprefixer';
 import iff from 'gulp-if';
 import browserSync from 'browser-sync';
 import size from 'gulp-size';
+import debug from 'gulp-debug';
 
 import config from '../config';
 import utils from '../utils';
@@ -19,7 +20,7 @@ gulp.task('styles', 'Compile, add vendor prefixes and generate sourcemaps', () =
 	)
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 	// Initialize sourcemap generation
 	.pipe(sourcemaps.init({

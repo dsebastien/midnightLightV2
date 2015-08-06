@@ -19,7 +19,7 @@ gulp.task('styles-dist', 'Optimize and minimize stylesheets for production', () 
 	)
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 	// Process Sass files
 	.pipe(sass({

@@ -7,7 +7,8 @@ let extensions = {
 	typescript: '.ts',
 	css: '.css',
 	sass: '.scss',
-	html: '.html'
+	html: '.html',
+	sourcemap: '.map'
 };
 
 let folders = {
@@ -15,7 +16,7 @@ let folders = {
 	dist: './dist',
 	temp: './.tmp',
 	app: './app',
-			styles: '/styles',
+	styles: '/styles',
 	scripts: '/scripts',
 	images: '/images',
 	typings: './typings',
@@ -35,7 +36,8 @@ let globs = {
 		vendor: folders.styles + '/vendor{' + extensions.sass + ',' + extensions.css + '}'
 	},
 	images: folders.images + '/**/*',
-	html: '/**/*' + extensions.html
+	html: '/**/*' + extensions.html,
+	sourcemaps: '/**/*' + extensions.sourcemap
 };
 
 let files = {
@@ -49,8 +51,9 @@ let files = {
 
 let webServerFolders = {
 	dev: [
+		// the order IS important. Folders above have precedence
 		folders.root, // necessary to have jspm_packages & jspm config file without needing a copy step
-		folders.temp,
+		folders.temp, // before app so that ES5 code emitted by Babel takes precedence over ES6 code emitted by TS in the app folder
 		folders.app
 	],
 	dist: [
@@ -79,7 +82,7 @@ let typescript = {
 	srcAppOnly: [
 		folders.app + globs.scripts.typescript
 	],
-	dest: folders.temp
+	dest: folders.app // because we now emit ES6 instead of ES5; Babel then takes that as input and emits ES5 code under the temp folder
 };
 
 let styles = {

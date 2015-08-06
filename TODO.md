@@ -1,9 +1,7 @@
-* change TS pipeline: TS -> ES6 (in app) -> babel -> ES5 (in .tmp)
-  * assume that all *.js files in app should be excluded from Git
 * extract build tasks to external project
   * modernWebDevBuild
 * create a generator that uses modernWebDevBuild (setup app structure & al
-* create a version w/ angular2
+* create a generator version w/ angular2
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)
 * enable experimentalAsyncFunctions is tsconfig.json + doc
 * test async/await

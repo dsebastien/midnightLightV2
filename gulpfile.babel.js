@@ -11,7 +11,7 @@
  Principle taken from gulp-starter: https://github.com/greypants/gulp-starter
  */
 
- 'use strict';
+'use strict';
 
 let gulp = require('gulp');
 let help = require('gulp-help')
@@ -39,13 +39,12 @@ gulp.task('default', 'Build production files', [ 'prepare-default' ], (callback)
 gulp.task('prepare-default', 'Do all the necessary preparatory work for the default task', [
 		'clean',
 		'ts-lint',
-		'check-js-style',
-		'check-js-quality'
+		'gen-ts-refs',
+		//'check-js-style',
+		//'check-js-quality'
 	], (callback) =>{
-		return runSequence([
-			'gen-ts-refs',
-			'scripts-typescript',
-			'scripts-javascript'
-		], callback);
+		return runSequence('scripts-typescript',
+			['scripts-javascript', 'validate-package-json'],
+			callback);
 	}
 );

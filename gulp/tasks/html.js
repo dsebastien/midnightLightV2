@@ -7,6 +7,7 @@ import htmlReplace from 'gulp-html-replace';
 import iff from 'gulp-if';
 import minifyHtml from 'gulp-minify-html';
 import size from 'gulp-size';
+import debug from 'gulp-debug';
 
 import config from '../config';
 import utils from '../utils';
@@ -17,7 +18,7 @@ gulp.task('html', 'Optimize HTML', () =>{
 	)
 
 	// Display the files in the stream
-	//.pipe($.debug({title: 'Stream contents:', minimal: true}))
+	//.pipe(debug({title: 'Stream contents:', minimal: true}))
 
 	// Inject production assets path: https://www.npmjs.com/package/gulp-html-replace
 	.pipe(htmlReplace({

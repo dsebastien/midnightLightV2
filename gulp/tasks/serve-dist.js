@@ -28,7 +28,7 @@ let startBrowserSync = () =>{
 			// reference: https://github.com/BrowserSync/browser-sync/issues/204
 			// todo extract common middleware config
 			middleware: [
-				historyApiFallback(),
+				historyApiFallback(), // not necessary if the app uses hash based routing
 				function (req, res, next) {
 					res.setHeader('Access-Control-Allow-Origin', '*'); // add CORS to the response headers (for resources served by BrowserSync)
 					next();

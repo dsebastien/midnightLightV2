@@ -1,8 +1,8 @@
 {
-  "version": "1.5.3",
+  "version": "1.6.0",
   "compilerOptions": {
-	"target": "es5",
-	"module": "system",
+	"target": "es6",
+	"module": "commonjs",
 	"declaration": false,
 	"noImplicitAny": false,
 	"removeComments": true,
@@ -14,7 +14,7 @@
 	"preserveConstEnums": true,
 	"inlineSources": false,
 	"sourceMap": false,
-	"outDir": "./.tmp",
+	"outDir": "./app",
 	"project": "./app"
   },
   "formatCodeOptions": {
