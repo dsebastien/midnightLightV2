@@ -9,6 +9,7 @@
 	"noLib": false,
 	"emitDecoratorMetadata": true,
 	"experimentalDecorators": true,
+	"experimentalAsyncFunctions": true,
 	"noResolve": true,
 	"noEmitOnError": false,
 	"preserveConstEnums": true,

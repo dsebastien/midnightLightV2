@@ -1,35 +1,36 @@
 System.config({
-  "baseURL": "./",
-  "defaultJSExtensions": true,
-  "transpiler": "babel",
-  "babelOptions": {
+  baseURL: "./",
+  defaultJSExtensions: true,
+  transpiler: "babel",
+  babelOptions: {
     "stage": 1,
-    "comments": false
+    "comments": false,
+    "optional": [
+      "runtime"
+    ]
   },
-  "traceurOptions": {
+  traceurOptions: {
     "annotations": true,
     "memberVariables": true,
     "types": true
   },
-  "typescriptOptions": {
+  typescriptOptions: {
     "module": "commonjs",
     "emitDecoratorMetadata": true
   },
-  "paths": {
+  paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
     "core/*": "./.tmp/core/*",
     "components/*": "./.tmp/components/*",
     "pages/*": "./.tmp/pages/*"
-  }
-});
+  },
 
-System.config({
-  "map": {
-    "angular2": "npm:angular2@2.0.0-alpha.33",
-    "babel": "npm:babel-core@5.8.20",
+  map: {
+    "angular2": "npm:angular2@2.0.0-alpha.34",
+    "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
-    "core-js": "npm:core-js@0.9.18",
+    "core-js": "npm:core-js@1.0.1",
     "es6-shim": "github:es-shims/es6-shim@0.32.3",
     "font-awesome": "npm:font-awesome@4.4.0",
     "lodash": "npm:lodash@3.10.1",
@@ -57,7 +58,7 @@ System.config({
     "github:necolas/normalize.css@3.0.3": {
       "css": "github:systemjs/plugin-css@0.1.13"
     },
-    "npm:angular2@2.0.0-alpha.33": {
+    "npm:angular2@2.0.0-alpha.34": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
@@ -72,7 +73,7 @@ System.config({
     "npm:babel-runtime@5.8.20": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:core-js@0.9.18": {
+    "npm:core-js@1.0.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
@@ -113,4 +114,3 @@ System.config({
     }
   }
 });
-

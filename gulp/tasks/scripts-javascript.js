@@ -36,7 +36,10 @@ gulp.task('scripts-javascript', 'Transpile JavaScript (ES6 to ES5 using Babel) a
 	.pipe(babel({
 		modules: "system", // use the system module format. Useful since load these with SystemJS
 		stage: 1, // enable experimental features (e.g., decorators, etc): http://babeljs.io/docs/usage/experimental/
-		comments: false // remove comments
+		comments: false, // remove comments
+		optional: [
+				"runtime" // necessary to load regenerator (generators/async) & core-js (ES6 static methods) automatically: https://babeljs.io/docs/usage/runtime/
+		]
 	}))
 
 	// Write sourcemaps: https://www.npmjs.com/package/gulp-sourcemaps
