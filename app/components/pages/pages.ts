@@ -15,7 +15,7 @@ import {PagesService} from 'components/pages/pages.service';
 
 @Component({
 	selector: 'navigation-menu', // todo rename to something clearer? menu? list? meeeeh
-	viewInjector: [
+	viewBindings: [
 		PagesService
 	]
 })

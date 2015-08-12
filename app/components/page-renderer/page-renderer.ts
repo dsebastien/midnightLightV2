@@ -14,7 +14,7 @@ import {PagesService} from 'components/pages/pages.service';
 
 @Component({
 	selector: 'render-page', // todo check if selector is mandatory given that it won't be used (if not mandatory, also remove from posts & home)
-	viewInjector: [
+	viewBindings: [
 		PagesService //todo rename to PagesService -- assume that during testing the types won't matter (?)
 	]
 })
@@ -22,7 +22,6 @@ import {PagesService} from 'components/pages/pages.service';
 	templateUrl: 'components/page-renderer/page-renderer.template.html',
 	directives: [coreDirectives]
 })
-// todo review/complete: depends on fixing the router link issue in the template!
 export class PageRenderer {
 	private pageToRender: Page; // to check: visibility: private ok?
 

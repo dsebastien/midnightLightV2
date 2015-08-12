@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 async function doAsyncOp () {
 	var val = await asynchronousOperation();
 	console.log(val);

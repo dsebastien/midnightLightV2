@@ -4,8 +4,6 @@
 * create a generator that uses modernWebDevBuild (setup app structure & al
 * create a generator version w/ angular2
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)50
-* enable experimentalAsyncFunctions is tsconfig.json + doc
-* test async/await
 * edge error in zone.js (core.js): https://github.com/angular/zone.js/issues/150
 * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
 * create local storage service
@@ -106,6 +104,7 @@
   * copy htaccess and remove dependency
   * try and reuse/improve: https://github.com/lookfirst/gulp-helpers
   * check-js-style: verify if esnext must be specified or not (it is in the .jscsrc so it should not also have to be in the gulp config)
+  * update tslint (needs to support ES2015+, async/await, ...)
 * css
   * apply styleguide to the codebase
   * define list styles

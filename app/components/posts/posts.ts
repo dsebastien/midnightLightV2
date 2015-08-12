@@ -14,7 +14,7 @@ import {PostsService} from 'components/posts/posts.service';
 
 @Component({
 	selector: 'posts',
-	viewInjector: [
+	viewBindings: [
 		PostsService
 	] // needed so that the service gets injected (configured the injector of this specific component
 })

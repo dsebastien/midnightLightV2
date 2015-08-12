@@ -10,12 +10,12 @@ import 'reflect-metadata';
 import 'es6-shim'; // fixes an issue relating to list.fill (list.fill is not a function)
 
 // import Angular 2
-import {Component, View, Http, coreDirectives, bind, bootstrap, httpInjectables, onInit, onDestroy, onChange, onCheck, onAllChangesDone} from 'angular2/angular2';
+import {Component, View, Http, coreDirectives, bind, bootstrap, httpInjectables} from 'angular2/angular2';
 //import * as ng from 'angular2/angular2';
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
-import {RouteConfig, RouterOutlet, RouterLink, Router, LocationStrategy, HashLocationStrategy, routerInjectables} from 'angular2/router'; // todo add HTML5LocationStrategy
+import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, HashLocationStrategy, routerInjectables} from 'angular2/router'; // todo add HTML5LocationStrategy
 // TODO remove hash location strategy
 
 // app configuration
@@ -35,17 +35,17 @@ import {PageRenderer} from 'components/page-renderer/page-renderer';
 //import {appServicesInjectables} from 'core/services/services';
 
 @Component({
-	selector: 'app',
-	lifecycle: [onInit, onDestroy, onChange, onCheck, onAllChangesDone]
+	selector: 'app'
 })
 @View({
 	templateUrl: 'core/core.bootstrap.template.html', //template: '<router-outlet></router-outlet>',
 	directives: [coreDirectives, RouterOutlet, RouterLink, Pages]
 })
 @RouteConfig([
-	{path: '/', component: Home, as: 'home'}, // the as serves as alias for links, etc
-	{path: '/posts', component: Posts, as: 'posts'},
-	{path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'} // given the parameter it renders a page
+	// TODO check back with Angular 2 alpha 35, this should be fixed
+	new Route({path: '/', component: Home, as: 'home'}), // the as serves as alias for links, etc
+	new Route({path: '/posts', component: Posts, as: 'posts'}),
+	new Route({path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'}) // given the parameter it renders a page
 ])
 class App {
 
@@ -80,40 +80,6 @@ class App {
 				blogMetadataObservableSubscription.dispose();
 			});
 		*/
-	}
-
-	onInit() {
-		// Properties are resolved and things like
-		// this.mapWindow and this.mapControls
-		// had a chance to resolve from the
-		// two child components <map-window> and <map-controls>
-		console.log('onInit');
-	}
-
-	onDestroy() {
-		// Speak now or forever hold your peace
-		console.log('onDestroy');
-	}
-
-	onCheck() {
-		// Called right after our bindings have been checked
-		console.log('onCheck');
-	}
-
-	onChange(changes) {
-		// Called right after our bindings have been checked but only
-		// if one of our bindings has changed.
-		//
-		// changes is an object of the format:
-		// {
-		//   'prop': PropertyUpdate
-		// }
-		console.log('onChange');
-	}
-
-	onAllChangesDone() {
-		// Called right after all of our bindings have been checked
-		console.log('onAllChangesDone');
 	}
 }
 
