@@ -4,7 +4,7 @@
 'use strict';
 
 // import Angular 2
-import {Component, View, coreDirectives} from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
 
 import * as Rx from 'rx';
 
@@ -20,7 +20,7 @@ import {PostsService} from 'components/posts/posts.service';
 })
 @View({
 	templateUrl: 'components/posts/posts.template.html',
-	directives: [coreDirectives]
+	directives: [CORE_DIRECTIVES]
 })
 export class Posts {
 	private postsService: PostsService;

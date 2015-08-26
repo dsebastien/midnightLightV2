@@ -3,7 +3,8 @@
 'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 'use strict';
 
-import {Http, Inject, Response} from 'angular2/angular2'; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
+import {Inject} from 'angular2/angular2'; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
+import {Http, Response, HTTP_BINDINGS} from 'http/http';
 import * as Rx from 'rx';
 
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss

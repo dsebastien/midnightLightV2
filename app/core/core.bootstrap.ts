@@ -10,13 +10,16 @@ import 'reflect-metadata';
 import 'es6-shim'; // fixes an issue relating to list.fill (list.fill is not a function)
 
 // import Angular 2
-import {Component, View, Http, coreDirectives, bind, bootstrap, httpInjectables} from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES, bind, bootstrap} from 'angular2/angular2';
+import {Http, HTTP_BINDINGS} from 'http/http';
 //import * as ng from 'angular2/angular2';
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
-import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, HashLocationStrategy, routerInjectables} from 'angular2/router'; // todo add HTML5LocationStrategy
-// TODO remove hash location strategy
+import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, HashLocationStrategy, routerInjectables as ROUTER_BINDINGS} from 'angular2/router';
+// todo add HTML5LocationStrategy (whatever the new name) & remove hash location strategy
+// todo remove the routerInjectables alias once alpha 36+ is used
+
 
 // app configuration
 import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
@@ -39,13 +42,20 @@ import {PageRenderer} from 'components/page-renderer/page-renderer';
 })
 @View({
 	templateUrl: 'core/core.bootstrap.template.html', //template: '<router-outlet></router-outlet>',
-	directives: [coreDirectives, RouterOutlet, RouterLink, Pages]
+	directives: [CORE_DIRECTIVES, RouterOutlet, RouterLink, Pages]
 })
 @RouteConfig([
-	// TODO check back with Angular 2 alpha 35, this should be fixed
-	new Route({path: '/', component: Home, as: 'home'}), // the as serves as alias for links, etc
+	//TODO put back the old syntax (comment below) once the typings are correct
+	// reference: https://github.com/angular/angular/issues/3637
+	// fix could land w/ 36+
+	<Route>{path: '/', component: Home, as: 'home', data: undefined, loader: undefined, redirectTo: undefined}, // the as serves as alias for links, etc
+	<Route>{path: '/posts', component: Posts, as: 'posts'},
+	<Route>{path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'} // given the parameter it renders a page
+	/*
+	new Route({path: '/', component: Home, as: 'home', data: undefined, loader: undefined, redirectTo: undefined}), // the as serves as alias for links, etc
 	new Route({path: '/posts', component: Posts, as: 'posts'}),
 	new Route({path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'}) // given the parameter it renders a page
+	*/
 ])
 class App {
 
@@ -89,8 +99,8 @@ console.log('Bootstrapping the App');
 // in [] is the list of injector bindings. Those bindings are used when an injector is created. Passing these here make the bindings available application-wide
 bootstrap(App, [
 	//appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
-	routerInjectables,
-	httpInjectables,
+	ROUTER_BINDINGS,
+	HTTP_BINDINGS,
 	bind(LocationStrategy).toClass(HashLocationStrategy) // enable HashLocationStrategy: /#/<component_name> rather than /<component_name>
 	//todo replace with
 	//bind(LocationStrategy).toClass(HTML5LocationStrategy) // enable HTML5 history API location strategy

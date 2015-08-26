@@ -4,7 +4,7 @@
 'use strict';
 
 // import Angular 2
-import {Component, View, coreDirectives} from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
 import {RouteParams} from 'angular2/router';
 
 import * as Rx from 'rx';
@@ -12,6 +12,7 @@ import * as Rx from 'rx';
 import {Page} from 'components/pages/pages.model';
 import {PagesService} from 'components/pages/pages.service';
 
+/*
 @Component({
 	selector: 'render-page', // todo check if selector is mandatory given that it won't be used (if not mandatory, also remove from posts & home)
 	viewBindings: [
@@ -20,8 +21,9 @@ import {PagesService} from 'components/pages/pages.service';
 })
 @View({
 	templateUrl: 'components/page-renderer/page-renderer.template.html',
-	directives: [coreDirectives]
+	directives: [CORE_DIRECTIVES]
 })
+*/
 export class PageRenderer {
 	private pageToRender: Page; // to check: visibility: private ok?
 

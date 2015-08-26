@@ -21,19 +21,19 @@
     "directories": {},
     "configFile": "jspm.conf.js",
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-alpha.34",
+      "angular2": "npm:angular2@^2.0.0-alpha.35",
       "es6-shim": "github:es-shims/es6-shim@^0.32.3",
       "font-awesome": "npm:font-awesome@^4.4.0",
       "lodash": "npm:lodash@^3.10.1",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
       "reflect-metadata": "npm:reflect-metadata@^0.1.0",
-      "rx": "npm:rx@2.5.1",
-      "zone.js": "npm:zone.js@^0.5.2"
+      "rx": "npm:rx@3.1.1",
+      "zone.js": "npm:zone.js@^0.5.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.22",
-      "babel-runtime": "npm:babel-runtime@^5.8.22",
-      "core-js": "npm:core-js@^1.0.1",
+      "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "core-js": "npm:core-js@^1.1.1",
       "traceur": "github:jmcriffey/bower-traceur@0.0.90",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.90"
     }
@@ -44,7 +44,7 @@
     "autoprefixer": "5.2.x",
     "babel": "5.8.x",
     "babel-core": "5.8.x",
-    "bower": "1.4.x",
+    "bower": "1.5.x",
     "browser-sync": "2.8.x",
     "del": "1.2.x",
     "event-stream": "3.3.x",
@@ -75,17 +75,17 @@
     "gulp-rename": "1.2.x",
     "gulp-replace": "0.5.x",
     "gulp-sass": "2.0.x",
-    "gulp-size": "1.3.x",
+    "gulp-size": "2.0.x",
     "gulp-sourcemaps": "1.5.x",
     "gulp-strip-debug": "1.0.x",
     "gulp-tsd": "0.0.x",
-    "gulp-tslint": "3.1.2",
-    "gulp-typescript": "2.8.0",
-    "gulp-uglify": "1.2.x",
+    "gulp-tslint": "3.2.x",
+    "gulp-typescript": "2.8.x",
+    "gulp-uglify": "1.3.x",
     "gulp-uncss": "1.0.x",
     "gulp-util": "3.0.x",
     "jshint-stylish": "2.0.x",
-    "jspm": "^0.16.0-beta.3",
+    "jspm": "^0.16.x",
     "node-sass": "3.2.x",
     "nodemon": "1.4.x",
     "opn": "3.0.x",
@@ -93,7 +93,7 @@
     "require-dir": "0.3.x",
     "run-sequence": "1.1.x",
     "systemjs-builder": "0.13.x",
-    "typescript": "1.6.0-dev.20150812",
+    "typescript": "1.6.0-dev.20150815",
     "connect-history-api-fallback": "1.1.0",
     "tsd": "0.6.x"
   },
@@ -119,6 +119,6 @@
     "tsd-update": "tsd update --save --overwrite",
     "update": "npm install --no-optional && jspm update && jspm dl-loader",
     "outdated": "npm outdated",
-    "setup": "npm install --global gulp babel babel-core jspm@beta typescript@next tsd --no-optional && npm install --no-optional && jspm install"
+    "setup": "npm install --global gulp babel babel-core jspm typescript@next tsd --no-optional && npm install --no-optional && jspm install"
   }
 }

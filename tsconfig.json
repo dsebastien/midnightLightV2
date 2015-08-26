@@ -2,7 +2,6 @@
   "version": "1.6.0",
   "compilerOptions": {
 	"target": "es6",
-	"module": "commonjs",
 	"declaration": false,
 	"noImplicitAny": false,
 	"removeComments": true,

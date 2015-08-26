@@ -4,7 +4,7 @@
 'use strict';
 
 // import Angular 2
-import {Component, View, coreDirectives} from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES} from 'angular2/angular2';
 
 import * as Rx from 'rx';
 import {RouterLink} from 'angular2/router';
@@ -21,7 +21,7 @@ import {PagesService} from 'components/pages/pages.service';
 })
 @View({
 	templateUrl: 'components/pages/pages.template.html',
-	directives: [coreDirectives, RouterLink]
+	directives: [CORE_DIRECTIVES, RouterLink]
 })
 export class Pages {
 	private pagesService: PagesService;

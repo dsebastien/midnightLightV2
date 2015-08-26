@@ -1,10 +1,18 @@
-* check if http injection issue is still present: https://github.com/angular/angular/issues/2788#issuecomment-130258813
+* fix issue w/ http and RxJS version
+  * error: VM2061 http.js:1009 Uncaught TypeError: Cannot set property 'inherits' of undefined
+  * might be the root cause: https://github.com/Reactive-Extensions/RxJS/issues/850
 * extract build tasks to external project
   * modernWebDevBuild
 * create a generator that uses modernWebDevBuild (setup app structure & al
 * create a generator version w/ angular2
+* check if http injection issue is still present: https://github.com/angular/angular/issues/2788#issuecomment-130258813
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)50
 * edge error in zone.js (core.js): https://github.com/angular/zone.js/issues/150
+* put back the original router.d.ts (/// <reference path="angular2/router.d.ts" />) once I get how to use the damn new Route :p)
+* update tsd
+* once updated to alpha 36+
+ * ROUTER_DIRECTIVES, ROUTER_BINDINGS
+ * check if the issue with new Router in RouteConfig is solved
 * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
 * create local storage service
   * load data once & cache / retrieve from cache rather than from network
@@ -105,6 +113,9 @@
   * try and reuse/improve: https://github.com/lookfirst/gulp-helpers
   * check-js-style: verify if esnext must be specified or not (it is in the .jscsrc so it should not also have to be in the gulp config)
   * update tslint (needs to support ES2015+, async/await, ...)
+  * once http has a proper typings file, update the tsd.d.ts file (temporary copy different from the version bundled with alpha 35 as there is an issue with it)
+	* alternative for later: add d.ts files to the globs in tsconfig.json
+	* not used: ../jspm_packages/npm/angular2@2.0.0-alpha.35/bundles/typings/angular2/http.d.ts" />
 * css
   * apply styleguide to the codebase
   * define list styles

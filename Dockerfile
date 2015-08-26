@@ -5,7 +5,7 @@ FROM dockerfile/nodejs
 MAINTAINER Sebastien Dubois <seb@dsebastien.net>
 
 # Install Gulp
-RUN npm install --global gulp jspm@beta typescript@next babel babel-core http-server --no-optional
+RUN npm install --global gulp jspm typescript@next babel babel-core http-server --no-optional
 
 # Build the app
 WORKDIR /opt/midnight_light/
