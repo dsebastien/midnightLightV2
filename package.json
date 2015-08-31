@@ -93,7 +93,7 @@
     "require-dir": "0.3.x",
     "run-sequence": "1.1.x",
     "systemjs-builder": "0.13.x",
-    "typescript": "1.6.0-dev.20150815",
+    "typescript": "1.7.0-dev.20150830",
     "connect-history-api-fallback": "1.1.0",
     "tsd": "0.6.x"
   },
