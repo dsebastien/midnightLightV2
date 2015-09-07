@@ -72,6 +72,10 @@
 	  * https://www.npmjs.com/package/gulp-jasmine
 	* protractor for functional tests
 	  * E2E test framework for angular apps
+	* check https://coveralls.io/
+	* https://www.npmjs.com/package/gulp-istanbul
+	* https://www.npmjs.com/package/chai
+	*
   * optimize/cache: changed(...)
   * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
   * improve JS code style config (not great with object literals)
@@ -314,3 +318,7 @@
    * remove 'format register'; when the following is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 * TypeScript 1.6
   * find if/how to inject service based on abstract classes: http://stackoverflow.com/questions/31202162/interface-based-programming-with-typescript-angular-2-systemjs
+* check out Electron
+  * http://electron.atom.io/docs/v0.31.0/tutorial/quick-start/
+  * https://github.com/mainyaa/gulp-electron
+  * https://github.com/joaomoreno/gulp-atom-electron
