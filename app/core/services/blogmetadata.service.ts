@@ -3,6 +3,7 @@
 'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 'use strict';
 
+import {Injectable} from 'angular2/angular2';
 import {Http, Response} from 'http/http';
 import * as Rx from 'rx';
 
@@ -12,6 +13,7 @@ import {BlogMetadata} from 'core/services/blogmetadata.model';
 /**
  * Service responsible for fetching basic metadata of the Wordpress blog in the back-end.
  */
+@Injectable()
 export class BlogMetadataService {
 	private http: Http;
 

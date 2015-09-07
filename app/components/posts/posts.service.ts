@@ -3,7 +3,7 @@
 'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 'use strict';
 
-import {Inject} from 'angular2/angular2'; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
+import {Injectable} from 'angular2/angular2'; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 import {Http, Response} from 'http/http';
 import * as Rx from 'rx';
 
@@ -13,10 +13,11 @@ import {Post} from 'components/posts/posts.model';
 /**
  * Service responsible for retrieving the blog posts
  */
+@Injectable()
 export class PostsService {
 	private http: Http;
 
-	constructor(@Inject(Http) http: Http) { // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
+	constructor(http: Http) { // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 		console.log('Loading the Posts service');
 		this.http = http;
 	}

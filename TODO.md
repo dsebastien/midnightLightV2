@@ -1,7 +1,4 @@
-* update zone.js dependency
-* fix issue w/ http and RxJS version
-  * error: VM2061 http.js:1009 Uncaught TypeError: Cannot set property 'inherits' of undefined
-  * might be the root cause: https://github.com/Reactive-Extensions/RxJS/issues/850
+* rewrite the RXJS code to avoid the needless observable/observer
 * dist should not contain map files nor wrong js
 * extract build tasks to external project
   * modernWebDevBuild

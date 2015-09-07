@@ -16,9 +16,8 @@ import {Http, HTTP_BINDINGS} from 'http/http';
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
-import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, HashLocationStrategy, routerInjectables as ROUTER_BINDINGS} from 'angular2/router';
-// todo add HTML5LocationStrategy (whatever the new name) & remove hash location strategy
-// todo remove the routerInjectables alias once alpha 36+ is used
+import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, PathLocationStrategy, ROUTER_BINDINGS} from 'angular2/router';
+// todo add HTML5LocationStrategy (whatever the new name) & remove path location strategy
 
 
 // app configuration
@@ -101,7 +100,7 @@ bootstrap(App, [
 	//appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
 	ROUTER_BINDINGS,
 	HTTP_BINDINGS,
-	bind(LocationStrategy).toClass(HashLocationStrategy) // enable HashLocationStrategy: /#/<component_name> rather than /<component_name>
+	bind(LocationStrategy).toClass(PathLocationStrategy) // enables the following: /#/<component_name> rather than /<component_name>
 	//todo replace with
 	//bind(LocationStrategy).toClass(HTML5LocationStrategy) // enable HTML5 history API location strategy
 
