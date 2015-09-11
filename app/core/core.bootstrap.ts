@@ -11,7 +11,7 @@ import 'es6-shim'; // fixes an issue relating to list.fill (list.fill is not a f
 
 // import Angular 2
 import {Component, View, CORE_DIRECTIVES, bind, bootstrap} from 'angular2/angular2';
-import {Http, HTTP_BINDINGS} from 'http/http';
+import {Http, HTTP_BINDINGS} from 'angular2/http';
 //import * as ng from 'angular2/angular2';
 
 // import Angular 2 Component Router
