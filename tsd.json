@@ -5,6 +5,12 @@
 	"path": "typings",
 	"bundle": "typings/tsd.d.ts",
 	"installed": {
+		"systemjs/systemjs.d.ts": {
+			"commit": "0b26f2d03de4551ebc3196bf7e3ae8d937f64fff"
+		},
+		"jasmine/jasmine.d.ts": {
+			"commit": "0b26f2d03de4551ebc3196bf7e3ae8d937f64fff"
+		},
 		"lodash/lodash.d.ts": {
 			"commit": "0b26f2d03de4551ebc3196bf7e3ae8d937f64fff"
 		},
