@@ -82,7 +82,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "reflect-metadata": "npm:reflect-metadata@0.1.1",
-      "rx": "npm:rx@2.5.1",
+      "rx": "npm:rx@3.1.1",
       "url": "github:jspm/nodelibs-url@0.1.0",
       "zone.js": "npm:zone.js@0.5.4"
     },
@@ -267,9 +267,6 @@ System.config({
     },
     "npm:ripemd160@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.1"
-    },
-    "npm:rx@2.5.1": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:rx@3.1.1": {
