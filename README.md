@@ -25,10 +25,13 @@ In order to use Midnight Light, you need to install the WP REST API plugin in Wo
 
 ## Building from source
 If you want to build from source, you need to:
-* install NodeJS:
+* install NodeJS
 * clone this git repository
 * go to the folder where you've cloned the project
-* run `$ npm install --global gulp babel jspm@beta` to get the build tools
+* run `$ npm run setup`; that will:
+** download & install the build tools
+** download all dependencies
+** download the TypeScript
 * run `$ npm install` to download all build dependencies
 * run `$ jspm install` to download all the application dependencies
 * run `$ npm run tsd` to retrieve TypeScript definitions list (for more information, check out the following [link](https://github.com/borisyankov/DefinitelyTyped)
@@ -47,95 +50,6 @@ If you're familiar with Docker then you can easily run the development or produc
 
 ## Updating the TypeScript definitions
 * run `$ npm run tsd-update`. This will update everything in tsd.json to the head version of the DefinitelyTyped repository
-
-## Build dependencies
-* jspm: JS package manager; abstracts away npm, bower etc: https://www.npmjs.com/package/jspm
-* gulp: build system (https://www.npmjs.com/package/gulp)
-* babel: ES6 to ES5 transpiler; used for the gulp build
-* typescript: the typescript tools (compiler, ...)
-* systemjs-builder: build tool for systemjs allows to create a single-file build of mixed-dependency module trees: https://www.npmjs.com/package/systemjs-builder
-* apache-server-configs: base Apache HTTP Server config (allows/configures CORS, adds the X-UA-Compatible header, defines all media types correctly such as SVG, ...): https://www.npmjs.com/package/apache-server-configs
-* browser-sync: live CSS reload & browser syncing: https://www.npmjs.com/package/browser-sync
-* del: deletes files/folders: https://www.npmjs.com/package/del
-* gulp-autoprefixer: automatically adds vendor prefixes to CSS: https://www.npmjs.com/package/gulp-autoprefixer
-* gulp-cache: temp file based caching proxy task for gulp: https://www.npmjs.com/package/gulp-cache
-* gulp-changed: only pass through changed files: https://www.npmjs.com/package/gulp-changed
-* gulp-csso: minify CSS with CSS optimizer: https://www.npmjs.com/package/gulp-csso
-* gulp-flatten: remove or replace relative path for files: https://www.npmjs.com/package/gulp-flatten
-* gulp-if: conditionally run a task: https://www.npmjs.com/package/gulp-if
-* gulp-imagemin: minify png, jpeg, gif and svg images: https://www.npmjs.com/package/gulp-imagemin
-* gulp-jshint: JavaScript code quality checker plugin for gulp that uses JSHint: https://www.npmjs.com/package/gulp-jshint
-* gulp-load-plugins: automatically load any gulp plugins defined in package.json: https://www.npmjs.com/package/gulp-load-plugins
-* gulp-minify-html: minify html with minimize: https://www.npmjs.com/package/gulp-minify-html
-* gulp-minify-css: minify css with clean-css: https://www.npmjs.com/package/gulp-minify-css
-* gulp-replace: string replace plugin for gulp: https://www.npmjs.com/package/gulp-replace
-* gulp-sass: sass plugin for gulp: https://www.npmjs.com/package/sass
-* node-sass: used by gulp-sass and normally not needed but added to fix an issue with sourcemaps: https://github.com/sindresorhus/gulp-autoprefixer/issues/10
-* gulp-size: display the size of the project: https://www.npmjs.com/package/gulp-size
-* gulp-sourcemaps: js source map support for gulp: https://www.npmjs.com/package/gulp-sourcemaps
-* gulp-uglify: minify files using Uglify JS: https://www.npmjs.com/package/gulp-uglify
-* gulp-uncss: remove unused CSS selectors: https://www.npmjs.com/package/gulp-uncss
-* gulp-util: utility methods for gulp: https://www.npmjs.com/package/gulp-util
-* gulp-plumber: prevent pipe breaking caused by errors from gulp plugins: https://www.npmjs.com/package/gulp-plumber
-* gulp-notify: display notifications on OSX, Linux and Windows (native). Fallsback to Growl or simply logging: https://www.npmjs.com/package/gulp-notify
-* gulp-help: create a list of gulp tasks with documentation: https://www.npmjs.com/package/gulp-help/
-* gulp-html-replace: replace build blocks in HTML: https://www.npmjs.com/package/gulp-html-replace
-* gulp-strip-debug: remove console and debugger statements from JS code: https://www.npmjs.com/package/gulp-strip-debug
-* gulp-concat: concatenate files: https://www.npmjs.com/package/gulp-concat
-* gulp-rename: rename files: https://www.npmjs.com/package/gulp-rename
-* gulp-debug: useful to verify the stream contents: https://www.npmjs.com/package/gulp-debug
-* gulp-cssimport: replace CSS imports by stylesheet contents: https://www.npmjs.com/package/gulp-cssimport
-* gulp-nice-package: validate npm's package.json file: https://www.npmjs.com/package/gulp-nice-package/
-* gulp-inject: JavaScript, stylesheet and webcomponent injection: https://www.npmjs.com/package/gulp-inject
-* gulp-tsd: TSD plugin for gulp: https://www.npmjs.com/package/gulp-tsd
-* gulp-tslint: Linter for TypeScript code: https://www.npmjs.com/package/gulp-tslint
-* gulp-typescript: TypeScript transpiler plugin for gulp: https://www.npmjs.com/package/gulp-typescript
-* tsd: TypeScript Definition manager: https://www.npmjs.com/package/tsd
-* gulp-babel: ES6 to ES5 transpiler plugin for gulp: https://www.npmjs.com/package/gulp-babel
-* gulp-jscs: JavaScript code style checker plugin for gulp: https://www.npmjs.com/package/gulp-jscs
-* gulp-jscs-stylish: Stylish reporter for gulp-jscs: https://www.npmjs.com/package/gulp-jscs-stylish
-* jshint-stylish: stylish reporter for JSHint: https://www.npmjs.com/package/jshint-stylish
-* opn: open stuff like websites, files, executables (cross-platform): https://www.npmjs.com/package/opn
-* psi: PageSpeed insights with reporting: https://www.npmjs.com/package/psi
-* require-dir: helper to require() directories: https://www.npmjs.com/package/require-dir
-* run-sequence: run a series of dependent gulp tasks in order: https://www.npmjs.com/package/run-sequence
-* event-stream: construct pipes of streams of events: https://www.npmjs.com/package/event-stream
-* connect-history-api-fallback: useful to automatically redirect all non-existent directories to the index file; required for SPAs: https://www.npmjs.com/package/connect-history-api-fallback
-
-## Runtime dependencies
-* node-reset-scss: Eric Meyer's CSS reset: https://www.npmjs.com/package/node-reset-scss
-* normalize.css: Nicolas Gallagher's Normalize CSS (alternative to CSS resets): https://www.npmjs.com/package/normalize.css
-* purecss: CSS framework: https://www.npmjs.com/package/purecss
-* jquery
-* angular (angular, angular-animate, angular-new-router, angular-loader, angular-mocks)
-* lodash: https://www.npmjs.com/package/lodash
-* font-awesome: pictographic icons https://www.npmjs.com/package/font-awesome
-
-## Project configuration files
-The project includes multiple configuration files. Here's some information about these:
-* .dockerignore: files that are ignored by Docker when creating images
-* .editorconfig: helps configure code style for various text editors (more information here: http://editorconfig.org)
-* .gitattributes: allows to define git attributes per path (more information here: http://git-scm.com/docs/gitattributes)
-* .gitignore: configures files/folders that are ignored by git
-* .jscsrc: configuration file for JSCS. It defines the JS code style (more information: http://jscs.info/overview.html#options)
-  * note that it is configured to use ES Next
-  * rules reference: http://jscs.info/rules.html
-  * news: https://github.com/jscs-dev/node-jscs/blob/master/CHANGELOG.md
-* .jshintrc: JSHint configuration
-  * rules reference: http://jshint.com/docs/options
-  * more information: http://jshint.com/docs/)
-* bower.json and .bowerrc: bower's configuration file (just in case bower is later used to manage the project's dependencies). For now I'm using NPM and am satisfied with it (more information: http://bower.io/)
-* Dockerfile and DockerfileDev: Docker configuration files used to describe how Docker images should be created for this project (more information: https://www.docker.com/ and http://docs.docker.com/reference/builder/)
-* gulpfile.babel.js: gulp's configuration file. This is where the build magic happens (more information: http://gulpjs.com/)
-* package.Json: NPM's configuration file. This is where all dependencies are defined: project ones under 'jspm' and build-related ones under 'devDependencies' (more information: https://docs.npmjs.com/files/package.json)
-* runOnDocker.sh and runDevOnDocker.sh: build scripts that create/run Docker images
-* travis.yml: Travis CI configuration files (more information: http://docs.travis-ci.com/user/build-configuration/)
-* tsconfig.json: TypeScript compiler configuration. Contains all compiler options, code style rules and file selection/exclusion rules (bypassed by the gulp-typescript plugin!)
-  * http://json.schemastore.org/tsconfig
-  * https://github.com/Microsoft/TypeScript/wiki/tsconfig.json
-* tsd.json: TypeScript's DefinitelyTyped (tsd) definitions configuration (more information: https://github.com/DefinitelyTyped/tsd)
-* tslint.json: TypeScript code style configuration (more information: https://www.npmjs.com/package/tslint)
-* npm-shrinkwrap.json: file created using npm shrinkwrap. Blocks dependency versions (including transitive ones), needed for build stability
 
 ## Authors
 ### Sebastien Dubois
