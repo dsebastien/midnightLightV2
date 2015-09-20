@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) dSebastien (http://www.dsebastien.net)
+Copyright (c) dSebastien (https://www.dsebastien.net)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

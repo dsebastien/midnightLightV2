@@ -5,8 +5,8 @@ Midnight Light is a modern personal Web front-end.
 The goal of this project is to create a modern, responsive, mobile-first, offline-first and (hopefully) good looking web front-end. Why? Because we can, today! :)
 
 For more background head over to my blog:
-* http://www.dsebastien.net/2015/04/22/web-3-0-is-closer-than-you-might-think/
-* http://www.dsebastien.net/2015/04/14/time-for-some-web-dev/
+* https://www.dsebastien.net/2015/04/22/web-3-0-is-closer-than-you-might-think/
+* https://www.dsebastien.net/2015/04/14/time-for-some-web-dev/
 
 ## Status & roadmap
 Check out the current [TODO list](TODO.md)
@@ -53,9 +53,9 @@ If you're familiar with Docker then you can easily run the development or produc
 
 ## Authors
 ### Sebastien Dubois
-* [@Blog](http://www.dsebastien.net)
-* [@Twitter](http://twitter.com/dSebastien)
-* [@GitHub](http://github.com/dSebastien)
+* [@Blog](https://www.dsebastien.net)
+* [@Twitter](https://twitter.com/dSebastien)
+* [@GitHub](https://github.com/dSebastien)
 
 ## License
 This project and all associated source code is licensed under the terms of the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
