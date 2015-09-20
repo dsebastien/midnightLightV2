@@ -1,5 +1,7 @@
 # Midnight Light
 
+[![Build Status](https://secure.travis-ci.org/dsebastien/midnightLightV2.png?branch=master)](https://travis-ci.org/dsebastien/midnightLightV2)
+
 ## About
 Midnight Light is a modern personal Web front-end.
 The goal of this project is to create a modern, responsive, mobile-first, offline-first and (hopefully) good looking web front-end. Why? Because we can, today! :)
