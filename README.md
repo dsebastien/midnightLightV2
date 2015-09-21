@@ -1,6 +1,10 @@
 # Midnight Light
 
 [![Build Status](https://secure.travis-ci.org/dsebastien/midnightLightV2.png?branch=master)](https://travis-ci.org/dsebastien/midnightLightV2)
+[![Coverage Status](https://img.shields.io/coveralls/dsebastien/midnightLightV2.svg?style=flat)](https://coveralls.io/r/dsebastien/midnightLightV2?branch=master)
+[![Dependency Status](https://david-dm.org/dsebastien/midnightLightV2.svg?theme=shields.io&style=flat)](https://david-dm.org/dsebastien/midnightLightV2)
+[![devDependency Status](https://david-dm.org/dsebastien/midnightLightV2/dev-status.svg?theme=shields.io&style=flat)](https://david-dm.org/dsebastien/midnightLightV2#info=devDependencies)
+[![Gitter](https://img.shields.io/badge/gitter-join%20chat-green.svg?style=flat)](https://gitter.im/dsebastien/midnightLightV2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## About
 Midnight Light is a modern personal Web front-end.
