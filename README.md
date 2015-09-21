@@ -1,5 +1,7 @@
 # Midnight Light
 
+[![Join the chat at https://gitter.im/dsebastien/midnightLightV2](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dsebastien/midnightLightV2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://secure.travis-ci.org/dsebastien/midnightLightV2.png?branch=master)](https://travis-ci.org/dsebastien/midnightLightV2)
 [![Coverage Status](https://img.shields.io/coveralls/dsebastien/midnightLightV2.svg?style=flat)](https://coveralls.io/r/dsebastien/midnightLightV2?branch=master)
 [![Dependency Status](https://david-dm.org/dsebastien/midnightLightV2.svg?theme=shields.io&style=flat)](https://david-dm.org/dsebastien/midnightLightV2)
