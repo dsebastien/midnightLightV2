@@ -53,7 +53,7 @@
 	"nodemon": "1.4.x",
 	"typescript": "1.7.0-dev.20150830",
 	"tsd": "0.6.5-beta",
-	"modern-web-dev-build": "0.0.x"
+	"modern-web-dev-build": "0.0.5"
   },
   "engines": {
 	"node": ">=0.12.0",
