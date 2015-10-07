@@ -34,8 +34,6 @@
 	  "zone.js": "npm:zone.js@^0.5.4"
 	},
 	"devDependencies": {
-	  "babel": "npm:babel-core@^5.8.24",
-	  "babel-runtime": "npm:babel-runtime@^5.8.20",
 	  "core-js": "npm:core-js@^1.1.4",
 	  "traceur": "github:jmcriffey/bower-traceur@0.0.90",
 	  "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.90"
@@ -44,11 +42,8 @@
   "dependencies": {
   },
   "devDependencies": {
-	"babel": "5.8.x",
-	"babel-core": "5.8.x",
 	"bower": "1.5.x",
 	"gulp": "3.9.x",
-	"gulp-babel": "5.2.x",
 	"jspm": "^0.16.x",
 	"nodemon": "1.4.x",
 	"typescript": "1.7.0-dev.20150830",

@@ -1,3 +1,6 @@
+* upgrade to alpha 38
+  * https://github.com/angular/angular/blob/master/CHANGELOG.md#200-alpha38-2015-10-03
+  * https://gist.github.com/robwormald/90d06f3aa4927ef555c2
 * re-add shrinkwrap
 * rewrite the RXJS code to avoid the needless observable/observer
 * dist should not contain map files nor wrong js
@@ -69,7 +72,7 @@
 	* check https://coveralls.io/
 	* https://www.npmjs.com/package/gulp-istanbul
 	* https://www.npmjs.com/package/chai
-	*
+	* check and add support for: https://gist.github.com/sscovil/e0029dc1ef75bfc65439
   * optimize/cache: changed(...)
   * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
   * improve JS code style config (not great with object literals)
