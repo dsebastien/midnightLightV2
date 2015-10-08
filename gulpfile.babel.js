@@ -4,5 +4,10 @@
 
 'use strict';
 
-let gulp = require('gulp');
-require('modern-web-dev-build');
+import gulp from 'gulp';
+
+//let gulp = require('gulp');
+let options = undefined;
+require('modern-web-dev-build').registerTasks(gulp, options);
+
+//console.log(JSON.stringify(gulp));
