@@ -1,59 +1,59 @@
 ///<reference path="../../typings/tsd.d.ts" />
 ///<reference path="../../typings/typescriptApp.d.ts" />
-'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
-'use strict';
+"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
+"use strict";
 
 
 // import Angular2 deps
-import 'zone.js';
-import 'reflect-metadata';
-import 'es6-shim'; // fixes an issue relating to list.fill (list.fill is not a function)
+import "zone.js";
+import "reflect-metadata";
+import "es6-shim"; // fixes an issue relating to list.fill (list.fill is not a function)
 
 // import Angular 2
-import {Component, View, CORE_DIRECTIVES, bind, bootstrap} from 'angular2/angular2';
-import {Http, HTTP_BINDINGS} from 'angular2/http';
-//import * as ng from 'angular2/angular2';
+import {Component, View, CORE_DIRECTIVES, bind, bootstrap} from "angular2/angular2";
+import {Http, HTTP_BINDINGS} from "angular2/http";
+//import * as ng from "angular2/angular2";
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
-import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, PathLocationStrategy, ROUTER_BINDINGS} from 'angular2/router';
+import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, PathLocationStrategy, ROUTER_BINDINGS} from "angular2/router";
 // todo add HTML5LocationStrategy (whatever the new name) & remove path location strategy
 
 
 // app configuration
-import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
+import {Configuration} from "core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 
 // app services
-import {BlogMetadataService} from 'core/services/blogmetadata.service';
-import {BlogMetadata} from 'core/services/blogmetadata.model';
+import {BlogMetadataService} from "core/services/blogmetadata.service";
+import {BlogMetadata} from "core/services/blogmetadata.model";
 
 // app components
-import {Home} from 'pages/home/home';
-import {Posts} from 'components/posts/posts';
-import {Pages} from 'components/pages/pages';
-import {PageRenderer} from 'components/page-renderer/page-renderer';
+import {Home} from "pages/home/home";
+import {Posts} from "components/posts/posts";
+import {Pages} from "components/pages/pages";
+import {PageRenderer} from "components/page-renderer/page-renderer";
 
 // app services
-//import {appServicesInjectables} from 'core/services/services';
+//import {appServicesInjectables} from "core/services/services";
 
 @Component({
-	selector: 'app'
+	selector: "app"
 })
 @View({
-	templateUrl: 'core/core.bootstrap.template.html', //template: '<router-outlet></router-outlet>',
+	templateUrl: "core/core.bootstrap.template.html", //template: "<router-outlet></router-outlet>",
 	directives: [CORE_DIRECTIVES, RouterOutlet, RouterLink, Pages]
 })
 @RouteConfig([
 	//TODO put back the old syntax (comment below) once the typings are correct
 	// reference: https://github.com/angular/angular/issues/3637
 	// fix could land w/ 36+
-	<Route>{path: '/', component: Home, as: 'home', data: undefined, loader: undefined, redirectTo: undefined}, // the as serves as alias for links, etc
-	<Route>{path: '/posts', component: Posts, as: 'posts'},
-	<Route>{path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'} // given the parameter it renders a page
+	<Route>{path: "/", component: Home, as: "home", data: undefined, loader: undefined, redirectTo: undefined}, // the as serves as alias for links, etc
+	<Route>{path: "/posts", component: Posts, as: "posts"},
+	<Route>{path: "/page-renderer/:pageToRender", component: PageRenderer, as: "page-renderer"} // given the parameter it renders a page
 	/*
-	new Route({path: '/', component: Home, as: 'home', data: undefined, loader: undefined, redirectTo: undefined}), // the as serves as alias for links, etc
-	new Route({path: '/posts', component: Posts, as: 'posts'}),
-	new Route({path: '/page-renderer/:pageToRender', component: PageRenderer, as: 'page-renderer'}) // given the parameter it renders a page
+	new Route({path: "/", component: Home, as: "home", data: undefined, loader: undefined, redirectTo: undefined}), // the as serves as alias for links, etc
+	new Route({path: "/posts", component: Posts, as: "posts"}),
+	new Route({path: "/page-renderer/:pageToRender", component: PageRenderer, as: "page-renderer"}) // given the parameter it renders a page
 	*/
 ])
 class App {
@@ -85,7 +85,7 @@ class App {
 				console.log(`An error occurred while retrieving the blog metadata: ${error}`);
 			},
 			() => {
-				console.log('Blog metadata retrieval completed');
+				console.log("Blog metadata retrieval completed");
 				blogMetadataObservableSubscription.dispose();
 			});
 		*/
@@ -93,7 +93,7 @@ class App {
 }
 
 // bootstrap our app
-console.log('Bootstrapping the App');
+console.log("Bootstrapping the App");
 
 // in [] is the list of injector bindings. Those bindings are used when an injector is created. Passing these here make the bindings available application-wide
 bootstrap(App, [
@@ -105,7 +105,7 @@ bootstrap(App, [
 	//bind(LocationStrategy).toClass(HTML5LocationStrategy) // enable HTML5 history API location strategy
 
 ]).then(
-	success => console.log('Bootstrap successful'),
+	success => console.log("Bootstrap successful"),
 	error => console.error(error)
 );
 

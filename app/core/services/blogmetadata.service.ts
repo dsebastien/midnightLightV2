@@ -1,14 +1,14 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
-'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
-'use strict';
+"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
+"use strict";
 
-import {Injectable} from 'angular2/angular2';
-import {Http, Response} from 'angular2/http';
-import * as Rx from 'rx';
+import {Injectable} from "angular2/angular2";
+import {Http, Response} from "angular2/http";
+import * as Rx from "rx";
 
-import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
-import {BlogMetadata} from 'core/services/blogmetadata.model';
+import {Configuration} from "core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
+import {BlogMetadata} from "core/services/blogmetadata.model";
 
 /**
  * Service responsible for fetching basic metadata of the Wordpress blog in the back-end.
@@ -18,7 +18,7 @@ export class BlogMetadataService {
 	private http: Http;
 
 	constructor(http: Http) {
-		console.log('Loading the BlogMetadata service');
+		console.log("Loading the BlogMetadata service");
 		this.http = http;
 	}
 

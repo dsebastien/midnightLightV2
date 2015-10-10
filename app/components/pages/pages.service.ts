@@ -1,14 +1,14 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
-'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
-'use strict';
+"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
+"use strict";
 
-import {Injectable} from 'angular2/angular2'; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
-import {Http, Response, HTTP_BINDINGS} from 'angular2/http';
-import * as Rx from 'rx';
+import {Injectable} from "angular2/angular2"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
+import {Http, Response, HTTP_BINDINGS} from "angular2/http";
+import * as Rx from "rx";
 
-import {Configuration} from 'core/commons/configuration'; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
-import {Page} from 'components/pages/pages.model';
+import {Configuration} from "core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
+import {Page} from "components/pages/pages.model";
 
 // todo add a method to retrieve the page content
 // (or make it a bool switch on fetchPages)
@@ -21,7 +21,7 @@ export class PagesService {
 	private http: Http;
 
 	constructor(http: Http) {
-		console.log('Loading the Pages service');
+		console.log("Loading the Pages service");
 		this.http = http;
 	}
 
@@ -32,7 +32,7 @@ export class PagesService {
 	fetchPages(): Rx.Observable<Page> {
 		let retVal: Rx.Subject<Page> = new Rx.ReplaySubject<Page>();
 
-		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page').toRx(); // todo filter the post contents in the WS call (not possible now)
+		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page").toRx(); // todo filter the post contents in the WS call (not possible now)
 
 		observable.map(
 			(response: Response) => response.json()
@@ -64,7 +64,7 @@ export class PagesService {
 		// todo improve, handle case where no match & case where >1 match
 		// todo improve, use cache posts & have a "isReady" observable
 		let retVal: Rx.Subject<Page> = new Rx.Subject<Page>();
-		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + '/pages?filter[type]=page&filter[ID]='+name).toRx();
+		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page&filter[ID]="+name).toRx();
 
 		observable.map(
 			(response: Response) => response.json()

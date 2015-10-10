@@ -1,7 +1,7 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
-'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
-'use strict';
+"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
+"use strict";
 
 export class Post {
 	private _author : string;

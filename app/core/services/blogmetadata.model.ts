@@ -1,9 +1,9 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
-'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
-'use strict';
+"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
+"use strict";
 
-import {Configuration} from 'core/commons/configuration';
+import {Configuration} from "core/commons/configuration";
 
 /**
  * Holds metadata about the blog (e.g., title, description, url, ...)

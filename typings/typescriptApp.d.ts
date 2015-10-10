@@ -1,7 +1,5 @@
 //{
 
-/// <reference path="../app/test_async_await.ts" />
-
 /// <reference path="../app/core/core.bootstrap.ts" />
 
 /// <reference path="../app/components/page-renderer/page-renderer.ts" />

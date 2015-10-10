@@ -1,12 +1,12 @@
 ///<reference path="../../../typings/tsd.d.ts" />
 ///<reference path="../../../typings/typescriptApp.d.ts" />
-'format register'; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
-'use strict';
+"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
+"use strict";
 
 export class Page {
-	private _id : string = ''; // todo remove default value once Angular2 correctly displays null/undefined: https://github.com/angular/angular/issues/3007
-	private _title : string = ''; // todo remove default value once Angular2 correctly displays null/undefined: https://github.com/angular/angular/issues/3007
-	private _content: string = ''; // todo remove default value once Angular2 correctly displays null/undefined: https://github.com/angular/angular/issues/3007
+	private _id : string = ""; // todo remove default value once Angular2 correctly displays null/undefined: https://github.com/angular/angular/issues/3007
+	private _title : string = ""; // todo remove default value once Angular2 correctly displays null/undefined: https://github.com/angular/angular/issues/3007
+	private _content: string = ""; // todo remove default value once Angular2 correctly displays null/undefined: https://github.com/angular/angular/issues/3007
 
 	get id(): string {
 		return this._id;
