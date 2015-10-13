@@ -12,6 +12,12 @@
 # TECHNOLOGY COLOPHON
 
   HTML5, CSS3
-  PureCSS.io
+  Angular 2
   TypeScript
-  jQuery, Modernizr
+  ES2015
+  Modernizr
+  JSPM
+  SystemJS
+  NodeJS
+  NPM
+  Gulp

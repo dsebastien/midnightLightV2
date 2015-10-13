@@ -32,8 +32,8 @@
 	  "zone.js": "npm:zone.js@^0.5.4"
 	},
 	"devDependencies": {
-	  "babel": "npm:babel-core@^5.8.24",
-	  "babel-runtime": "npm:babel-runtime@^5.8.20",
+	  "babel": "npm:babel-core@^5.8.25",
+	  "babel-runtime": "npm:babel-runtime@^5.8.25",
 	  "core-js": "npm:core-js@^1.1.4",
 	  "traceur": "github:jmcriffey/bower-traceur@0.0.90",
 	  "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.90"
@@ -43,8 +43,8 @@
   "devDependencies": {
 	"nodemon": "1.4.x",
 	"babel": "5.8.x",
-	"babel-core": "5.8.x",
 	"gulp": "3.9.x",
+	"jspm": "0.16.x",
 	"modern-web-dev-build": "0.0.7"
   },
   "engines": {
@@ -69,6 +69,7 @@
 	"tsd-update": "tsd update --save --overwrite",
 	"update": "npm install --no-optional && jspm update && jspm dl-loader",
 	"outdated": "npm outdated",
-	"setup": "npm install --global gulp babel babel-core jspm typescript@next tsd --no-optional && npm install --no-optional && jspm install && npm run tsd"
+	"help": "gulp help",
+	"setup": "npm install --global gulp babel --no-optional && npm install --no-optional && jspm install && npm run tsd"
   }
 }

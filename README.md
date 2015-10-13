@@ -34,19 +34,16 @@ If you want to build from source, you need to:
 * install NodeJS
 * clone this git repository
 * go to the folder where you've cloned the project
-* run `$ npm run setup`; that will:
-** download & install the build tools
-** download all dependencies
-** download the TypeScript
-* run `$ npm install` to download all build dependencies
-* run `$ jspm install` to download all the application dependencies
-* run `$ npm run tsd` to retrieve TypeScript definitions list (for more information, check out the following [link](https://github.com/borisyankov/DefinitelyTyped)
-* run `$ gulp` to build the app (in the dist folder)
-* take a look at COMMANDS.md in the project for more commands you can use
+* run `$ npm run setup`
 
-## Running manually
-* dev version with BrowserSync: run `$ npm start` or `$ npm run serve`
-* prod version: run `$ npm run serve-dist`
+The above command will:
+* install all required global packages (gulp, babel, jspm, tsd, typescript)
+* install all dependencies including Angular, ...
+* download the TypeScript typings files (for more information, check out the following [link](https://github.com/borisyankov/DefinitelyTyped))
+
+To run the build, just execute `$ gulp`. The result will be stored in the 'dist' folder.
+
+For more details about the available commands, check out the documentation of [ModernWebDevBuild](https://github.com/dsebastien/modernWebDevBuild) as this project's build is provided by that project.
 
 ## Developping/Running on Docker
 If you're familiar with Docker then you can easily run the development or production version of this application in a Docker container.
