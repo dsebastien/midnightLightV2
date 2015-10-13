@@ -1,4 +1,3 @@
-* remove babel deps if possible (or those in modern web dev build otherwise)
 * upgrade to alpha 38
   * https://github.com/angular/angular/blob/master/CHANGELOG.md#200-alpha38-2015-10-03
   * https://gist.github.com/robwormald/90d06f3aa4927ef555c2
