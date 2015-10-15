@@ -1,14 +1,13 @@
 * upgrade to latest alpha
+* once updated to latest alpha
+ * ROUTER_DIRECTIVES, ROUTER_BINDINGS
+ * check if the issue with new Router in RouteConfig is solved
 * rewrite the RXJS code to avoid the needless observable/observer
 * dist should not contain map files nor wrong js
 * check if http injection issue is still present: https://github.com/angular/angular/issues/2788#issuecomment-130258813
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)50
 * edge error in zone.js (core.js): https://github.com/angular/zone.js/issues/150
 * put back the original router.d.ts (/// <reference path="angular2/router.d.ts" />) once I get how to use the damn new Route :p)
-* once updated to latest alpha
- * ROUTER_DIRECTIVES, ROUTER_BINDINGS
- * check if the issue with new Router in RouteConfig is solved
-* add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js
 * create local storage service
   * load data once & cache / retrieve from cache rather than from network
 * create a page component
