@@ -22,6 +22,3 @@
 /// <reference path="rx/rx.time.d.ts" />
 /// <reference path="rx/rx.virtualtime.d.ts" />
 /// <reference path="systemjs/systemjs.d.ts" />
-/// <reference path="../node_modules/definition-header/dist/index.d.ts" />
-/// <reference path="../node_modules/immutable/dist/immutable.d.ts" />
-/// <reference path="../node_modules/tslint/lib/tslint.d.ts" />
