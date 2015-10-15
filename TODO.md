@@ -1,15 +1,11 @@
-* upgrade to alpha 38
-  * https://github.com/angular/angular/blob/master/CHANGELOG.md#200-alpha38-2015-10-03
-  * https://gist.github.com/robwormald/90d06f3aa4927ef555c2
-* re-add shrinkwrap
+* upgrade to latest alpha
 * rewrite the RXJS code to avoid the needless observable/observer
 * dist should not contain map files nor wrong js
 * check if http injection issue is still present: https://github.com/angular/angular/issues/2788#issuecomment-130258813
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)50
 * edge error in zone.js (core.js): https://github.com/angular/zone.js/issues/150
 * put back the original router.d.ts (/// <reference path="angular2/router.d.ts" />) once I get how to use the damn new Route :p)
-* update tsd
-* once updated to alpha 36+
+* once updated to latest alpha
  * ROUTER_DIRECTIVES, ROUTER_BINDINGS
  * check if the issue with new Router in RouteConfig is solved
 * add service worker generation: https://github.com/google/web-starter-kit/blob/master/gulpfile.js

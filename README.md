@@ -31,19 +31,19 @@ In order to use Midnight Light, you need to install the WP REST API plugin in Wo
 
 ## Building from source
 If you want to build from source, you need to:
-* install NodeJS
+* install NodeJS & npm
+* install the following global packages: `npm install --global gulp babel babel-core tsd jspm --no-optional`
 * clone this git repository
 * go to the folder where you've cloned the project
 * run `$ npm run setup`
 
 The above command will:
-* install all required global packages (gulp, babel, jspm, tsd, typescript)
 * install all dependencies including Angular, ...
 * download the TypeScript typings files (for more information, check out the following [link](https://github.com/borisyankov/DefinitelyTyped))
 
 To run the build, just execute `$ gulp`. The result will be stored in the 'dist' folder.
 
-For more details about the available commands, check out the documentation of [ModernWebDevBuild](https://github.com/dsebastien/modernWebDevBuild) as this project's build is provided by that project.
+For more details about the available build commands, check out the documentation of [ModernWebDevBuild](https://github.com/dsebastien/modernWebDevBuild) as this project's build is provided by that project.
 
 ## Developping/Running on Docker
 If you're familiar with Docker then you can easily run the development or production version of this application in a Docker container.
