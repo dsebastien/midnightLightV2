@@ -1,6 +1,6 @@
-* upgrade to latest alpha
+* fix the d.ts files issue
+  * once fixed, try and remove all d.ts file references and remove related build parts
 * once updated to latest alpha
- * ROUTER_DIRECTIVES, ROUTER_BINDINGS
  * check if the issue with new Router in RouteConfig is solved
 * rewrite the RXJS code to avoid the needless observable/observer
 * dist should not contain map files nor wrong js
@@ -314,3 +314,4 @@
   * http://electron.atom.io/docs/v0.31.0/tutorial/quick-start/
   * https://github.com/mainyaa/gulp-electron
   * https://github.com/joaomoreno/gulp-atom-electron
+* check out: tsd install --clean

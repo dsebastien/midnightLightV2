@@ -5,7 +5,7 @@
 
 import {Injectable} from "angular2/angular2";
 import {Http, Response} from "angular2/http";
-import * as Rx from "rx";
+import * as Rx from "@reactivex/rxjs";
 
 import {Configuration} from "core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {BlogMetadata} from "core/services/blogmetadata.model";

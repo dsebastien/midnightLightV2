@@ -6,7 +6,7 @@
 // import Angular 2
 import {Component, View, CORE_DIRECTIVES} from "angular2/angular2";
 
-import * as Rx from "rx";
+import * as Rx from "@reactivex/rxjs";
 
 import {Configuration} from "core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {Post} from "components/posts/posts.model";

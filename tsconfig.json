@@ -1,21 +1,19 @@
 {
-  "version": "1.6.2",
+  "version": "1.7.0",
   "compilerOptions": {
 	"target": "es6",
 	"declaration": false,
 	"noImplicitAny": false,
-	"removeComments": true,
-	"noLib": false,
+	"suppressImplicitAnyIndexErrors": true,
+	"removeComments": false,
 	"emitDecoratorMetadata": true,
 	"experimentalDecorators": true,
-	"experimentalAsyncFunctions": true,
-	"noResolve": true,
 	"noEmitOnError": false,
 	"preserveConstEnums": true,
 	"inlineSources": false,
 	"sourceMap": false,
 	"outDir": "./app",
-	"project": "./app"
+	"listFiles": false
   },
   "formatCodeOptions": {
 	"indentSize": 2,
@@ -32,7 +30,11 @@
 	"placeOpenBraceOnNewLineForControlBlocks": false
   },
   "filesGlob": [
-	"./app/**/*.ts"
+	"./app/**/*.ts",
+	"!./node_modules/**",
+	"!./node_modules/**",
+	"./node_modules/angular2/angular2.d.ts",
+	"./node_modules/@reactivex/rxjs/dist/es6/Rx.d.ts"
   ],
   "exclude": [
 	"node_modules",
