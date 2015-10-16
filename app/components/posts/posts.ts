@@ -23,30 +23,29 @@ import {PostsService} from "components/posts/posts.service";
 	directives: [CORE_DIRECTIVES]
 })
 export class Posts {
-	private postsService: PostsService;
+	private postsService:PostsService;
 
 	/**
 	 * The currently loaded posts
 	 * @type {any[]}
 	 */
-	private posts : Array<Post> = new Array<Post>();
+	private posts:Array<Post> = new Array<Post>();
 
-	constructor(postsService: PostsService) {
+	constructor(postsService:PostsService) {
 		console.log("Loading the Posts component");
 		this.postsService = postsService;
 
-		let postsObservable: Rx.Observable<Post> = postsService.fetchPosts();
-		let postsObservableSubscription: Rx.IDisposable = postsObservable.subscribe(
-			(post: Post) => {
-					this.posts.push(post);
+		let postsObservable:Rx.Observable<Post> = postsService.fetchPosts();
+		postsObservable.subscribe(
+			(post:Post) => {
+				this.posts.push(post);
 			},
-			(error: any) => { // todo set correct type
+			(error:any) => { // todo set correct type
 				console.log(`An error occurred while retrieving the posts: ${error}`);
 			},
 			() => {
 				console.log("Posts retrieval completed");
 				//TODO dispose once done
-				//postsObservableSubscription.dispose();
 			});
 	}
 }
