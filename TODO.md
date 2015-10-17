@@ -1,5 +1,7 @@
-* fix the d.ts files issue
-  * once fixed, try and remove all d.ts file references and remove related build parts
+* fix deps loading issue w/ systemjs
+* add .d.ts to git ignore
+* still need jspm paths (core, components, pages) ?
+* need declaration: true in tsconfig?
 * once updated to latest alpha
  * check if the issue with new Router in RouteConfig is solved
 * rewrite the RXJS code to avoid the needless observable/observer

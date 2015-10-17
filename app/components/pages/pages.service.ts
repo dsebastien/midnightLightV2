@@ -1,14 +1,11 @@
-///<reference path="../../../typings/tsd.d.ts" />
-///<reference path="../../../typings/typescriptApp.d.ts" />
-"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 "use strict";
 
 import {Injectable} from "angular2/angular2"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 import {Http, Response, HTTP_BINDINGS} from "angular2/http";
 import * as Rx from "@reactivex/rxjs";
 
-import {Configuration} from "core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
-import {Page} from "components/pages/pages.model";
+import {Configuration} from "../../core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
+import {Page} from "./pages.model";
 
 // todo add a method to retrieve the page content
 // (or make it a bool switch on fetchPages)
@@ -45,14 +42,14 @@ export class PagesService {
 					page.id = obj.ID;
 					page.title = obj.title;
 					page.content = obj.content; // TODO remove once filtered
-					retVal.onNext(page);
+					retVal.next(page);
 				}
 				console.debug(`Found ${pagesJson.length} pages`);
-				retVal.onCompleted();
+				retVal.complete();
 			}
 		);
 
-		return retVal.asObservable();
+		return retVal;
 	}
 
 	/**
@@ -74,12 +71,12 @@ export class PagesService {
 				page.id = pageJson.ID;
 				page.title = pageJson.title;
 				page.content = pageJson.content; // TODO remove once filtered
-				retVal.onNext(page);
+				retVal.next(page);
 				console.debug(`Loaded the ${page.title} page`);
-				retVal.onCompleted();
+				retVal.complete();
 			}
 		);
 
-		return retVal.asObservable();
+		return retVal;
 	}
 }

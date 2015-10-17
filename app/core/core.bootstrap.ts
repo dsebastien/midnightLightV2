@@ -1,16 +1,10 @@
-///<reference path="../../typings/tsd.d.ts" />
-///<reference path="../../typings/typescriptApp.d.ts" />
-"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 "use strict";
 
-
-// import Angular2 deps
-import "zone.js";
+// import Angular 2 deps
 import "reflect-metadata";
-import "es6-shim"; // fixes an issue relating to list.fill (list.fill is not a function)
 
 // import Angular 2
-import {Component, View, CORE_DIRECTIVES, provide, bootstrap} from "angular2/angular2";
+import {Component, View, CORE_DIRECTIVES, bind, bootstrap} from "angular2/angular2";
 import {Http, HTTP_PROVIDERS} from "angular2/http";
 
 // import Angular 2 Component Router
@@ -20,17 +14,17 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, 
 
 
 // app configuration
-import {Configuration} from "core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
+import {Configuration} from "./commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 
 // app services
-import {BlogMetadataService} from "core/services/blogmetadata.service";
-import {BlogMetadata} from "core/services/blogmetadata.model";
+import {BlogMetadataService} from "./services/blogmetadata.service";
+import {BlogMetadata} from "./services/blogmetadata.model";
 
 // app components
-import {Home} from "pages/home/home";
-import {Posts} from "components/posts/posts";
-import {Pages} from "components/pages/pages";
-import {PageRenderer} from "components/page-renderer/page-renderer";
+import {Home} from "../pages/home/home";
+import {Posts} from "../components/posts/posts";
+import {Pages} from "../components/pages/pages";
+import {PageRenderer} from "../components/page-renderer/page-renderer";
 
 // app services
 //import {appServicesInjectables} from "core/services/services";
@@ -99,7 +93,7 @@ bootstrap(App, [
 	//appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
 	ROUTER_PROVIDERS,
 	HTTP_PROVIDERS,
-	provide(LocationStrategy).toClass(PathLocationStrategy) // enables the following: /#/<component_name> rather than /<component_name>
+	bind(LocationStrategy).toClass(PathLocationStrategy) // enables the following: /#/<component_name> rather than /<component_name>
 	//todo replace with
 	//bind(LocationStrategy).toClass(HTML5LocationStrategy) // enable HTML5 history API location strategy
 

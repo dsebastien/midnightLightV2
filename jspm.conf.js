@@ -11,6 +11,7 @@ System.config({
   },
 
   map: {
+    "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.6",
     "angular2": "npm:angular2@2.0.0-alpha.44",
     "babel": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
@@ -55,6 +56,11 @@ System.config({
       "css": "github:systemjs/plugin-css@0.1.18"
     },
     "npm:@reactivex/rxjs@5.0.0-alpha.4": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:@reactivex/rxjs@5.0.0-alpha.6": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"

@@ -1,6 +1,3 @@
-///<reference path="../../../typings/tsd.d.ts" />
-///<reference path="../../../typings/typescriptApp.d.ts" />
-"format register"; // todo remove when the following issue is fixed: https://github.com/Microsoft/TypeScript/issues/3937
 "use strict";
 
 // import Angular 2
@@ -9,8 +6,8 @@ import {RouteParams} from "angular2/router";
 
 import * as Rx from "@reactivex/rxjs";
 
-import {Page} from "components/pages/pages.model";
-import {PagesService} from "components/pages/pages.service";
+import {Page} from "../pages/pages.model";
+import {PagesService} from "../pages/pages.service";
 
 /*
 @Component({
