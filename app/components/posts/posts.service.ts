@@ -30,7 +30,7 @@ export class PostsService {
 
 		// TODO configure API calls (posts to retrieve etc)
 		// needs WP rest api update (currently doesn't allow for partial posts data retrieval)
-		let observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/posts?filter[posts_per_page]=2&withoutcomments").toRx();
+		let observable:Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/posts?filter[posts_per_page]=2&withoutcomments");
 		observable.map(
 			(response:Response) => response.json()
 		).subscribe(
@@ -43,7 +43,6 @@ export class PostsService {
 					post.author = obj.author.nickname;
 					post.authorUrl = obj.author.URL;
 					post.content = obj.content;
-
 					retVal.next(post);
 				}
 				console.debug(`Found ${postsJson.length} posts`);

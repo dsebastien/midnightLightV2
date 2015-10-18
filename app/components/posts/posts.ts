@@ -26,23 +26,31 @@ export class Posts {
 	 * The currently loaded posts
 	 * @type {any[]}
 	 */
-	private posts:Array<Post> = new Array<Post>();
+	private _posts : Array<Post> = [];
 
 	constructor(postsService:PostsService) {
 		console.log("Loading the Posts component");
 		this.postsService = postsService;
 
 		let postsObservable:Rx.Observable<Post> = postsService.fetchPosts();
-		postsObservable.subscribe(
+		let postsObservableSubscription: Rx.Subscription<Post> = postsObservable.subscribe(
 			(post:Post) => {
-				this.posts.push(post);
+				this._posts.push(post);
 			},
 			(error:any) => { // todo set correct type
 				console.log(`An error occurred while retrieving the posts: ${error}`);
 			},
 			() => {
 				console.log("Posts retrieval completed");
-				//TODO dispose once done
+				postsObservableSubscription.unsubscribe();
 			});
+	}
+
+	/**
+	 * Get all posts
+	 * @returns {Array<Post>}
+	 */
+	get posts(): Array<Post> {
+		return this._posts;
 	}
 }

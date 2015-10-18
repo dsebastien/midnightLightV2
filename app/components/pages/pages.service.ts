@@ -29,7 +29,7 @@ export class PagesService {
 	fetchPages(): Rx.Observable<Page> {
 		let retVal: Rx.Subject<Page> = new Rx.ReplaySubject<Page>();
 
-		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page").toRx(); // todo filter the post contents in the WS call (not possible now)
+		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page"); // todo filter the post contents in the WS call (not possible now)
 
 		observable.map(
 			(response: Response) => response.json()

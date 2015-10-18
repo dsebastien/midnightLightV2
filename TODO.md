@@ -1,15 +1,12 @@
-* fix deps loading issue w/ systemjs
-* add .d.ts to git ignore
+* fix posts loading issue
+* remove reflect-metadata and angular2 npm dependencies once ts supports a way to add paths for module resolution (like jspm) in tsconfig.json
+  * put back old paths to modules (e.g., core/...) once TS can find its way with this
 * still need jspm paths (core, components, pages) ?
-* need declaration: true in tsconfig?
-* once updated to latest alpha
- * check if the issue with new Router in RouteConfig is solved
-* rewrite the RXJS code to avoid the needless observable/observer
-* dist should not contain map files nor wrong js
+* need 'declaration: true' in tsconfig?
+* rewrite the RXJS code
+* check dist contents
 * check if http injection issue is still present: https://github.com/angular/angular/issues/2788#issuecomment-130258813
 * edge error w/ vendor.scss (styles/styles/vendor.scss instead of styles/vendor.scss)50
-* edge error in zone.js (core.js): https://github.com/angular/zone.js/issues/150
-* put back the original router.d.ts (/// <reference path="angular2/router.d.ts" />) once I get how to use the damn new Route :p)
 * create local storage service
   * load data once & cache / retrieve from cache rather than from network
 * create a page component
@@ -77,8 +74,6 @@
   * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
   * enforce code quality/style checks (pre-commit hooks?)
   * js/ts formatting in webstorm?
-  * configure Travis
-	* once configured, enable for the project in https://travis-ci.org/profile/dsebastien
   * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
 	* dynamically add scripts/stylesheets in the HTML without having to add script tags manually
   * generate release notes on GitHub like https://github.com/mgonto/restangular/releases (through GitHub's api)
