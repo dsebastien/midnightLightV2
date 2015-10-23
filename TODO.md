@@ -1,3 +1,4 @@
+* remove @View
 * fix posts loading issue
 * remove reflect-metadata and angular2 npm dependencies once ts supports a way to add paths for module resolution (like jspm) in tsconfig.json
   * put back old paths to modules (e.g., core/...) once TS can find its way with this
@@ -19,18 +20,14 @@
   * should display the page contents
   * should notify the pages component so that it can highlight the current selection
 * create a progress bar component: to display skills & skill level on my about page
-* use const/let (incl in Configuration class)
 * check out susy: http://susy.oddbird.net/
 * check out breakpoint: http://breakpoint-sass.com/
 * create responsive grid
   * short & wide: tighten up and/or move things up (e.g., tablet in landscape)
   * narrow & tall: reposition things off canvas or move things down
   * enlarge font size if screen wider AND more vertical space
-* cleanup tsd.json (some Rx modules are probably not needed)
 * update jspm
-  * remove jspm@beta from readme, dockerfile, package.json etc once stable release available
-* mig to TypeScript 1.6 (?)
-  * implement the generic service once abstract classes are supported
+  * use latest version (readme, dockerfile, package.json etc)
 * build
   * add package.json https://david-dm.org/ like https://github.com/boennemann/url-safe
   * integrate PatternLab or something similar to create a style guide for dev/prod
@@ -39,48 +36,7 @@
   * check out json server: https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server
   * add ESlint? (also in sublime): http://eslint.org/
   * try to use the changed plugin to limit the overhead of allowing js/ts/styles to be anywhere in the app folder
-  * use cache busting: gulp-cachebust
-  * add scss-lint
-	* https://www.npmjs.com/package/gulp-scss-lint
-	* https://github.com/brigade/scss-lint#configuration
-	* https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint
-	* q: plugin for webstorm?
-	* add to npm run serve
-  * add css-lint
-	* https://www.npmjs.com/package/gulp-csslint
-	* rules: https://github.com/CSSLint/csslint/wiki/Rules-by-ID
-	* example: https://github.com/twbs/bootstrap/blob/master/less/.csslintrc
-	* https://github.com/SublimeLinter/SublimeLinter-csslint
-	* q: plugin for webstorm?
-	* add to npm run serve
-  * add htmlhint
-  * prepare build for testing
-	* karma, mocha, jasmine, testacular for unit testing
-	  * https://www.npmjs.com/package/gulp-karma
-	  * https://github.com/gulpjs/gulp/blob/master/docs/recipes/mocha-test-runner-with-gulp.md
-	  * http://jasmine.github.io/2.3/introduction.html
-	  * https://github.com/jasmine/jasmine
-	  * https://www.npmjs.com/package/gulp-jasmine
-	* protractor for functional tests
-	  * E2E test framework for angular apps
-	* check https://coveralls.io/
-	* https://www.npmjs.com/package/gulp-istanbul
-	* https://www.npmjs.com/package/chai
-	* check and add support for: https://gist.github.com/sscovil/e0029dc1ef75bfc65439
-  * optimize/cache: changed(...)
-  * configure gulp-tsd to install if needed? https://www.npmjs.com/package/gulp-tsd
-  * improve JS code style config (not great with object literals)
   * use a configuration file to list all keys to replace at build time (e.g., site title, site description, application name, version, etc)
-  * add gulp size report: https://www.npmjs.com/package/gulp-sizereport/
-  * enforce code quality/style checks (pre-commit hooks?)
-  * js/ts formatting in webstorm?
-  * add gulp-inject to build: https://www.npmjs.com/package/gulp-inject
-	* dynamically add scripts/stylesheets in the HTML without having to add script tags manually
-  * generate release notes on GitHub like https://github.com/mgonto/restangular/releases (through GitHub's api)
-  * check out plato for code complexity checks
-  * add hthint: https://www.npmjs.com/package/gulp-htmlhint
-  * if release, then fail the build in case of jshint, tshint, ... error
-  * remove gulp load plugins plugin (?)
   * add gulp-template
 	* https://www.npmjs.com/package/gulp-template
 	* var template = require('gulp-template');
@@ -92,25 +48,7 @@
 		  var pkg = JSON.parse(fs.readFileSync('package.json'));
 		  return pkg.version;
 		}
-  * add gulp-bump
-	* goal: easily bump the project version
-	  * bump.major, bump.minor, bump.patch
-	* var bump = require('gulp-bump');
-  * check gulp-watch for incremental builds
-	* https://www.npmjs.com/package/gulp-watch
-	* https://github.com/floatdrop/gulp-watch/blob/master/docs/readme.md
-	* combined with gulp-batch: https://www.npmjs.com/package/gulp-batch
-  * gulp 4 migration
-	* remove gulp-plumber
-	* remove run-sequence
-  * add archive task (depend on default): https://github.com/h5bp/html5-boilerplate/blob/master/gulpfile.js
   * copy htaccess and remove dependency
-  * try and reuse/improve: https://github.com/lookfirst/gulp-helpers
-  * check-js-style: verify if esnext must be specified or not (it is in the .jscsrc so it should not also have to be in the gulp config)
-  * update tslint (needs to support ES2015+, async/await, ...)
-  * once http has a proper typings file, update the tsd.d.ts file (temporary copy different from the version bundled with alpha 35 as there is an issue with it)
-	* alternative for later: add d.ts files to the globs in tsconfig.json
-	* not used: ../jspm_packages/npm/angular2@2.0.0-alpha.35/bundles/typings/angular2/http.d.ts" />
 * css
   * apply styleguide to the codebase
   * define list styles
@@ -290,6 +228,7 @@
   * SEOoooooo
   * uncomment google analytics once ready
 * abstract the data access layer
+* leverage Web workers
 * review CORS config
   * should the api allow credentials to be passed (ie cookies)? http://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do
 * wp API usage
@@ -297,18 +236,7 @@
   * inject the wpi API class in the root injector through bootstrap
   * limit the retrieved fields -- currently not supported: https://github.com/WP-API/WP-API/issues/572
 * add !default to scss variables
-* angular alpha 32
-  * replace @Parent by @Ancestor: https://github.com/angular/angular/pull/3159
-* TypeScript: check the status of files, filesGlob (currently only supported by the Atom typescript editor.. and exclude
-  * https://github.com/Microsoft/TypeScript/issues/1927
-  * https://github.com/Microsoft/TypeScript/pull/3188
-  * exclude list does not support wilcards. It must simply be a list of files and/or directories
-* Typescript:
-   * remove 'format register'; when the following is fixed: https://github.com/Microsoft/TypeScript/issues/3937
-* TypeScript 1.6
-  * find if/how to inject service based on abstract classes: http://stackoverflow.com/questions/31202162/interface-based-programming-with-typescript-angular-2-systemjs
 * check out Electron
   * http://electron.atom.io/docs/v0.31.0/tutorial/quick-start/
   * https://github.com/mainyaa/gulp-electron
   * https://github.com/joaomoreno/gulp-atom-electron
-* check out: tsd install --clean
