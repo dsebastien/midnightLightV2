@@ -40,9 +40,9 @@ import {PageRenderer} from "../components/page-renderer/page-renderer";
 	//TODO put back the old syntax (comment below) once the typings are correct
 	// reference: https://github.com/angular/angular/issues/3637
 	// fix could land w/ 36+
-	{path: "/", component: Home, as: "home", data: undefined, loader: undefined, redirectTo: undefined}, // the as serves as alias for links, etc
-	{path: "/posts", component: Posts, as: "posts"},
-	{path: "/page-renderer/:pageToRender", component: PageRenderer, as: "page-renderer"} // given the parameter it renders a page
+	{path: "/", component: Home, as: "Home", data: undefined, loader: undefined, redirectTo: undefined}, // the as serves as alias for links, etc
+	{path: "/Posts", component: Posts, as: "Posts"},
+	{path: "/PageRenderer/:pageToRender", component: PageRenderer, as: "PageRenderer"} // given the parameter it renders a page
 	/*
 	new Route({path: "/", component: Home, as: "home", data: undefined, loader: undefined, redirectTo: undefined}), // the as serves as alias for links, etc
 	new Route({path: "/posts", component: Posts, as: "posts"}),
