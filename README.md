@@ -14,13 +14,14 @@ For more background head over to my blog:
 * https://www.dsebastien.net/2015/04/22/web-3-0-is-closer-than-you-might-think/
 * https://www.dsebastien.net/2015/04/14/time-for-some-web-dev/
 
-## Status & roadmap
-Check out the current [TODO list](TODO.md)
-
 ## Features
 * mobile first and responsive design
 * awesome build based on gulp, a ton of automagic stuff
 * all the yet-to-be-implemented features :)
+
+## Status & roadmap
+Check out the issues & labels to get an idea of what's next.
+For existing features, refer to the previous section.
 
 ## Installation
 In order to use Midnight Light, you need to install the WP REST API plugin in Wordpress:
