@@ -17,6 +17,7 @@ System.config({
     "lodash": "npm:lodash@3.10.1",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
+    "zone.js": "npm:zone.js@0.5.8",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
