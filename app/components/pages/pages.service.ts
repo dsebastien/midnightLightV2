@@ -2,7 +2,7 @@
 
 import {Injectable} from "angular2/angular2"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 import {Http, Response, HTTP_BINDINGS} from "angular2/http";
-import * as Rx from "@reactivex/rxjs";
+import {Observable, Subject, ReplaySubject} from "@reactivex/rxjs";
 
 import {Configuration} from "../../core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {Page} from "./pages.model";
@@ -24,12 +24,12 @@ export class PagesService {
 
 	/**
 	 * Fetch all blog pages (always issues a request & caches the results).
-	 * @returns {Rx.Observable<Page>}
+	 * @returns {Observable<Page>}
 	 */
-	fetchPages(): Rx.Observable<Page> {
-		let retVal: Rx.Subject<Page> = new Rx.ReplaySubject<Page>();
+	fetchPages(): Observable<Page> {
+		let retVal: Subject<Page> = new ReplaySubject<Page>();
 
-		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page"); // todo filter the post contents in the WS call (not possible now)
+		let observable: Observable<Response> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page"); // todo filter the post contents in the WS call (not possible now)
 
 		observable.map(
 			(response: Response) => response.json()
@@ -57,11 +57,11 @@ export class PagesService {
 	 * @param id the id of the page to retrieve
 	 * @returns {Page|T}
 	 */
-	fetchPage(id: string): Rx.Observable<Page> {
+	fetchPage(id: string): Observable<Page> {
 		// todo improve, handle case where no match & case where >1 match
 		// todo improve, use cache posts & have a "isReady" observable
-		let retVal: Rx.Subject<Page> = new Rx.Subject<Page>();
-		let observable: Rx.Observable<any> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page&filter[ID]="+name).toRx();
+		let retVal: Subject<Page> = new Subject<Page>();
+		let observable: Observable<Response> = this.http.get(Configuration.applicationUrlWpApi + "/pages?filter[type]=page&filter[ID]="+name);
 
 		observable.map(
 			(response: Response) => response.json()
