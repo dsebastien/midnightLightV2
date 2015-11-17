@@ -22,6 +22,7 @@
   "jspm": {
     "configFile": "jspm.conf.js",
     "dependencies": {
+      "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
       "angular2": "npm:angular2@^2.0.0-alpha.46",
       "babel-runtime": "npm:babel-runtime@^5.8.25",
       "font-awesome": "npm:font-awesome@^4.4.0",
@@ -33,8 +34,8 @@
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.25",
       "core-js": "npm:core-js@^1.2.1",
-      "traceur": "github:jmcriffey/bower-traceur@0.0.91",
-      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91"
+      "traceur": "github:jmcriffey/bower-traceur@0.0.92",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.92"
     }
   },
   "dependencies": {
