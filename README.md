@@ -23,6 +23,8 @@ For more background head over to my blog:
 Check out the issues & labels to get an idea of what's next.
 For existing features, refer to the previous section.
 
+Take a look at the [CHANGELOG.MD].
+
 ## Installation
 In order to use Midnight Light, you need to install the WP REST API plugin in Wordpress:
 * official website: http://wp-api.org/
