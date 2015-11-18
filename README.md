@@ -19,11 +19,11 @@ For more background head over to my blog:
 * awesome build based on gulp, a ton of automagic stuff
 * all the yet-to-be-implemented features :)
 
+Check out the [change log](CHANGELOG.MD)
+
 ## Status & roadmap
 Check out the issues & labels to get an idea of what's next.
 For existing features, refer to the previous section.
-
-Take a look at the [CHANGELOG.MD].
 
 ## Installation
 In order to use Midnight Light, you need to install the WP REST API plugin in Wordpress:
