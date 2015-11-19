@@ -19,3 +19,4 @@ before_install:
   - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
   - jspm config registries.github.timeouts.lookup 240
   - jspm config registries.github.timeouts.build 240
+  - npm run setup
