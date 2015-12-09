@@ -2,3 +2,47 @@
 // Mixins
 //
 //
+
+//je prefere de mettre tous ce qui est pour un breakpoint ensemble, et pas dans chaque tag. tu peux voir dans mes fichiers sass, si tu les as encore.
+
+/*
+$max-width-mobile: 30em; //480px
+$min-width-tablet: 30.063em; //481px
+$max-width-tablet: 50em; //800px
+$min-width-desktop: 50.063em; //801px
+$max-width-desktop: 80em; //1280px
+$min-width-large-desktop: 80.063em; //1281px
+
+@mixin responsive($width) {
+  @if $width == mobile {
+    @media only screen and (max-width: $max-width-mobile) {
+      @content;
+    }
+  }
+  @else if $width == tablet {
+    @media only screen and (min-width: $min-width-tablet) {
+      @content;
+    }
+  }
+  @else if $width == desktop {
+    @media only screen and (min-width: $min-width-desktop) {
+      @content;
+    }
+  }
+  @else if $width == large-desktop {
+    @media only screen and (min-width: $min-width-large-desktop) {
+      @content;
+    }
+  }
+}
+*/
+
+//pour l'utiliser:
+
+/*
+@include responsive(tablet){
+    ...
+    styles go here
+    ...
+}
+*/
