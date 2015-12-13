@@ -8,7 +8,7 @@ module.exports = function (config) {
 		//basePath: ".tmp/",
 
 		plugins: [
-			"karma-systemjs",
+			"karma-jspm",
 			"karma-jasmine",
 			"karma-phantomjs-launcher",
 			"karma-chrome-launcher",
@@ -21,25 +21,21 @@ module.exports = function (config) {
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
 		frameworks: [
-			"systemjs",
+			"jspm",
 			"jasmine"
 		],
 
 		// list of files / patterns to load in the browser (loaded before SystemJS)
-		files: [
-			// load all tests
-			//".tmp/*.spec.js", // in case there are tests in the root folder
-			".tmp/**/*.spec.js"
-		],
+		files: [],
 
 		// list of files to exclude
 		exclude: [],
-		
+
 		// list of paths mappings
 		// can be used to map paths served by the Karma web server to /base/ content
 		// knowing that /base corresponds to the project root folder (i.e., where this config file is located)
 		proxies: {
-			//"/.tmp": "/base/.tmp" // without this, jspm can't load the files
+			"/.tmp": "/base/.tmp" // without this, karma-jspm can't load the files
 		},
 
 		// preprocess matching files before serving them to the browser
@@ -87,35 +83,28 @@ module.exports = function (config) {
 
 		// doc: https://www.npmjs.com/package/karma-jspm
 		// reference config: https://github.com/gunnarlium/babel-jspm-karma-jasmine-istanbul
-		systemjs: {
+		jspm: {
 			// Path to your SystemJS/JSPM configuration file 
-			//config: "../jspm.conf.js", // karma-jspm
-			configFile: "jspm.conf.js", // karma-systemjs
-			
+			config: "jspm.conf.js",
+
 			// Where to find jspm packages
-			//packages: "../jspm_packages",
+			//packages: "jspm_packages",
 
 			// One use case for this is to only put test specs in loadFiles, and jspm will only load the src files when and if the test files require them.
 			loadFiles: [
+				// load all tests
+				".tmp/*.spec.js", // in case there are tests in the root folder
+				".tmp/**/*.spec.js"
 			],
 
 			// Make additional files/a file pattern available for jspm to load, but not load it right away.
 			serveFiles: [
-				".tmp/**/*.*" // make sure that all files are available
+				".tmp/**/!(*.spec).js" // make sure that all files are available
 			],
 
 			// SystemJS configuration specifically for tests, added after your config file. 
 			// Good for adding test libraries and mock modules
-			paths: {
-				//"github:*": "/base/jspm_packages/github/*",
-				//"npm:*": "/base/jspm_packages/npm/*"
-				
-				// "babel-core": "node_modules/babel-runtime/core-js.js"
-				// "phantomjs-polyfill": "node_modules/phantomjs-polyfill/bind-polyfill.js",
-				// "es6-module-loader": "node_modules/es6-module-loader/dist/es6-module-loader-src.js",
-				// "systemjs": "jspm_packages/system.js",
-				// "system-polyfills": "jspm_packages/system-polyfills.js"
-			}
+			paths: {}
 		}
 	});
 };

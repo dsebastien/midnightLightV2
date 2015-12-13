@@ -3,11 +3,7 @@ System.config({
   transpiler: "none",
   paths: {
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*",
-    "phantomjs-polyfill": "node_modules/modern-web-dev-build/node_modules/phantomjs-polyfill/bind-polyfill.js",
-    "es6-module-loader": "node_modules/es6-module-loader/dist/es6-module-loader.js",
-    "systemjs": "jspm_packages/system.src.js",
-    "system-polyfills": "jspm_packages/system-polyfills.src.js"
+    "npm:*": "jspm_packages/npm/*"
   },
 
   map: {
