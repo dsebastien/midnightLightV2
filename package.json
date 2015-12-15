@@ -67,19 +67,20 @@
 	"url": "git@github.com:dsebastien/midnightLightV2.git"
   },
   "scripts": {
-	"semantic-release": "./node_modules/.bin/semantic-release pre && npm publish && semantic-release post",
-	"clean": "./node_modules/.bin/gulp clean",
-	"build": "./node_modules/.bin/gulp",
-	"gulp": "npm run build",
-	"test": "./node_modules/.bin/gulp test-unit",
+	"semantic-release": "semantic-release pre && npm publish && semantic-release post",
+	"clean": "gulp clean",
+	"compile": "gulp",
+	"build": "npm run compile && gulp test-unit",
+	"test": "gulp prepare-test-unit && gulp test-unit",
 	"start": "npm run serve",
-	"serve": "./node_modules/.bin/nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec ./node_modules/.bin/gulp serve",
-	"serve-dist": "./node_modules/.bin/nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec ./node_modules/.bin/gulp serve-dist",
-	"update": "npm install --no-optional && ./node_modules/.bin/jspm update && ./node_modules/.bin/jspm dl-loader && npm run tsd",
+	"serve": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve",
+	"serve-dist": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve-dist",
+	"update": "npm install --no-optional && jspm update && jspm dl-loader && npm run tsd",
 	"outdated": "npm outdated",
-	"help": "./node_modules/.bin/gulp help",
-	"tsd": "./node_modules/.bin/tsd reinstall --save --overwrite",
-	"tsd-update": "./node_modules/.bin/tsd update --save --overwrite",
-	"setup": "npm install --no-optional && jspm install && jspm dl-loader && npm run tsd"
+	"help": "gulp help",
+	"tsd": "tsd reinstall --save --overwrite",
+	"tsd-update": "tsd update --save --overwrite",
+	"setup": "npm install --no-optional && jspm install && jspm dl-loader && npm run tsd",
+	"prepublish": "npm run build"
   }
 }
