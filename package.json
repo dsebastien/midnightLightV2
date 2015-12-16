@@ -52,7 +52,7 @@
     "nodemon": "1.8.x",
     "typescript": "1.7.3",
     "modern-web-dev-build": "0.1.1",
-    "jasmine": "2.4.x",
+    "jasmine-core": "2.4.x",
     "karma-jasmine": "0.3.x",
     "semantic-release": "4.3.x",
     "tsd": "0.6.5"
