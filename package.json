@@ -82,7 +82,6 @@
     "help": "gulp help",
     "tsd": "tsd reinstall --save --overwrite",
     "tsd-update": "tsd update --save --overwrite",
-    "setup": "npm install --no-optional && jspm install && jspm dl-loader && npm run tsd",
-    "prepublish": "npm run build"
+    "setup": "npm install --no-optional && jspm install && jspm dl-loader && npm run tsd"
   }
 }
