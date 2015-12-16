@@ -41,7 +41,7 @@
     "angular2": "2.0.0-alpha.46",
     "@reactivex/rxjs": "5.0.0-alpha.7",
     "reflect-metadata": "0.1.2",
-    "zone.js": "0.5.8"
+    "zone.js": "0.5.10"
   },
   "devDependencies": {
     "babel-core": "6.3.x",
