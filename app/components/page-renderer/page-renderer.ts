@@ -1,10 +1,10 @@
 "use strict";
 
 // import Angular 2
-import {Component, View, CORE_DIRECTIVES} from "angular2/angular2";
+import {Component, View} from "angular2/core";
 import {RouteParams} from "angular2/router";
 
-import * as Rx from "@reactivex/rxjs";
+import * as Rx from "rxjs";
 
 import {Page} from "../pages/pages.model";
 import {PagesService} from "../pages/pages.service";
@@ -18,7 +18,7 @@ import {PagesService} from "../pages/pages.service";
 })
 @View({
 	templateUrl: "components/page-renderer/page-renderer.template.html",
-	directives: [CORE_DIRECTIVES]
+	directives: []
 })
 */
 export class PageRenderer {

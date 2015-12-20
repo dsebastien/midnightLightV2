@@ -22,14 +22,12 @@
   "jspm": {
     "configFile": "jspm.conf.js",
     "dependencies": {
-      "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
-      "angular2": "npm:angular2@^2.0.0-alpha.46",
+      "angular2": "npm:angular2@^2.0.0-beta.0",
       "babel-runtime": "npm:babel-runtime@^6.3.13",
       "font-awesome": "npm:font-awesome@^4.5.0",
       "lodash": "npm:lodash@^3.10.1",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
-      "reflect-metadata": "npm:reflect-metadata@^0.1.2",
-      "zone.js": "npm:zone.js@^0.5.10"
+      "rxjs": "npm:rxjs@5.0.0-beta.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^6.3.17",
@@ -38,10 +36,11 @@
   },
   "dependencies": {
     "babel-runtime": "6.3.x",
-    "angular2": "2.0.0-alpha.46",
-    "@reactivex/rxjs": "5.0.0-alpha.7",
+    "rxjs": "5.0.0-beta.0",
     "reflect-metadata": "0.1.2",
-    "zone.js": "0.5.10"
+    "zone.js": "0.5.10",
+    "es6-shim": "0.33.3",
+    "angular2": "2.0.0-beta.0"
   },
   "devDependencies": {
     "babel-core": "6.3.x",
@@ -51,7 +50,7 @@
     "jspm": "0.16.x",
     "nodemon": "1.8.x",
     "typescript": "1.7.3",
-    "modern-web-dev-build": "0.1.1",
+    "modern-web-dev-build": "0.2.x",
     "jasmine-core": "2.4.x",
     "karma-jasmine": "0.3.x",
     "semantic-release": "4.3.x",

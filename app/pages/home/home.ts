@@ -1,7 +1,7 @@
 "use strict";
 
 // import Angular 2
-import { Component, View, CORE_DIRECTIVES } from "angular2/angular2";
+import { Component, View } from "angular2/core";
 
 import {Configuration} from "../../core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 
@@ -10,7 +10,7 @@ import {Configuration} from "../../core/commons/configuration"; // http://stacko
 })
 @View({
 	templateUrl: "pages/home/home.template.html",
-	directives: [CORE_DIRECTIVES]
+	directives: []
 })
 export class Home {
 

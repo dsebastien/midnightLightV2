@@ -1,13 +1,13 @@
 <nav id="menu" class="box">
 	<h2>Menu</h2>
 	<ul>
-		<li><a [router-link]=['/Home']>Home</a></li>
-		<li><a [router-link]=['/Posts']>Posts</a></li>
-		<li *ng-for="#page of pages">
+		<li><a [routerLink]="['/Home']">Home</a></li>
+		<li><a [routerLink]="['/Posts']">Posts</a></li>
+		<li *ngFor="#page of pages">
 			<!-- https://github.com/angular/angular/blob/master/modules/angular2/src/router/router_link.ts#L26 -->
-			<a [router-link]="['/PageRenderer',{'pageToRender':page.id}]">{{ page.title }}</a> <!-- note that the router link path corresponds to the 'as'
+			<a [routerLink]="['/PageRenderer',{'pageToRender':page.id}]">{{ page.title }}</a> <!-- note that the router link path corresponds to the 'as'
 			<!--
-			{{ page.title }}
+			{{ page?.title }}
 			-->
 		</li>
 	</ul>

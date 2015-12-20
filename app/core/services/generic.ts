@@ -1,7 +1,7 @@
 "use strict";
 
 /*
-import * as Rx from 'rx';
+import * as Rx from 'rxjs';
 
 export interface GenericService<Type>{
 	fetch(): Rx.Observable<Type>;

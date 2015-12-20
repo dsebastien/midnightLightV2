@@ -1,9 +1,9 @@
 "use strict";
 
 // import Angular 2
-import {Component, View, CORE_DIRECTIVES} from "angular2/angular2";
+import {Component, View} from "angular2/core";
 
-import * as Rx from "@reactivex/rxjs";
+import * as Rx from "rxjs";
 
 import {Configuration} from "../../core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {Post} from "./posts.model";
@@ -17,7 +17,7 @@ import {PostsService} from "./posts.service";
 })
 @View({
 	templateUrl: "components/posts/posts.template.html",
-	directives: [CORE_DIRECTIVES]
+	directives: []
 })
 export class Posts {
 	private postsService:PostsService;

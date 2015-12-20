@@ -1,8 +1,8 @@
 "use strict";
 
-import {Injectable} from "angular2/angular2"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
+import {Injectable} from "angular2/core"; // todo remove @Inject when that is fixed: https://github.com/angular/angular/issues/2788#issuecomment-117350724
 import {Http, Response} from "angular2/http";
-import {Observable, Subject, ReplaySubject} from "@reactivex/rxjs";
+import {Observable, Subject, ReplaySubject} from "rxjs";
 
 import {Configuration} from "../../core/commons/configuration"; // http://stackoverflow.com/questions/29593126/typescript-1-5-es6-module-default-import-of-commonjs-export-d-ts-only-iss
 import {Post} from "./posts.model";

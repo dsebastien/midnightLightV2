@@ -1,7 +1,7 @@
 <div id="container" class="container">
 	<header id="header" class="box">
-		<h1>{{blogMetadata.title}}</h1>
-		<p>{{blogMetadata.description}}</p>
+		<h1>{{blogMetadata?.title}}</h1>
+		<p>{{blogMetadata?.description}}</p>
 	</header>
 	<aside id="social" class="box">
 		<h2>Social</h2>
@@ -24,9 +24,7 @@
 	<section id="about" class="box">
 		<div>
 			<h2>About</h2>
-			<blockquote cite="http://example.com/facts">
-				<p>It's me, Mario! Although I could also just be a very long quote</p>
-			</blockquote>
+			<blockquote>It's me, Mario! Although I could also just be a very long quote</blockquote>
 		</div>
 	</section>
 	<footer id="footer" class="box">
