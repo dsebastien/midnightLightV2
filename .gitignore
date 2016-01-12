@@ -3,12 +3,12 @@ dist/
 .tmp/
 *.log
 *.map
+
+# Typings
+# Only project-specific typings should be included
 *.d.ts
-!typings
-typings/*
-!typings/tsd.d.ts
 !typings/custom.d.ts
-!typings/README.md
+!typings/custom/*.d.ts
 
 # NPM
 node_modules/
