@@ -54,7 +54,7 @@
     "jasmine-core": "2.4.x",
     "karma-jasmine": "0.3.x",
     "semantic-release": "4.3.x",
-    "tsd": "0.6.5"
+    "typings": "0.5.x"
   },
   "engines": {
     "node": ">=4.2.1",
@@ -76,11 +76,10 @@
     "start": "npm run serve",
     "serve": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve",
     "serve-dist": "nodemon --watch gulpfile.js --watch gulpfile.babel.js --watch package.json --watch .jshintrc --watch .jscsrc --watch tsconfig.json --watch tslint.json --watch jspm.conf.js --exec gulp serve-dist",
-    "update": "npm install --no-optional && jspm update && jspm dl-loader && npm run tsd",
+    "update": "npm install --no-optional && jspm update && jspm dl-loader && npm run typings",
     "outdated": "npm outdated",
     "help": "gulp help",
-    "tsd": "tsd reinstall --save --overwrite",
-    "tsd-update": "tsd update --save --overwrite",
-    "setup": "npm install --no-optional && jspm install && jspm dl-loader && npm run tsd"
+    "typings": "typings install",
+    "setup": "npm install --no-optional && jspm install && jspm dl-loader && npm run typings"
   }
 }
