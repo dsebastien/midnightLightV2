@@ -7,44 +7,46 @@
 // nice looking blockquotes
 // https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
 blockquote {
-	background: $quotesBackgroundColor;
-	font-style: italic;
-	border-left: 0.8em solid $quotesColor;
-	margin: 1.5em 0 1.5em;
-	padding: 1em 1.5em 1em 2.5em;
-	quotes: "\201C""\201D";
-	position: relative;
-	/*box-shadow: 3px 3px 0 0 #555;*/
+  background: $quotesBackgroundColor;
+  font-style: italic;
+  border-left: 0.8em solid $quotesColor;
+  margin: 1.5em 0 1.5em;
+  padding: 1em 1.5em 1em 2.5em;
+  quotes: "\201C""\201D";
+  position: relative;
+  /*box-shadow: 3px 3px 0 0 #555;*/
 }
+
 blockquote:before, blockquote:after {
-	color: $quotesColor;
-	font-size: 4em;
-	line-height: 0.1;
-	position: absolute;
+  color: $quotesColor;
+  font-size: 4em;
+  line-height: 0.1;
+  position: absolute;
 }
+
 blockquote:before {
-	content: open-quote;
-	left: 5px;
-	top: 0.6em;
+  content: open-quote;
+  left: 5px;
+  top: 0.6em;
 }
 
 blockquote:after {
-	content: close-quote;
-	bottom: 0;
+  content: close-quote;
+  bottom: 0;
 }
 
-blockquote p{
-	display: inline;
+blockquote p {
+  display: inline;
 }
 
 // better looking default horizontal rule
 hr {
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid $hrColor;
-	margin: 1em 0;
-	padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid $hrColor;
+  margin: 1em 0;
+  padding: 0;
 }
 
 // code highlighting

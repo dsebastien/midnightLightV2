@@ -33,7 +33,7 @@ export class Posts {
 		this.postsService = postsService;
 
 		let postsObservable:Rx.Observable<Post> = postsService.fetchPosts();
-		let postsObservableSubscription: Rx.Subscription<Post> = postsObservable.subscribe(
+		let postsObservableSubscription: Rx.Subscription = postsObservable.subscribe(
 			(post:Post) => {
 				this._posts.push(post);
 			},

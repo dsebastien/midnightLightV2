@@ -35,7 +35,7 @@ export class Pages {
 
 		let pagesObservable: Rx.Observable<Page> = pagesService.fetchPages();
 
-		let pagesObservableSubscription: Rx.Subscription<Page> = pagesObservable.subscribe(
+		let pagesObservableSubscription: Rx.Subscription = pagesObservable.subscribe(
 			(page: Page) => {
 				this._pages.push(page);
 			},
