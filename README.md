@@ -1,5 +1,7 @@
 # Midnight Light
 
+[![Join the chat at https://gitter.im/dsebastien/midnightLightV2](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dsebastien/midnightLightV2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://secure.travis-ci.org/dsebastien/midnightLightV2.png?branch=master)](https://travis-ci.org/dsebastien/midnightLightV2)
 [![Coverage Status](
 https://coveralls.io/repos/dsebastien/midnightLightV2/badge.svg?branch=master&service=github
