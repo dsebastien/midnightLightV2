@@ -8,7 +8,7 @@ https://coveralls.io/github/dsebastien/midnightLightV2?branch=master
 )
 [![Dependency Status](https://david-dm.org/dsebastien/midnightLightV2.svg?theme=shields.io&style=flat)](https://david-dm.org/dsebastien/midnightLightV2)
 [![devDependency Status](https://david-dm.org/dsebastien/midnightLightV2/dev-status.svg?theme=shields.io&style=flat)](https://david-dm.org/dsebastien/midnightLightV2#info=devDependencies)
-[![Gitter](https://img.shields.io/badge/gitter-join%20chat-green.svg?style=flat)](https://gitter.im/dsebastien/midnightLightV2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://img.shields.io/badge/gitter-join%20chat-green.svg?style=flat)](https://gitter.im/dsebastien/midnightLightV2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Greenkeeper badge](https://badges.greenkeeper.io/dsebastien/midnightLightV2.svg)](https://greenkeeper.io/)
 
 ## About
 Midnight Light is a modern personal Web front-end.
